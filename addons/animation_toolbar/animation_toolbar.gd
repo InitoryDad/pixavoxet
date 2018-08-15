@@ -57,7 +57,7 @@ func animation_selected(idx):
 
 func _process(delta):
 	var scene_root = get_tree().get_edited_scene_root()
-	if(scene_root && !animation_player && scene_root.get_node("AnimationPlayer")):
+	if(scene_root && !animation_player && scene_root.get_node("AnimationPlayer") || animation_player && animation_player.get_animation_list() != animations):
 		animation_player = scene_root.get_node("AnimationPlayer")
 		animation_button.clear()
 		animations = animation_player.get_animation_list()

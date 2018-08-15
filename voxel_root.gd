@@ -62,6 +62,7 @@ func update_transforms():
 					voxel_node.multi_mesh_instance.multimesh.set_instance_transform(index, Transform(Basis(), position - offset))
 					var t = voxel_node.multi_mesh_instance.multimesh.get_instance_transform(index)
 					var t2 = voxel_node.global_transform
+					var s = voxel_node.transform.basis.get_scale()
 					var a = t2.basis.orthonormalized().get_euler()
 					var b = t2.basis.orthonormalized().transposed().get_euler()
 					t2 = t2.rotated(Vector3(0,0,1),b.z)
@@ -71,6 +72,7 @@ func update_transforms():
 					t = t.rotated(Vector3(0,0,1),a.z)
 					t = t.rotated(Vector3(1,0,0),a.x)
 					t = t.rotated(Vector3(0,1,0),a.y)
+					t = t.scaled(s)
 					voxel_node.multi_mesh_instance.multimesh.set_instance_transform(index,t)
 			else:
 				voxel_node.multi_mesh_instance.visible = false
