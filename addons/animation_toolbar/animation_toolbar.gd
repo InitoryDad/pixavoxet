@@ -10,6 +10,7 @@ var animations
 var filedialog
 
 func _enter_tree():
+	connect("scene_changed",self,"scene_changed")
 	panel = HBoxContainer.new()
 	timeline = HSlider.new()
 	timeline.rect_min_size = Vector2(1000,32)
@@ -31,6 +32,21 @@ func _enter_tree():
 	panel.add_child(save_button)
 	panel.add_child(timeline)
 	add_control_to_container(CONTAINER_SPATIAL_EDITOR_BOTTOM,panel)
+	add_custom_type("VoxelRoot", "Spatial", preload("VoxelRoot.gd"), preload("voxel_root_icon.png"))
+
+func scene_changed(scene):
+	var scene_root = get_tree().get_edited_scene_root()
+	animation_player = scene_root.get_node("AnimationPlayer")
+	animation_button.clear()
+	animations = animation_player.get_animation_list()
+	if(animation_player.animation_name == ""):
+		animation_player.animation_name = animations[0]
+	var id = 0
+	for anim in animations:
+		animation_button.add_item(anim,id)
+		id += 1
+	animation_player.frame = 0
+	animation_player.update()
 
 func open_file():
 	filedialog.visible = true
@@ -97,5 +113,6 @@ func play():
 			play_button.modulate = Color(1,0,0,1)
 
 func _exit_tree():
+	remove_custom_type("VoxelRoot")
 	remove_control_from_container(CONTAINER_CANVAS_EDITOR_BOTTOM,panel)
 	panel.free()

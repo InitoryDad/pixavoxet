@@ -1,7 +1,7 @@
 tool
 extends AnimationPlayer
 
-var play = false
+export var play = false
 export var speed = .1
 export var frame = 0.0
 var animation_name = ""
@@ -15,7 +15,8 @@ func _ready():
 
 func _process(delta):
 	get_node("Timer").wait_time = speed
-	if(play && get_node("Timer").is_stopped()):
+	if(play):
+		print("hi")
 		get_node("Timer").start()
 		#next_frame()
 	elif(!play && is_playing() && !rendering):
