@@ -23,7 +23,6 @@ func _process(delta):
 		elapsed += delta
 
 func next_frame():
-	print("hi")
 	if(animation_name != ""):
 		frame += .01
 		if(frame >= current_animation_length):

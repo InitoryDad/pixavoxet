@@ -210,3 +210,7 @@ func _load(_path):
 	MVFILE.models = MODELS
 	MVFILE.palette = colors
 	return MVFILE
+
+func _exit_tree():
+	multi_mesh_instance.queue_free()
+	multi_mesh_instance = MultiMeshInstance.new()
