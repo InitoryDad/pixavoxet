@@ -25,7 +25,7 @@ export var color_fix = true
 
 export var cull_back = true
 
-const VOXEL_INSTANCE_CLASS = preload("res://src/MagicaVoxelInstance.gd")
+const VOXEL_INSTANCE_CLASS = preload("MagicaVoxelInstance.gd")
 
 
 var wait = 0

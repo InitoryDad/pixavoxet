@@ -33,6 +33,7 @@ func _enter_tree():
 	panel.add_child(timeline)
 	add_control_to_container(CONTAINER_SPATIAL_EDITOR_BOTTOM,panel)
 	add_custom_type("VoxelRoot", "Spatial", preload("VoxelRoot.gd"), preload("voxel_root_icon.png"))
+	add_custom_type("VoxelModel", "Position3D", preload("MagicaVoxelInstance.gd"), preload("voxel_root_icon.png"))
 
 func scene_changed(scene):
 	var scene_root = get_tree().get_edited_scene_root()
