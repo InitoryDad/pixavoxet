@@ -53,6 +53,11 @@ func update_transforms():
 		if(voxel_node.vox_file_path != ""):
 			if(voxel_node.is_visible_in_tree()):
 				voxel_node.multi_mesh_instance.visible = true
+				var curve = null
+				var length = 0
+				if(voxel_node.curve_deform && curve == null):
+					curve = voxel_node.get_node(voxel_node.curve_deform).curve
+					length = curve.get_baked_length()
 				for index in range(0,voxel_node.multi_mesh_instance.multimesh.instance_count):
 					var model = voxel_node.magica_voxel_file.models[voxel_node.model_index]
 					var size = model.size
@@ -73,6 +78,15 @@ func update_transforms():
 					t = t.rotated(Vector3(0,1,0),a.y)
 					t = t.scaled(s)
 					t = t.translated(t2.origin/s)
+					if(curve):
+						var off = range_lerp(t.origin.y,t2.origin.y,t.origin.y+size.y+1,0,length)
+						var point = curve.interpolate_baked(off,false)
+						var n = curve.get_point_position(0)
+						point = point - n
+						point = point.rotated(Vector3(0,0,1),-a.z)
+						point = point.rotated(Vector3(1,0,0),-a.x)
+						point = point.rotated(Vector3(0,1,0),-a.y)
+						t = t.translated(point)
 					voxel_node.multi_mesh_instance.multimesh.set_instance_transform(index,t)
 			else:
 				voxel_node.multi_mesh_instance.visible = false

@@ -5,8 +5,10 @@ export var vox_file_path = ""
 export var model_index = 0
 export var offset_pivot = Vector3(0,-0.5,0)
 export var voxel_size = 1.0
+export var voxel_interpolation = 1
 export(String, "cube", "sphere") var voxel_shape = "cube"
 export(Mesh) var voxel_custom_shape = null
+export(NodePath) var curve_deform = null
 var magica_voxel_file = null
 var multi_mesh_instance = MultiMeshInstance.new()
 var multi_mesh_color_lookup = {}
@@ -203,6 +205,13 @@ func _load(_path):
 				bordered += 1
 			if(bordered != 6):
 				culled_voxels[p] = voxels[p]
+		if(voxel_interpolation > 1):
+			for p in culled_voxels.keys():
+				var color_index = culled_voxels[p]
+				for i in voxel_interpolation:
+					var up = Vector3(0,1,0) * (float(i) / float(voxel_interpolation))
+					var pos = p + up
+					culled_voxels[pos] = color_index
 		model.voxels = culled_voxels
 		model.size = sizes[i]
 		MODELS.append(model)
