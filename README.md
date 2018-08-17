@@ -2,7 +2,7 @@
 
 ​This is a little tool inside the Godot game engine, made for rendering pixel art spritesheets from voxels models from the voxel modelling software MagicaVoxel.  It features a custom lighting engine, outlining support, and indexed colors.  
 
-Devlog at myskamyska.tumblr.com
+Devlog at http://myskamyska.tumblr.com
 
 **Requirements**
 
