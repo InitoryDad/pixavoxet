@@ -78,8 +78,15 @@ func update_transforms():
 					t = t.rotated(Vector3(0,1,0),a.y)
 					t = t.scaled(s)
 					t = t.translated(t2.origin/s)
-					if(curve):
-						var off = range_lerp(t.origin.y,t2.origin.y,t.origin.y+size.y+1,0,length)
+					voxel_node.multi_mesh_instance.multimesh.set_instance_transform(index,t)
+				if(curve):
+					var aabb = voxel_node.multi_mesh_instance.multimesh.get_aabb()
+					var t2 = voxel_node.global_transform
+					var s = voxel_node.global_transform.basis.get_scale()
+					var a = t2.basis.orthonormalized().get_euler()
+					for index in range(0,voxel_node.multi_mesh_instance.multimesh.instance_count):
+						var t = voxel_node.multi_mesh_instance.multimesh.get_instance_transform(index)
+						var off = range_lerp(t.origin.y,aabb.position.y,aabb.position.y+aabb.size.y,0,length)
 						var point = curve.interpolate_baked(off,false)
 						var n = curve.get_point_position(0)
 						point = point - n
@@ -87,7 +94,8 @@ func update_transforms():
 						point = point.rotated(Vector3(1,0,0),-a.x)
 						point = point.rotated(Vector3(0,1,0),-a.y)
 						t = t.translated(point)
-					voxel_node.multi_mesh_instance.multimesh.set_instance_transform(index,t)
+						voxel_node.multi_mesh_instance.multimesh.set_instance_transform(index,t)
+
 			else:
 				voxel_node.multi_mesh_instance.visible = false
 
