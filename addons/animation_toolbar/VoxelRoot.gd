@@ -64,6 +64,7 @@ func update_transforms():
 					var offset = Vector3(size.y/2,0,size.x/2) + voxel_node.offset_pivot
 					var position = model.voxels.keys()[index]
 					voxel_node.multi_mesh_instance.multimesh.set_instance_transform(index, Transform(Basis(), position - offset))
+					var aabb = voxel_node.multi_mesh_instance.multimesh.get_aabb()
 					var t = voxel_node.multi_mesh_instance.multimesh.get_instance_transform(index)
 					var t2 = voxel_node.global_transform
 					var s = voxel_node.global_transform.basis.get_scale()
@@ -78,7 +79,7 @@ func update_transforms():
 					t = t.scaled(s)
 					t = t.translated(t2.origin/s)
 					if(curve):
-						var off = range_lerp(abs(t.origin.y-t2.origin.y),0,size.y,0,length)
+						var off = range_lerp(position.y,0,size.y+4,0,length)
 						var p1 = curve.interpolate_baked(off,false)
 						t = t.translated(p1)
 					voxel_node.multi_mesh_instance.multimesh.set_instance_transform(index,t)

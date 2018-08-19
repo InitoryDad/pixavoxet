@@ -10,7 +10,7 @@ var next_frame = false
 var rendering = false
 var elapsed = 0
 func _ready():
-	stop()
+	stop(false)
 
 func _process(delta):
 	if(play && elapsed > speed):
@@ -18,7 +18,7 @@ func _process(delta):
 		next_frame()
 	elif(!play && is_playing() && !rendering):
 		elapsed = 0
-		stop()
+		playback_speed = 0
 	if(play):
 		elapsed += delta
 

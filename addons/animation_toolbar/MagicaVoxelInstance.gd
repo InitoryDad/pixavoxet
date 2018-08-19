@@ -91,12 +91,6 @@ func _process(delta):
 				_out = children[1].translation
 			curve.add_point(point.transform.origin, _in, _out, index)
 			index += 1
-	for i in curve.get_point_count():
-		if(i < curve.get_point_count() - 1):
-			var n1 = curve.get_point_position(i)
-			var n2 = curve.get_point_position(i+1)
-			var angle = n1.angle_to(n2)
-			curve.set_point_tilt(i, angle)
 	if(curve.get_point_count() > 0):
 		curve_deform = get_path_to(self)
 	else:
