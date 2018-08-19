@@ -36,7 +36,7 @@ func outline_pass(image):
 					r = image.get_pixel(x+1,y)
 					if(r.a != 0):
 						bordering += 1
-				if(bordering == 1):
+				if(bordering < 2):
 					remove.append(Vector2(x,y))
 				elif(get_parent().get_node("Viewport").noise):
 					var noise_strength = get_parent().get_node("Viewport").noise_strength
@@ -45,7 +45,7 @@ func outline_pass(image):
 					c.b += rand_range(-noise_strength,noise_strength)
 					image.set_pixel(x,y,c)
 		for xy in remove:
-			image.set_pixel(xy.x,xy.y,Color(0,0,0,1))
+			image.set_pixel(xy.x,xy.y,Color(0,0,0,0))
 	for x in range(0,w):
 		for y in range(0,h):
 			var c = image.get_pixel(x,y)
