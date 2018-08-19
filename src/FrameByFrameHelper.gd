@@ -17,8 +17,10 @@ func _process(delta):
 		elapsed = 0
 		next_frame()
 	elif(!play && is_playing() && !rendering):
+		yield(get_tree(),"idle_frame")
 		elapsed = 0
 		playback_speed = 0
+		stop(false)
 	if(play):
 		elapsed += delta
 
