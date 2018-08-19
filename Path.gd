@@ -1,8 +1,7 @@
 tool
 extends Path
 
-# class member variables go here, for example:
-# var a = 2
-# var b = "textvar"
+var last_length = 0
 func _process(delta):
-	print(curve.get_baked_length())
+	if(round(curve.get_baked_length()) != last_length):
+		last_length = round(curve.get_baked_length())

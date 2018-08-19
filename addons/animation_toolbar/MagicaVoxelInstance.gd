@@ -1,11 +1,12 @@
 tool
-extends Spatial
+extends Path
 
 export var vox_file_path = ""
 export var model_index = 0
 export var offset_pivot = Vector3(0,-0.5,0)
 export var voxel_size = 1.0
 export var voxel_interpolation = 1
+export var auto_interpolate = false
 export(String, "cube", "sphere") var voxel_shape = "cube"
 export(Mesh) var voxel_custom_shape = null
 export(NodePath) var curve_deform = null
@@ -13,6 +14,7 @@ var magica_voxel_file = null
 var multi_mesh_instance = MultiMeshInstance.new()
 var multi_mesh_color_lookup = {}
 var multi_mesh_color_index = {}
+var last_curve_length = 0
 
 class Voxel:
 	var position = Vector3(0,0,0)
@@ -74,12 +76,44 @@ func _ready():
 			print("Missing Voxel Model Path for " + get_name())
 
 func _process(delta):
+	var index = 0
+	curve.clear_points()
+	for point in get_children():
+		if(point is Position3D):
+			if(index == 0):
+				point.translation = Vector3(0,0,0)
+			var _in = Vector3(0,0,0)
+			var _out = Vector3(0,0,0)
+			var children = point.get_children()
+			if(children.size() >= 1):
+				_in = children[0].translation
+			if(children.size() >= 2):
+				_out = children[1].translation
+			curve.add_point(point.transform.origin, _in, _out, index)
+			index += 1
+	for i in curve.get_point_count():
+		if(i < curve.get_point_count() - 1):
+			var n1 = curve.get_point_position(i)
+			var n2 = curve.get_point_position(i+1)
+			var angle = n1.angle_to(n2)
+			curve.set_point_tilt(i, angle)
+	if(curve.get_point_count() > 0):
+		curve_deform = get_path_to(self)
+	else:
+		curve_deform = null
+	if(curve_deform && auto_interpolate):
+		if(ceil(curve.get_baked_length()) != last_curve_length):
+			last_curve_length = ceil(curve.get_baked_length())
+			voxel_interpolation = max(1,ceil(sqrt(last_curve_length)))
+			magica_voxel_file = _load(vox_file_path)
+			render_voxels()
 	if(Input.is_key_pressed(KEY_TAB) || !magica_voxel_file):
 		if(vox_file_path != ""):
 			magica_voxel_file = _load(vox_file_path)
 			render_voxels()
 		else:
 			print("Missing Voxel Model Path for " + get_name())
+
 
 func render_voxels():
 	print("Rendering Voxels for " + get_name())
@@ -124,13 +158,11 @@ func render_voxels():
 	for position in voxel_positions:
 		var color_index = model.voxels[position]
 		var color =  palette[color_index]
-		multi_mesh_instance.multimesh.set_instance_color(index, color)
-		multi_mesh_instance.multimesh.set_instance_transform(index, Transform(Basis(), position - offset))
 		multi_mesh_color_lookup[index] = color
 		multi_mesh_color_index[index] = color_index
 		index += 1
-	get_tree().get_edited_scene_root().call_deferred('add_child',multi_mesh_instance)
-	#multi_mesh_instance.set_owner(get_tree().get_edited_scene_root())
+	if(!multi_mesh_instance.get_parent()):
+		get_tree().get_edited_scene_root().call_deferred('add_child',multi_mesh_instance)
 
 
 func _load(_path):

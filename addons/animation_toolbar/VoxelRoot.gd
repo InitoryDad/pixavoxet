@@ -63,7 +63,6 @@ func update_transforms():
 					var size = model.size
 					var offset = Vector3(size.y/2,0,size.x/2) + voxel_node.offset_pivot
 					var position = model.voxels.keys()[index]
-					var aa = voxel_node.transform.origin
 					voxel_node.multi_mesh_instance.multimesh.set_instance_transform(index, Transform(Basis(), position - offset))
 					var t = voxel_node.multi_mesh_instance.multimesh.get_instance_transform(index)
 					var t2 = voxel_node.global_transform
@@ -78,26 +77,47 @@ func update_transforms():
 					t = t.rotated(Vector3(0,1,0),a.y)
 					t = t.scaled(s)
 					t = t.translated(t2.origin/s)
+					if(curve):
+						var off = range_lerp(abs(t.origin.y-t2.origin.y),0,size.y,0,length)
+						var p1 = curve.interpolate_baked(off,false)
+						t = t.translated(p1)
 					voxel_node.multi_mesh_instance.multimesh.set_instance_transform(index,t)
-				if(curve):
-					var aabb = voxel_node.multi_mesh_instance.multimesh.get_aabb()
-					var t2 = voxel_node.global_transform
-					var s = voxel_node.global_transform.basis.get_scale()
-					var a = t2.basis.orthonormalized().get_euler()
-					for index in range(0,voxel_node.multi_mesh_instance.multimesh.instance_count):
-						var t = voxel_node.multi_mesh_instance.multimesh.get_instance_transform(index)
-						var off = range_lerp(t.origin.y,aabb.position.y,aabb.position.y+aabb.size.y,0,length)
-						var point = curve.interpolate_baked(off,false)
-						var n = curve.get_point_position(0)
-						point = point - n
-						point = point.rotated(Vector3(0,0,1),-a.z)
-						point = point.rotated(Vector3(1,0,0),-a.x)
-						point = point.rotated(Vector3(0,1,0),-a.y)
-						t = t.translated(point)
-						voxel_node.multi_mesh_instance.multimesh.set_instance_transform(index,t)
-
 			else:
 				voxel_node.multi_mesh_instance.visible = false
+
+func xyz(u,v):
+	var uyz = Vector2(u.y,u.z)
+	var uxz = Vector2(u.x,u.z)
+	var uxy = Vector2(u.x,u.y)
+	var vyz = Vector2(v.y,v.z)
+	var vxz = Vector2(v.x,v.z)
+	var vxy = Vector2(v.x,v.y)
+	var x = acos(uyz.dot(vyz))
+	var y = acos(uxz.dot(vxz))
+	var z = acos(uxy.dot(vxy))
+	return Vector3(x,y,z)
+
+func toEuler(axis, angle):
+	var s = sin(angle);
+	var c = cos(angle);
+	var t = 1-c;
+	var x = axis.x
+	var y = axis.y
+	var z = axis.z
+	if ((x*y*t + z*s) > 0.998):# { // north pole singularity detected
+		var heading = 2 * atan2(x*sin(angle/2), cos(angle/2))
+		var attitude = PI/2
+		var bank = 0
+		return Vector3(heading,attitude,bank)
+	if ((x*y*t + z*s) < -0.998): # { // south pole singularity detected
+		var heading = -2*atan2(x*sin(angle/2),cos(angle/2))
+		var attitude = -PI/2
+		var bank = 0
+		return Vector3(heading,attitude,bank)
+	var heading = atan2(y * s- x * z * t , 1 - (y*y+ z*z ) * t)
+	var attitude = asin(x * y * t + z * s)
+	var bank = atan2(x * s - y * z * t , 1 - (x*x + z*z) * t)
+	return Vector3(heading,attitude,bank)
 
 func shade_pass_indexed(_light):
 	for voxel_node in get_all_children_of_type(self, VOXEL_INSTANCE_CLASS):
