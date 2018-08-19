@@ -79,7 +79,7 @@ func update_transforms():
 					t = t.scaled(s)
 					t = t.translated(t2.origin/s)
 					if(curve):
-						var off = range_lerp(position.y,0,size.y+4,0,length)
+						var off = range_lerp(position.y,0,size.z,0,length)
 						var p1 = curve.interpolate_baked(off,false)
 						t = t.translated(p1)
 					voxel_node.multi_mesh_instance.multimesh.set_instance_transform(index,t)
