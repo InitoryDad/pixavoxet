@@ -99,14 +99,9 @@ func update_transforms():
 					if(curve):
 						var inter = voxel_node.voxel_interpolation
 						var off = range_lerp(position.y,0,size.z,0,length)
-#						var ang = t.basis.orthonormalized().transposed().get_euler().normalized()
 						var p1 = curve.interpolate_baked(off,false)
-#						var p2 = curve.interpolate_baked(off+1,false)
-#						t = t.looking_at(p2,ang)
-#						s += Vector3(0,inter,0)
+						p1.y -= t.origin.y
 						trans += p1
-#						t = t.translated(p1)
-#						t = t.scaled(s)
 					t = t.scaled(s)
 					t = t.translated(trans/s)
 					voxel_node.multi_mesh_instance.multimesh.set_instance_transform(index,t)
