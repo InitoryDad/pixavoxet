@@ -55,6 +55,25 @@ func update_transforms():
 				voxel_node.multi_mesh_instance.visible = true
 				var curve = null
 				var length = 0
+				var index = 0
+				voxel_node.curve.clear_points()
+				for point in voxel_node.get_children():
+					if(point is Position3D):
+						if(index == 0):
+							point.translation = Vector3(0,0,0)
+						var _in = Vector3(0,0,0)
+						var _out = Vector3(0,0,0)
+						var children = point.get_children()
+						if(children.size() >= 1):
+							_in = children[0].translation
+						if(children.size() >= 2):
+							_out = children[1].translation
+						voxel_node.curve.add_point(point.transform.origin, _in, _out, index)
+						index += 1
+				if(voxel_node.curve.get_point_count() > 0):
+					voxel_node.curve_deform = get_path_to(self)
+				else:
+					voxel_node.curve_deform = null
 				if(voxel_node.curve_deform && curve == null):
 					curve = voxel_node.get_node(voxel_node.curve_deform).curve
 					length = curve.get_baked_length()
@@ -76,12 +95,20 @@ func update_transforms():
 					t = t.rotated(Vector3(0,0,1),a.z)
 					t = t.rotated(Vector3(1,0,0),a.x)
 					t = t.rotated(Vector3(0,1,0),a.y)
-					t = t.scaled(s)
-					t = t.translated(t2.origin/s)
+					var trans = t2.origin
 					if(curve):
+						var inter = voxel_node.voxel_interpolation
 						var off = range_lerp(position.y,0,size.z,0,length)
+#						var ang = t.basis.orthonormalized().transposed().get_euler().normalized()
 						var p1 = curve.interpolate_baked(off,false)
-						t = t.translated(p1)
+#						var p2 = curve.interpolate_baked(off+1,false)
+#						t = t.looking_at(p2,ang)
+#						s += Vector3(0,inter,0)
+						trans += p1
+#						t = t.translated(p1)
+#						t = t.scaled(s)
+					t = t.scaled(s)
+					t = t.translated(trans/s)
 					voxel_node.multi_mesh_instance.multimesh.set_instance_transform(index,t)
 			else:
 				voxel_node.multi_mesh_instance.visible = false

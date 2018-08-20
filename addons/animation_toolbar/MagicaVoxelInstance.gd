@@ -76,29 +76,29 @@ func _ready():
 			print("Missing Voxel Model Path for " + get_name())
 
 func _process(delta):
-	var index = 0
-	curve.clear_points()
-	for point in get_children():
-		if(point is Position3D):
-			if(index == 0):
-				point.translation = Vector3(0,0,0)
-			var _in = Vector3(0,0,0)
-			var _out = Vector3(0,0,0)
-			var children = point.get_children()
-			if(children.size() >= 1):
-				_in = children[0].translation
-			if(children.size() >= 2):
-				_out = children[1].translation
-			curve.add_point(point.transform.origin, _in, _out, index)
-			index += 1
-	if(curve.get_point_count() > 0):
-		curve_deform = get_path_to(self)
-	else:
-		curve_deform = null
+#	var index = 0
+#	curve.clear_points()
+#	for point in get_children():
+#		if(point is Position3D):
+#			if(index == 0):
+#				point.translation = Vector3(0,0,0)
+#			var _in = Vector3(0,0,0)
+#			var _out = Vector3(0,0,0)
+#			var children = point.get_children()
+#			if(children.size() >= 1):
+#				_in = children[0].translation
+#			if(children.size() >= 2):
+#				_out = children[1].translation
+#			curve.add_point(point.transform.origin, _in, _out, index)
+#			index += 1
+#	if(curve.get_point_count() > 0):
+#		curve_deform = get_path_to(self)
+#	else:
+#		curve_deform = null
 	if(curve_deform && auto_interpolate):
-		if(ceil(curve.get_baked_length()) != last_curve_length):
-			last_curve_length = ceil(curve.get_baked_length())
-			voxel_interpolation = max(1,ceil(sqrt(last_curve_length)))
+		if(ceil(curve.get_baked_length())/2 != last_curve_length):
+			last_curve_length = ceil(curve.get_baked_length())/2
+			voxel_interpolation = max(1,ceil(sqrt(last_curve_length))/2)
 			magica_voxel_file = _load(vox_file_path)
 			render_voxels()
 	if(Input.is_key_pressed(KEY_TAB) || !magica_voxel_file):
