@@ -174,7 +174,7 @@ func shade_pass_indexed(_light):
 						if(vn.is_visible_in_tree() && vn.multi_mesh_instance.multimesh):
 							var mmaabb = vn.multi_mesh_instance.multimesh.get_aabb()
 							var direction = position - light_vector
-							if(mmaabb.intersects_segment(position - direction.normalized()*4,light_vector)):
+							if(mmaabb.intersects_segment(position - direction.normalized()*4.75,light_vector)):
 								#Is Cast Shadow
 								is_casted_shadow = true
 								var n = floor(range_lerp(position.distance_to(light_vector),0,light_reach,0,3))

@@ -2,7 +2,7 @@ tool
 extends Path
 
 export var vox_file_path = ""
-export var model_index = 0
+export var model_index = 0 setget set_model_index
 export var offset_pivot = Vector3(0,-0.5,0)
 export var voxel_size = 1.0
 export var voxel_interpolation = 1
@@ -15,6 +15,13 @@ var multi_mesh_instance = MultiMeshInstance.new()
 var multi_mesh_color_lookup = {}
 var multi_mesh_color_index = {}
 var last_curve_length = 0
+var last_file = ""
+var last_model = -1
+
+func set_model_index(value):
+	model_index = value
+	if(model_index >= magica_voxel_file.models.size()):
+		model_index = 0
 
 class Voxel:
 	var position = Vector3(0,0,0)
@@ -76,25 +83,14 @@ func _ready():
 			print("Missing Voxel Model Path for " + get_name())
 
 func _process(delta):
-#	var index = 0
-#	curve.clear_points()
-#	for point in get_children():
-#		if(point is Position3D):
-#			if(index == 0):
-#				point.translation = Vector3(0,0,0)
-#			var _in = Vector3(0,0,0)
-#			var _out = Vector3(0,0,0)
-#			var children = point.get_children()
-#			if(children.size() >= 1):
-#				_in = children[0].translation
-#			if(children.size() >= 2):
-#				_out = children[1].translation
-#			curve.add_point(point.transform.origin, _in, _out, index)
-#			index += 1
-#	if(curve.get_point_count() > 0):
-#		curve_deform = get_path_to(self)
-#	else:
-#		curve_deform = null
+	if(magica_voxel_file):
+		model_index = min(model_index, magica_voxel_file.models.size()-1)
+	if(last_model != model_index || last_file != vox_file_path):
+		if(vox_file_path != ""):
+			magica_voxel_file = _load(vox_file_path)
+			render_voxels()
+		else:
+			print("Missing Voxel Model Path for " + get_name())
 	if(curve_deform && auto_interpolate):
 		if(ceil(curve.get_baked_length())/2 != last_curve_length):
 			last_curve_length = ceil(curve.get_baked_length())/2
@@ -107,6 +103,8 @@ func _process(delta):
 			render_voxels()
 		else:
 			print("Missing Voxel Model Path for " + get_name())
+	last_model = model_index
+	last_file = vox_file_path
 
 
 func render_voxels():
@@ -114,35 +112,51 @@ func render_voxels():
 	multi_mesh_color_lookup = {}
 	multi_mesh_color_index = {}
 	var palette = magica_voxel_file.palette
-	if(model_index >= magica_voxel_file.models.size()):
-		print("There is/are only " + str(magica_voxel_file.models.size()) + " models!!!")
-		return
 	var model = magica_voxel_file.models[model_index]
 	var material = SpatialMaterial.new()
 	material.vertex_color_use_as_albedo = true
 	material.vertex_color_is_srgb = true
 	material.flags_unshaded = true
-	var cube_mm = MultiMesh.new()
-	if(!voxel_custom_shape):
-		var cube = null
-		if(voxel_shape == "cube"):
-			cube = CubeMesh.new()
-		if(voxel_shape == "sphere"):
-			cube = SphereMesh.new()
-		if(cube is SphereMesh):
-			cube.radius = voxel_size
-			cube.height = voxel_size*2
-		if(cube is CubeMesh):
-			cube.size = Vector3(voxel_size,voxel_size,voxel_size)
-		cube.material = material
-		cube_mm.mesh = cube
+	var cube_mm = null
+	if(!multi_mesh_instance || multi_mesh_instance && !multi_mesh_instance.multimesh):
+		cube_mm = MultiMesh.new()
+		if(!voxel_custom_shape):
+			var cube = null
+			if(voxel_shape == "cube"):
+				cube = CubeMesh.new()
+			if(voxel_shape == "sphere"):
+				cube = SphereMesh.new()
+			if(cube is SphereMesh):
+				cube.radius = voxel_size
+				cube.height = voxel_size*2
+			if(cube is CubeMesh):
+				cube.size = Vector3(voxel_size,voxel_size,voxel_size)
+			cube.material = material
+			cube_mm.mesh = cube
+		else:
+			multi_mesh_instance.set_material_override(material)
+			cube_mm.mesh = voxel_custom_shape
+		cube_mm.color_format = MultiMesh.COLOR_FLOAT
+		cube_mm.transform_format = MultiMesh.TRANSFORM_3D
+		cube_mm.instance_count = model.voxels.keys().size()
+		multi_mesh_instance.multimesh = cube_mm
 	else:
-		multi_mesh_instance.set_material_override(material)
-		cube_mm.mesh = voxel_custom_shape
-	cube_mm.color_format = MultiMesh.COLOR_FLOAT
-	cube_mm.transform_format = MultiMesh.TRANSFORM_3D
-	cube_mm.instance_count = model.voxels.keys().size()
-	multi_mesh_instance.multimesh = cube_mm
+		if(!voxel_custom_shape):
+			var cube = null
+			if(voxel_shape == "cube"):
+				cube = CubeMesh.new()
+			if(voxel_shape == "sphere"):
+				cube = SphereMesh.new()
+			if(cube is SphereMesh):
+				cube.radius = voxel_size
+				cube.height = voxel_size*2
+			if(cube is CubeMesh):
+				cube.size = Vector3(voxel_size,voxel_size,voxel_size)
+			cube.material = material
+			multi_mesh_instance.multimesh.mesh = cube
+		else:
+			multi_mesh_instance.multimesh.mesh = voxel_custom_shape
+		multi_mesh_instance.multimesh.instance_count = model.voxels.keys().size()
 
 	var size = model.size
 	var offset = Vector3(size.y/2,0,size.x/2) + offset_pivot
