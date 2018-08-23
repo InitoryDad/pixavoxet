@@ -7,6 +7,8 @@ export var offset_pivot = Vector3(0,-0.5,0)
 export var voxel_size = 1.0
 export var voxel_interpolation = 1
 export var auto_interpolate = false
+export var cast_shadow_self_only = false
+export var ignore_outline = false
 export(String, "cube", "sphere") var voxel_shape = "cube"
 export(Mesh) var voxel_custom_shape = null
 export(NodePath) var curve_deform = null
@@ -22,6 +24,8 @@ func set_model_index(value):
 	model_index = value
 	if(model_index >= magica_voxel_file.models.size()):
 		model_index = 0
+	if(model_index < 0):
+		model_index = magica_voxel_file.models.size()-1
 
 class Voxel:
 	var position = Vector3(0,0,0)

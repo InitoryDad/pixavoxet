@@ -1,21 +1,18 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=8 format=2]
 
-[sub_resource type="GDScript" id=1]
+[ext_resource path="res://addons/animation_toolbar/VoxelRoot.gd" type="Script" id=1]
+[ext_resource path="res://addons/animation_toolbar/voxel_root_icon.png" type="Texture" id=2]
+[ext_resource path="res://addons/animation_toolbar/MagicaVoxelInstance.gd" type="Script" id=3]
+[ext_resource path="res://addons/animation_toolbar/voxel_model_icon.png" type="Texture" id=4]
+[ext_resource path="res://src/FrameByFrameHelper.gd" type="Script" id=5]
 
-script/source = "tool
-extends Spatial
+[sub_resource type="Curve3D" id=1]
 
-# class member variables go here, for example:
-# var a = 2
-# var b = \"textvar\"
-
-func _process(delta):
-	var p1 = get_child(0)
-	var p2 = get_child(1)
-	var p3 = get_child(2)
-	var p4 = get_child(3)
-	p3.translation = p1.translation
-	p3.translation -= Vector3(0,1,0)"
+bake_interval = 0.2
+_data = {
+"points": PoolVector3Array( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.744541, 62.4504, -40.9934 ),
+"tilts": PoolRealArray( 0, 0 )
+}
 
 [sub_resource type="Environment" id=2]
 
@@ -98,29 +95,101 @@ _sections_unfolded = [ "Background" ]
 
 [node name="Spatial" type="Spatial" index="0"]
 
-[node name="Position3D" type="Spatial" parent="." index="0"]
+[node name="DirectionalLight" type="DirectionalLight" parent="." index="0"]
 
-script = SubResource( 1 )
+transform = Transform( 0.171577, -0.946721, -0.272547, 0.573881, -0.128819, 0.808744, -0.800764, -0.295171, 0.521202, 11.3583, 4.70462, 0 )
+layers = 1
+light_color = Color( 1, 1, 1, 1 )
+light_energy = 1.0
+light_indirect_energy = 1.0
+light_negative = false
+light_specular = 0.5
+light_bake_mode = 1
+light_cull_mask = -1
+shadow_enabled = false
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_bias = 0.1
+shadow_contact = 0.0
+shadow_reverse_cull_face = false
+editor_only = false
+directional_shadow_mode = 2
+directional_shadow_split_1 = 0.1
+directional_shadow_split_2 = 0.2
+directional_shadow_split_3 = 0.5
+directional_shadow_blend_splits = false
+directional_shadow_normal_bias = 0.8
+directional_shadow_bias_split_scale = 0.25
+directional_shadow_depth_range = 0
+directional_shadow_max_distance = 200.0
+_sections_unfolded = [ "Directional Shadow" ]
+
+[node name="VoxelRoot" type="Spatial" parent="." index="1"]
+
+script = ExtResource( 1 )
+_sections_unfolded = [ "Transform" ]
+__meta__ = {
+"_editor_icon": ExtResource( 2 )
+}
+indexed_colors = true
+light = NodePath("../DirectionalLight")
+light_color = Color( 1, 1, 0.9, 1 )
+light_pass = true
+light_strength = 0.4
+light_bands = 8.0
+light_reach = 50
+shadow_color = Color( 0, 0, 0, 1 )
+cast_shadows = true
+shadow_precision = 4.0
+shadow_strength = 0.22
+outline_color = Color( 0, 0, 0, 1 )
+outline_pass = true
+outline_reset_colors = false
+outline_distance = 3.0
+outline_strength = 0.5
+depth_outline = true
+color_fix = true
+cull_back = true
+
+[node name="Spatial" type="Path" parent="VoxelRoot" index="0"]
+
+curve = SubResource( 1 )
+script = ExtResource( 3 )
+_sections_unfolded = [ "Transform" ]
+__meta__ = {
+"_editor_icon": ExtResource( 4 )
+}
+vox_file_path = "res://chr_knight.vox"
+model_index = 1
+offset_pivot = Vector3( -0.5, 0, -0.5 )
+voxel_size = 1.0
+voxel_interpolation = 1
+auto_interpolate = false
+voxel_shape = "cube"
+voxel_custom_shape = null
+curve_deform = NodePath(".")
+
+[node name="Position3D" type="Position3D" parent="VoxelRoot/Spatial" index="0"]
+
+[node name="Position3D2" type="Position3D" parent="VoxelRoot/Spatial" index="1"]
+
+transform = Transform( 0.991876, 0.127208, 0, -0.127208, 0.991876, 0, 0, 0, 1, 0.744541, 62.4504, -40.9934 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="Position3D2" type="Position3D" parent="Position3D" index="0"]
-
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -11.6615, 3.2402, -3.37848 )
-
-[node name="Position3D4" type="Position3D" parent="Position3D" index="1"]
-
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.53547, 0.356037, -2.05147 )
-
-[node name="Position3D3" type="Position3D" parent="Position3D" index="2"]
-
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -11.6615, 2.2402, -3.37848 )
-
-[node name="Position3D5" type="Position3D" parent="Position3D" index="3"]
-
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.116526, 6.38841, 0.851102 )
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." index="1"]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." index="2"]
 
 environment = SubResource( 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="3"]
+
+root_node = NodePath("..")
+autoplay = ""
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+blend_times = [  ]
+script = ExtResource( 5 )
+play = false
+speed = 0.1
+frame = 0.0
 
 

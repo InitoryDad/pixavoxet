@@ -172,16 +172,17 @@ func shade_pass_indexed(_light):
 					var light_vector = get_node(_light).global_transform.origin
 					for vn in get_all_children_of_type(self, VOXEL_INSTANCE_CLASS):
 						if(vn.is_visible_in_tree() && vn.multi_mesh_instance.multimesh):
-							var mmaabb = vn.multi_mesh_instance.multimesh.get_aabb()
-							var direction = position - light_vector
-							if(mmaabb.intersects_segment(position - direction.normalized()*4.75,light_vector)):
-								#Is Cast Shadow
-								is_casted_shadow = true
-								var n = floor(range_lerp(position.distance_to(light_vector),0,light_reach,0,3))
-								var c = voxel_node.multi_mesh_color_index[i]
-								color = voxel_node.magica_voxel_file.palette[min(c+2,255)]
-								voxel_node.multi_mesh_instance.multimesh.set_instance_color(i,color)
-								break
+							if(!vn.cast_shadow_self_only || voxel_node == vn && vn.cast_shadow_self_only):
+								var mmaabb = vn.multi_mesh_instance.multimesh.get_aabb()
+								var direction = position - light_vector
+								if(mmaabb.intersects_segment(position - direction.normalized()*4.75,light_vector)):
+									#Is Cast Shadow
+									is_casted_shadow = true
+									var n = floor(range_lerp(position.distance_to(light_vector),0,light_reach,0,3))
+									var c = voxel_node.multi_mesh_color_index[i]
+									color = voxel_node.magica_voxel_file.palette[min(c+2,255)]
+									voxel_node.multi_mesh_instance.multimesh.set_instance_color(i,color)
+									break
 				if(!is_casted_shadow):
 #					color = voxel_node.multi_mesh_color_lookup[i]
 					var z = 0
@@ -308,15 +309,16 @@ func outline_pass():
 				var r = p - Vector3(outline_distance,0,n)
 				for vn in get_all_children_of_type(self, VOXEL_INSTANCE_CLASS):
 					if(vn.is_visible_in_tree() && vn.multi_mesh_instance.multimesh && vn != voxel_node):
-						var mmaabb = vn.multi_mesh_instance.multimesh.get_aabb()
-						if(mmaabb.intersects_segment(u, u -Vector3(100,0,0))):
-							outline = mmaabb.position.distance_to(p)
-						if(mmaabb.intersects_segment(d, d -Vector3(100,0,0))):
-							outline = mmaabb.position.distance_to(p)
-						if(mmaabb.intersects_segment(l, l -Vector3(100,0,0))):
-							outline = mmaabb.position.distance_to(p)
-						if(mmaabb.intersects_segment(r, r -Vector3(100,0,0))):
-							outline = mmaabb.position.distance_to(p)
+						if(!vn.ignore_outline):
+							var mmaabb = vn.multi_mesh_instance.multimesh.get_aabb()
+							if(mmaabb.intersects_segment(u, u -Vector3(100,0,0))):
+								outline = mmaabb.position.distance_to(p)
+							if(mmaabb.intersects_segment(d, d -Vector3(100,0,0))):
+								outline = mmaabb.position.distance_to(p)
+							if(mmaabb.intersects_segment(l, l -Vector3(100,0,0))):
+								outline = mmaabb.position.distance_to(p)
+							if(mmaabb.intersects_segment(r, r -Vector3(100,0,0))):
+								outline = mmaabb.position.distance_to(p)
 					if(outline):
 						break
 				var index = flattened_index[zy][1]
