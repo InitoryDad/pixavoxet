@@ -23,6 +23,7 @@ func set_selected(swatch):
 	selected = swatch
 
 func color_changed(color):
+	get_parent().get_parent().get_parent().get_node("Viewport").render_target_update_mode = Viewport.UPDATE_ONCE
 	if(selected):
 		selected.color = color
 		material_lookup[selected].albedo_color = color

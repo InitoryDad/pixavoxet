@@ -12,31 +12,91 @@ onready var temp_box = $Viewport/TempBox
 onready var cursor = $Viewport/Cursor
 onready var gridmap = $Viewport/GridMap
 onready var matrix = get_node("Viewport/GridMap/Matrix")
+var altmode = false
 var toolmode = "box"
 var temp_voxels = []
+var changed = false
 var drag_box = null
 var drag_start = false
 var drag_end = false
 var thread = Thread.new()
+var wait = 0
 
 func _ready():
+	$Viewport.render_target_update_mode = Viewport.UPDATE_ONCE
 	PhysicsServer.set_active(true)
 
 func zoom(delta):
 	camera.size += delta
+	$Viewport.render_target_update_mode = Viewport.UPDATE_ONCE
 
-func _physics_process(delta):
+func delete():
+	for p in temp_voxels:
+		if(gridmap.get_cell_item(p[0],p[1],p[2]) != -1):
+			gridmap.set_cell_item(p[0],p[1],p[2],-1)
+	temp_voxels = []
+
+func add():
+	for p in temp_voxels:
+		if(gridmap.get_cell_item(p[0],p[1],p[2]) == -1):
+			gridmap.set_cell_item(p[0],p[1],p[2],p[3])
+	temp_voxels = []
+
+func _input(ev):
+	if(ev is InputEventKey && ev.scancode == KEY_ALT && ev.is_pressed()):
+		altmode = true
+	if(ev is InputEventKey && ev.scancode == KEY_ALT && !ev.is_pressed()):
+		altmode = false
+
+func _process(delta):
 	camera = $Viewport/Camera
 	temp_box = $Viewport/TempBox
 	cursor = $Viewport/Cursor
 	gridmap = $Viewport/GridMap
 	matrix = get_node("Viewport/GridMap/Matrix")
-	while(temp_voxels.size() > 0):
-		var pos = temp_voxels.front()
-		if(gridmap.get_cell_item(pos.x,pos.y,pos.z) != -1):
-			gridmap.set_cell_item(pos.x,pos.y,pos.z,-1)
-		temp_voxels.pop_front()
-	yield(get_tree(),"idle_frame")
+	if(wait == 10):
+		wait = 0
+		if(changed):
+			if(!altmode):
+				delete()
+			else:
+				add()
+			temp_voxels = []
+		if(drag_box && !drag_end):
+			if(changed):
+				if(!altmode):
+					place_drag_box(true)
+				else:
+					delete_drag_box(true)
+				changed = false
+				$Viewport.render_target_update_mode = Viewport.UPDATE_ONCE
+		if(drag_end):
+			if(!altmode):
+				#delete()
+				place_drag_box(false)
+			else:
+				#add()
+				delete_drag_box(false)
+			$Viewport.render_target_update_mode = Viewport.UPDATE_ONCE
+			temp_voxels = []
+			drag_box = null
+			drag_end = false
+			gridmap.set_octant_size(16)
+			gridmap.make_baked_meshes()
+			var meshes = gridmap.get_bake_meshes()
+			for child in $Viewport/GridMap/Collision.get_children():
+				$Viewport/GridMap/Collision.remove_child(child)
+				child.free()
+			var transform = null
+			for mesh in meshes:
+				if(typeof(mesh) != TYPE_TRANSFORM):
+					var col = CollisionShape.new()
+#					col.shape = mesh.create_convex_shape()
+					col.shape = mesh.create_trimesh_shape()
+					$Viewport/GridMap/Collision.add_child(col)
+			gridmap.set_octant_size(8)
+
+	wait += 1
 	var mouse_pos = get_node("Viewport").get_mouse_position()
 	var box = matrix.box
 	var size = matrix.box.size
@@ -44,16 +104,20 @@ func _physics_process(delta):
 	var ray_direction = camera.project_ray_normal(mouse_pos)
 	var from = ray_origin
 	var to = ray_origin + ray_direction * 1000000.0
-	yield(get_tree(),"idle_frame")
 	var state = camera.get_world().direct_space_state
 	var hit = state.intersect_ray(from,to)
 	if(!hit.empty()):
 		var p = hit.position + (hit.normal.round() * .5)
 		p = p.floor()
 		p += Vector3(.5,.5,.5)
-		cursor.translation = p
+		if(cursor.translation != p):
+			cursor.translation = p
+			$Viewport.render_target_update_mode = Viewport.UPDATE_ONCE
 		if(drag_start && drag_box == null):
-			p = hit.position + (hit.normal.round() * .5)
+			if(!altmode):
+				p = hit.position + (hit.normal.round() * .5)
+			else:
+				p = hit.position - (hit.normal.round() * .5)
 			p = p.floor()
 			p.x = min(size.x-1,p.x)
 			p.x = max(0,p.x)
@@ -62,6 +126,7 @@ func _physics_process(delta):
 			p.z = min(size.z-1,p.z)
 			p.z = max(0,p.z)
 			drag_box = [p,p]
+			changed = true
 		if(drag_start):
 			p = hit.position + (hit.normal.round() * .5)
 			p = p.floor()
@@ -71,16 +136,16 @@ func _physics_process(delta):
 			p.y = max(0,p.y)
 			p.z = min(size.z-1,p.z)
 			p.z = max(0,p.z)
-			if(get_area(p) < 100):
+			if(drag_box[1] != p):
 				drag_box[1] = p
-	if(drag_box):
-		place_drag_box(true)
+				changed = true
 
 func pan(ev):
 	var t = camera.transform.orthonormalized()
 	t = t.translated(Vector3(1,0,0) * -ev.relative.x * .05)
 	t = t.translated(Vector3(0,1,0) * ev.relative.y * .05)
 	camera.transform = t
+	$Viewport.render_target_update_mode = Viewport.UPDATE_ONCE
 
 func rotate(ev):
 	var cam_c = camera
@@ -99,6 +164,7 @@ func rotate(ev):
 		var t = cam_c.transform.orthonormalized()
 		t = t.rotated(-Vector3(0,1,0),ev.relative.x * .005)
 		cam_c.transform = t
+	$Viewport.render_target_update_mode = Viewport.UPDATE_ONCE
 
 func gui_input(ev):
 	if(ev is InputEventMouseButton && ev.button_index == BUTTON_WHEEL_UP):
@@ -119,49 +185,22 @@ func gui_input(ev):
 		pan(ev)
 	if(toolmode == "box"):
 		if(ev is InputEventMouseButton && ev.button_index == 1 && ev.pressed && !ev.is_echo()):
-			#temp_box.visible = true
 			drag_start = true
 			drag_end = false
-#			p = hit.position + (hit.normal.round() * .5)
-#			p = p.floor()
-#			p.x = min(size.x-1,p.x)
-#			p.x = max(0,p.x)
-#			p.y = min(size.y-1,p.y)
-#			p.y = max(0,p.y)
-#			p.z = min(size.z-1,p.z)
-#			p.z = max(0,p.z)
-#			drag_box[0] = p
 		if(ev is InputEventMouseButton && ev.button_index == 1 && !ev.pressed && !ev.is_echo()):
-			#temp_box.visible = false
 			drag_start = false
 			drag_end = true
-#				var index = get_node("Panel/VBoxContainer/ColorPicker").selected_index
-#				var color = get_node("Panel/VBoxContainer/ColorPicker").get_selected_material()
-#				var min_x = min(drag_box[0].x,drag_box[1].x)
-#				var min_y = min(drag_box[0].y,drag_box[1].y)
-#				var min_z = min(drag_box[0].z,drag_box[1].z)
-#				var max_x = max(drag_box[0].x,drag_box[1].x)
-#				var max_y = max(drag_box[0].y,drag_box[1].y)
-#				var max_z = max(drag_box[0].z,drag_box[1].z)
-#				for x in range(min_x, max_x+1):
-#					for y in range(min_y, max_y+1):
-#						for z in range(min_z, max_z+1):
-#							if(gridmap.get_cell_item(x,y,z) == -1):
-#								gridmap.theme.get_item_mesh(index).material = color
-#								gridmap.set_cell_item(x,y,z,index)
-#								temp_voxels.append(Vector3(x,y,z))
-#				temp_box.mesh.material = color
-#				temp_box.translation = Vector3(min_x,min_y,min_z) + (Vector3(max_x,max_y,max_z) - Vector3(min_x,min_y,min_z)  + Vector3(1,1,1) )/2
-#				temp_box.mesh.size = Vector3(max_x,max_y,max_z) - Vector3(min_x,min_y,min_z) + Vector3(1,1,1)
-		if(drag_end):
-			drag_box = null
-#				for pos in temp_voxels:
-#			#		if(!in_box(pos)):
-#					gridmap.set_cell_item(pos.x,pos.y,pos.z,-1)
-#					temp_voxels.remove(temp_voxels.find(pos))
-			temp_voxels = []
-			place_drag_box(false)
-			drag_end = false
+
+func in_box(p):
+	var min_x = min(drag_box[0].x,drag_box[1].x)
+	var min_y = min(drag_box[0].y,drag_box[1].y)
+	var min_z = min(drag_box[0].z,drag_box[1].z)
+	var max_x = max(drag_box[0].x,drag_box[1].x)
+	var max_y = max(drag_box[0].y,drag_box[1].y)
+	var max_z = max(drag_box[0].z,drag_box[1].z)
+	if(p.x < min_x || p.x > max_x || p.y < min_y || p.y > max_y || p.z < min_z || p.z > max_z):
+		return false
+	return true
 
 func get_area(pos):
 	var min_x = min(drag_box[0].x,pos.x)
@@ -170,14 +209,11 @@ func get_area(pos):
 	var max_x = max(drag_box[0].x,pos.x)
 	var max_y = max(drag_box[0].y,pos.y)
 	var max_z = max(drag_box[0].z,pos.z)
+
 	var area = (max_x - min_x) * (max_y - min_y) * (max_z - min_z)
 	return area
 
-func place_drag_box(temp):
-	var box = matrix.box
-	var size = matrix.box.size
-	var color = get_node("Panel/VBoxContainer/ColorPicker").get_selected_material()
-	var index = get_node("Panel/VBoxContainer/ColorPicker").selected_index
+func delete_drag_box(temp):
 	var min_x = min(drag_box[0].x,drag_box[1].x)
 	var min_y = min(drag_box[0].y,drag_box[1].y)
 	var min_z = min(drag_box[0].z,drag_box[1].z)
@@ -188,10 +224,28 @@ func place_drag_box(temp):
 	for x in range(min_x, max_x+1):
 		for y in range(min_y, max_y+1):
 			for z in range(min_z, max_z+1):
+				var i = gridmap.get_cell_item(x,y,z)
+				if(i != -1):
+					gridmap.set_cell_item(x,y,z,-1)
+					if(temp):
+						temp_voxels.append([x,y,z,i])
+
+func place_drag_box(temp):
+	var color = get_node("Panel/VBoxContainer/ColorPicker").get_selected_material()
+	var index = get_node("Panel/VBoxContainer/ColorPicker").selected_index
+	if(!temp):
+		print(index)
+	var min_x = min(drag_box[0].x,drag_box[1].x)
+	var min_y = min(drag_box[0].y,drag_box[1].y)
+	var min_z = min(drag_box[0].z,drag_box[1].z)
+	var max_x = max(drag_box[0].x,drag_box[1].x)
+	var max_y = max(drag_box[0].y,drag_box[1].y)
+	var max_z = max(drag_box[0].z,drag_box[1].z)
+	for x in range(min_x, max_x+1):
+		for y in range(min_y, max_y+1):
+			for z in range(min_z, max_z+1):
 				if(gridmap.get_cell_item(x,y,z) == -1):
 					gridmap.theme.get_item_mesh(index).material = color
-					voxels.append(Vector3(x,y,z))
+					gridmap.set_cell_item(x,y,z,index)
 					if(temp):
-						temp_voxels.append(Vector3(x,y,z))
-	for p in voxels:
-		gridmap.set_cell_item(p.x,p.y,p.z,index)
+						temp_voxels.append([x,y,z,index])

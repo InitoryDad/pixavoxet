@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=29 format=2]
 
 [sub_resource type="SpatialMaterial" id=1]
 
@@ -69,9 +69,14 @@ subdivide_width = 0
 subdivide_height = 0
 subdivide_depth = 0
 
-[sub_resource type="ConvexPolygonShape" id=4]
+[sub_resource type="CubeMesh" id=4]
 
-points = PoolVector3Array( -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5 )
+material = SubResource( 1 )
+custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
+size = Vector3( 1, 1, 1 )
+subdivide_width = 0
+subdivide_height = 0
+subdivide_depth = 0
 
 [sub_resource type="CubeMesh" id=5]
 
@@ -289,15 +294,6 @@ subdivide_width = 0
 subdivide_height = 0
 subdivide_depth = 0
 
-[sub_resource type="CubeMesh" id=29]
-
-material = SubResource( 1 )
-custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
-size = Vector3( 1, 1, 1 )
-subdivide_width = 0
-subdivide_height = 0
-subdivide_depth = 0
-
 [node name="root" type="Spatial" index="0"]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.5, 0.5 )
@@ -337,23 +333,24 @@ skeleton = NodePath("..")
 material/0 = null
 _sections_unfolded = [ "material" ]
 
-[node name="StaticBody" type="StaticBody" parent="Voxel" index="0"]
-
-input_ray_pickable = true
-input_capture_on_drag = false
-collision_layer = 1
-collision_mask = 1
-friction = 1.0
-bounce = 0.0
-constant_linear_velocity = Vector3( 0, 0, 0 )
-constant_angular_velocity = Vector3( 0, 0, 0 )
-
-[node name="CollisionShape" type="CollisionShape" parent="Voxel/StaticBody" index="0"]
-
-shape = SubResource( 4 )
-disabled = false
-
 [node name="Voxel2" type="MeshInstance" parent="." index="2"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = SubResource( 4 )
+skeleton = NodePath("..")
+material/0 = null
+_sections_unfolded = [ "material" ]
+
+[node name="Voxel3" type="MeshInstance" parent="." index="3"]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5 )
 layers = 1
@@ -370,23 +367,7 @@ skeleton = NodePath("..")
 material/0 = null
 _sections_unfolded = [ "material" ]
 
-[node name="StaticBody" type="StaticBody" parent="Voxel2" index="0"]
-
-input_ray_pickable = true
-input_capture_on_drag = false
-collision_layer = 1
-collision_mask = 1
-friction = 1.0
-bounce = 0.0
-constant_linear_velocity = Vector3( 0, 0, 0 )
-constant_angular_velocity = Vector3( 0, 0, 0 )
-
-[node name="CollisionShape" type="CollisionShape" parent="Voxel2/StaticBody" index="0"]
-
-shape = SubResource( 4 )
-disabled = false
-
-[node name="Voxel3" type="MeshInstance" parent="." index="3"]
+[node name="Voxel4" type="MeshInstance" parent="." index="4"]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5 )
 layers = 1
@@ -403,23 +384,7 @@ skeleton = NodePath("..")
 material/0 = null
 _sections_unfolded = [ "material" ]
 
-[node name="StaticBody" type="StaticBody" parent="Voxel3" index="0"]
-
-input_ray_pickable = true
-input_capture_on_drag = false
-collision_layer = 1
-collision_mask = 1
-friction = 1.0
-bounce = 0.0
-constant_linear_velocity = Vector3( 0, 0, 0 )
-constant_angular_velocity = Vector3( 0, 0, 0 )
-
-[node name="CollisionShape" type="CollisionShape" parent="Voxel3/StaticBody" index="0"]
-
-shape = SubResource( 4 )
-disabled = false
-
-[node name="Voxel4" type="MeshInstance" parent="." index="4"]
+[node name="Voxel5" type="MeshInstance" parent="." index="5"]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5 )
 layers = 1
@@ -436,23 +401,7 @@ skeleton = NodePath("..")
 material/0 = null
 _sections_unfolded = [ "material" ]
 
-[node name="StaticBody" type="StaticBody" parent="Voxel4" index="0"]
-
-input_ray_pickable = true
-input_capture_on_drag = false
-collision_layer = 1
-collision_mask = 1
-friction = 1.0
-bounce = 0.0
-constant_linear_velocity = Vector3( 0, 0, 0 )
-constant_angular_velocity = Vector3( 0, 0, 0 )
-
-[node name="CollisionShape" type="CollisionShape" parent="Voxel4/StaticBody" index="0"]
-
-shape = SubResource( 4 )
-disabled = false
-
-[node name="Voxel5" type="MeshInstance" parent="." index="5"]
+[node name="Voxel6" type="MeshInstance" parent="." index="6"]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5 )
 layers = 1
@@ -469,23 +418,7 @@ skeleton = NodePath("..")
 material/0 = null
 _sections_unfolded = [ "material" ]
 
-[node name="StaticBody" type="StaticBody" parent="Voxel5" index="0"]
-
-input_ray_pickable = true
-input_capture_on_drag = false
-collision_layer = 1
-collision_mask = 1
-friction = 1.0
-bounce = 0.0
-constant_linear_velocity = Vector3( 0, 0, 0 )
-constant_angular_velocity = Vector3( 0, 0, 0 )
-
-[node name="CollisionShape" type="CollisionShape" parent="Voxel5/StaticBody" index="0"]
-
-shape = SubResource( 4 )
-disabled = false
-
-[node name="Voxel6" type="MeshInstance" parent="." index="6"]
+[node name="Voxel7" type="MeshInstance" parent="." index="7"]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5 )
 layers = 1
@@ -502,23 +435,7 @@ skeleton = NodePath("..")
 material/0 = null
 _sections_unfolded = [ "material" ]
 
-[node name="StaticBody" type="StaticBody" parent="Voxel6" index="0"]
-
-input_ray_pickable = true
-input_capture_on_drag = false
-collision_layer = 1
-collision_mask = 1
-friction = 1.0
-bounce = 0.0
-constant_linear_velocity = Vector3( 0, 0, 0 )
-constant_angular_velocity = Vector3( 0, 0, 0 )
-
-[node name="CollisionShape" type="CollisionShape" parent="Voxel6/StaticBody" index="0"]
-
-shape = SubResource( 4 )
-disabled = false
-
-[node name="Voxel7" type="MeshInstance" parent="." index="7"]
+[node name="Voxel8" type="MeshInstance" parent="." index="8"]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5 )
 layers = 1
@@ -535,23 +452,7 @@ skeleton = NodePath("..")
 material/0 = null
 _sections_unfolded = [ "material" ]
 
-[node name="StaticBody" type="StaticBody" parent="Voxel7" index="0"]
-
-input_ray_pickable = true
-input_capture_on_drag = false
-collision_layer = 1
-collision_mask = 1
-friction = 1.0
-bounce = 0.0
-constant_linear_velocity = Vector3( 0, 0, 0 )
-constant_angular_velocity = Vector3( 0, 0, 0 )
-
-[node name="CollisionShape" type="CollisionShape" parent="Voxel7/StaticBody" index="0"]
-
-shape = SubResource( 4 )
-disabled = false
-
-[node name="Voxel8" type="MeshInstance" parent="." index="8"]
+[node name="Voxel9" type="MeshInstance" parent="." index="9"]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5 )
 layers = 1
@@ -568,23 +469,7 @@ skeleton = NodePath("..")
 material/0 = null
 _sections_unfolded = [ "material" ]
 
-[node name="StaticBody" type="StaticBody" parent="Voxel8" index="0"]
-
-input_ray_pickable = true
-input_capture_on_drag = false
-collision_layer = 1
-collision_mask = 1
-friction = 1.0
-bounce = 0.0
-constant_linear_velocity = Vector3( 0, 0, 0 )
-constant_angular_velocity = Vector3( 0, 0, 0 )
-
-[node name="CollisionShape" type="CollisionShape" parent="Voxel8/StaticBody" index="0"]
-
-shape = SubResource( 4 )
-disabled = false
-
-[node name="Voxel9" type="MeshInstance" parent="." index="9"]
+[node name="Voxel10" type="MeshInstance" parent="." index="10"]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5 )
 layers = 1
@@ -601,23 +486,7 @@ skeleton = NodePath("..")
 material/0 = null
 _sections_unfolded = [ "material" ]
 
-[node name="StaticBody" type="StaticBody" parent="Voxel9" index="0"]
-
-input_ray_pickable = true
-input_capture_on_drag = false
-collision_layer = 1
-collision_mask = 1
-friction = 1.0
-bounce = 0.0
-constant_linear_velocity = Vector3( 0, 0, 0 )
-constant_angular_velocity = Vector3( 0, 0, 0 )
-
-[node name="CollisionShape" type="CollisionShape" parent="Voxel9/StaticBody" index="0"]
-
-shape = SubResource( 4 )
-disabled = false
-
-[node name="Voxel10" type="MeshInstance" parent="." index="10"]
+[node name="Voxel11" type="MeshInstance" parent="." index="11"]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5 )
 layers = 1
@@ -634,23 +503,7 @@ skeleton = NodePath("..")
 material/0 = null
 _sections_unfolded = [ "material" ]
 
-[node name="StaticBody" type="StaticBody" parent="Voxel10" index="0"]
-
-input_ray_pickable = true
-input_capture_on_drag = false
-collision_layer = 1
-collision_mask = 1
-friction = 1.0
-bounce = 0.0
-constant_linear_velocity = Vector3( 0, 0, 0 )
-constant_angular_velocity = Vector3( 0, 0, 0 )
-
-[node name="CollisionShape" type="CollisionShape" parent="Voxel10/StaticBody" index="0"]
-
-shape = SubResource( 4 )
-disabled = false
-
-[node name="Voxel11" type="MeshInstance" parent="." index="11"]
+[node name="Voxel12" type="MeshInstance" parent="." index="12"]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5 )
 layers = 1
@@ -667,23 +520,7 @@ skeleton = NodePath("..")
 material/0 = null
 _sections_unfolded = [ "material" ]
 
-[node name="StaticBody" type="StaticBody" parent="Voxel11" index="0"]
-
-input_ray_pickable = true
-input_capture_on_drag = false
-collision_layer = 1
-collision_mask = 1
-friction = 1.0
-bounce = 0.0
-constant_linear_velocity = Vector3( 0, 0, 0 )
-constant_angular_velocity = Vector3( 0, 0, 0 )
-
-[node name="CollisionShape" type="CollisionShape" parent="Voxel11/StaticBody" index="0"]
-
-shape = SubResource( 4 )
-disabled = false
-
-[node name="Voxel12" type="MeshInstance" parent="." index="12"]
+[node name="Voxel13" type="MeshInstance" parent="." index="13"]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5 )
 layers = 1
@@ -700,23 +537,7 @@ skeleton = NodePath("..")
 material/0 = null
 _sections_unfolded = [ "material" ]
 
-[node name="StaticBody" type="StaticBody" parent="Voxel12" index="0"]
-
-input_ray_pickable = true
-input_capture_on_drag = false
-collision_layer = 1
-collision_mask = 1
-friction = 1.0
-bounce = 0.0
-constant_linear_velocity = Vector3( 0, 0, 0 )
-constant_angular_velocity = Vector3( 0, 0, 0 )
-
-[node name="CollisionShape" type="CollisionShape" parent="Voxel12/StaticBody" index="0"]
-
-shape = SubResource( 4 )
-disabled = false
-
-[node name="Voxel13" type="MeshInstance" parent="." index="13"]
+[node name="Voxel14" type="MeshInstance" parent="." index="14"]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5 )
 layers = 1
@@ -733,23 +554,7 @@ skeleton = NodePath("..")
 material/0 = null
 _sections_unfolded = [ "material" ]
 
-[node name="StaticBody" type="StaticBody" parent="Voxel13" index="0"]
-
-input_ray_pickable = true
-input_capture_on_drag = false
-collision_layer = 1
-collision_mask = 1
-friction = 1.0
-bounce = 0.0
-constant_linear_velocity = Vector3( 0, 0, 0 )
-constant_angular_velocity = Vector3( 0, 0, 0 )
-
-[node name="CollisionShape" type="CollisionShape" parent="Voxel13/StaticBody" index="0"]
-
-shape = SubResource( 4 )
-disabled = false
-
-[node name="Voxel14" type="MeshInstance" parent="." index="14"]
+[node name="Voxel15" type="MeshInstance" parent="." index="15"]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5 )
 layers = 1
@@ -766,23 +571,7 @@ skeleton = NodePath("..")
 material/0 = null
 _sections_unfolded = [ "material" ]
 
-[node name="StaticBody" type="StaticBody" parent="Voxel14" index="0"]
-
-input_ray_pickable = true
-input_capture_on_drag = false
-collision_layer = 1
-collision_mask = 1
-friction = 1.0
-bounce = 0.0
-constant_linear_velocity = Vector3( 0, 0, 0 )
-constant_angular_velocity = Vector3( 0, 0, 0 )
-
-[node name="CollisionShape" type="CollisionShape" parent="Voxel14/StaticBody" index="0"]
-
-shape = SubResource( 4 )
-disabled = false
-
-[node name="Voxel15" type="MeshInstance" parent="." index="15"]
+[node name="Voxel16" type="MeshInstance" parent="." index="16"]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5 )
 layers = 1
@@ -799,23 +588,7 @@ skeleton = NodePath("..")
 material/0 = null
 _sections_unfolded = [ "material" ]
 
-[node name="StaticBody" type="StaticBody" parent="Voxel15" index="0"]
-
-input_ray_pickable = true
-input_capture_on_drag = false
-collision_layer = 1
-collision_mask = 1
-friction = 1.0
-bounce = 0.0
-constant_linear_velocity = Vector3( 0, 0, 0 )
-constant_angular_velocity = Vector3( 0, 0, 0 )
-
-[node name="CollisionShape" type="CollisionShape" parent="Voxel15/StaticBody" index="0"]
-
-shape = SubResource( 4 )
-disabled = false
-
-[node name="Voxel16" type="MeshInstance" parent="." index="16"]
+[node name="Voxel17" type="MeshInstance" parent="." index="17"]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5 )
 layers = 1
@@ -832,23 +605,7 @@ skeleton = NodePath("..")
 material/0 = null
 _sections_unfolded = [ "material" ]
 
-[node name="StaticBody" type="StaticBody" parent="Voxel16" index="0"]
-
-input_ray_pickable = true
-input_capture_on_drag = false
-collision_layer = 1
-collision_mask = 1
-friction = 1.0
-bounce = 0.0
-constant_linear_velocity = Vector3( 0, 0, 0 )
-constant_angular_velocity = Vector3( 0, 0, 0 )
-
-[node name="CollisionShape" type="CollisionShape" parent="Voxel16/StaticBody" index="0"]
-
-shape = SubResource( 4 )
-disabled = false
-
-[node name="Voxel17" type="MeshInstance" parent="." index="17"]
+[node name="Voxel18" type="MeshInstance" parent="." index="18"]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5 )
 layers = 1
@@ -865,23 +622,7 @@ skeleton = NodePath("..")
 material/0 = null
 _sections_unfolded = [ "material" ]
 
-[node name="StaticBody" type="StaticBody" parent="Voxel17" index="0"]
-
-input_ray_pickable = true
-input_capture_on_drag = false
-collision_layer = 1
-collision_mask = 1
-friction = 1.0
-bounce = 0.0
-constant_linear_velocity = Vector3( 0, 0, 0 )
-constant_angular_velocity = Vector3( 0, 0, 0 )
-
-[node name="CollisionShape" type="CollisionShape" parent="Voxel17/StaticBody" index="0"]
-
-shape = SubResource( 4 )
-disabled = false
-
-[node name="Voxel18" type="MeshInstance" parent="." index="18"]
+[node name="Voxel19" type="MeshInstance" parent="." index="19"]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5 )
 layers = 1
@@ -898,23 +639,7 @@ skeleton = NodePath("..")
 material/0 = null
 _sections_unfolded = [ "material" ]
 
-[node name="StaticBody" type="StaticBody" parent="Voxel18" index="0"]
-
-input_ray_pickable = true
-input_capture_on_drag = false
-collision_layer = 1
-collision_mask = 1
-friction = 1.0
-bounce = 0.0
-constant_linear_velocity = Vector3( 0, 0, 0 )
-constant_angular_velocity = Vector3( 0, 0, 0 )
-
-[node name="CollisionShape" type="CollisionShape" parent="Voxel18/StaticBody" index="0"]
-
-shape = SubResource( 4 )
-disabled = false
-
-[node name="Voxel19" type="MeshInstance" parent="." index="19"]
+[node name="Voxel20" type="MeshInstance" parent="." index="20"]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5 )
 layers = 1
@@ -931,23 +656,7 @@ skeleton = NodePath("..")
 material/0 = null
 _sections_unfolded = [ "material" ]
 
-[node name="StaticBody" type="StaticBody" parent="Voxel19" index="0"]
-
-input_ray_pickable = true
-input_capture_on_drag = false
-collision_layer = 1
-collision_mask = 1
-friction = 1.0
-bounce = 0.0
-constant_linear_velocity = Vector3( 0, 0, 0 )
-constant_angular_velocity = Vector3( 0, 0, 0 )
-
-[node name="CollisionShape" type="CollisionShape" parent="Voxel19/StaticBody" index="0"]
-
-shape = SubResource( 4 )
-disabled = false
-
-[node name="Voxel20" type="MeshInstance" parent="." index="20"]
+[node name="Voxel21" type="MeshInstance" parent="." index="21"]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5 )
 layers = 1
@@ -964,23 +673,7 @@ skeleton = NodePath("..")
 material/0 = null
 _sections_unfolded = [ "material" ]
 
-[node name="StaticBody" type="StaticBody" parent="Voxel20" index="0"]
-
-input_ray_pickable = true
-input_capture_on_drag = false
-collision_layer = 1
-collision_mask = 1
-friction = 1.0
-bounce = 0.0
-constant_linear_velocity = Vector3( 0, 0, 0 )
-constant_angular_velocity = Vector3( 0, 0, 0 )
-
-[node name="CollisionShape" type="CollisionShape" parent="Voxel20/StaticBody" index="0"]
-
-shape = SubResource( 4 )
-disabled = false
-
-[node name="Voxel21" type="MeshInstance" parent="." index="21"]
+[node name="Voxel22" type="MeshInstance" parent="." index="22"]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5 )
 layers = 1
@@ -997,23 +690,7 @@ skeleton = NodePath("..")
 material/0 = null
 _sections_unfolded = [ "material" ]
 
-[node name="StaticBody" type="StaticBody" parent="Voxel21" index="0"]
-
-input_ray_pickable = true
-input_capture_on_drag = false
-collision_layer = 1
-collision_mask = 1
-friction = 1.0
-bounce = 0.0
-constant_linear_velocity = Vector3( 0, 0, 0 )
-constant_angular_velocity = Vector3( 0, 0, 0 )
-
-[node name="CollisionShape" type="CollisionShape" parent="Voxel21/StaticBody" index="0"]
-
-shape = SubResource( 4 )
-disabled = false
-
-[node name="Voxel22" type="MeshInstance" parent="." index="22"]
+[node name="Voxel23" type="MeshInstance" parent="." index="23"]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5 )
 layers = 1
@@ -1030,23 +707,7 @@ skeleton = NodePath("..")
 material/0 = null
 _sections_unfolded = [ "material" ]
 
-[node name="StaticBody" type="StaticBody" parent="Voxel22" index="0"]
-
-input_ray_pickable = true
-input_capture_on_drag = false
-collision_layer = 1
-collision_mask = 1
-friction = 1.0
-bounce = 0.0
-constant_linear_velocity = Vector3( 0, 0, 0 )
-constant_angular_velocity = Vector3( 0, 0, 0 )
-
-[node name="CollisionShape" type="CollisionShape" parent="Voxel22/StaticBody" index="0"]
-
-shape = SubResource( 4 )
-disabled = false
-
-[node name="Voxel23" type="MeshInstance" parent="." index="23"]
+[node name="Voxel24" type="MeshInstance" parent="." index="24"]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5 )
 layers = 1
@@ -1063,23 +724,7 @@ skeleton = NodePath("..")
 material/0 = null
 _sections_unfolded = [ "material" ]
 
-[node name="StaticBody" type="StaticBody" parent="Voxel23" index="0"]
-
-input_ray_pickable = true
-input_capture_on_drag = false
-collision_layer = 1
-collision_mask = 1
-friction = 1.0
-bounce = 0.0
-constant_linear_velocity = Vector3( 0, 0, 0 )
-constant_angular_velocity = Vector3( 0, 0, 0 )
-
-[node name="CollisionShape" type="CollisionShape" parent="Voxel23/StaticBody" index="0"]
-
-shape = SubResource( 4 )
-disabled = false
-
-[node name="Voxel24" type="MeshInstance" parent="." index="24"]
+[node name="Voxel25" type="MeshInstance" parent="." index="25"]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5 )
 layers = 1
@@ -1096,23 +741,7 @@ skeleton = NodePath("..")
 material/0 = null
 _sections_unfolded = [ "material" ]
 
-[node name="StaticBody" type="StaticBody" parent="Voxel24" index="0"]
-
-input_ray_pickable = true
-input_capture_on_drag = false
-collision_layer = 1
-collision_mask = 1
-friction = 1.0
-bounce = 0.0
-constant_linear_velocity = Vector3( 0, 0, 0 )
-constant_angular_velocity = Vector3( 0, 0, 0 )
-
-[node name="CollisionShape" type="CollisionShape" parent="Voxel24/StaticBody" index="0"]
-
-shape = SubResource( 4 )
-disabled = false
-
-[node name="Voxel25" type="MeshInstance" parent="." index="25"]
+[node name="Voxel26" type="MeshInstance" parent="." index="26"]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5 )
 layers = 1
@@ -1128,54 +757,5 @@ mesh = SubResource( 28 )
 skeleton = NodePath("..")
 material/0 = null
 _sections_unfolded = [ "material" ]
-
-[node name="StaticBody" type="StaticBody" parent="Voxel25" index="0"]
-
-input_ray_pickable = true
-input_capture_on_drag = false
-collision_layer = 1
-collision_mask = 1
-friction = 1.0
-bounce = 0.0
-constant_linear_velocity = Vector3( 0, 0, 0 )
-constant_angular_velocity = Vector3( 0, 0, 0 )
-
-[node name="CollisionShape" type="CollisionShape" parent="Voxel25/StaticBody" index="0"]
-
-shape = SubResource( 4 )
-disabled = false
-
-[node name="Voxel26" type="MeshInstance" parent="." index="26"]
-
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5 )
-layers = 1
-material_override = null
-cast_shadow = 1
-extra_cull_margin = 0.0
-use_in_baked_light = false
-lod_min_distance = 0.0
-lod_min_hysteresis = 0.0
-lod_max_distance = 0.0
-lod_max_hysteresis = 0.0
-mesh = SubResource( 29 )
-skeleton = NodePath("..")
-material/0 = null
-_sections_unfolded = [ "material" ]
-
-[node name="StaticBody" type="StaticBody" parent="Voxel26" index="0"]
-
-input_ray_pickable = true
-input_capture_on_drag = false
-collision_layer = 1
-collision_mask = 1
-friction = 1.0
-bounce = 0.0
-constant_linear_velocity = Vector3( 0, 0, 0 )
-constant_angular_velocity = Vector3( 0, 0, 0 )
-
-[node name="CollisionShape" type="CollisionShape" parent="Voxel26/StaticBody" index="0"]
-
-shape = SubResource( 4 )
-disabled = false
 
 
