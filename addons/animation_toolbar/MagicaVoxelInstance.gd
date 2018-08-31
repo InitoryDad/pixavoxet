@@ -167,14 +167,14 @@ func render_voxels():
 
 	var voxel_positions = model.voxels.keys()
 	var index = 0
+	if(!multi_mesh_instance.get_parent()):
+		get_tree().get_edited_scene_root().call_deferred('add_child',multi_mesh_instance)
 	for position in voxel_positions:
 		var color_index = model.voxels[position]
 		var color =  palette[color_index]
 		multi_mesh_color_lookup[index] = color
 		multi_mesh_color_index[index] = color_index
 		index += 1
-	if(!multi_mesh_instance.get_parent()):
-		get_tree().get_edited_scene_root().call_deferred('add_child',multi_mesh_instance)
 
 
 func _load(_path):

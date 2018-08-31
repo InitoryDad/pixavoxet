@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/wooden_object_hit.wav-d54922e1c17ae8eee97d75aa16b1d9fb.sample"
+
+[deps]
+
+source_file="res://wooden_object_hit.wav"
+dest_files=[ "res://.import/wooden_object_hit.wav-d54922e1c17ae8eee97d75aa16b1d9fb.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0
