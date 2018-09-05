@@ -8,11 +8,11 @@ var zooming_out = false
 var rotating = false
 var panning = false
 onready var camera = $Viewport/Camera
-onready var temp_box = $Viewport/TempBox
 onready var cursor = $Viewport/Cursor
 onready var gridmap = $Viewport/GridMap
 onready var matrix = get_node("Viewport/GridMap/Matrix")
 var altmode = false
+var ctrlmode = false
 var toolmode = "box"
 var temp_voxels = []
 var changed = false
@@ -21,6 +21,7 @@ var drag_start = false
 var drag_end = false
 var thread = Thread.new()
 var wait = 0
+var undoredo = null
 
 func _ready():
 	$Viewport.render_target_update_mode = Viewport.UPDATE_ONCE
@@ -42,41 +43,58 @@ func add():
 			gridmap.set_cell_item(p[0],p[1],p[2],p[3])
 	temp_voxels = []
 
+func repaint():
+	for p in temp_voxels:
+		if(gridmap.get_cell_item(p[0],p[1],p[2]) != -1):
+			gridmap.set_cell_item(p[0],p[1],p[2],p[3])
+	temp_voxels = []
+
 func _input(ev):
 	if(ev is InputEventKey && ev.scancode == KEY_ALT && ev.is_pressed()):
 		altmode = true
 	if(ev is InputEventKey && ev.scancode == KEY_ALT && !ev.is_pressed()):
 		altmode = false
+	if(ev is InputEventKey && ev.scancode == KEY_CONTROL && ev.is_pressed()):
+		ctrlmode = true
+	if(ev is InputEventKey && ev.scancode == KEY_CONTROL && !ev.is_pressed()):
+		ctrlmode = false
+
 
 func _process(delta):
 	camera = $Viewport/Camera
-	temp_box = $Viewport/TempBox
 	cursor = $Viewport/Cursor
 	gridmap = $Viewport/GridMap
 	matrix = get_node("Viewport/GridMap/Matrix")
 	if(wait == 10):
 		wait = 0
 		if(changed):
-			if(!altmode):
+			if(!altmode && !ctrlmode):
 				delete()
-			else:
+			elif(altmode):
 				add()
+			elif(ctrlmode):
+				repaint()
 			temp_voxels = []
 		if(drag_box && !drag_end):
 			if(changed):
-				if(!altmode):
-					place_drag_box(true)
-				else:
-					delete_drag_box(true)
+				if(!altmode && !ctrlmode):
+					place_drag_box(drag_box,true)
+				elif(altmode):
+					delete_drag_box(drag_box,true)
+				elif(ctrlmode):
+					paint_drag_box(drag_box,true)
 				changed = false
 				$Viewport.render_target_update_mode = Viewport.UPDATE_ONCE
 		if(drag_end):
-			if(!altmode):
-				#delete()
-				place_drag_box(false)
-			else:
-				#add()
-				delete_drag_box(false)
+			if(!altmode && !ctrlmode):
+				delete()
+				place_drag_box(drag_box,false)
+			elif(altmode):
+				add()
+				delete_drag_box(drag_box,false)
+			elif(ctrlmode):
+				repaint()
+				paint_drag_box(drag_box,false)
 			$Viewport.render_target_update_mode = Viewport.UPDATE_ONCE
 			temp_voxels = []
 			drag_box = null
@@ -91,7 +109,6 @@ func _process(delta):
 			for mesh in meshes:
 				if(typeof(mesh) != TYPE_TRANSFORM):
 					var col = CollisionShape.new()
-#					col.shape = mesh.create_convex_shape()
 					col.shape = mesh.create_trimesh_shape()
 					$Viewport/GridMap/Collision.add_child(col)
 			gridmap.set_octant_size(8)
@@ -114,9 +131,9 @@ func _process(delta):
 			cursor.translation = p
 			$Viewport.render_target_update_mode = Viewport.UPDATE_ONCE
 		if(drag_start && drag_box == null):
-			if(!altmode):
+			if(!altmode && !ctrlmode):
 				p = hit.position + (hit.normal.round() * .5)
-			else:
+			elif(altmode || ctrlmode):
 				p = hit.position - (hit.normal.round() * .5)
 			p = p.floor()
 			p.x = min(size.x-1,p.x)
@@ -209,43 +226,97 @@ func get_area(pos):
 	var max_x = max(drag_box[0].x,pos.x)
 	var max_y = max(drag_box[0].y,pos.y)
 	var max_z = max(drag_box[0].z,pos.z)
-
 	var area = (max_x - min_x) * (max_y - min_y) * (max_z - min_z)
 	return area
 
-func delete_drag_box(temp):
-	var min_x = min(drag_box[0].x,drag_box[1].x)
-	var min_y = min(drag_box[0].y,drag_box[1].y)
-	var min_z = min(drag_box[0].z,drag_box[1].z)
-	var max_x = max(drag_box[0].x,drag_box[1].x)
-	var max_y = max(drag_box[0].y,drag_box[1].y)
-	var max_z = max(drag_box[0].z,drag_box[1].z)
-	var voxels = []
+func paint_drag_box(_drag_box,_temp):
+	var color = get_node("LeftSideBar/VBoxContainer/ColorPicker").get_selected_material()
+	var index = get_node("LeftSideBar/VBoxContainer/ColorPicker").selected_index
+	var min_x = min(_drag_box[0].x,_drag_box[1].x)
+	var min_y = min(_drag_box[0].y,_drag_box[1].y)
+	var min_z = min(_drag_box[0].z,_drag_box[1].z)
+	var max_x = max(_drag_box[0].x,_drag_box[1].x)
+	var max_y = max(_drag_box[0].y,_drag_box[1].y)
+	var max_z = max(_drag_box[0].z,_drag_box[1].z)
+	var do_voxels = []
+	var undo_voxels = []
+	for x in range(min_x, max_x+1):
+		for y in range(min_y, max_y+1):
+			for z in range(min_z, max_z+1):
+				if(gridmap.get_cell_item(x,y,z) != -1):
+					var i = gridmap.get_cell_item(x,y,z)
+					gridmap.theme.get_item_mesh(index).material = color
+					do_voxels.append([Vector3(x,y,z),index])
+					undo_voxels.append([Vector3(x,y,z),i])
+					if(_temp):
+						gridmap.set_cell_item(x,y,z,index)
+						temp_voxels.append([x,y,z,i])
+	if(!_temp):
+		undoredo.create_action("Paint Voxels",UndoRedo.MERGE_DISABLE)
+		undoredo.add_do_method(self,"place_voxels",do_voxels)
+		undoredo.add_undo_method(self,"place_voxels",undo_voxels)
+		undoredo.commit_action()
+
+func delete_drag_box(_drag_box,_temp):
+	var min_x = min(_drag_box[0].x,_drag_box[1].x)
+	var min_y = min(_drag_box[0].y,_drag_box[1].y)
+	var min_z = min(_drag_box[0].z,_drag_box[1].z)
+	var max_x = max(_drag_box[0].x,_drag_box[1].x)
+	var max_y = max(_drag_box[0].y,_drag_box[1].y)
+	var max_z = max(_drag_box[0].z,_drag_box[1].z)
+	var do_voxels = []
 	for x in range(min_x, max_x+1):
 		for y in range(min_y, max_y+1):
 			for z in range(min_z, max_z+1):
 				var i = gridmap.get_cell_item(x,y,z)
 				if(i != -1):
-					gridmap.set_cell_item(x,y,z,-1)
-					if(temp):
+					do_voxels.append([Vector3(x,y,z),i])
+					if(_temp):
+						gridmap.set_cell_item(x,y,z,-1)
 						temp_voxels.append([x,y,z,i])
+	if(!_temp):
+		undoredo.create_action("Place Voxels",UndoRedo.MERGE_DISABLE)
+		undoredo.add_do_method(self,"delete_voxels",do_voxels)
+		undoredo.add_undo_method(self,"place_voxels",do_voxels)
+		undoredo.commit_action()
 
-func place_drag_box(temp):
-	var color = get_node("Panel/VBoxContainer/ColorPicker").get_selected_material()
-	var index = get_node("Panel/VBoxContainer/ColorPicker").selected_index
-	if(!temp):
-		print(index)
-	var min_x = min(drag_box[0].x,drag_box[1].x)
-	var min_y = min(drag_box[0].y,drag_box[1].y)
-	var min_z = min(drag_box[0].z,drag_box[1].z)
-	var max_x = max(drag_box[0].x,drag_box[1].x)
-	var max_y = max(drag_box[0].y,drag_box[1].y)
-	var max_z = max(drag_box[0].z,drag_box[1].z)
+func place_drag_box(_drag_box,_temp):
+	var color = get_node("LeftSideBar/VBoxContainer/ColorPicker").get_selected_material()
+	var index = get_node("LeftSideBar/VBoxContainer/ColorPicker").selected_index
+	var min_x = min(_drag_box[0].x,_drag_box[1].x)
+	var min_y = min(_drag_box[0].y,_drag_box[1].y)
+	var min_z = min(_drag_box[0].z,_drag_box[1].z)
+	var max_x = max(_drag_box[0].x,_drag_box[1].x)
+	var max_y = max(_drag_box[0].y,_drag_box[1].y)
+	var max_z = max(_drag_box[0].z,_drag_box[1].z)
+	var do_voxels = []
 	for x in range(min_x, max_x+1):
 		for y in range(min_y, max_y+1):
 			for z in range(min_z, max_z+1):
 				if(gridmap.get_cell_item(x,y,z) == -1):
 					gridmap.theme.get_item_mesh(index).material = color
-					gridmap.set_cell_item(x,y,z,index)
-					if(temp):
+					do_voxels.append([Vector3(x,y,z),index])
+					if(_temp):
+						gridmap.set_cell_item(x,y,z,index)
 						temp_voxels.append([x,y,z,index])
+	if(!_temp):
+		undoredo.create_action("Place Voxels",UndoRedo.MERGE_DISABLE)
+		undoredo.add_do_method(self,"place_voxels",do_voxels)
+		undoredo.add_undo_method(self,"delete_voxels",do_voxels)
+		undoredo.commit_action()
+
+func delete_voxels(voxels):
+	for n in voxels:
+		var p = n[0]
+		gridmap.set_cell_item(p.x,p.y,p.z,-1)
+	$Viewport.render_target_update_mode = Viewport.UPDATE_ONCE
+
+func place_voxels(voxels):
+	for n in voxels:
+		var p = n[0]
+		var i = n[1]
+		gridmap.set_cell_item(p.x,p.y,p.z,i)
+	$Viewport.render_target_update_mode = Viewport.UPDATE_ONCE
+
+func size_changed():
+	$Viewport.render_target_update_mode = Viewport.UPDATE_ONCE

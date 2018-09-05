@@ -20,6 +20,10 @@ func _enter_tree():
 	voxel_modeller = VOXEL_MODELLER.instance()
 	get_editor_interface().get_editor_viewport().add_child(voxel_modeller)
 	voxel_modeller.hide()
+	voxel_modeller.get_node("ViewportContainer").undoredo = get_undo_redo()
+
+func undoredo_print(string):
+	print(string)
 
 func _exit_tree():
 	get_editor_interface().get_editor_viewport().remove_child(voxel_modeller)

@@ -9,3 +9,6 @@ func gui_input(ev):
 		get_node(color_picker).selected_index = get_position_in_parent()
 	if(ev is InputEventMouseButton && ev.button_index == BUTTON_RIGHT && ev.pressed):
 		print("right")
+
+func reload():
+	color = get_node("../../../../Viewport/GridMap").theme.get_item_mesh(get_position_in_parent()).material.albedo_color

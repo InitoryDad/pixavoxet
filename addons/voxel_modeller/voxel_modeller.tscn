@@ -1,97 +1,15 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://addons/voxel_modeller/viewport_camera_controls.gd" type="Script" id=1]
 [ext_resource path="res://addons/voxel_modeller/noxel.meshlib" type="MeshLibrary" id=2]
-[ext_resource path="res://addons/voxel_modeller/3d_grid_matrix.tres.gd" type="Script" id=3]
-[ext_resource path="res://addons/voxel_modeller/cursor.tscn" type="PackedScene" id=4]
-[ext_resource path="res://addons/voxel_modeller/tempbox.tscn" type="PackedScene" id=5]
-[ext_resource path="res://addons/voxel_modeller/swatch.gd" type="Script" id=6]
-[ext_resource path="res://addons/voxel_modeller/color_picker.gd" type="Script" id=7]
+[ext_resource path="res://addons/voxel_modeller/voxel_grid_map.gd" type="Script" id=3]
+[ext_resource path="res://addons/voxel_modeller/3d_grid_matrix.tres.gd" type="Script" id=4]
+[ext_resource path="res://addons/voxel_modeller/cursor.tscn" type="PackedScene" id=5]
+[ext_resource path="res://addons/voxel_modeller/load_button.gd" type="Script" id=6]
+[ext_resource path="res://addons/voxel_modeller/swatch.gd" type="Script" id=7]
+[ext_resource path="res://addons/voxel_modeller/color_picker.gd" type="Script" id=8]
 
-[sub_resource type="Environment" id=1]
-
-background_mode = 1
-background_sky_custom_fov = 0.0
-background_color = Color( 0.366745, 0.367221, 0.371094, 1 )
-background_energy = 1.0
-background_canvas_max_layer = 0
-ambient_light_color = Color( 1, 1, 1, 1 )
-ambient_light_energy = 0.0
-ambient_light_sky_contribution = 0.0
-fog_enabled = false
-fog_color = Color( 0.5, 0.6, 0.7, 1 )
-fog_sun_color = Color( 1, 0.9, 0.7, 1 )
-fog_sun_amount = 0.0
-fog_depth_enabled = true
-fog_depth_begin = 10.0
-fog_depth_curve = 1.0
-fog_transmit_enabled = false
-fog_transmit_curve = 1.0
-fog_height_enabled = false
-fog_height_min = 0.0
-fog_height_max = 100.0
-fog_height_curve = 1.0
-tonemap_mode = 0
-tonemap_exposure = 1.0
-tonemap_white = 1.0
-auto_exposure_enabled = false
-auto_exposure_scale = 0.4
-auto_exposure_min_luma = 0.05
-auto_exposure_max_luma = 8.0
-auto_exposure_speed = 0.5
-ss_reflections_enabled = false
-ss_reflections_max_steps = 64
-ss_reflections_fade_in = 0.15
-ss_reflections_fade_out = 2.0
-ss_reflections_depth_tolerance = 0.2
-ss_reflections_roughness = true
-ssao_enabled = false
-ssao_radius = 1.0
-ssao_intensity = 1.0
-ssao_radius2 = 0.0
-ssao_intensity2 = 1.0
-ssao_bias = 0.01
-ssao_light_affect = 0.0
-ssao_color = Color( 0, 0, 0, 1 )
-ssao_quality = 0
-ssao_blur = 3
-ssao_edge_sharpness = 4.0
-dof_blur_far_enabled = false
-dof_blur_far_distance = 10.0
-dof_blur_far_transition = 5.0
-dof_blur_far_amount = 0.1
-dof_blur_far_quality = 1
-dof_blur_near_enabled = false
-dof_blur_near_distance = 2.0
-dof_blur_near_transition = 1.0
-dof_blur_near_amount = 0.1
-dof_blur_near_quality = 1
-glow_enabled = false
-glow_levels/1 = false
-glow_levels/2 = false
-glow_levels/3 = true
-glow_levels/4 = false
-glow_levels/5 = true
-glow_levels/6 = false
-glow_levels/7 = false
-glow_intensity = 0.8
-glow_strength = 1.0
-glow_bloom = 0.0
-glow_blend_mode = 2
-glow_hdr_threshold = 1.0
-glow_hdr_scale = 2.0
-glow_bicubic_upscale = false
-adjustment_enabled = false
-adjustment_brightness = 1.0
-adjustment_contrast = 1.0
-adjustment_saturation = 1.0
-_sections_unfolded = [ "Ambient Light", "Background" ]
-
-[sub_resource type="World" id=2]
-
-environment = SubResource( 1 )
-
-[sub_resource type="SpatialMaterial" id=11]
+[sub_resource type="SpatialMaterial" id=9]
 
 render_priority = 0
 flags_transparent = true
@@ -142,36 +60,36 @@ uv2_triplanar_sharpness = 1.0
 proximity_fade_enable = false
 distance_fade_enable = false
 
-[sub_resource type="ArrayMesh" id=12]
+[sub_resource type="ArrayMesh" id=10]
 
 blend_shape_mode = 1
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 surfaces/0 = {
-"aabb": AABB( 0, 0, 0, 16, 16, 16 ),
-"array_data": PoolByteArray( 0, 0, 0, 0, 0, 0, 0, 60, 0, 0, 255, 127, 0, 0, 0, 0, 0, 76, 0, 60, 0, 0, 255, 127, 0, 60, 0, 0, 0, 0, 0, 60, 0, 0, 255, 127, 0, 60, 0, 0, 0, 76, 0, 60, 0, 0, 255, 127, 0, 64, 0, 0, 0, 0, 0, 60, 0, 0, 255, 127, 0, 64, 0, 0, 0, 76, 0, 60, 0, 0, 255, 127, 0, 66, 0, 0, 0, 0, 0, 60, 0, 0, 255, 127, 0, 66, 0, 0, 0, 76, 0, 60, 0, 0, 255, 127, 0, 68, 0, 0, 0, 0, 0, 60, 0, 0, 255, 127, 0, 68, 0, 0, 0, 76, 0, 60, 0, 0, 255, 127, 0, 69, 0, 0, 0, 0, 0, 60, 0, 0, 255, 127, 0, 69, 0, 0, 0, 76, 0, 60, 0, 0, 255, 127, 0, 70, 0, 0, 0, 0, 0, 60, 0, 0, 255, 127, 0, 70, 0, 0, 0, 76, 0, 60, 0, 0, 255, 127, 0, 71, 0, 0, 0, 0, 0, 60, 0, 0, 255, 127, 0, 71, 0, 0, 0, 76, 0, 60, 0, 0, 255, 127, 0, 72, 0, 0, 0, 0, 0, 60, 0, 0, 255, 127, 0, 72, 0, 0, 0, 76, 0, 60, 0, 0, 255, 127, 128, 72, 0, 0, 0, 0, 0, 60, 0, 0, 255, 127, 128, 72, 0, 0, 0, 76, 0, 60, 0, 0, 255, 127, 0, 73, 0, 0, 0, 0, 0, 60, 0, 0, 255, 127, 0, 73, 0, 0, 0, 76, 0, 60, 0, 0, 255, 127, 128, 73, 0, 0, 0, 0, 0, 60, 0, 0, 255, 127, 128, 73, 0, 0, 0, 76, 0, 60, 0, 0, 255, 127, 0, 74, 0, 0, 0, 0, 0, 60, 0, 0, 255, 127, 0, 74, 0, 0, 0, 76, 0, 60, 0, 0, 255, 127, 128, 74, 0, 0, 0, 0, 0, 60, 0, 0, 255, 127, 128, 74, 0, 0, 0, 76, 0, 60, 0, 0, 255, 127, 0, 75, 0, 0, 0, 0, 0, 60, 0, 0, 255, 127, 0, 75, 0, 0, 0, 76, 0, 60, 0, 0, 255, 127, 128, 75, 0, 0, 0, 0, 0, 60, 0, 0, 255, 127, 128, 75, 0, 0, 0, 76, 0, 60, 0, 0, 255, 127, 0, 76, 0, 0, 0, 0, 0, 60, 0, 0, 255, 127, 0, 76, 0, 0, 0, 76, 0, 60, 0, 0, 255, 127, 0, 0, 0, 0, 0, 0, 0, 60, 0, 0, 255, 127, 0, 76, 0, 0, 0, 0, 0, 60, 0, 0, 255, 127, 0, 0, 0, 0, 0, 60, 0, 60, 0, 0, 255, 127, 0, 76, 0, 0, 0, 60, 0, 60, 0, 0, 255, 127, 0, 0, 0, 0, 0, 64, 0, 60, 0, 0, 255, 127, 0, 76, 0, 0, 0, 64, 0, 60, 0, 0, 255, 127, 0, 0, 0, 0, 0, 66, 0, 60, 0, 0, 255, 127, 0, 76, 0, 0, 0, 66, 0, 60, 0, 0, 255, 127, 0, 0, 0, 0, 0, 68, 0, 60, 0, 0, 255, 127, 0, 76, 0, 0, 0, 68, 0, 60, 0, 0, 255, 127, 0, 0, 0, 0, 0, 69, 0, 60, 0, 0, 255, 127, 0, 76, 0, 0, 0, 69, 0, 60, 0, 0, 255, 127, 0, 0, 0, 0, 0, 70, 0, 60, 0, 0, 255, 127, 0, 76, 0, 0, 0, 70, 0, 60, 0, 0, 255, 127, 0, 0, 0, 0, 0, 71, 0, 60, 0, 0, 255, 127, 0, 76, 0, 0, 0, 71, 0, 60, 0, 0, 255, 127, 0, 0, 0, 0, 0, 72, 0, 60, 0, 0, 255, 127, 0, 76, 0, 0, 0, 72, 0, 60, 0, 0, 255, 127, 0, 0, 0, 0, 128, 72, 0, 60, 0, 0, 255, 127, 0, 76, 0, 0, 128, 72, 0, 60, 0, 0, 255, 127, 0, 0, 0, 0, 0, 73, 0, 60, 0, 0, 255, 127, 0, 76, 0, 0, 0, 73, 0, 60, 0, 0, 255, 127, 0, 0, 0, 0, 128, 73, 0, 60, 0, 0, 255, 127, 0, 76, 0, 0, 128, 73, 0, 60, 0, 0, 255, 127, 0, 0, 0, 0, 0, 74, 0, 60, 0, 0, 255, 127, 0, 76, 0, 0, 0, 74, 0, 60, 0, 0, 255, 127, 0, 0, 0, 0, 128, 74, 0, 60, 0, 0, 255, 127, 0, 76, 0, 0, 128, 74, 0, 60, 0, 0, 255, 127, 0, 0, 0, 0, 0, 75, 0, 60, 0, 0, 255, 127, 0, 76, 0, 0, 0, 75, 0, 60, 0, 0, 255, 127, 0, 0, 0, 0, 128, 75, 0, 60, 0, 0, 255, 127, 0, 76, 0, 0, 128, 75, 0, 60, 0, 0, 255, 127, 0, 0, 0, 0, 0, 76, 0, 60, 0, 0, 255, 127, 0, 76, 0, 0, 0, 76, 0, 60, 0, 0, 255, 127, 0, 0, 0, 0, 0, 0, 0, 60, 255, 255, 255, 127, 0, 0, 0, 76, 0, 0, 0, 60, 255, 255, 255, 127, 0, 60, 0, 0, 0, 0, 0, 60, 255, 255, 255, 127, 0, 60, 0, 76, 0, 0, 0, 60, 255, 255, 255, 127, 0, 64, 0, 0, 0, 0, 0, 60, 255, 255, 255, 127, 0, 64, 0, 76, 0, 0, 0, 60, 255, 255, 255, 127, 0, 66, 0, 0, 0, 0, 0, 60, 255, 255, 255, 127, 0, 66, 0, 76, 0, 0, 0, 60, 255, 255, 255, 127, 0, 68, 0, 0, 0, 0, 0, 60, 255, 255, 255, 127, 0, 68, 0, 76, 0, 0, 0, 60, 255, 255, 255, 127, 0, 69, 0, 0, 0, 0, 0, 60, 255, 255, 255, 127, 0, 69, 0, 76, 0, 0, 0, 60, 255, 255, 255, 127, 0, 70, 0, 0, 0, 0, 0, 60, 255, 255, 255, 127, 0, 70, 0, 76, 0, 0, 0, 60, 255, 255, 255, 127, 0, 71, 0, 0, 0, 0, 0, 60, 255, 255, 255, 127, 0, 71, 0, 76, 0, 0, 0, 60, 255, 255, 255, 127, 0, 72, 0, 0, 0, 0, 0, 60, 255, 255, 255, 127, 0, 72, 0, 76, 0, 0, 0, 60, 255, 255, 255, 127, 128, 72, 0, 0, 0, 0, 0, 60, 255, 255, 255, 127, 128, 72, 0, 76, 0, 0, 0, 60, 255, 255, 255, 127, 0, 73, 0, 0, 0, 0, 0, 60, 255, 255, 255, 127, 0, 73, 0, 76, 0, 0, 0, 60, 255, 255, 255, 127, 128, 73, 0, 0, 0, 0, 0, 60, 255, 255, 255, 127, 128, 73, 0, 76, 0, 0, 0, 60, 255, 255, 255, 127, 0, 74, 0, 0, 0, 0, 0, 60, 255, 255, 255, 127, 0, 74, 0, 76, 0, 0, 0, 60, 255, 255, 255, 127, 128, 74, 0, 0, 0, 0, 0, 60, 255, 255, 255, 127, 128, 74, 0, 76, 0, 0, 0, 60, 255, 255, 255, 127, 0, 75, 0, 0, 0, 0, 0, 60, 255, 255, 255, 127, 0, 75, 0, 76, 0, 0, 0, 60, 255, 255, 255, 127, 128, 75, 0, 0, 0, 0, 0, 60, 255, 255, 255, 127, 128, 75, 0, 76, 0, 0, 0, 60, 255, 255, 255, 127, 0, 76, 0, 0, 0, 0, 0, 60, 255, 255, 255, 127, 0, 76, 0, 76, 0, 0, 0, 60, 255, 255, 255, 127, 0, 0, 0, 0, 0, 0, 0, 60, 255, 255, 255, 127, 0, 76, 0, 0, 0, 0, 0, 60, 255, 255, 255, 127, 0, 0, 0, 60, 0, 0, 0, 60, 255, 255, 255, 127, 0, 76, 0, 60, 0, 0, 0, 60, 255, 255, 255, 127, 0, 0, 0, 64, 0, 0, 0, 60, 255, 255, 255, 127, 0, 76, 0, 64, 0, 0, 0, 60, 255, 255, 255, 127, 0, 0, 0, 66, 0, 0, 0, 60, 255, 255, 255, 127, 0, 76, 0, 66, 0, 0, 0, 60, 255, 255, 255, 127, 0, 0, 0, 68, 0, 0, 0, 60, 255, 255, 255, 127, 0, 76, 0, 68, 0, 0, 0, 60, 255, 255, 255, 127, 0, 0, 0, 69, 0, 0, 0, 60, 255, 255, 255, 127, 0, 76, 0, 69, 0, 0, 0, 60, 255, 255, 255, 127, 0, 0, 0, 70, 0, 0, 0, 60, 255, 255, 255, 127, 0, 76, 0, 70, 0, 0, 0, 60, 255, 255, 255, 127, 0, 0, 0, 71, 0, 0, 0, 60, 255, 255, 255, 127, 0, 76, 0, 71, 0, 0, 0, 60, 255, 255, 255, 127, 0, 0, 0, 72, 0, 0, 0, 60, 255, 255, 255, 127, 0, 76, 0, 72, 0, 0, 0, 60, 255, 255, 255, 127, 0, 0, 128, 72, 0, 0, 0, 60, 255, 255, 255, 127, 0, 76, 128, 72, 0, 0, 0, 60, 255, 255, 255, 127, 0, 0, 0, 73, 0, 0, 0, 60, 255, 255, 255, 127, 0, 76, 0, 73, 0, 0, 0, 60, 255, 255, 255, 127, 0, 0, 128, 73, 0, 0, 0, 60, 255, 255, 255, 127, 0, 76, 128, 73, 0, 0, 0, 60, 255, 255, 255, 127, 0, 0, 0, 74, 0, 0, 0, 60, 255, 255, 255, 127, 0, 76, 0, 74, 0, 0, 0, 60, 255, 255, 255, 127, 0, 0, 128, 74, 0, 0, 0, 60, 255, 255, 255, 127, 0, 76, 128, 74, 0, 0, 0, 60, 255, 255, 255, 127, 0, 0, 0, 75, 0, 0, 0, 60, 255, 255, 255, 127, 0, 76, 0, 75, 0, 0, 0, 60, 255, 255, 255, 127, 0, 0, 128, 75, 0, 0, 0, 60, 255, 255, 255, 127, 0, 76, 128, 75, 0, 0, 0, 60, 255, 255, 255, 127, 0, 0, 0, 76, 0, 0, 0, 60, 255, 255, 255, 127, 0, 76, 0, 76, 0, 0, 0, 60, 255, 255, 255, 127, 0, 0, 0, 0, 0, 0, 0, 60, 255, 255, 255, 127, 0, 0, 0, 76, 0, 0, 0, 60, 255, 255, 255, 127, 0, 0, 0, 0, 0, 60, 0, 60, 255, 255, 255, 127, 0, 0, 0, 76, 0, 60, 0, 60, 255, 255, 255, 127, 0, 0, 0, 0, 0, 64, 0, 60, 255, 255, 255, 127, 0, 0, 0, 76, 0, 64, 0, 60, 255, 255, 255, 127, 0, 0, 0, 0, 0, 66, 0, 60, 255, 255, 255, 127, 0, 0, 0, 76, 0, 66, 0, 60, 255, 255, 255, 127, 0, 0, 0, 0, 0, 68, 0, 60, 255, 255, 255, 127, 0, 0, 0, 76, 0, 68, 0, 60, 255, 255, 255, 127, 0, 0, 0, 0, 0, 69, 0, 60, 255, 255, 255, 127, 0, 0, 0, 76, 0, 69, 0, 60, 255, 255, 255, 127, 0, 0, 0, 0, 0, 70, 0, 60, 255, 255, 255, 127, 0, 0, 0, 76, 0, 70, 0, 60, 255, 255, 255, 127, 0, 0, 0, 0, 0, 71, 0, 60, 255, 255, 255, 127, 0, 0, 0, 76, 0, 71, 0, 60, 255, 255, 255, 127, 0, 0, 0, 0, 0, 72, 0, 60, 255, 255, 255, 127, 0, 0, 0, 76, 0, 72, 0, 60, 255, 255, 255, 127, 0, 0, 0, 0, 128, 72, 0, 60, 255, 255, 255, 127, 0, 0, 0, 76, 128, 72, 0, 60, 255, 255, 255, 127, 0, 0, 0, 0, 0, 73, 0, 60, 255, 255, 255, 127, 0, 0, 0, 76, 0, 73, 0, 60, 255, 255, 255, 127, 0, 0, 0, 0, 128, 73, 0, 60, 255, 255, 255, 127, 0, 0, 0, 76, 128, 73, 0, 60, 255, 255, 255, 127, 0, 0, 0, 0, 0, 74, 0, 60, 255, 255, 255, 127, 0, 0, 0, 76, 0, 74, 0, 60, 255, 255, 255, 127, 0, 0, 0, 0, 128, 74, 0, 60, 255, 255, 255, 127, 0, 0, 0, 76, 128, 74, 0, 60, 255, 255, 255, 127, 0, 0, 0, 0, 0, 75, 0, 60, 255, 255, 255, 127, 0, 0, 0, 76, 0, 75, 0, 60, 255, 255, 255, 127, 0, 0, 0, 0, 128, 75, 0, 60, 255, 255, 255, 127, 0, 0, 0, 76, 128, 75, 0, 60, 255, 255, 255, 127, 0, 0, 0, 0, 0, 76, 0, 60, 255, 255, 255, 127, 0, 0, 0, 76, 0, 76, 0, 60, 255, 255, 255, 127, 0, 0, 0, 0, 0, 0, 0, 60, 255, 255, 255, 127, 0, 0, 0, 0, 0, 76, 0, 60, 255, 255, 255, 127, 0, 0, 0, 60, 0, 0, 0, 60, 255, 255, 255, 127, 0, 0, 0, 60, 0, 76, 0, 60, 255, 255, 255, 127, 0, 0, 0, 64, 0, 0, 0, 60, 255, 255, 255, 127, 0, 0, 0, 64, 0, 76, 0, 60, 255, 255, 255, 127, 0, 0, 0, 66, 0, 0, 0, 60, 255, 255, 255, 127, 0, 0, 0, 66, 0, 76, 0, 60, 255, 255, 255, 127, 0, 0, 0, 68, 0, 0, 0, 60, 255, 255, 255, 127, 0, 0, 0, 68, 0, 76, 0, 60, 255, 255, 255, 127, 0, 0, 0, 69, 0, 0, 0, 60, 255, 255, 255, 127, 0, 0, 0, 69, 0, 76, 0, 60, 255, 255, 255, 127, 0, 0, 0, 70, 0, 0, 0, 60, 255, 255, 255, 127, 0, 0, 0, 70, 0, 76, 0, 60, 255, 255, 255, 127, 0, 0, 0, 71, 0, 0, 0, 60, 255, 255, 255, 127, 0, 0, 0, 71, 0, 76, 0, 60, 255, 255, 255, 127, 0, 0, 0, 72, 0, 0, 0, 60, 255, 255, 255, 127, 0, 0, 0, 72, 0, 76, 0, 60, 255, 255, 255, 127, 0, 0, 128, 72, 0, 0, 0, 60, 255, 255, 255, 127, 0, 0, 128, 72, 0, 76, 0, 60, 255, 255, 255, 127, 0, 0, 0, 73, 0, 0, 0, 60, 255, 255, 255, 127, 0, 0, 0, 73, 0, 76, 0, 60, 255, 255, 255, 127, 0, 0, 128, 73, 0, 0, 0, 60, 255, 255, 255, 127, 0, 0, 128, 73, 0, 76, 0, 60, 255, 255, 255, 127, 0, 0, 0, 74, 0, 0, 0, 60, 255, 255, 255, 127, 0, 0, 0, 74, 0, 76, 0, 60, 255, 255, 255, 127, 0, 0, 128, 74, 0, 0, 0, 60, 255, 255, 255, 127, 0, 0, 128, 74, 0, 76, 0, 60, 255, 255, 255, 127, 0, 0, 0, 75, 0, 0, 0, 60, 255, 255, 255, 127, 0, 0, 0, 75, 0, 76, 0, 60, 255, 255, 255, 127, 0, 0, 128, 75, 0, 0, 0, 60, 255, 255, 255, 127, 0, 0, 128, 75, 0, 76, 0, 60, 255, 255, 255, 127, 0, 0, 0, 76, 0, 0, 0, 60, 255, 255, 255, 127, 0, 0, 0, 76, 0, 76, 0, 60, 255, 255, 255, 127 ),
+"aabb": AABB( 0, 0, 0, 10, 10, 10 ),
+"array_data": PoolByteArray( 0, 0, 0, 0, 0, 0, 0, 60, 0, 0, 255, 127, 0, 0, 0, 0, 0, 73, 0, 60, 0, 0, 255, 127, 0, 60, 0, 0, 0, 0, 0, 60, 0, 0, 255, 127, 0, 60, 0, 0, 0, 73, 0, 60, 0, 0, 255, 127, 0, 64, 0, 0, 0, 0, 0, 60, 0, 0, 255, 127, 0, 64, 0, 0, 0, 73, 0, 60, 0, 0, 255, 127, 0, 66, 0, 0, 0, 0, 0, 60, 0, 0, 255, 127, 0, 66, 0, 0, 0, 73, 0, 60, 0, 0, 255, 127, 0, 68, 0, 0, 0, 0, 0, 60, 0, 0, 255, 127, 0, 68, 0, 0, 0, 73, 0, 60, 0, 0, 255, 127, 0, 69, 0, 0, 0, 0, 0, 60, 0, 0, 255, 127, 0, 69, 0, 0, 0, 73, 0, 60, 0, 0, 255, 127, 0, 70, 0, 0, 0, 0, 0, 60, 0, 0, 255, 127, 0, 70, 0, 0, 0, 73, 0, 60, 0, 0, 255, 127, 0, 71, 0, 0, 0, 0, 0, 60, 0, 0, 255, 127, 0, 71, 0, 0, 0, 73, 0, 60, 0, 0, 255, 127, 0, 72, 0, 0, 0, 0, 0, 60, 0, 0, 255, 127, 0, 72, 0, 0, 0, 73, 0, 60, 0, 0, 255, 127, 128, 72, 0, 0, 0, 0, 0, 60, 0, 0, 255, 127, 128, 72, 0, 0, 0, 73, 0, 60, 0, 0, 255, 127, 0, 73, 0, 0, 0, 0, 0, 60, 0, 0, 255, 127, 0, 73, 0, 0, 0, 73, 0, 60, 0, 0, 255, 127, 0, 0, 0, 0, 0, 0, 0, 60, 0, 0, 255, 127, 0, 73, 0, 0, 0, 0, 0, 60, 0, 0, 255, 127, 0, 0, 0, 0, 0, 60, 0, 60, 0, 0, 255, 127, 0, 73, 0, 0, 0, 60, 0, 60, 0, 0, 255, 127, 0, 0, 0, 0, 0, 64, 0, 60, 0, 0, 255, 127, 0, 73, 0, 0, 0, 64, 0, 60, 0, 0, 255, 127, 0, 0, 0, 0, 0, 66, 0, 60, 0, 0, 255, 127, 0, 73, 0, 0, 0, 66, 0, 60, 0, 0, 255, 127, 0, 0, 0, 0, 0, 68, 0, 60, 0, 0, 255, 127, 0, 73, 0, 0, 0, 68, 0, 60, 0, 0, 255, 127, 0, 0, 0, 0, 0, 69, 0, 60, 0, 0, 255, 127, 0, 73, 0, 0, 0, 69, 0, 60, 0, 0, 255, 127, 0, 0, 0, 0, 0, 70, 0, 60, 0, 0, 255, 127, 0, 73, 0, 0, 0, 70, 0, 60, 0, 0, 255, 127, 0, 0, 0, 0, 0, 71, 0, 60, 0, 0, 255, 127, 0, 73, 0, 0, 0, 71, 0, 60, 0, 0, 255, 127, 0, 0, 0, 0, 0, 72, 0, 60, 0, 0, 255, 127, 0, 73, 0, 0, 0, 72, 0, 60, 0, 0, 255, 127, 0, 0, 0, 0, 128, 72, 0, 60, 0, 0, 255, 127, 0, 73, 0, 0, 128, 72, 0, 60, 0, 0, 255, 127, 0, 0, 0, 0, 0, 73, 0, 60, 0, 0, 255, 127, 0, 73, 0, 0, 0, 73, 0, 60, 0, 0, 255, 127, 0, 0, 0, 0, 0, 0, 0, 60, 255, 255, 255, 127, 0, 0, 0, 73, 0, 0, 0, 60, 255, 255, 255, 127, 0, 60, 0, 0, 0, 0, 0, 60, 255, 255, 255, 127, 0, 60, 0, 73, 0, 0, 0, 60, 255, 255, 255, 127, 0, 64, 0, 0, 0, 0, 0, 60, 255, 255, 255, 127, 0, 64, 0, 73, 0, 0, 0, 60, 255, 255, 255, 127, 0, 66, 0, 0, 0, 0, 0, 60, 255, 255, 255, 127, 0, 66, 0, 73, 0, 0, 0, 60, 255, 255, 255, 127, 0, 68, 0, 0, 0, 0, 0, 60, 255, 255, 255, 127, 0, 68, 0, 73, 0, 0, 0, 60, 255, 255, 255, 127, 0, 69, 0, 0, 0, 0, 0, 60, 255, 255, 255, 127, 0, 69, 0, 73, 0, 0, 0, 60, 255, 255, 255, 127, 0, 70, 0, 0, 0, 0, 0, 60, 255, 255, 255, 127, 0, 70, 0, 73, 0, 0, 0, 60, 255, 255, 255, 127, 0, 71, 0, 0, 0, 0, 0, 60, 255, 255, 255, 127, 0, 71, 0, 73, 0, 0, 0, 60, 255, 255, 255, 127, 0, 72, 0, 0, 0, 0, 0, 60, 255, 255, 255, 127, 0, 72, 0, 73, 0, 0, 0, 60, 255, 255, 255, 127, 128, 72, 0, 0, 0, 0, 0, 60, 255, 255, 255, 127, 128, 72, 0, 73, 0, 0, 0, 60, 255, 255, 255, 127, 0, 73, 0, 0, 0, 0, 0, 60, 255, 255, 255, 127, 0, 73, 0, 73, 0, 0, 0, 60, 255, 255, 255, 127, 0, 0, 0, 0, 0, 0, 0, 60, 255, 255, 255, 127, 0, 73, 0, 0, 0, 0, 0, 60, 255, 255, 255, 127, 0, 0, 0, 60, 0, 0, 0, 60, 255, 255, 255, 127, 0, 73, 0, 60, 0, 0, 0, 60, 255, 255, 255, 127, 0, 0, 0, 64, 0, 0, 0, 60, 255, 255, 255, 127, 0, 73, 0, 64, 0, 0, 0, 60, 255, 255, 255, 127, 0, 0, 0, 66, 0, 0, 0, 60, 255, 255, 255, 127, 0, 73, 0, 66, 0, 0, 0, 60, 255, 255, 255, 127, 0, 0, 0, 68, 0, 0, 0, 60, 255, 255, 255, 127, 0, 73, 0, 68, 0, 0, 0, 60, 255, 255, 255, 127, 0, 0, 0, 69, 0, 0, 0, 60, 255, 255, 255, 127, 0, 73, 0, 69, 0, 0, 0, 60, 255, 255, 255, 127, 0, 0, 0, 70, 0, 0, 0, 60, 255, 255, 255, 127, 0, 73, 0, 70, 0, 0, 0, 60, 255, 255, 255, 127, 0, 0, 0, 71, 0, 0, 0, 60, 255, 255, 255, 127, 0, 73, 0, 71, 0, 0, 0, 60, 255, 255, 255, 127, 0, 0, 0, 72, 0, 0, 0, 60, 255, 255, 255, 127, 0, 73, 0, 72, 0, 0, 0, 60, 255, 255, 255, 127, 0, 0, 128, 72, 0, 0, 0, 60, 255, 255, 255, 127, 0, 73, 128, 72, 0, 0, 0, 60, 255, 255, 255, 127, 0, 0, 0, 73, 0, 0, 0, 60, 255, 255, 255, 127, 0, 73, 0, 73, 0, 0, 0, 60, 255, 255, 255, 127, 0, 0, 0, 0, 0, 0, 0, 60, 255, 255, 255, 127, 0, 0, 0, 73, 0, 0, 0, 60, 255, 255, 255, 127, 0, 0, 0, 0, 0, 60, 0, 60, 255, 255, 255, 127, 0, 0, 0, 73, 0, 60, 0, 60, 255, 255, 255, 127, 0, 0, 0, 0, 0, 64, 0, 60, 255, 255, 255, 127, 0, 0, 0, 73, 0, 64, 0, 60, 255, 255, 255, 127, 0, 0, 0, 0, 0, 66, 0, 60, 255, 255, 255, 127, 0, 0, 0, 73, 0, 66, 0, 60, 255, 255, 255, 127, 0, 0, 0, 0, 0, 68, 0, 60, 255, 255, 255, 127, 0, 0, 0, 73, 0, 68, 0, 60, 255, 255, 255, 127, 0, 0, 0, 0, 0, 69, 0, 60, 255, 255, 255, 127, 0, 0, 0, 73, 0, 69, 0, 60, 255, 255, 255, 127, 0, 0, 0, 0, 0, 70, 0, 60, 255, 255, 255, 127, 0, 0, 0, 73, 0, 70, 0, 60, 255, 255, 255, 127, 0, 0, 0, 0, 0, 71, 0, 60, 255, 255, 255, 127, 0, 0, 0, 73, 0, 71, 0, 60, 255, 255, 255, 127, 0, 0, 0, 0, 0, 72, 0, 60, 255, 255, 255, 127, 0, 0, 0, 73, 0, 72, 0, 60, 255, 255, 255, 127, 0, 0, 0, 0, 128, 72, 0, 60, 255, 255, 255, 127, 0, 0, 0, 73, 128, 72, 0, 60, 255, 255, 255, 127, 0, 0, 0, 0, 0, 73, 0, 60, 255, 255, 255, 127, 0, 0, 0, 73, 0, 73, 0, 60, 255, 255, 255, 127, 0, 0, 0, 0, 0, 0, 0, 60, 255, 255, 255, 127, 0, 0, 0, 0, 0, 73, 0, 60, 255, 255, 255, 127, 0, 0, 0, 60, 0, 0, 0, 60, 255, 255, 255, 127, 0, 0, 0, 60, 0, 73, 0, 60, 255, 255, 255, 127, 0, 0, 0, 64, 0, 0, 0, 60, 255, 255, 255, 127, 0, 0, 0, 64, 0, 73, 0, 60, 255, 255, 255, 127, 0, 0, 0, 66, 0, 0, 0, 60, 255, 255, 255, 127, 0, 0, 0, 66, 0, 73, 0, 60, 255, 255, 255, 127, 0, 0, 0, 68, 0, 0, 0, 60, 255, 255, 255, 127, 0, 0, 0, 68, 0, 73, 0, 60, 255, 255, 255, 127, 0, 0, 0, 69, 0, 0, 0, 60, 255, 255, 255, 127, 0, 0, 0, 69, 0, 73, 0, 60, 255, 255, 255, 127, 0, 0, 0, 70, 0, 0, 0, 60, 255, 255, 255, 127, 0, 0, 0, 70, 0, 73, 0, 60, 255, 255, 255, 127, 0, 0, 0, 71, 0, 0, 0, 60, 255, 255, 255, 127, 0, 0, 0, 71, 0, 73, 0, 60, 255, 255, 255, 127, 0, 0, 0, 72, 0, 0, 0, 60, 255, 255, 255, 127, 0, 0, 0, 72, 0, 73, 0, 60, 255, 255, 255, 127, 0, 0, 128, 72, 0, 0, 0, 60, 255, 255, 255, 127, 0, 0, 128, 72, 0, 73, 0, 60, 255, 255, 255, 127, 0, 0, 0, 73, 0, 0, 0, 60, 255, 255, 255, 127, 0, 0, 0, 73, 0, 73, 0, 60, 255, 255, 255, 127 ),
 "array_index_data": PoolByteArray(  ),
 "blend_shape_data": [  ],
 "format": 97801,
 "index_count": 0,
-"material": SubResource( 11 ),
+"material": SubResource( 9 ),
 "primitive": 1,
 "skeleton_aabb": [  ],
-"vertex_count": 204
+"vertex_count": 132
 }
 
-[sub_resource type="ConvexPolygonShape" id=5]
+[sub_resource type="BoxShape" id=11]
 
-points = PoolVector3Array( 8, 0, 8, -8, 0, 8, -8, 0, -8, 8, 0, -8 )
+extents = Vector3( 5, 0.1, 5 )
 
-[sub_resource type="ConvexPolygonShape" id=6]
+[sub_resource type="BoxShape" id=12]
 
-points = PoolVector3Array( 8, 8, 0, -8, 8, 0, -8, -8, 0, 8, -8, 0 )
+extents = Vector3( 5, 5, 0.1 )
 
-[sub_resource type="ConvexPolygonShape" id=7]
+[sub_resource type="BoxShape" id=13]
 
-points = PoolVector3Array( 0, 8, 8, 0, -8, 8, 0, -8, -8, 0, 8, -8 )
+extents = Vector3( 0.1, 5, 5 )
 
-[sub_resource type="GDScript" id=8]
+[sub_resource type="GDScript" id=6]
 
 script/source = "extends Panel
 
@@ -188,7 +106,7 @@ func _process(delta):
 	rect_size.y = get_parent().get_parent().get_parent().rect_size.y
 "
 
-[sub_resource type="ImageTexture" id=9]
+[sub_resource type="ImageTexture" id=7]
 
 flags = 7
 storage = 0
@@ -196,14 +114,14 @@ lossy_quality = 0.7
 flags = 7
 size = Vector2( 0, 0 )
 
-[sub_resource type="Theme" id=10]
+[sub_resource type="Theme" id=8]
 
 ColorPicker/constants/h_width = 0
 ColorPicker/constants/label_width = 0
 ColorPicker/constants/margin = 0
 ColorPicker/constants/sv_height = 0
 ColorPicker/constants/sv_width = 0
-ColorPicker/icons/add_preset = SubResource( 9 )
+ColorPicker/icons/add_preset = SubResource( 7 )
 ColorPicker/icons/color_hue = null
 ColorPicker/icons/color_sample = null
 ColorPicker/icons/preset_bg = null
@@ -216,8 +134,9 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
+margin_top = 1.0
 margin_right = 1023.0
-margin_bottom = 602.0
+margin_bottom = 603.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
@@ -253,7 +172,7 @@ __meta__ = {
 arvr = false
 size = Vector2( 1023, 602 )
 own_world = true
-world = SubResource( 2 )
+world = null
 transparent_bg = true
 msaa = 0
 hdr = true
@@ -320,6 +239,7 @@ directional_shadow_max_distance = 200.0
 
 [node name="GridMap" type="GridMap" parent="ViewportContainer/Viewport" index="1"]
 
+editor/display_folded = true
 theme = ExtResource( 2 )
 cell_size = Vector3( 1, 1, 1 )
 cell_octant_size = 16
@@ -332,6 +252,7 @@ collision_mask = 1
 data = {
 "cells": PoolIntArray(  )
 }
+script = ExtResource( 3 )
 _sections_unfolded = [ "Cell", "Collision", "Transform" ]
 __meta__ = {
 "_editor_clip_": 0
@@ -339,7 +260,6 @@ __meta__ = {
 
 [node name="Matrix" type="MeshInstance" parent="ViewportContainer/Viewport/GridMap" index="0"]
 
-editor/display_folded = true
 layers = 1
 material_override = null
 cast_shadow = 1
@@ -349,12 +269,12 @@ lod_min_distance = 0.0
 lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
-mesh = SubResource( 12 )
+mesh = SubResource( 10 )
 skeleton = NodePath("..")
 material/0 = null
-script = ExtResource( 3 )
+script = ExtResource( 4 )
 _sections_unfolded = [ "Geometry", "Transform", "material" ]
-box = AABB( 0, 0, 0, 16, 16, 16 )
+box = AABB( 0, 0, 0, 10, 10, 10 )
 
 [node name="Area" type="StaticBody" parent="ViewportContainer/Viewport/GridMap/Matrix" index="0"]
 
@@ -370,25 +290,22 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="bottom" type="CollisionShape" parent="ViewportContainer/Viewport/GridMap/Matrix/Area" index="0"]
 
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 8 )
-visible = false
-shape = SubResource( 5 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 5 )
+shape = SubResource( 11 )
 disabled = false
 _sections_unfolded = [ "Transform" ]
 
 [node name="side1" type="CollisionShape" parent="ViewportContainer/Viewport/GridMap/Matrix/Area" index="1"]
 
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 8, 0 )
-visible = false
-shape = SubResource( 6 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 5, 0 )
+shape = SubResource( 12 )
 disabled = false
 _sections_unfolded = [ "Transform" ]
 
 [node name="side2" type="CollisionShape" parent="ViewportContainer/Viewport/GridMap/Matrix/Area" index="2"]
 
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 8 )
-visible = false
-shape = SubResource( 7 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 5 )
+shape = SubResource( 13 )
 disabled = false
 _sections_unfolded = [ "Transform" ]
 
@@ -403,15 +320,420 @@ bounce = 0.0
 constant_linear_velocity = Vector3( 0, 0, 0 )
 constant_angular_velocity = Vector3( 0, 0, 0 )
 
-[node name="Cursor" parent="ViewportContainer/Viewport" index="2" instance=ExtResource( 4 )]
+[node name="Cursor" parent="ViewportContainer/Viewport" index="2" instance=ExtResource( 5 )]
 
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 15.5, 0.5, 3.5 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 0.5, 2.5 )
 
-[node name="TempBox" parent="ViewportContainer/Viewport" index="3" instance=ExtResource( 5 )]
+[node name="TopBar" type="Panel" parent="ViewportContainer" index="1"]
 
-visible = false
+anchor_left = 1.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 0.0
+margin_left = -2360.0
+margin_bottom = 41.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
 
-[node name="Panel" type="Panel" parent="ViewportContainer" index="1"]
+[node name="VBoxContainer" type="HBoxContainer" parent="ViewportContainer/TopBar" index="0"]
+
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -878.0
+margin_top = -13.5
+margin_right = -57.0
+margin_bottom = 13.5
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+alignment = 0
+
+[node name="name" type="HBoxContainer" parent="ViewportContainer/TopBar/VBoxContainer" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 242.0
+margin_bottom = 27.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+alignment = 0
+
+[node name="Label" type="Label" parent="ViewportContainer/TopBar/VBoxContainer/name" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 6.0
+margin_right = 38.0
+margin_bottom = 20.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "Name"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="TextEdit" type="LineEdit" parent="ViewportContainer/TopBar/VBoxContainer/name" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 42.0
+margin_right = 242.0
+margin_bottom = 27.0
+rect_min_size = Vector2( 200, 27 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 1
+size_flags_horizontal = 1
+size_flags_vertical = 1
+text = "Untitled"
+max_length = 30
+focus_mode = 2
+context_menu_enabled = true
+placeholder_alpha = 0.6
+caret_blink = false
+caret_blink_speed = 0.65
+caret_position = 0
+_sections_unfolded = [ "Rect", "custom_constants" ]
+
+[node name="size" type="HBoxContainer" parent="ViewportContainer/TopBar/VBoxContainer" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 246.0
+margin_right = 506.0
+margin_bottom = 27.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+alignment = 0
+
+[node name="Label" type="Label" parent="ViewportContainer/TopBar/VBoxContainer/size" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 6.0
+margin_right = 26.0
+margin_bottom = 20.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "Size"
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="x" type="SpinBox" parent="ViewportContainer/TopBar/VBoxContainer/size" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 30.0
+margin_right = 104.0
+margin_bottom = 27.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+min_value = 0.0
+max_value = 100.0
+step = 1.0
+page = 0.0
+value = 10.0
+exp_edit = false
+rounded = false
+editable = true
+prefix = ""
+suffix = ""
+
+[node name="y" type="SpinBox" parent="ViewportContainer/TopBar/VBoxContainer/size" index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 108.0
+margin_right = 182.0
+margin_bottom = 27.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+min_value = 0.0
+max_value = 100.0
+step = 1.0
+page = 0.0
+value = 10.0
+exp_edit = false
+rounded = false
+editable = true
+prefix = ""
+suffix = ""
+
+[node name="z" type="SpinBox" parent="ViewportContainer/TopBar/VBoxContainer/size" index="3"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 186.0
+margin_right = 260.0
+margin_bottom = 27.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+min_value = 0.0
+max_value = 100.0
+step = 1.0
+page = 0.0
+value = 10.0
+exp_edit = false
+rounded = false
+editable = true
+prefix = ""
+suffix = ""
+
+[node name="pivot" type="HBoxContainer" parent="ViewportContainer/TopBar/VBoxContainer" index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 510.0
+margin_right = 776.0
+margin_bottom = 27.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+alignment = 0
+
+[node name="Label" type="Label" parent="ViewportContainer/TopBar/VBoxContainer/pivot" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 6.0
+margin_right = 32.0
+margin_bottom = 20.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "Pivot"
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="x" type="SpinBox" parent="ViewportContainer/TopBar/VBoxContainer/pivot" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 36.0
+margin_right = 110.0
+margin_bottom = 27.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+min_value = 0.0
+max_value = 100.0
+step = 1.0
+page = 0.0
+value = 0.0
+exp_edit = false
+rounded = false
+editable = true
+prefix = ""
+suffix = ""
+
+[node name="y" type="SpinBox" parent="ViewportContainer/TopBar/VBoxContainer/pivot" index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 114.0
+margin_right = 188.0
+margin_bottom = 27.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+min_value = 0.0
+max_value = 100.0
+step = 1.0
+page = 0.0
+value = 0.0
+exp_edit = false
+rounded = false
+editable = true
+prefix = ""
+suffix = ""
+
+[node name="z" type="SpinBox" parent="ViewportContainer/TopBar/VBoxContainer/pivot" index="3"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 192.0
+margin_right = 266.0
+margin_bottom = 27.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+min_value = 0.0
+max_value = 100.0
+step = 1.0
+page = 0.0
+value = 0.0
+exp_edit = false
+rounded = false
+editable = true
+prefix = ""
+suffix = ""
+
+[node name="BottomBar" type="Panel" parent="ViewportContainer" index="2"]
+
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -2360.0
+margin_top = -41.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+
+[node name="VBoxContainer" type="HBoxContainer" parent="ViewportContainer/BottomBar" index="0"]
+
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -122.0
+margin_top = -13.5
+margin_right = -35.0
+margin_bottom = 13.5
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+alignment = 0
+
+[node name="SaveButton" type="Button" parent="ViewportContainer/BottomBar/VBoxContainer" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 41.0
+margin_bottom = 27.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Save"
+flat = false
+align = 1
+
+[node name="LoadButton" type="Button" parent="ViewportContainer/BottomBar/VBoxContainer" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 45.0
+margin_right = 87.0
+margin_bottom = 27.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Load"
+flat = false
+align = 1
+script = ExtResource( 6 )
+
+[node name="LeftSideBar" type="Panel" parent="ViewportContainer" index="3"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -425,9 +747,9 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-script = SubResource( 8 )
+script = SubResource( 6 )
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ViewportContainer/Panel" index="0"]
+[node name="VBoxContainer" type="VBoxContainer" parent="ViewportContainer/LeftSideBar" index="0"]
 
 anchor_left = 0.5
 anchor_top = 0.0
@@ -446,9 +768,8 @@ size_flags_vertical = 1
 alignment = 0
 _sections_unfolded = [ "Margin" ]
 
-[node name="colors" type="GridContainer" parent="ViewportContainer/Panel/VBoxContainer" index="0"]
+[node name="colors" type="GridContainer" parent="ViewportContainer/LeftSideBar/VBoxContainer" index="0"]
 
-editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -466,7 +787,7 @@ custom_constants/hseparation = 2
 columns = 5
 _sections_unfolded = [ "custom_constants" ]
 
-[node name="ColorRect" type="ColorRect" parent="ViewportContainer/Panel/VBoxContainer/colors" index="0"]
+[node name="ColorRect" type="ColorRect" parent="ViewportContainer/LeftSideBar/VBoxContainer/colors" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -482,11 +803,11 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 color = Color( 0, 0, 0, 1 )
-script = ExtResource( 6 )
+script = ExtResource( 7 )
 _sections_unfolded = [ "Rect" ]
 color_picker = NodePath("../../ColorPicker")
 
-[node name="ColorRect2" type="ColorRect" parent="ViewportContainer/Panel/VBoxContainer/colors" index="1"]
+[node name="ColorRect2" type="ColorRect" parent="ViewportContainer/LeftSideBar/VBoxContainer/colors" index="1"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -503,11 +824,11 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 color = Color( 0, 0, 0, 1 )
-script = ExtResource( 6 )
+script = ExtResource( 7 )
 _sections_unfolded = [ "Rect" ]
 color_picker = NodePath("../../ColorPicker")
 
-[node name="ColorRect3" type="ColorRect" parent="ViewportContainer/Panel/VBoxContainer/colors" index="2"]
+[node name="ColorRect3" type="ColorRect" parent="ViewportContainer/LeftSideBar/VBoxContainer/colors" index="2"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -524,11 +845,11 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 color = Color( 0, 0, 0, 1 )
-script = ExtResource( 6 )
+script = ExtResource( 7 )
 _sections_unfolded = [ "Rect" ]
 color_picker = NodePath("../../ColorPicker")
 
-[node name="ColorRect4" type="ColorRect" parent="ViewportContainer/Panel/VBoxContainer/colors" index="3"]
+[node name="ColorRect4" type="ColorRect" parent="ViewportContainer/LeftSideBar/VBoxContainer/colors" index="3"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -545,11 +866,11 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 color = Color( 0, 0, 0, 1 )
-script = ExtResource( 6 )
+script = ExtResource( 7 )
 _sections_unfolded = [ "Rect" ]
 color_picker = NodePath("../../ColorPicker")
 
-[node name="ColorRect5" type="ColorRect" parent="ViewportContainer/Panel/VBoxContainer/colors" index="4"]
+[node name="ColorRect5" type="ColorRect" parent="ViewportContainer/LeftSideBar/VBoxContainer/colors" index="4"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -566,11 +887,11 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 color = Color( 0, 0, 0, 1 )
-script = ExtResource( 6 )
+script = ExtResource( 7 )
 _sections_unfolded = [ "Rect" ]
 color_picker = NodePath("../../ColorPicker")
 
-[node name="ColorRect6" type="ColorRect" parent="ViewportContainer/Panel/VBoxContainer/colors" index="5"]
+[node name="ColorRect6" type="ColorRect" parent="ViewportContainer/LeftSideBar/VBoxContainer/colors" index="5"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -587,11 +908,11 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 color = Color( 0, 0, 0, 1 )
-script = ExtResource( 6 )
+script = ExtResource( 7 )
 _sections_unfolded = [ "Rect" ]
 color_picker = NodePath("../../ColorPicker")
 
-[node name="ColorRect7" type="ColorRect" parent="ViewportContainer/Panel/VBoxContainer/colors" index="6"]
+[node name="ColorRect7" type="ColorRect" parent="ViewportContainer/LeftSideBar/VBoxContainer/colors" index="6"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -609,11 +930,11 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 color = Color( 0, 0, 0, 1 )
-script = ExtResource( 6 )
+script = ExtResource( 7 )
 _sections_unfolded = [ "Rect" ]
 color_picker = NodePath("../../ColorPicker")
 
-[node name="ColorRect8" type="ColorRect" parent="ViewportContainer/Panel/VBoxContainer/colors" index="7"]
+[node name="ColorRect8" type="ColorRect" parent="ViewportContainer/LeftSideBar/VBoxContainer/colors" index="7"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -631,11 +952,11 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 color = Color( 0, 0, 0, 1 )
-script = ExtResource( 6 )
+script = ExtResource( 7 )
 _sections_unfolded = [ "Rect" ]
 color_picker = NodePath("../../ColorPicker")
 
-[node name="ColorRect9" type="ColorRect" parent="ViewportContainer/Panel/VBoxContainer/colors" index="8"]
+[node name="ColorRect9" type="ColorRect" parent="ViewportContainer/LeftSideBar/VBoxContainer/colors" index="8"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -653,11 +974,11 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 color = Color( 0, 0, 0, 1 )
-script = ExtResource( 6 )
+script = ExtResource( 7 )
 _sections_unfolded = [ "Rect" ]
 color_picker = NodePath("../../ColorPicker")
 
-[node name="ColorRect10" type="ColorRect" parent="ViewportContainer/Panel/VBoxContainer/colors" index="9"]
+[node name="ColorRect10" type="ColorRect" parent="ViewportContainer/LeftSideBar/VBoxContainer/colors" index="9"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -675,11 +996,11 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 color = Color( 0, 0, 0, 1 )
-script = ExtResource( 6 )
+script = ExtResource( 7 )
 _sections_unfolded = [ "Rect" ]
 color_picker = NodePath("../../ColorPicker")
 
-[node name="ColorRect11" type="ColorRect" parent="ViewportContainer/Panel/VBoxContainer/colors" index="10"]
+[node name="ColorRect11" type="ColorRect" parent="ViewportContainer/LeftSideBar/VBoxContainer/colors" index="10"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -696,11 +1017,11 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 color = Color( 0, 0, 0, 1 )
-script = ExtResource( 6 )
+script = ExtResource( 7 )
 _sections_unfolded = [ "Rect" ]
 color_picker = NodePath("../../ColorPicker")
 
-[node name="ColorRect12" type="ColorRect" parent="ViewportContainer/Panel/VBoxContainer/colors" index="11"]
+[node name="ColorRect12" type="ColorRect" parent="ViewportContainer/LeftSideBar/VBoxContainer/colors" index="11"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -718,11 +1039,11 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 color = Color( 0, 0, 0, 1 )
-script = ExtResource( 6 )
+script = ExtResource( 7 )
 _sections_unfolded = [ "Rect" ]
 color_picker = NodePath("../../ColorPicker")
 
-[node name="ColorRect13" type="ColorRect" parent="ViewportContainer/Panel/VBoxContainer/colors" index="12"]
+[node name="ColorRect13" type="ColorRect" parent="ViewportContainer/LeftSideBar/VBoxContainer/colors" index="12"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -740,11 +1061,11 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 color = Color( 0, 0, 0, 1 )
-script = ExtResource( 6 )
+script = ExtResource( 7 )
 _sections_unfolded = [ "Rect" ]
 color_picker = NodePath("../../ColorPicker")
 
-[node name="ColorRect14" type="ColorRect" parent="ViewportContainer/Panel/VBoxContainer/colors" index="13"]
+[node name="ColorRect14" type="ColorRect" parent="ViewportContainer/LeftSideBar/VBoxContainer/colors" index="13"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -762,11 +1083,11 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 color = Color( 0, 0, 0, 1 )
-script = ExtResource( 6 )
+script = ExtResource( 7 )
 _sections_unfolded = [ "Rect" ]
 color_picker = NodePath("../../ColorPicker")
 
-[node name="ColorRect15" type="ColorRect" parent="ViewportContainer/Panel/VBoxContainer/colors" index="14"]
+[node name="ColorRect15" type="ColorRect" parent="ViewportContainer/LeftSideBar/VBoxContainer/colors" index="14"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -784,11 +1105,11 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 color = Color( 0, 0, 0, 1 )
-script = ExtResource( 6 )
+script = ExtResource( 7 )
 _sections_unfolded = [ "Rect" ]
 color_picker = NodePath("../../ColorPicker")
 
-[node name="ColorRect16" type="ColorRect" parent="ViewportContainer/Panel/VBoxContainer/colors" index="15"]
+[node name="ColorRect16" type="ColorRect" parent="ViewportContainer/LeftSideBar/VBoxContainer/colors" index="15"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -805,11 +1126,11 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 color = Color( 0, 0, 0, 1 )
-script = ExtResource( 6 )
+script = ExtResource( 7 )
 _sections_unfolded = [ "Rect" ]
 color_picker = NodePath("../../ColorPicker")
 
-[node name="ColorRect17" type="ColorRect" parent="ViewportContainer/Panel/VBoxContainer/colors" index="16"]
+[node name="ColorRect17" type="ColorRect" parent="ViewportContainer/LeftSideBar/VBoxContainer/colors" index="16"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -827,11 +1148,11 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 color = Color( 0, 0, 0, 1 )
-script = ExtResource( 6 )
+script = ExtResource( 7 )
 _sections_unfolded = [ "Rect" ]
 color_picker = NodePath("../../ColorPicker")
 
-[node name="ColorRect18" type="ColorRect" parent="ViewportContainer/Panel/VBoxContainer/colors" index="17"]
+[node name="ColorRect18" type="ColorRect" parent="ViewportContainer/LeftSideBar/VBoxContainer/colors" index="17"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -849,11 +1170,11 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 color = Color( 0, 0, 0, 1 )
-script = ExtResource( 6 )
+script = ExtResource( 7 )
 _sections_unfolded = [ "Rect" ]
 color_picker = NodePath("../../ColorPicker")
 
-[node name="ColorRect19" type="ColorRect" parent="ViewportContainer/Panel/VBoxContainer/colors" index="18"]
+[node name="ColorRect19" type="ColorRect" parent="ViewportContainer/LeftSideBar/VBoxContainer/colors" index="18"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -871,11 +1192,11 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 color = Color( 0, 0, 0, 1 )
-script = ExtResource( 6 )
+script = ExtResource( 7 )
 _sections_unfolded = [ "Rect" ]
 color_picker = NodePath("../../ColorPicker")
 
-[node name="ColorRect20" type="ColorRect" parent="ViewportContainer/Panel/VBoxContainer/colors" index="19"]
+[node name="ColorRect20" type="ColorRect" parent="ViewportContainer/LeftSideBar/VBoxContainer/colors" index="19"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -893,11 +1214,11 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 color = Color( 0, 0, 0, 1 )
-script = ExtResource( 6 )
+script = ExtResource( 7 )
 _sections_unfolded = [ "Rect" ]
 color_picker = NodePath("../../ColorPicker")
 
-[node name="ColorRect21" type="ColorRect" parent="ViewportContainer/Panel/VBoxContainer/colors" index="20"]
+[node name="ColorRect21" type="ColorRect" parent="ViewportContainer/LeftSideBar/VBoxContainer/colors" index="20"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -914,11 +1235,11 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 color = Color( 0, 0, 0, 1 )
-script = ExtResource( 6 )
+script = ExtResource( 7 )
 _sections_unfolded = [ "Rect" ]
 color_picker = NodePath("../../ColorPicker")
 
-[node name="ColorRect22" type="ColorRect" parent="ViewportContainer/Panel/VBoxContainer/colors" index="21"]
+[node name="ColorRect22" type="ColorRect" parent="ViewportContainer/LeftSideBar/VBoxContainer/colors" index="21"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -936,11 +1257,11 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 color = Color( 0, 0, 0, 1 )
-script = ExtResource( 6 )
+script = ExtResource( 7 )
 _sections_unfolded = [ "Rect" ]
 color_picker = NodePath("../../ColorPicker")
 
-[node name="ColorRect23" type="ColorRect" parent="ViewportContainer/Panel/VBoxContainer/colors" index="22"]
+[node name="ColorRect23" type="ColorRect" parent="ViewportContainer/LeftSideBar/VBoxContainer/colors" index="22"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -958,11 +1279,11 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 color = Color( 0, 0, 0, 1 )
-script = ExtResource( 6 )
+script = ExtResource( 7 )
 _sections_unfolded = [ "Rect" ]
 color_picker = NodePath("../../ColorPicker")
 
-[node name="ColorRect24" type="ColorRect" parent="ViewportContainer/Panel/VBoxContainer/colors" index="23"]
+[node name="ColorRect24" type="ColorRect" parent="ViewportContainer/LeftSideBar/VBoxContainer/colors" index="23"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -980,11 +1301,11 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 color = Color( 0, 0, 0, 1 )
-script = ExtResource( 6 )
+script = ExtResource( 7 )
 _sections_unfolded = [ "Rect" ]
 color_picker = NodePath("../../ColorPicker")
 
-[node name="ColorRect25" type="ColorRect" parent="ViewportContainer/Panel/VBoxContainer/colors" index="24"]
+[node name="ColorRect25" type="ColorRect" parent="ViewportContainer/LeftSideBar/VBoxContainer/colors" index="24"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -1002,11 +1323,11 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 color = Color( 0, 0, 0, 1 )
-script = ExtResource( 6 )
+script = ExtResource( 7 )
 _sections_unfolded = [ "Rect" ]
 color_picker = NodePath("../../ColorPicker")
 
-[node name="ColorPicker" type="ColorPicker" parent="ViewportContainer/Panel/VBoxContainer" index="1"]
+[node name="ColorPicker" type="ColorPicker" parent="ViewportContainer/LeftSideBar/VBoxContainer" index="1"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -1021,66 +1342,84 @@ mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-theme = SubResource( 10 )
+theme = SubResource( 8 )
 alignment = 0
 color = Color( 1, 1, 1, 1 )
 edit_alpha = false
 raw_mode = false
-script = ExtResource( 7 )
+script = ExtResource( 8 )
 _sections_unfolded = [ "Theme" ]
 
 [connection signal="gui_input" from="ViewportContainer" to="ViewportContainer" method="gui_input"]
 
-[connection signal="gui_input" from="ViewportContainer/Panel/VBoxContainer/colors/ColorRect" to="ViewportContainer/Panel/VBoxContainer/colors/ColorRect" method="gui_input"]
+[connection signal="size_changed" from="ViewportContainer/Viewport" to="ViewportContainer" method="size_changed"]
 
-[connection signal="gui_input" from="ViewportContainer/Panel/VBoxContainer/colors/ColorRect2" to="ViewportContainer/Panel/VBoxContainer/colors/ColorRect2" method="gui_input"]
+[connection signal="value_changed" from="ViewportContainer/TopBar/VBoxContainer/size/x" to="ViewportContainer/Viewport/GridMap/Matrix" method="size_x_changed"]
 
-[connection signal="gui_input" from="ViewportContainer/Panel/VBoxContainer/colors/ColorRect3" to="ViewportContainer/Panel/VBoxContainer/colors/ColorRect3" method="gui_input"]
+[connection signal="value_changed" from="ViewportContainer/TopBar/VBoxContainer/size/y" to="ViewportContainer/Viewport/GridMap/Matrix" method="size_y_changed"]
 
-[connection signal="gui_input" from="ViewportContainer/Panel/VBoxContainer/colors/ColorRect4" to="ViewportContainer/Panel/VBoxContainer/colors/ColorRect4" method="gui_input"]
+[connection signal="value_changed" from="ViewportContainer/TopBar/VBoxContainer/size/z" to="ViewportContainer/Viewport/GridMap/Matrix" method="size_z_changed"]
 
-[connection signal="gui_input" from="ViewportContainer/Panel/VBoxContainer/colors/ColorRect5" to="ViewportContainer/Panel/VBoxContainer/colors/ColorRect5" method="gui_input"]
+[connection signal="value_changed" from="ViewportContainer/TopBar/VBoxContainer/pivot/x" to="ViewportContainer/Viewport/GridMap/Matrix" method="size_x_changed"]
 
-[connection signal="gui_input" from="ViewportContainer/Panel/VBoxContainer/colors/ColorRect6" to="ViewportContainer/Panel/VBoxContainer/colors/ColorRect6" method="gui_input"]
+[connection signal="value_changed" from="ViewportContainer/TopBar/VBoxContainer/pivot/y" to="ViewportContainer/Viewport/GridMap/Matrix" method="size_y_changed"]
 
-[connection signal="gui_input" from="ViewportContainer/Panel/VBoxContainer/colors/ColorRect7" to="ViewportContainer/Panel/VBoxContainer/colors/ColorRect7" method="gui_input"]
+[connection signal="value_changed" from="ViewportContainer/TopBar/VBoxContainer/pivot/z" to="ViewportContainer/Viewport/GridMap/Matrix" method="size_z_changed"]
 
-[connection signal="gui_input" from="ViewportContainer/Panel/VBoxContainer/colors/ColorRect8" to="ViewportContainer/Panel/VBoxContainer/colors/ColorRect8" method="gui_input"]
+[connection signal="pressed" from="ViewportContainer/BottomBar/VBoxContainer/SaveButton" to="ViewportContainer/Viewport/GridMap" method="on_save"]
 
-[connection signal="gui_input" from="ViewportContainer/Panel/VBoxContainer/colors/ColorRect9" to="ViewportContainer/Panel/VBoxContainer/colors/ColorRect9" method="gui_input"]
+[connection signal="pressed" from="ViewportContainer/BottomBar/VBoxContainer/LoadButton" to="ViewportContainer/BottomBar/VBoxContainer/LoadButton" method="on_pressed"]
 
-[connection signal="gui_input" from="ViewportContainer/Panel/VBoxContainer/colors/ColorRect10" to="ViewportContainer/Panel/VBoxContainer/colors/ColorRect10" method="gui_input"]
+[connection signal="gui_input" from="ViewportContainer/LeftSideBar/VBoxContainer/colors/ColorRect" to="ViewportContainer/LeftSideBar/VBoxContainer/colors/ColorRect" method="gui_input"]
 
-[connection signal="gui_input" from="ViewportContainer/Panel/VBoxContainer/colors/ColorRect11" to="ViewportContainer/Panel/VBoxContainer/colors/ColorRect11" method="gui_input"]
+[connection signal="gui_input" from="ViewportContainer/LeftSideBar/VBoxContainer/colors/ColorRect2" to="ViewportContainer/LeftSideBar/VBoxContainer/colors/ColorRect2" method="gui_input"]
 
-[connection signal="gui_input" from="ViewportContainer/Panel/VBoxContainer/colors/ColorRect12" to="ViewportContainer/Panel/VBoxContainer/colors/ColorRect12" method="gui_input"]
+[connection signal="gui_input" from="ViewportContainer/LeftSideBar/VBoxContainer/colors/ColorRect3" to="ViewportContainer/LeftSideBar/VBoxContainer/colors/ColorRect3" method="gui_input"]
 
-[connection signal="gui_input" from="ViewportContainer/Panel/VBoxContainer/colors/ColorRect13" to="ViewportContainer/Panel/VBoxContainer/colors/ColorRect13" method="gui_input"]
+[connection signal="gui_input" from="ViewportContainer/LeftSideBar/VBoxContainer/colors/ColorRect4" to="ViewportContainer/LeftSideBar/VBoxContainer/colors/ColorRect4" method="gui_input"]
 
-[connection signal="gui_input" from="ViewportContainer/Panel/VBoxContainer/colors/ColorRect14" to="ViewportContainer/Panel/VBoxContainer/colors/ColorRect14" method="gui_input"]
+[connection signal="gui_input" from="ViewportContainer/LeftSideBar/VBoxContainer/colors/ColorRect5" to="ViewportContainer/LeftSideBar/VBoxContainer/colors/ColorRect5" method="gui_input"]
 
-[connection signal="gui_input" from="ViewportContainer/Panel/VBoxContainer/colors/ColorRect15" to="ViewportContainer/Panel/VBoxContainer/colors/ColorRect15" method="gui_input"]
+[connection signal="gui_input" from="ViewportContainer/LeftSideBar/VBoxContainer/colors/ColorRect6" to="ViewportContainer/LeftSideBar/VBoxContainer/colors/ColorRect6" method="gui_input"]
 
-[connection signal="gui_input" from="ViewportContainer/Panel/VBoxContainer/colors/ColorRect16" to="ViewportContainer/Panel/VBoxContainer/colors/ColorRect16" method="gui_input"]
+[connection signal="gui_input" from="ViewportContainer/LeftSideBar/VBoxContainer/colors/ColorRect7" to="ViewportContainer/LeftSideBar/VBoxContainer/colors/ColorRect7" method="gui_input"]
 
-[connection signal="gui_input" from="ViewportContainer/Panel/VBoxContainer/colors/ColorRect17" to="ViewportContainer/Panel/VBoxContainer/colors/ColorRect17" method="gui_input"]
+[connection signal="gui_input" from="ViewportContainer/LeftSideBar/VBoxContainer/colors/ColorRect8" to="ViewportContainer/LeftSideBar/VBoxContainer/colors/ColorRect8" method="gui_input"]
 
-[connection signal="gui_input" from="ViewportContainer/Panel/VBoxContainer/colors/ColorRect18" to="ViewportContainer/Panel/VBoxContainer/colors/ColorRect18" method="gui_input"]
+[connection signal="gui_input" from="ViewportContainer/LeftSideBar/VBoxContainer/colors/ColorRect9" to="ViewportContainer/LeftSideBar/VBoxContainer/colors/ColorRect9" method="gui_input"]
 
-[connection signal="gui_input" from="ViewportContainer/Panel/VBoxContainer/colors/ColorRect19" to="ViewportContainer/Panel/VBoxContainer/colors/ColorRect19" method="gui_input"]
+[connection signal="gui_input" from="ViewportContainer/LeftSideBar/VBoxContainer/colors/ColorRect10" to="ViewportContainer/LeftSideBar/VBoxContainer/colors/ColorRect10" method="gui_input"]
 
-[connection signal="gui_input" from="ViewportContainer/Panel/VBoxContainer/colors/ColorRect20" to="ViewportContainer/Panel/VBoxContainer/colors/ColorRect20" method="gui_input"]
+[connection signal="gui_input" from="ViewportContainer/LeftSideBar/VBoxContainer/colors/ColorRect11" to="ViewportContainer/LeftSideBar/VBoxContainer/colors/ColorRect11" method="gui_input"]
 
-[connection signal="gui_input" from="ViewportContainer/Panel/VBoxContainer/colors/ColorRect21" to="ViewportContainer/Panel/VBoxContainer/colors/ColorRect21" method="gui_input"]
+[connection signal="gui_input" from="ViewportContainer/LeftSideBar/VBoxContainer/colors/ColorRect12" to="ViewportContainer/LeftSideBar/VBoxContainer/colors/ColorRect12" method="gui_input"]
 
-[connection signal="gui_input" from="ViewportContainer/Panel/VBoxContainer/colors/ColorRect22" to="ViewportContainer/Panel/VBoxContainer/colors/ColorRect22" method="gui_input"]
+[connection signal="gui_input" from="ViewportContainer/LeftSideBar/VBoxContainer/colors/ColorRect13" to="ViewportContainer/LeftSideBar/VBoxContainer/colors/ColorRect13" method="gui_input"]
 
-[connection signal="gui_input" from="ViewportContainer/Panel/VBoxContainer/colors/ColorRect23" to="ViewportContainer/Panel/VBoxContainer/colors/ColorRect23" method="gui_input"]
+[connection signal="gui_input" from="ViewportContainer/LeftSideBar/VBoxContainer/colors/ColorRect14" to="ViewportContainer/LeftSideBar/VBoxContainer/colors/ColorRect14" method="gui_input"]
 
-[connection signal="gui_input" from="ViewportContainer/Panel/VBoxContainer/colors/ColorRect24" to="ViewportContainer/Panel/VBoxContainer/colors/ColorRect24" method="gui_input"]
+[connection signal="gui_input" from="ViewportContainer/LeftSideBar/VBoxContainer/colors/ColorRect15" to="ViewportContainer/LeftSideBar/VBoxContainer/colors/ColorRect15" method="gui_input"]
 
-[connection signal="gui_input" from="ViewportContainer/Panel/VBoxContainer/colors/ColorRect25" to="ViewportContainer/Panel/VBoxContainer/colors/ColorRect25" method="gui_input"]
+[connection signal="gui_input" from="ViewportContainer/LeftSideBar/VBoxContainer/colors/ColorRect16" to="ViewportContainer/LeftSideBar/VBoxContainer/colors/ColorRect16" method="gui_input"]
 
-[connection signal="color_changed" from="ViewportContainer/Panel/VBoxContainer/ColorPicker" to="ViewportContainer/Panel/VBoxContainer/ColorPicker" method="color_changed"]
+[connection signal="gui_input" from="ViewportContainer/LeftSideBar/VBoxContainer/colors/ColorRect17" to="ViewportContainer/LeftSideBar/VBoxContainer/colors/ColorRect17" method="gui_input"]
+
+[connection signal="gui_input" from="ViewportContainer/LeftSideBar/VBoxContainer/colors/ColorRect18" to="ViewportContainer/LeftSideBar/VBoxContainer/colors/ColorRect18" method="gui_input"]
+
+[connection signal="gui_input" from="ViewportContainer/LeftSideBar/VBoxContainer/colors/ColorRect19" to="ViewportContainer/LeftSideBar/VBoxContainer/colors/ColorRect19" method="gui_input"]
+
+[connection signal="gui_input" from="ViewportContainer/LeftSideBar/VBoxContainer/colors/ColorRect20" to="ViewportContainer/LeftSideBar/VBoxContainer/colors/ColorRect20" method="gui_input"]
+
+[connection signal="gui_input" from="ViewportContainer/LeftSideBar/VBoxContainer/colors/ColorRect21" to="ViewportContainer/LeftSideBar/VBoxContainer/colors/ColorRect21" method="gui_input"]
+
+[connection signal="gui_input" from="ViewportContainer/LeftSideBar/VBoxContainer/colors/ColorRect22" to="ViewportContainer/LeftSideBar/VBoxContainer/colors/ColorRect22" method="gui_input"]
+
+[connection signal="gui_input" from="ViewportContainer/LeftSideBar/VBoxContainer/colors/ColorRect23" to="ViewportContainer/LeftSideBar/VBoxContainer/colors/ColorRect23" method="gui_input"]
+
+[connection signal="gui_input" from="ViewportContainer/LeftSideBar/VBoxContainer/colors/ColorRect24" to="ViewportContainer/LeftSideBar/VBoxContainer/colors/ColorRect24" method="gui_input"]
+
+[connection signal="gui_input" from="ViewportContainer/LeftSideBar/VBoxContainer/colors/ColorRect25" to="ViewportContainer/LeftSideBar/VBoxContainer/colors/ColorRect25" method="gui_input"]
+
+[connection signal="color_changed" from="ViewportContainer/LeftSideBar/VBoxContainer/ColorPicker" to="ViewportContainer/LeftSideBar/VBoxContainer/ColorPicker" method="color_changed"]
 
 

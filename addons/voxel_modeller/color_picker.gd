@@ -11,7 +11,7 @@ func _ready():
 	for node in get_parent().get_node("colors").get_children():
 		if(!selected):
 			selected = node
-		var mat = SpatialMaterial.new()
+		var mat = get_node("../../../Viewport/GridMap").theme.get_item_mesh(node.get_position_in_parent()).material
 		mat.albedo_color = node.color
 		material_lookup[node] = mat
 

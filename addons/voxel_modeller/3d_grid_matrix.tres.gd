@@ -9,45 +9,34 @@ var render_side_4 = false
 var render_bottom = false
 var render_top = false
 
-
 func create_end_plane():
 	var size = box.size
-	var vec1 = Vector3(size.x/2,0,size.z/2)
-	var vec2 = Vector3(-size.x/2,0,size.z/2)
-	var vec3 = Vector3(-size.x/2,0,-size.z/2)
-	var vec4 = Vector3(size.x/2,0,-size.z/2)
-	return [vec1,vec2,vec3,vec4]
+	var b = BoxShape.new()
+	b.extents = Vector3(size.x/2,.1,size.z/2)
+	return b
 
 func create_side_plane_x():
 	var size = box.size
-	var vec1 = Vector3(0,size.y/2,size.z/2)
-	var vec2 = Vector3(0,-size.y/2,size.z/2)
-	var vec3 = Vector3(0,-size.y/2,-size.z/2)
-	var vec4 = Vector3(0,size.y/2,-size.z/2)
-	return [vec1,vec2,vec3,vec4]
+	var b = BoxShape.new()
+	b.extents = Vector3(.1,size.y/2,size.z/2)
+	return b
 
 func create_side_plane_z():
 	var size = box.size
-	var vec1 = Vector3(size.x/2,size.y/2,0)
-	var vec2 = Vector3(-size.x/2,size.y/2,0)
-	var vec3 = Vector3(-size.x/2,-size.y/2,0)
-	var vec4 = Vector3(size.x/2,-size.y/2,0)
-	return [vec1,vec2,vec3,vec4]
+	var b = BoxShape.new()
+	b.extents = Vector3(size.x/2,size.y/2,0.1)
+	return b
 
 
 func setup_boundaries():
-	var size = box.size
-	var n = Vector3(size.x/2,0,size.z/2)
-	get_node("Area/bottom").shape.points = create_end_plane()
-	n = Vector3(size.x/2,size.y/2,0)
-	get_node("Area/side1").shape.points = create_side_plane_z()
-	n = Vector3(0,size.y/2,size.z/2)
-	get_node("Area/side2").shape.points = create_side_plane_x()
+	get_node("Area/bottom").shape = create_end_plane()
+	get_node("Area/side1").shape = create_side_plane_z()
+	get_node("Area/side2").shape = create_side_plane_x()
 
 func _process(delta):
 	matrix_update()
-	var size = box.size
 	setup_boundaries()
+	var size = box.size
 	var material = SpatialMaterial.new()
 	material.vertex_color_use_as_albedo = true
 	material.flags_unshaded = true
@@ -145,3 +134,29 @@ func matrix_update():
 		else:
 			render_bottom = true
 			render_top = false
+
+
+func size_x_changed(value):
+	box.size.x = max(0,value)
+	remove_voxels_out_of_bounds()
+	update()
+
+
+func size_y_changed(value):
+	box.size.y = max(0,value)
+	remove_voxels_out_of_bounds()
+	update()
+
+func size_z_changed(value):
+	box.size.z = max(0,value)
+	remove_voxels_out_of_bounds()
+	update()
+
+func remove_voxels_out_of_bounds():
+	var gridmap = get_parent()
+	for p in gridmap.get_used_cells():
+		if(p.x < 0 || p.x >= box.size.x || p.y < 0 || p.y >= box.size.y || p.z < 0 || p.z >= box.size.z):
+			gridmap.set_cell_item(p.x,p.y,p.z,-1)
+
+func update():
+	get_parent().get_parent().render_target_update_mode = Viewport.UPDATE_ONCE
