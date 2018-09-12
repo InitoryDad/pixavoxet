@@ -13,6 +13,7 @@ onready var gridmap = $Viewport/GridMap
 onready var matrix = get_node("Viewport/GridMap/Matrix")
 var altmode = false
 var ctrlmode = false
+var shiftmode = false
 var toolmode = "box"
 var temp_voxels = []
 var changed = false
@@ -58,6 +59,10 @@ func _input(ev):
 		ctrlmode = true
 	if(ev is InputEventKey && ev.scancode == KEY_CONTROL && !ev.is_pressed()):
 		ctrlmode = false
+	if(ev is InputEventKey && ev.scancode == KEY_SHIFT && ev.is_pressed()):
+		shiftmode = true
+	if(ev is InputEventKey && ev.scancode == KEY_SHIFT && !ev.is_pressed()):
+		shiftmode = false
 
 
 func _process(delta):
@@ -65,53 +70,37 @@ func _process(delta):
 	cursor = $Viewport/Cursor
 	gridmap = $Viewport/GridMap
 	matrix = get_node("Viewport/GridMap/Matrix")
-	if(wait == 10):
+	if(wait == 1):
 		wait = 0
 		if(changed):
-			if(!altmode && !ctrlmode):
+			if(toolmode == "place"):
 				delete()
-			elif(altmode):
+			elif(toolmode == "delete"):
 				add()
-			elif(ctrlmode):
+			elif(toolmode == "paint"):
 				repaint()
 			temp_voxels = []
 		if(drag_box && !drag_end):
 			if(changed):
-				if(!altmode && !ctrlmode):
+				if(toolmode == "place"):
 					place_drag_box(drag_box,true)
-				elif(altmode):
+				elif(toolmode == "delete"):
 					delete_drag_box(drag_box,true)
-				elif(ctrlmode):
+				elif(toolmode == "paint"):
 					paint_drag_box(drag_box,true)
 				changed = false
 				$Viewport.render_target_update_mode = Viewport.UPDATE_ONCE
 		if(drag_end):
-			if(!altmode && !ctrlmode):
+			if(toolmode == "place"):
 				delete()
 				place_drag_box(drag_box,false)
-			elif(altmode):
+			elif(toolmode == "delete"):
 				add()
 				delete_drag_box(drag_box,false)
-			elif(ctrlmode):
+			elif(toolmode == "paint"):
 				repaint()
 				paint_drag_box(drag_box,false)
 			$Viewport.render_target_update_mode = Viewport.UPDATE_ONCE
-			temp_voxels = []
-			drag_box = null
-			drag_end = false
-			gridmap.set_octant_size(16)
-			gridmap.make_baked_meshes()
-			var meshes = gridmap.get_bake_meshes()
-			for child in $Viewport/GridMap/Collision.get_children():
-				$Viewport/GridMap/Collision.remove_child(child)
-				child.free()
-			var transform = null
-			for mesh in meshes:
-				if(typeof(mesh) != TYPE_TRANSFORM):
-					var col = CollisionShape.new()
-					col.shape = mesh.create_trimesh_shape()
-					$Viewport/GridMap/Collision.add_child(col)
-			gridmap.set_octant_size(8)
 
 	wait += 1
 	var mouse_pos = get_node("Viewport").get_mouse_position()
@@ -132,8 +121,13 @@ func _process(delta):
 			$Viewport.render_target_update_mode = Viewport.UPDATE_ONCE
 		if(drag_start && drag_box == null):
 			if(!altmode && !ctrlmode):
+				toolmode = "place"
 				p = hit.position + (hit.normal.round() * .5)
-			elif(altmode || ctrlmode):
+			elif(altmode):
+				toolmode = "delete"
+				p = hit.position - (hit.normal.round() * .5)
+			elif(ctrlmode):
+				toolmode = "paint"
 				p = hit.position - (hit.normal.round() * .5)
 			p = p.floor()
 			p.x = min(size.x-1,p.x)
@@ -145,7 +139,10 @@ func _process(delta):
 			drag_box = [p,p]
 			changed = true
 		if(drag_start):
-			p = hit.position + (hit.normal.round() * .5)
+			if(toolmode != "paint" && toolmode != "delete"):
+				p = hit.position + (hit.normal.round() * .5)
+			elif(toolmode == "delete" || toolmode == "paint"):
+				p = hit.position - (hit.normal.round() * .5)
 			p = p.floor()
 			p.x = min(size.x-1,p.x)
 			p.x = max(0,p.x)
@@ -200,13 +197,12 @@ func gui_input(ev):
 		rotate(ev)
 	if(ev is InputEventMouseMotion && panning && !ev.is_echo()):
 		pan(ev)
-	if(toolmode == "box"):
-		if(ev is InputEventMouseButton && ev.button_index == 1 && ev.pressed && !ev.is_echo()):
-			drag_start = true
-			drag_end = false
-		if(ev is InputEventMouseButton && ev.button_index == 1 && !ev.pressed && !ev.is_echo()):
-			drag_start = false
-			drag_end = true
+	if(ev is InputEventMouseButton && ev.button_index == 1 && ev.pressed && !ev.is_echo()):
+		drag_start = true
+		drag_end = false
+	if(ev is InputEventMouseButton && ev.button_index == 1 && !ev.pressed && !ev.is_echo()):
+		drag_start = false
+		drag_end = true
 
 func in_box(p):
 	var min_x = min(drag_box[0].x,drag_box[1].x)
@@ -265,19 +261,21 @@ func delete_drag_box(_drag_box,_temp):
 	var max_y = max(_drag_box[0].y,_drag_box[1].y)
 	var max_z = max(_drag_box[0].z,_drag_box[1].z)
 	var do_voxels = []
+	var undo_voxels = []
 	for x in range(min_x, max_x+1):
 		for y in range(min_y, max_y+1):
 			for z in range(min_z, max_z+1):
 				var i = gridmap.get_cell_item(x,y,z)
 				if(i != -1):
-					do_voxels.append([Vector3(x,y,z),i])
+					do_voxels.append([Vector3(x,y,z),-1])
+					undo_voxels.append([Vector3(x,y,z),i])
 					if(_temp):
 						gridmap.set_cell_item(x,y,z,-1)
 						temp_voxels.append([x,y,z,i])
 	if(!_temp):
 		undoredo.create_action("Place Voxels",UndoRedo.MERGE_DISABLE)
-		undoredo.add_do_method(self,"delete_voxels",do_voxels)
-		undoredo.add_undo_method(self,"place_voxels",do_voxels)
+		undoredo.add_do_method(self,"place_voxels",do_voxels)
+		undoredo.add_undo_method(self,"place_voxels",undo_voxels)
 		undoredo.commit_action()
 
 func place_drag_box(_drag_box,_temp):
@@ -290,26 +288,22 @@ func place_drag_box(_drag_box,_temp):
 	var max_y = max(_drag_box[0].y,_drag_box[1].y)
 	var max_z = max(_drag_box[0].z,_drag_box[1].z)
 	var do_voxels = []
+	var undo_voxels = []
 	for x in range(min_x, max_x+1):
 		for y in range(min_y, max_y+1):
 			for z in range(min_z, max_z+1):
 				if(gridmap.get_cell_item(x,y,z) == -1):
 					gridmap.theme.get_item_mesh(index).material = color
 					do_voxels.append([Vector3(x,y,z),index])
+					undo_voxels.append([Vector3(x,y,z),-1])
 					if(_temp):
 						gridmap.set_cell_item(x,y,z,index)
 						temp_voxels.append([x,y,z,index])
 	if(!_temp):
 		undoredo.create_action("Place Voxels",UndoRedo.MERGE_DISABLE)
 		undoredo.add_do_method(self,"place_voxels",do_voxels)
-		undoredo.add_undo_method(self,"delete_voxels",do_voxels)
+		undoredo.add_undo_method(self,"place_voxels",undo_voxels)
 		undoredo.commit_action()
-
-func delete_voxels(voxels):
-	for n in voxels:
-		var p = n[0]
-		gridmap.set_cell_item(p.x,p.y,p.z,-1)
-	$Viewport.render_target_update_mode = Viewport.UPDATE_ONCE
 
 func place_voxels(voxels):
 	for n in voxels:
@@ -317,6 +311,48 @@ func place_voxels(voxels):
 		var i = n[1]
 		gridmap.set_cell_item(p.x,p.y,p.z,i)
 	$Viewport.render_target_update_mode = Viewport.UPDATE_ONCE
+	update_model()
+	generate_collision()
+
+func generate_collision():
+	temp_voxels = []
+	drag_box = null
+	drag_end = false
+	gridmap.set_octant_size(16)
+	gridmap.make_baked_meshes()
+	var meshes = gridmap.get_bake_meshes()
+	for child in $Viewport/GridMap/Collision.get_children():
+		$Viewport/GridMap/Collision.remove_child(child)
+		child.free()
+	var transform = null
+	for mesh in meshes:
+		if(typeof(mesh) != TYPE_TRANSFORM):
+			var col = CollisionShape.new()
+			col.shape = mesh.create_trimesh_shape()
+			$Viewport/GridMap/Collision.add_child(col)
+	gridmap.set_octant_size(8)
+
+func update_model():
+	var voxel_positions = gridmap.get_current_model().voxels.keys()
+	var cell_positions = gridmap.get_used_cells()
+	for vp in voxel_positions:
+		if(!cell_positions.has(vp)):
+			var voxel = gridmap.get_current_model().voxel_children[vp]
+			gridmap.get_current_model().remove_child(voxel)
+			voxel.free()
+			gridmap.get_current_model().voxel_children.erase(vp)
+			gridmap.get_current_model().voxels.erase(vp)
+		else:
+			var i = gridmap.get_cell_item(vp.x,vp.y,vp.z)
+			if(i !=  gridmap.get_current_model().voxels[vp]):
+				gridmap.get_current_model().voxels[vp] = i
+				gridmap.get_current_model().voxel_children[vp].color_index = i
+				gridmap.get_current_model().voxel_children[vp].color = gridmap.get_material_color(i)
+	for cp in cell_positions:
+		if(!voxel_positions.has(cp)):
+			var i = gridmap.get_cell_item(cp.x,cp.y,cp.z)
+			gridmap.get_current_model().voxels[cp] = i
+			gridmap.add_voxel(cp.x,cp.y,cp.z,i)
 
 func size_changed():
 	$Viewport.render_target_update_mode = Viewport.UPDATE_ONCE

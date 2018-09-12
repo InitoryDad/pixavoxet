@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://addons/voxel_modeller/voxel_mom.gd" type="Script" id=1]
+
+[node name="model" type="Spatial" index="0"]
+
+script = ExtResource( 1 )
+model = ""
+size = Vector3( 0, 0, 0 )
+pivot = Vector3( 0, 0, 0 )
+
+

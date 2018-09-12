@@ -2,6 +2,8 @@ tool
 extends MeshInstance
 export var box = AABB(Vector3(0,0,0), Vector3(10,10,10))
 var matrix = {}
+var pivot = Vector3()
+var render_pivot = true
 var render_side_1 = false
 var render_side_2 = false
 var render_side_3 = false
@@ -36,6 +38,9 @@ func setup_boundaries():
 func _process(delta):
 	matrix_update()
 	setup_boundaries()
+	pivot.x = get_node("../../../TopBar/VBoxContainer/pivot/x").value
+	pivot.y = get_node("../../../TopBar/VBoxContainer/pivot/y").value
+	pivot.z = get_node("../../../TopBar/VBoxContainer/pivot/z").value
 	var size = box.size
 	var material = SpatialMaterial.new()
 	material.vertex_color_use_as_albedo = true
@@ -43,6 +48,16 @@ func _process(delta):
 	material.flags_transparent = true
 	var st = SurfaceTool.new()
 	st.begin(Mesh.PRIMITIVE_LINES)
+	#pivot
+	st.add_color(Color(1,0,0,1))
+	st.add_vertex(Vector3(pivot.x-100,pivot.y,pivot.z))
+	st.add_vertex(Vector3(pivot.x+100,pivot.y,pivot.z))
+	st.add_color(Color(0,1,0,1))
+	st.add_vertex(Vector3(pivot.x,pivot.y-100,pivot.z))
+	st.add_vertex(Vector3(pivot.x,pivot.y+100,pivot.z))
+	st.add_color(Color(0,0,1,1))
+	st.add_vertex(Vector3(pivot.x,pivot.y,pivot.z-100))
+	st.add_vertex(Vector3(pivot.x,pivot.y,pivot.z+100))
 	#bottom-xz-red-blue
 	if(render_bottom):
 		st.add_color(Color(0, 0, 1, .5))
@@ -135,6 +150,11 @@ func matrix_update():
 			render_bottom = true
 			render_top = false
 
+func reload():
+	box.size.x = get_node("../../../TopBar/VBoxContainer/size/x").value
+	box.size.y = get_node("../../../TopBar/VBoxContainer/size/y").value
+	box.size.z = get_node("../../../TopBar/VBoxContainer/size/z").value
+	update()
 
 func size_x_changed(value):
 	box.size.x = max(0,value)
@@ -158,5 +178,8 @@ func remove_voxels_out_of_bounds():
 		if(p.x < 0 || p.x >= box.size.x || p.y < 0 || p.y >= box.size.y || p.z < 0 || p.z >= box.size.z):
 			gridmap.set_cell_item(p.x,p.y,p.z,-1)
 
-func update():
+func update(value = 0):
 	get_parent().get_parent().render_target_update_mode = Viewport.UPDATE_ONCE
+
+func _on_x_changed():
+	pass # replace with function body
