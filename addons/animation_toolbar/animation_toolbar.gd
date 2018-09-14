@@ -10,10 +10,6 @@ var animations
 var filedialog
 
 func _enter_tree():
-	for child in get_editor_interface().get_editor_viewport().get_children():
-		if(child.get_class() == "SpatialEditor"):
-			for method in child.get_method_list():
-				print(method["name"])
 	connect("scene_changed",self,"scene_changed")
 	panel = HBoxContainer.new()
 	timeline = HSlider.new()
@@ -36,12 +32,12 @@ func _enter_tree():
 	panel.add_child(save_button)
 	panel.add_child(timeline)
 	add_control_to_container(CONTAINER_SPATIAL_EDITOR_BOTTOM,panel)
-	add_custom_type("VoxelModel", "Path", preload("MagicaVoxelInstance.gd"), preload("voxel_model_icon.png"))
-	add_custom_type("VoxelRoot", "Spatial", preload("VoxelRoot.gd"), preload("voxel_root_icon.png"))
 
 func scene_changed(scene):
 	var scene_root = get_tree().get_edited_scene_root()
 	animation_player = scene_root.get_node("AnimationPlayer")
+	if(!animation_player):
+		return
 	animation_button.clear()
 	animations = animation_player.get_animation_list()
 	if(animation_player.animation_name == ""):
@@ -74,12 +70,16 @@ func animation_selected(idx):
 		timeline.step = .01
 		animation_player.frame = 0
 		animation_player.update()
-		print("selected")
 
 func _process(delta):
 	var scene_root = get_tree().get_edited_scene_root()
+
+	if(!scene_root || !scene_root.get_node("AnimationPlayer")):
+		return
 	if(scene_root && !animation_player && scene_root.get_node("AnimationPlayer") || animation_player && animation_player.get_animation_list() != animations):
 		animation_player = scene_root.get_node("AnimationPlayer")
+		if(!animation_player):
+			return
 		animation_button.clear()
 		animations = animation_player.get_animation_list()
 		if(animation_player.animation_name == ""):
@@ -118,6 +118,6 @@ func play():
 			play_button.modulate = Color(1,0,0,1)
 
 func _exit_tree():
-	remove_custom_type("VoxelRoot")
-	remove_control_from_container(CONTAINER_CANVAS_EDITOR_BOTTOM,panel)
+	#remove_control_from_container(CONTAINER_CANVAS_EDITOR_BOTTOM,panel)
+	panel.visible = false
 	panel.free()

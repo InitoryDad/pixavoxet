@@ -15,7 +15,7 @@ config/icon="res://icon.png"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "voxel_modeller" )
+enabled=PoolStringArray( "animation_toolbar", "voxel_modeller" )
 
 [input]
 

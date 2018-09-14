@@ -1,8 +1,6 @@
 tool
 extends ViewportContainer
 
-var Voxel = preload("res://voxel.tscn")
-
 var zooming_in = false
 var zooming_out = false
 var rotating = false
@@ -279,6 +277,8 @@ func delete_drag_box(_drag_box,_temp):
 		undoredo.commit_action()
 
 func place_drag_box(_drag_box,_temp):
+	if(!_drag_box):
+		return
 	var color = get_node("LeftSideBar/VBoxContainer/ColorPicker").get_selected_material()
 	var index = get_node("LeftSideBar/VBoxContainer/ColorPicker").selected_index
 	var min_x = min(_drag_box[0].x,_drag_box[1].x)

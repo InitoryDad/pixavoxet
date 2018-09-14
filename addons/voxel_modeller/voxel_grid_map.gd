@@ -12,12 +12,6 @@ var models = []
 
 var threads = []
 
-class MODEL extends MeshInstance:
-	var size = Vector3(10,10,10)
-	var pivot = Vector3(0,0,0)
-	var voxels = {}
-	var voxel_children = {}
-
 
 func _enter_tree():
 	var meshlib = MeshLibrary.new()
@@ -54,17 +48,18 @@ func on_import(file_path):
 	var palette = magica_voxel_file.palette
 	var index = 0
 	var used_colors = []
+	get_node("../../TopBar/VBoxContainer/name/TextEdit").text = file_path.get_file().get_basename()
 	for model in magica_voxel_file.models:
 		var _model = VOXEL_MODEL_SCENE.instance()
 		_model.size = model.size
+		_model.pivot = Vector3(floor(model.size.x/2),0,floor(model.size.z/2))
 		var voxel_positions = model.voxels.keys()
-		get_node("../../TopBar/VBoxContainer/name/TextEdit").text = "Untitled"
 		get_node("../../TopBar/VBoxContainer/size/x").value = _model.size.x
 		get_node("../../TopBar/VBoxContainer/size/y").value = _model.size.y
 		get_node("../../TopBar/VBoxContainer/size/z").value = _model.size.z
-		get_node("../../TopBar/VBoxContainer/pivot/x").value = 0
-		get_node("../../TopBar/VBoxContainer/pivot/y").value = 0
-		get_node("../../TopBar/VBoxContainer/pivot/z").value = 0
+		get_node("../../TopBar/VBoxContainer/pivot/x").value = _model.pivot.x
+		get_node("../../TopBar/VBoxContainer/pivot/y").value = _model.pivot.y
+		get_node("../../TopBar/VBoxContainer/pivot/z").value = _model.pivot.z
 		for p in voxel_positions:
 			var color_index = model.voxels[p]
 			var color =  palette[color_index]
@@ -138,20 +133,17 @@ func on_load(file_path):
 	clear()
 	refresh_materials()
 	get_node("../../LeftSideBar/VBoxContainer/ColorPicker").refresh()
+	get_node("../../TopBar/VBoxContainer/name/TextEdit").text = file_path.get_file().get_basename()
 	var scene = load(file_path).instance()
-	for voxel_root in scene.get_children():
-		var model = VOXEL_MODEL_SCENE.instance()
-		model.pivot = voxel_root.pivot
-		model.size = voxel_root.size
+	for model in scene.get_children():
 		models.append(model)
-		for voxel in voxel_root.get_children():
+		for voxel in model.get_children():
 			var p = voxel.translation + model.pivot
 			var i = voxel.color_index
 			var c = voxel.color
 			get_node("../../LeftSideBar/VBoxContainer/ColorPicker").get_material(i).albedo_color = c
 			theme.get_item_mesh(i).material = get_node("../../LeftSideBar/VBoxContainer/ColorPicker").get_material(i)
 			model.voxels[p] = i
-			add_voxel(p.x,p.y,p.z,i,model)
 	show_current_model()
 
 func on_save():
@@ -162,7 +154,7 @@ func on_save():
 	models[model_index].pivot.y = get_node("../../TopBar/VBoxContainer/pivot/y").value
 	models[model_index].pivot.z = get_node("../../TopBar/VBoxContainer/pivot/z").value
 	var scene = PackedScene.new()
-	var voxel_root = Spatial.new()
+	var voxel_root = Path.new()
 	voxel_root.set_script(VOXEL_ROOT_SCRIPT)
 	for model in models:
 		voxel_root.add_child(model)

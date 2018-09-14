@@ -6,7 +6,7 @@
 
 script = ExtResource( 1 )
 model = ""
-size = Vector3( 0, 0, 0 )
-pivot = Vector3( 0, 0, 0 )
+size = Vector3( 10, 10, 10 )
+pivot = Vector3( 5, 0, 5 )
 
 
