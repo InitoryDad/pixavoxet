@@ -47,22 +47,31 @@ func _process(delta):
 				voxel.translation = voxel.initial_position
 				var position = voxel.initial_position
 				var pf1 = PathFollow.new()
-				pf1.loop = true
+				#pf1.loop = true
 				pf1.cubic_interp = true
 				pf1.rotation_mode = PathFollow.ROTATION_NONE
+				var pf2 = PathFollow.new()
+				#pf2.loop = true
+				pf2.cubic_interp = true
+				pf2.rotation_mode = PathFollow.ROTATION_NONE
 				add_child(pf1)
+				add_child(pf2)
 				var s = Spatial.new()
 				pf1.add_child(s)
-				s.translation = Vector3(position.x+.5,0,position.z+.5)
+				s.translation = Vector3(position.z+.5,position.x+.5,0)
 				var offset = range_lerp(position.y+current_model.pivot.y,0,current_model.size.y,0,length)
+				var offset2 = range_lerp(position.y+current_model.pivot.y-1,0,current_model.size.y,0,length)
 				var idx = get_look_at_point_idx(offset,length_dictionary)
-				pf1.translation = curve.get_point_position(idx-1)
+				pf1.offset = offset
+				pf2.offset = offset2
 				pf1.transform = pf1.transform.looking_at(curve.get_point_position(idx),Vector3(0,1,0))
-				pf1.rotation_degrees += Vector3(90,0,0)
-				pf1.offset = length+offset
+				var distance = pf1.translation.distance_to(pf2.translation)
 				voxel.global_transform = s.global_transform
+				voxel.scale.z += distance/1.05
 				remove_child(pf1)
+				remove_child(pf2)
 				pf1.free()
+				pf2.free()
 	else:
 		if(current_model):
 			for voxel in current_model.get_children():
