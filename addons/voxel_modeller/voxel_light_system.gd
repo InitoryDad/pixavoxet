@@ -17,7 +17,7 @@ func _process(delta):
 		for i in THREAD_COUNT:
 			threads.append(Thread.new())
 	voxels = []
-	for voxel_mom in get_tree().get_nodes_in_group("voxel_mom"):
+	for voxel_mom in get_tree().get_nodes_in_group("voxel_model"):
 		if(voxel_mom.visible):
 			voxels = voxels + voxel_mom.get_children()
 	light_pass()
