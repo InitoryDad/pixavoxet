@@ -124,6 +124,10 @@ func on_save():
 	var voxel_root = Path.new()
 	voxel_root.set_script(VOXEL_ROOT_SCRIPT)
 	for model in models:
+		print(model.get_child_count())
+		print(model.get_parent())
+		if(model.get_parent()):
+			model.get_parent().remove_child(model)
 		if(!model.get_parent()):
 			voxel_root.add_child(model)
 			model.owner = voxel_root
@@ -299,24 +303,24 @@ func _mvload(_path):
 		var voxels = models[i]
 		var model = MVModel.new()
 		model.id = i
-		var culled_voxels = {}
-		for p in voxels.keys():
-			var bordered = 0
-			if(voxels.keys().has(p + Vector3(1,0,0))):
-				bordered += 1
-			if(voxels.keys().has(p + Vector3(-1,0,0))):
-				bordered += 1
-			if(voxels.keys().has(p + Vector3(0,1,0))):
-				bordered += 1
-			if(voxels.keys().has(p + Vector3(0,-1,0))):
-				bordered += 1
-			if(voxels.keys().has(p + Vector3(0,0,1))):
-				bordered += 1
-			if(voxels.keys().has(p + Vector3(0,0,-1))):
-				bordered += 1
-			if(bordered != 6):
-				culled_voxels[p] = voxels[p]
-		model.voxels = culled_voxels
+#		var culled_voxels = {}
+#		for p in voxels.keys():
+#			var bordered = 0
+#			if(voxels.keys().has(p + Vector3(1,0,0))):
+#				bordered += 1
+#			if(voxels.keys().has(p + Vector3(-1,0,0))):
+#				bordered += 1
+#			if(voxels.keys().has(p + Vector3(0,1,0))):
+#				bordered += 1
+#			if(voxels.keys().has(p + Vector3(0,-1,0))):
+#				bordered += 1
+#			if(voxels.keys().has(p + Vector3(0,0,1))):
+#				bordered += 1
+#			if(voxels.keys().has(p + Vector3(0,0,-1))):
+#				bordered += 1
+#			if(bordered != 6):
+#				culled_voxels[p] = voxels[p]
+		model.voxels = voxels
 		model.size = sizes[i]
 		MODELS.append(model)
 	var MVFILE = MagicaVoxelFile.new()
