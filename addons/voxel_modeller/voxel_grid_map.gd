@@ -27,6 +27,7 @@ func _enter_tree():
 
 func create_model():
 	models.append(VOXEL_MODEL_SCENE.instance())
+	set_model_index(model_index)
 
 func get_current_model():
 	if(models.size() > 0):
@@ -44,6 +45,7 @@ func refresh_materials():
 func add_model():
 	models.insert(model_index+1, VOXEL_MODEL_SCENE.instance())
 	model_index += 1
+	set_model_index(model_index)
 	show_current_model()
 
 func delete_model():
@@ -54,7 +56,8 @@ func delete_model():
 	show_current_model()
 
 func set_model_index(index):
-	print(index)
+	$"../../RightSideBar/VBoxContainer/ModelList".get_child(model_index).text = "model " + str(model_index)
+	$"../../RightSideBar/VBoxContainer/ModelList".get_child(index).text = ">> model " + str(index)
 	model_index = index
 	show_current_model()
 
@@ -120,6 +123,7 @@ func on_load(file_path):
 		models.append(model)
 		for voxel in model.get_children():
 			voxel.translation += model.pivot
+			voxel.translation = voxel.translation.floor()
 			var i = voxel.color_index
 			var c = voxel.color
 			get_node("../../LeftSideBar/VBoxContainer/ColorPicker").get_material(i).albedo_color = c

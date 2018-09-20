@@ -11,7 +11,7 @@
 [ext_resource path="res://addons/voxel_modeller/swatch.gd" type="Script" id=9]
 [ext_resource path="res://addons/voxel_modeller/color_picker.gd" type="Script" id=10]
 
-[sub_resource type="SpatialMaterial" id=210]
+[sub_resource type="SpatialMaterial" id=1]
 
 render_priority = 0
 flags_transparent = false
@@ -34,7 +34,7 @@ params_point_size = 1.0
 params_billboard_mode = 0
 params_grow = false
 params_use_alpha_scissor = false
-albedo_color = Color( 1, 1, 1, 1 )
+albedo_color = Color( 0, 0, 0, 1 )
 metallic = 0.0
 metallic_specular = 0.5
 metallic_texture_channel = 0
@@ -62,16 +62,16 @@ uv2_triplanar_sharpness = 1.0
 proximity_fade_enable = false
 distance_fade_enable = false
 
-[sub_resource type="CubeMesh" id=211]
+[sub_resource type="CubeMesh" id=2]
 
-material = SubResource( 210 )
+material = SubResource( 1 )
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector3( 1, 1, 1 )
 subdivide_width = 0
 subdivide_height = 0
 subdivide_depth = 0
 
-[sub_resource type="SpatialMaterial" id=212]
+[sub_resource type="SpatialMaterial" id=3]
 
 render_priority = 0
 flags_transparent = false
@@ -94,7 +94,7 @@ params_point_size = 1.0
 params_billboard_mode = 0
 params_grow = false
 params_use_alpha_scissor = false
-albedo_color = Color( 1, 1, 1, 1 )
+albedo_color = Color( 0, 0, 0, 1 )
 metallic = 0.0
 metallic_specular = 0.5
 metallic_texture_channel = 0
@@ -122,16 +122,16 @@ uv2_triplanar_sharpness = 1.0
 proximity_fade_enable = false
 distance_fade_enable = false
 
-[sub_resource type="CubeMesh" id=213]
+[sub_resource type="CubeMesh" id=4]
 
-material = SubResource( 212 )
+material = SubResource( 3 )
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector3( 1, 1, 1 )
 subdivide_width = 0
 subdivide_height = 0
 subdivide_depth = 0
 
-[sub_resource type="SpatialMaterial" id=214]
+[sub_resource type="SpatialMaterial" id=5]
 
 render_priority = 0
 flags_transparent = false
@@ -154,7 +154,7 @@ params_point_size = 1.0
 params_billboard_mode = 0
 params_grow = false
 params_use_alpha_scissor = false
-albedo_color = Color( 1, 1, 1, 1 )
+albedo_color = Color( 0, 0, 0, 1 )
 metallic = 0.0
 metallic_specular = 0.5
 metallic_texture_channel = 0
@@ -182,16 +182,16 @@ uv2_triplanar_sharpness = 1.0
 proximity_fade_enable = false
 distance_fade_enable = false
 
-[sub_resource type="CubeMesh" id=215]
+[sub_resource type="CubeMesh" id=6]
 
-material = SubResource( 214 )
+material = SubResource( 5 )
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector3( 1, 1, 1 )
 subdivide_width = 0
 subdivide_height = 0
 subdivide_depth = 0
 
-[sub_resource type="SpatialMaterial" id=216]
+[sub_resource type="SpatialMaterial" id=7]
 
 render_priority = 0
 flags_transparent = false
@@ -214,7 +214,7 @@ params_point_size = 1.0
 params_billboard_mode = 0
 params_grow = false
 params_use_alpha_scissor = false
-albedo_color = Color( 1, 1, 1, 1 )
+albedo_color = Color( 0, 0, 0, 1 )
 metallic = 0.0
 metallic_specular = 0.5
 metallic_texture_channel = 0
@@ -242,16 +242,16 @@ uv2_triplanar_sharpness = 1.0
 proximity_fade_enable = false
 distance_fade_enable = false
 
-[sub_resource type="CubeMesh" id=217]
+[sub_resource type="CubeMesh" id=8]
 
-material = SubResource( 216 )
+material = SubResource( 7 )
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector3( 1, 1, 1 )
 subdivide_width = 0
 subdivide_height = 0
 subdivide_depth = 0
 
-[sub_resource type="SpatialMaterial" id=218]
+[sub_resource type="SpatialMaterial" id=9]
 
 render_priority = 0
 flags_transparent = false
@@ -274,7 +274,7 @@ params_point_size = 1.0
 params_billboard_mode = 0
 params_grow = false
 params_use_alpha_scissor = false
-albedo_color = Color( 1, 1, 1, 1 )
+albedo_color = Color( 0, 0, 0, 1 )
 metallic = 0.0
 metallic_specular = 0.5
 metallic_texture_channel = 0
@@ -302,16 +302,16 @@ uv2_triplanar_sharpness = 1.0
 proximity_fade_enable = false
 distance_fade_enable = false
 
-[sub_resource type="CubeMesh" id=219]
+[sub_resource type="CubeMesh" id=10]
 
-material = SubResource( 218 )
+material = SubResource( 9 )
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector3( 1, 1, 1 )
 subdivide_width = 0
 subdivide_height = 0
 subdivide_depth = 0
 
-[sub_resource type="SpatialMaterial" id=220]
+[sub_resource type="SpatialMaterial" id=11]
 
 render_priority = 0
 flags_transparent = false
@@ -334,7 +334,7 @@ params_point_size = 1.0
 params_billboard_mode = 0
 params_grow = false
 params_use_alpha_scissor = false
-albedo_color = Color( 1, 1, 1, 1 )
+albedo_color = Color( 0, 0, 0, 1 )
 metallic = 0.0
 metallic_specular = 0.5
 metallic_texture_channel = 0
@@ -362,16 +362,16 @@ uv2_triplanar_sharpness = 1.0
 proximity_fade_enable = false
 distance_fade_enable = false
 
-[sub_resource type="CubeMesh" id=221]
+[sub_resource type="CubeMesh" id=12]
 
-material = SubResource( 220 )
+material = SubResource( 11 )
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector3( 1, 1, 1 )
 subdivide_width = 0
 subdivide_height = 0
 subdivide_depth = 0
 
-[sub_resource type="SpatialMaterial" id=222]
+[sub_resource type="SpatialMaterial" id=13]
 
 render_priority = 0
 flags_transparent = false
@@ -394,7 +394,7 @@ params_point_size = 1.0
 params_billboard_mode = 0
 params_grow = false
 params_use_alpha_scissor = false
-albedo_color = Color( 1, 1, 1, 1 )
+albedo_color = Color( 0, 0, 0, 1 )
 metallic = 0.0
 metallic_specular = 0.5
 metallic_texture_channel = 0
@@ -422,16 +422,16 @@ uv2_triplanar_sharpness = 1.0
 proximity_fade_enable = false
 distance_fade_enable = false
 
-[sub_resource type="CubeMesh" id=223]
+[sub_resource type="CubeMesh" id=14]
 
-material = SubResource( 222 )
+material = SubResource( 13 )
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector3( 1, 1, 1 )
 subdivide_width = 0
 subdivide_height = 0
 subdivide_depth = 0
 
-[sub_resource type="SpatialMaterial" id=224]
+[sub_resource type="SpatialMaterial" id=15]
 
 render_priority = 0
 flags_transparent = false
@@ -454,7 +454,7 @@ params_point_size = 1.0
 params_billboard_mode = 0
 params_grow = false
 params_use_alpha_scissor = false
-albedo_color = Color( 1, 1, 1, 1 )
+albedo_color = Color( 0, 0, 0, 1 )
 metallic = 0.0
 metallic_specular = 0.5
 metallic_texture_channel = 0
@@ -482,16 +482,16 @@ uv2_triplanar_sharpness = 1.0
 proximity_fade_enable = false
 distance_fade_enable = false
 
-[sub_resource type="CubeMesh" id=225]
+[sub_resource type="CubeMesh" id=16]
 
-material = SubResource( 224 )
+material = SubResource( 15 )
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector3( 1, 1, 1 )
 subdivide_width = 0
 subdivide_height = 0
 subdivide_depth = 0
 
-[sub_resource type="SpatialMaterial" id=226]
+[sub_resource type="SpatialMaterial" id=17]
 
 render_priority = 0
 flags_transparent = false
@@ -514,7 +514,7 @@ params_point_size = 1.0
 params_billboard_mode = 0
 params_grow = false
 params_use_alpha_scissor = false
-albedo_color = Color( 1, 1, 1, 1 )
+albedo_color = Color( 0, 0, 0, 1 )
 metallic = 0.0
 metallic_specular = 0.5
 metallic_texture_channel = 0
@@ -542,16 +542,16 @@ uv2_triplanar_sharpness = 1.0
 proximity_fade_enable = false
 distance_fade_enable = false
 
-[sub_resource type="CubeMesh" id=227]
+[sub_resource type="CubeMesh" id=18]
 
-material = SubResource( 226 )
+material = SubResource( 17 )
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector3( 1, 1, 1 )
 subdivide_width = 0
 subdivide_height = 0
 subdivide_depth = 0
 
-[sub_resource type="SpatialMaterial" id=228]
+[sub_resource type="SpatialMaterial" id=19]
 
 render_priority = 0
 flags_transparent = false
@@ -574,7 +574,7 @@ params_point_size = 1.0
 params_billboard_mode = 0
 params_grow = false
 params_use_alpha_scissor = false
-albedo_color = Color( 1, 1, 1, 1 )
+albedo_color = Color( 0, 0, 0, 1 )
 metallic = 0.0
 metallic_specular = 0.5
 metallic_texture_channel = 0
@@ -602,16 +602,16 @@ uv2_triplanar_sharpness = 1.0
 proximity_fade_enable = false
 distance_fade_enable = false
 
-[sub_resource type="CubeMesh" id=229]
+[sub_resource type="CubeMesh" id=20]
 
-material = SubResource( 228 )
+material = SubResource( 19 )
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector3( 1, 1, 1 )
 subdivide_width = 0
 subdivide_height = 0
 subdivide_depth = 0
 
-[sub_resource type="SpatialMaterial" id=230]
+[sub_resource type="SpatialMaterial" id=21]
 
 render_priority = 0
 flags_transparent = false
@@ -634,7 +634,7 @@ params_point_size = 1.0
 params_billboard_mode = 0
 params_grow = false
 params_use_alpha_scissor = false
-albedo_color = Color( 1, 1, 1, 1 )
+albedo_color = Color( 0, 0, 0, 1 )
 metallic = 0.0
 metallic_specular = 0.5
 metallic_texture_channel = 0
@@ -662,16 +662,16 @@ uv2_triplanar_sharpness = 1.0
 proximity_fade_enable = false
 distance_fade_enable = false
 
-[sub_resource type="CubeMesh" id=231]
+[sub_resource type="CubeMesh" id=22]
 
-material = SubResource( 230 )
+material = SubResource( 21 )
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector3( 1, 1, 1 )
 subdivide_width = 0
 subdivide_height = 0
 subdivide_depth = 0
 
-[sub_resource type="SpatialMaterial" id=232]
+[sub_resource type="SpatialMaterial" id=23]
 
 render_priority = 0
 flags_transparent = false
@@ -694,7 +694,7 @@ params_point_size = 1.0
 params_billboard_mode = 0
 params_grow = false
 params_use_alpha_scissor = false
-albedo_color = Color( 1, 1, 1, 1 )
+albedo_color = Color( 0, 0, 0, 1 )
 metallic = 0.0
 metallic_specular = 0.5
 metallic_texture_channel = 0
@@ -722,16 +722,16 @@ uv2_triplanar_sharpness = 1.0
 proximity_fade_enable = false
 distance_fade_enable = false
 
-[sub_resource type="CubeMesh" id=233]
+[sub_resource type="CubeMesh" id=24]
 
-material = SubResource( 232 )
+material = SubResource( 23 )
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector3( 1, 1, 1 )
 subdivide_width = 0
 subdivide_height = 0
 subdivide_depth = 0
 
-[sub_resource type="SpatialMaterial" id=234]
+[sub_resource type="SpatialMaterial" id=25]
 
 render_priority = 0
 flags_transparent = false
@@ -754,7 +754,7 @@ params_point_size = 1.0
 params_billboard_mode = 0
 params_grow = false
 params_use_alpha_scissor = false
-albedo_color = Color( 1, 1, 1, 1 )
+albedo_color = Color( 0, 0, 0, 1 )
 metallic = 0.0
 metallic_specular = 0.5
 metallic_texture_channel = 0
@@ -782,16 +782,16 @@ uv2_triplanar_sharpness = 1.0
 proximity_fade_enable = false
 distance_fade_enable = false
 
-[sub_resource type="CubeMesh" id=235]
+[sub_resource type="CubeMesh" id=26]
 
-material = SubResource( 234 )
+material = SubResource( 25 )
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector3( 1, 1, 1 )
 subdivide_width = 0
 subdivide_height = 0
 subdivide_depth = 0
 
-[sub_resource type="SpatialMaterial" id=236]
+[sub_resource type="SpatialMaterial" id=27]
 
 render_priority = 0
 flags_transparent = false
@@ -814,7 +814,7 @@ params_point_size = 1.0
 params_billboard_mode = 0
 params_grow = false
 params_use_alpha_scissor = false
-albedo_color = Color( 1, 1, 1, 1 )
+albedo_color = Color( 0, 0, 0, 1 )
 metallic = 0.0
 metallic_specular = 0.5
 metallic_texture_channel = 0
@@ -842,16 +842,16 @@ uv2_triplanar_sharpness = 1.0
 proximity_fade_enable = false
 distance_fade_enable = false
 
-[sub_resource type="CubeMesh" id=237]
+[sub_resource type="CubeMesh" id=28]
 
-material = SubResource( 236 )
+material = SubResource( 27 )
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector3( 1, 1, 1 )
 subdivide_width = 0
 subdivide_height = 0
 subdivide_depth = 0
 
-[sub_resource type="SpatialMaterial" id=238]
+[sub_resource type="SpatialMaterial" id=29]
 
 render_priority = 0
 flags_transparent = false
@@ -874,7 +874,7 @@ params_point_size = 1.0
 params_billboard_mode = 0
 params_grow = false
 params_use_alpha_scissor = false
-albedo_color = Color( 1, 1, 1, 1 )
+albedo_color = Color( 0, 0, 0, 1 )
 metallic = 0.0
 metallic_specular = 0.5
 metallic_texture_channel = 0
@@ -902,16 +902,16 @@ uv2_triplanar_sharpness = 1.0
 proximity_fade_enable = false
 distance_fade_enable = false
 
-[sub_resource type="CubeMesh" id=239]
+[sub_resource type="CubeMesh" id=30]
 
-material = SubResource( 238 )
+material = SubResource( 29 )
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector3( 1, 1, 1 )
 subdivide_width = 0
 subdivide_height = 0
 subdivide_depth = 0
 
-[sub_resource type="SpatialMaterial" id=240]
+[sub_resource type="SpatialMaterial" id=31]
 
 render_priority = 0
 flags_transparent = false
@@ -934,7 +934,7 @@ params_point_size = 1.0
 params_billboard_mode = 0
 params_grow = false
 params_use_alpha_scissor = false
-albedo_color = Color( 1, 1, 1, 1 )
+albedo_color = Color( 0, 0, 0, 1 )
 metallic = 0.0
 metallic_specular = 0.5
 metallic_texture_channel = 0
@@ -962,16 +962,16 @@ uv2_triplanar_sharpness = 1.0
 proximity_fade_enable = false
 distance_fade_enable = false
 
-[sub_resource type="CubeMesh" id=241]
+[sub_resource type="CubeMesh" id=32]
 
-material = SubResource( 240 )
+material = SubResource( 31 )
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector3( 1, 1, 1 )
 subdivide_width = 0
 subdivide_height = 0
 subdivide_depth = 0
 
-[sub_resource type="SpatialMaterial" id=242]
+[sub_resource type="SpatialMaterial" id=33]
 
 render_priority = 0
 flags_transparent = false
@@ -994,7 +994,7 @@ params_point_size = 1.0
 params_billboard_mode = 0
 params_grow = false
 params_use_alpha_scissor = false
-albedo_color = Color( 1, 1, 1, 1 )
+albedo_color = Color( 0, 0, 0, 1 )
 metallic = 0.0
 metallic_specular = 0.5
 metallic_texture_channel = 0
@@ -1022,16 +1022,16 @@ uv2_triplanar_sharpness = 1.0
 proximity_fade_enable = false
 distance_fade_enable = false
 
-[sub_resource type="CubeMesh" id=243]
+[sub_resource type="CubeMesh" id=34]
 
-material = SubResource( 242 )
+material = SubResource( 33 )
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector3( 1, 1, 1 )
 subdivide_width = 0
 subdivide_height = 0
 subdivide_depth = 0
 
-[sub_resource type="SpatialMaterial" id=244]
+[sub_resource type="SpatialMaterial" id=35]
 
 render_priority = 0
 flags_transparent = false
@@ -1054,7 +1054,7 @@ params_point_size = 1.0
 params_billboard_mode = 0
 params_grow = false
 params_use_alpha_scissor = false
-albedo_color = Color( 1, 1, 1, 1 )
+albedo_color = Color( 0, 0, 0, 1 )
 metallic = 0.0
 metallic_specular = 0.5
 metallic_texture_channel = 0
@@ -1082,16 +1082,16 @@ uv2_triplanar_sharpness = 1.0
 proximity_fade_enable = false
 distance_fade_enable = false
 
-[sub_resource type="CubeMesh" id=245]
+[sub_resource type="CubeMesh" id=36]
 
-material = SubResource( 244 )
+material = SubResource( 35 )
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector3( 1, 1, 1 )
 subdivide_width = 0
 subdivide_height = 0
 subdivide_depth = 0
 
-[sub_resource type="SpatialMaterial" id=246]
+[sub_resource type="SpatialMaterial" id=37]
 
 render_priority = 0
 flags_transparent = false
@@ -1114,7 +1114,7 @@ params_point_size = 1.0
 params_billboard_mode = 0
 params_grow = false
 params_use_alpha_scissor = false
-albedo_color = Color( 1, 1, 1, 1 )
+albedo_color = Color( 0, 0, 0, 1 )
 metallic = 0.0
 metallic_specular = 0.5
 metallic_texture_channel = 0
@@ -1142,16 +1142,16 @@ uv2_triplanar_sharpness = 1.0
 proximity_fade_enable = false
 distance_fade_enable = false
 
-[sub_resource type="CubeMesh" id=247]
+[sub_resource type="CubeMesh" id=38]
 
-material = SubResource( 246 )
+material = SubResource( 37 )
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector3( 1, 1, 1 )
 subdivide_width = 0
 subdivide_height = 0
 subdivide_depth = 0
 
-[sub_resource type="SpatialMaterial" id=248]
+[sub_resource type="SpatialMaterial" id=39]
 
 render_priority = 0
 flags_transparent = false
@@ -1174,7 +1174,7 @@ params_point_size = 1.0
 params_billboard_mode = 0
 params_grow = false
 params_use_alpha_scissor = false
-albedo_color = Color( 1, 1, 1, 1 )
+albedo_color = Color( 0, 0, 0, 1 )
 metallic = 0.0
 metallic_specular = 0.5
 metallic_texture_channel = 0
@@ -1202,16 +1202,16 @@ uv2_triplanar_sharpness = 1.0
 proximity_fade_enable = false
 distance_fade_enable = false
 
-[sub_resource type="CubeMesh" id=249]
+[sub_resource type="CubeMesh" id=40]
 
-material = SubResource( 248 )
+material = SubResource( 39 )
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector3( 1, 1, 1 )
 subdivide_width = 0
 subdivide_height = 0
 subdivide_depth = 0
 
-[sub_resource type="SpatialMaterial" id=250]
+[sub_resource type="SpatialMaterial" id=41]
 
 render_priority = 0
 flags_transparent = false
@@ -1234,7 +1234,7 @@ params_point_size = 1.0
 params_billboard_mode = 0
 params_grow = false
 params_use_alpha_scissor = false
-albedo_color = Color( 1, 1, 1, 1 )
+albedo_color = Color( 0, 0, 0, 1 )
 metallic = 0.0
 metallic_specular = 0.5
 metallic_texture_channel = 0
@@ -1262,16 +1262,16 @@ uv2_triplanar_sharpness = 1.0
 proximity_fade_enable = false
 distance_fade_enable = false
 
-[sub_resource type="CubeMesh" id=251]
+[sub_resource type="CubeMesh" id=42]
 
-material = SubResource( 250 )
+material = SubResource( 41 )
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector3( 1, 1, 1 )
 subdivide_width = 0
 subdivide_height = 0
 subdivide_depth = 0
 
-[sub_resource type="SpatialMaterial" id=252]
+[sub_resource type="SpatialMaterial" id=43]
 
 render_priority = 0
 flags_transparent = false
@@ -1294,7 +1294,7 @@ params_point_size = 1.0
 params_billboard_mode = 0
 params_grow = false
 params_use_alpha_scissor = false
-albedo_color = Color( 1, 1, 1, 1 )
+albedo_color = Color( 0, 0, 0, 1 )
 metallic = 0.0
 metallic_specular = 0.5
 metallic_texture_channel = 0
@@ -1322,16 +1322,16 @@ uv2_triplanar_sharpness = 1.0
 proximity_fade_enable = false
 distance_fade_enable = false
 
-[sub_resource type="CubeMesh" id=253]
+[sub_resource type="CubeMesh" id=44]
 
-material = SubResource( 252 )
+material = SubResource( 43 )
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector3( 1, 1, 1 )
 subdivide_width = 0
 subdivide_height = 0
 subdivide_depth = 0
 
-[sub_resource type="SpatialMaterial" id=254]
+[sub_resource type="SpatialMaterial" id=45]
 
 render_priority = 0
 flags_transparent = false
@@ -1354,7 +1354,7 @@ params_point_size = 1.0
 params_billboard_mode = 0
 params_grow = false
 params_use_alpha_scissor = false
-albedo_color = Color( 1, 1, 1, 1 )
+albedo_color = Color( 0, 0, 0, 1 )
 metallic = 0.0
 metallic_specular = 0.5
 metallic_texture_channel = 0
@@ -1382,16 +1382,16 @@ uv2_triplanar_sharpness = 1.0
 proximity_fade_enable = false
 distance_fade_enable = false
 
-[sub_resource type="CubeMesh" id=255]
+[sub_resource type="CubeMesh" id=46]
 
-material = SubResource( 254 )
+material = SubResource( 45 )
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector3( 1, 1, 1 )
 subdivide_width = 0
 subdivide_height = 0
 subdivide_depth = 0
 
-[sub_resource type="SpatialMaterial" id=256]
+[sub_resource type="SpatialMaterial" id=47]
 
 render_priority = 0
 flags_transparent = false
@@ -1414,7 +1414,7 @@ params_point_size = 1.0
 params_billboard_mode = 0
 params_grow = false
 params_use_alpha_scissor = false
-albedo_color = Color( 1, 1, 1, 1 )
+albedo_color = Color( 0, 0, 0, 1 )
 metallic = 0.0
 metallic_specular = 0.5
 metallic_texture_channel = 0
@@ -1442,16 +1442,16 @@ uv2_triplanar_sharpness = 1.0
 proximity_fade_enable = false
 distance_fade_enable = false
 
-[sub_resource type="CubeMesh" id=257]
+[sub_resource type="CubeMesh" id=48]
 
-material = SubResource( 256 )
+material = SubResource( 47 )
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector3( 1, 1, 1 )
 subdivide_width = 0
 subdivide_height = 0
 subdivide_depth = 0
 
-[sub_resource type="SpatialMaterial" id=258]
+[sub_resource type="SpatialMaterial" id=49]
 
 render_priority = 0
 flags_transparent = false
@@ -1474,7 +1474,7 @@ params_point_size = 1.0
 params_billboard_mode = 0
 params_grow = false
 params_use_alpha_scissor = false
-albedo_color = Color( 1, 1, 1, 1 )
+albedo_color = Color( 0, 0, 0, 1 )
 metallic = 0.0
 metallic_specular = 0.5
 metallic_texture_channel = 0
@@ -1502,16 +1502,16 @@ uv2_triplanar_sharpness = 1.0
 proximity_fade_enable = false
 distance_fade_enable = false
 
-[sub_resource type="CubeMesh" id=259]
+[sub_resource type="CubeMesh" id=50]
 
-material = SubResource( 258 )
+material = SubResource( 49 )
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector3( 1, 1, 1 )
 subdivide_width = 0
 subdivide_height = 0
 subdivide_depth = 0
 
-[sub_resource type="SpatialMaterial" id=260]
+[sub_resource type="SpatialMaterial" id=51]
 
 render_priority = 0
 flags_transparent = false
@@ -1534,7 +1534,7 @@ params_point_size = 1.0
 params_billboard_mode = 0
 params_grow = false
 params_use_alpha_scissor = false
-albedo_color = Color( 1, 1, 1, 1 )
+albedo_color = Color( 0, 0, 0, 1 )
 metallic = 0.0
 metallic_specular = 0.5
 metallic_texture_channel = 0
@@ -1562,16 +1562,16 @@ uv2_triplanar_sharpness = 1.0
 proximity_fade_enable = false
 distance_fade_enable = false
 
-[sub_resource type="CubeMesh" id=261]
+[sub_resource type="CubeMesh" id=52]
 
-material = SubResource( 260 )
+material = SubResource( 51 )
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector3( 1, 1, 1 )
 subdivide_width = 0
 subdivide_height = 0
 subdivide_depth = 0
 
-[sub_resource type="SpatialMaterial" id=262]
+[sub_resource type="SpatialMaterial" id=53]
 
 render_priority = 0
 flags_transparent = false
@@ -1594,7 +1594,7 @@ params_point_size = 1.0
 params_billboard_mode = 0
 params_grow = false
 params_use_alpha_scissor = false
-albedo_color = Color( 1, 1, 1, 1 )
+albedo_color = Color( 0, 0, 0, 1 )
 metallic = 0.0
 metallic_specular = 0.5
 metallic_texture_channel = 0
@@ -1622,16 +1622,16 @@ uv2_triplanar_sharpness = 1.0
 proximity_fade_enable = false
 distance_fade_enable = false
 
-[sub_resource type="CubeMesh" id=263]
+[sub_resource type="CubeMesh" id=54]
 
-material = SubResource( 262 )
+material = SubResource( 53 )
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector3( 1, 1, 1 )
 subdivide_width = 0
 subdivide_height = 0
 subdivide_depth = 0
 
-[sub_resource type="SpatialMaterial" id=264]
+[sub_resource type="SpatialMaterial" id=55]
 
 render_priority = 0
 flags_transparent = false
@@ -1654,7 +1654,7 @@ params_point_size = 1.0
 params_billboard_mode = 0
 params_grow = false
 params_use_alpha_scissor = false
-albedo_color = Color( 1, 1, 1, 1 )
+albedo_color = Color( 0, 0, 0, 1 )
 metallic = 0.0
 metallic_specular = 0.5
 metallic_texture_channel = 0
@@ -1682,16 +1682,16 @@ uv2_triplanar_sharpness = 1.0
 proximity_fade_enable = false
 distance_fade_enable = false
 
-[sub_resource type="CubeMesh" id=265]
+[sub_resource type="CubeMesh" id=56]
 
-material = SubResource( 264 )
+material = SubResource( 55 )
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector3( 1, 1, 1 )
 subdivide_width = 0
 subdivide_height = 0
 subdivide_depth = 0
 
-[sub_resource type="SpatialMaterial" id=266]
+[sub_resource type="SpatialMaterial" id=57]
 
 render_priority = 0
 flags_transparent = false
@@ -1714,7 +1714,7 @@ params_point_size = 1.0
 params_billboard_mode = 0
 params_grow = false
 params_use_alpha_scissor = false
-albedo_color = Color( 1, 1, 1, 1 )
+albedo_color = Color( 0, 0, 0, 1 )
 metallic = 0.0
 metallic_specular = 0.5
 metallic_texture_channel = 0
@@ -1742,16 +1742,16 @@ uv2_triplanar_sharpness = 1.0
 proximity_fade_enable = false
 distance_fade_enable = false
 
-[sub_resource type="CubeMesh" id=267]
+[sub_resource type="CubeMesh" id=58]
 
-material = SubResource( 266 )
+material = SubResource( 57 )
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector3( 1, 1, 1 )
 subdivide_width = 0
 subdivide_height = 0
 subdivide_depth = 0
 
-[sub_resource type="SpatialMaterial" id=268]
+[sub_resource type="SpatialMaterial" id=59]
 
 render_priority = 0
 flags_transparent = false
@@ -1774,7 +1774,7 @@ params_point_size = 1.0
 params_billboard_mode = 0
 params_grow = false
 params_use_alpha_scissor = false
-albedo_color = Color( 1, 1, 1, 1 )
+albedo_color = Color( 0, 0, 0, 1 )
 metallic = 0.0
 metallic_specular = 0.5
 metallic_texture_channel = 0
@@ -1802,16 +1802,16 @@ uv2_triplanar_sharpness = 1.0
 proximity_fade_enable = false
 distance_fade_enable = false
 
-[sub_resource type="CubeMesh" id=269]
+[sub_resource type="CubeMesh" id=60]
 
-material = SubResource( 268 )
+material = SubResource( 59 )
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector3( 1, 1, 1 )
 subdivide_width = 0
 subdivide_height = 0
 subdivide_depth = 0
 
-[sub_resource type="SpatialMaterial" id=270]
+[sub_resource type="SpatialMaterial" id=61]
 
 render_priority = 0
 flags_transparent = false
@@ -1834,7 +1834,7 @@ params_point_size = 1.0
 params_billboard_mode = 0
 params_grow = false
 params_use_alpha_scissor = false
-albedo_color = Color( 1, 1, 1, 1 )
+albedo_color = Color( 0, 0, 0, 1 )
 metallic = 0.0
 metallic_specular = 0.5
 metallic_texture_channel = 0
@@ -1862,16 +1862,16 @@ uv2_triplanar_sharpness = 1.0
 proximity_fade_enable = false
 distance_fade_enable = false
 
-[sub_resource type="CubeMesh" id=271]
+[sub_resource type="CubeMesh" id=62]
 
-material = SubResource( 270 )
+material = SubResource( 61 )
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector3( 1, 1, 1 )
 subdivide_width = 0
 subdivide_height = 0
 subdivide_depth = 0
 
-[sub_resource type="SpatialMaterial" id=272]
+[sub_resource type="SpatialMaterial" id=63]
 
 render_priority = 0
 flags_transparent = false
@@ -1894,7 +1894,7 @@ params_point_size = 1.0
 params_billboard_mode = 0
 params_grow = false
 params_use_alpha_scissor = false
-albedo_color = Color( 1, 1, 1, 1 )
+albedo_color = Color( 0, 0, 0, 1 )
 metallic = 0.0
 metallic_specular = 0.5
 metallic_texture_channel = 0
@@ -1922,16 +1922,16 @@ uv2_triplanar_sharpness = 1.0
 proximity_fade_enable = false
 distance_fade_enable = false
 
-[sub_resource type="CubeMesh" id=273]
+[sub_resource type="CubeMesh" id=64]
 
-material = SubResource( 272 )
+material = SubResource( 63 )
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector3( 1, 1, 1 )
 subdivide_width = 0
 subdivide_height = 0
 subdivide_depth = 0
 
-[sub_resource type="SpatialMaterial" id=274]
+[sub_resource type="SpatialMaterial" id=65]
 
 render_priority = 0
 flags_transparent = false
@@ -1954,7 +1954,7 @@ params_point_size = 1.0
 params_billboard_mode = 0
 params_grow = false
 params_use_alpha_scissor = false
-albedo_color = Color( 1, 1, 1, 1 )
+albedo_color = Color( 0, 0, 0, 1 )
 metallic = 0.0
 metallic_specular = 0.5
 metallic_texture_channel = 0
@@ -1982,16 +1982,16 @@ uv2_triplanar_sharpness = 1.0
 proximity_fade_enable = false
 distance_fade_enable = false
 
-[sub_resource type="CubeMesh" id=275]
+[sub_resource type="CubeMesh" id=66]
 
-material = SubResource( 274 )
+material = SubResource( 65 )
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector3( 1, 1, 1 )
 subdivide_width = 0
 subdivide_height = 0
 subdivide_depth = 0
 
-[sub_resource type="SpatialMaterial" id=276]
+[sub_resource type="SpatialMaterial" id=67]
 
 render_priority = 0
 flags_transparent = false
@@ -2014,7 +2014,7 @@ params_point_size = 1.0
 params_billboard_mode = 0
 params_grow = false
 params_use_alpha_scissor = false
-albedo_color = Color( 1, 1, 1, 1 )
+albedo_color = Color( 0, 0, 0, 1 )
 metallic = 0.0
 metallic_specular = 0.5
 metallic_texture_channel = 0
@@ -2042,16 +2042,16 @@ uv2_triplanar_sharpness = 1.0
 proximity_fade_enable = false
 distance_fade_enable = false
 
-[sub_resource type="CubeMesh" id=277]
+[sub_resource type="CubeMesh" id=68]
 
-material = SubResource( 276 )
+material = SubResource( 67 )
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector3( 1, 1, 1 )
 subdivide_width = 0
 subdivide_height = 0
 subdivide_depth = 0
 
-[sub_resource type="SpatialMaterial" id=278]
+[sub_resource type="SpatialMaterial" id=69]
 
 render_priority = 0
 flags_transparent = false
@@ -2074,7 +2074,7 @@ params_point_size = 1.0
 params_billboard_mode = 0
 params_grow = false
 params_use_alpha_scissor = false
-albedo_color = Color( 1, 1, 1, 1 )
+albedo_color = Color( 0, 0, 0, 1 )
 metallic = 0.0
 metallic_specular = 0.5
 metallic_texture_channel = 0
@@ -2102,16 +2102,16 @@ uv2_triplanar_sharpness = 1.0
 proximity_fade_enable = false
 distance_fade_enable = false
 
-[sub_resource type="CubeMesh" id=279]
+[sub_resource type="CubeMesh" id=70]
 
-material = SubResource( 278 )
+material = SubResource( 69 )
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector3( 1, 1, 1 )
 subdivide_width = 0
 subdivide_height = 0
 subdivide_depth = 0
 
-[sub_resource type="SpatialMaterial" id=280]
+[sub_resource type="SpatialMaterial" id=71]
 
 render_priority = 0
 flags_transparent = false
@@ -2134,7 +2134,7 @@ params_point_size = 1.0
 params_billboard_mode = 0
 params_grow = false
 params_use_alpha_scissor = false
-albedo_color = Color( 1, 1, 1, 1 )
+albedo_color = Color( 0, 0, 0, 1 )
 metallic = 0.0
 metallic_specular = 0.5
 metallic_texture_channel = 0
@@ -2162,16 +2162,16 @@ uv2_triplanar_sharpness = 1.0
 proximity_fade_enable = false
 distance_fade_enable = false
 
-[sub_resource type="CubeMesh" id=281]
+[sub_resource type="CubeMesh" id=72]
 
-material = SubResource( 280 )
+material = SubResource( 71 )
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector3( 1, 1, 1 )
 subdivide_width = 0
 subdivide_height = 0
 subdivide_depth = 0
 
-[sub_resource type="SpatialMaterial" id=282]
+[sub_resource type="SpatialMaterial" id=73]
 
 render_priority = 0
 flags_transparent = false
@@ -2194,7 +2194,7 @@ params_point_size = 1.0
 params_billboard_mode = 0
 params_grow = false
 params_use_alpha_scissor = false
-albedo_color = Color( 1, 1, 1, 1 )
+albedo_color = Color( 0, 0, 0, 1 )
 metallic = 0.0
 metallic_specular = 0.5
 metallic_texture_channel = 0
@@ -2222,16 +2222,16 @@ uv2_triplanar_sharpness = 1.0
 proximity_fade_enable = false
 distance_fade_enable = false
 
-[sub_resource type="CubeMesh" id=283]
+[sub_resource type="CubeMesh" id=74]
 
-material = SubResource( 282 )
+material = SubResource( 73 )
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector3( 1, 1, 1 )
 subdivide_width = 0
 subdivide_height = 0
 subdivide_depth = 0
 
-[sub_resource type="SpatialMaterial" id=284]
+[sub_resource type="SpatialMaterial" id=75]
 
 render_priority = 0
 flags_transparent = false
@@ -2254,7 +2254,7 @@ params_point_size = 1.0
 params_billboard_mode = 0
 params_grow = false
 params_use_alpha_scissor = false
-albedo_color = Color( 1, 1, 1, 1 )
+albedo_color = Color( 0, 0, 0, 1 )
 metallic = 0.0
 metallic_specular = 0.5
 metallic_texture_channel = 0
@@ -2282,16 +2282,16 @@ uv2_triplanar_sharpness = 1.0
 proximity_fade_enable = false
 distance_fade_enable = false
 
-[sub_resource type="CubeMesh" id=285]
+[sub_resource type="CubeMesh" id=76]
 
-material = SubResource( 284 )
+material = SubResource( 75 )
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector3( 1, 1, 1 )
 subdivide_width = 0
 subdivide_height = 0
 subdivide_depth = 0
 
-[sub_resource type="SpatialMaterial" id=286]
+[sub_resource type="SpatialMaterial" id=77]
 
 render_priority = 0
 flags_transparent = false
@@ -2314,7 +2314,7 @@ params_point_size = 1.0
 params_billboard_mode = 0
 params_grow = false
 params_use_alpha_scissor = false
-albedo_color = Color( 1, 1, 1, 1 )
+albedo_color = Color( 0, 0, 0, 1 )
 metallic = 0.0
 metallic_specular = 0.5
 metallic_texture_channel = 0
@@ -2342,16 +2342,16 @@ uv2_triplanar_sharpness = 1.0
 proximity_fade_enable = false
 distance_fade_enable = false
 
-[sub_resource type="CubeMesh" id=287]
+[sub_resource type="CubeMesh" id=78]
 
-material = SubResource( 286 )
+material = SubResource( 77 )
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector3( 1, 1, 1 )
 subdivide_width = 0
 subdivide_height = 0
 subdivide_depth = 0
 
-[sub_resource type="SpatialMaterial" id=288]
+[sub_resource type="SpatialMaterial" id=79]
 
 render_priority = 0
 flags_transparent = false
@@ -2374,7 +2374,7 @@ params_point_size = 1.0
 params_billboard_mode = 0
 params_grow = false
 params_use_alpha_scissor = false
-albedo_color = Color( 1, 1, 1, 1 )
+albedo_color = Color( 0, 0, 0, 1 )
 metallic = 0.0
 metallic_specular = 0.5
 metallic_texture_channel = 0
@@ -2402,16 +2402,16 @@ uv2_triplanar_sharpness = 1.0
 proximity_fade_enable = false
 distance_fade_enable = false
 
-[sub_resource type="CubeMesh" id=289]
+[sub_resource type="CubeMesh" id=80]
 
-material = SubResource( 288 )
+material = SubResource( 79 )
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector3( 1, 1, 1 )
 subdivide_width = 0
 subdivide_height = 0
 subdivide_depth = 0
 
-[sub_resource type="SpatialMaterial" id=290]
+[sub_resource type="SpatialMaterial" id=81]
 
 render_priority = 0
 flags_transparent = false
@@ -2434,7 +2434,7 @@ params_point_size = 1.0
 params_billboard_mode = 0
 params_grow = false
 params_use_alpha_scissor = false
-albedo_color = Color( 1, 1, 1, 1 )
+albedo_color = Color( 0, 0, 0, 1 )
 metallic = 0.0
 metallic_specular = 0.5
 metallic_texture_channel = 0
@@ -2462,16 +2462,16 @@ uv2_triplanar_sharpness = 1.0
 proximity_fade_enable = false
 distance_fade_enable = false
 
-[sub_resource type="CubeMesh" id=291]
+[sub_resource type="CubeMesh" id=82]
 
-material = SubResource( 290 )
+material = SubResource( 81 )
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector3( 1, 1, 1 )
 subdivide_width = 0
 subdivide_height = 0
 subdivide_depth = 0
 
-[sub_resource type="SpatialMaterial" id=292]
+[sub_resource type="SpatialMaterial" id=83]
 
 render_priority = 0
 flags_transparent = false
@@ -2494,7 +2494,7 @@ params_point_size = 1.0
 params_billboard_mode = 0
 params_grow = false
 params_use_alpha_scissor = false
-albedo_color = Color( 1, 1, 1, 1 )
+albedo_color = Color( 0, 0, 0, 1 )
 metallic = 0.0
 metallic_specular = 0.5
 metallic_texture_channel = 0
@@ -2522,16 +2522,16 @@ uv2_triplanar_sharpness = 1.0
 proximity_fade_enable = false
 distance_fade_enable = false
 
-[sub_resource type="CubeMesh" id=293]
+[sub_resource type="CubeMesh" id=84]
 
-material = SubResource( 292 )
+material = SubResource( 83 )
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector3( 1, 1, 1 )
 subdivide_width = 0
 subdivide_height = 0
 subdivide_depth = 0
 
-[sub_resource type="SpatialMaterial" id=294]
+[sub_resource type="SpatialMaterial" id=85]
 
 render_priority = 0
 flags_transparent = false
@@ -2554,7 +2554,7 @@ params_point_size = 1.0
 params_billboard_mode = 0
 params_grow = false
 params_use_alpha_scissor = false
-albedo_color = Color( 1, 1, 1, 1 )
+albedo_color = Color( 0, 0, 0, 1 )
 metallic = 0.0
 metallic_specular = 0.5
 metallic_texture_channel = 0
@@ -2582,16 +2582,16 @@ uv2_triplanar_sharpness = 1.0
 proximity_fade_enable = false
 distance_fade_enable = false
 
-[sub_resource type="CubeMesh" id=295]
+[sub_resource type="CubeMesh" id=86]
 
-material = SubResource( 294 )
+material = SubResource( 85 )
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector3( 1, 1, 1 )
 subdivide_width = 0
 subdivide_height = 0
 subdivide_depth = 0
 
-[sub_resource type="SpatialMaterial" id=296]
+[sub_resource type="SpatialMaterial" id=87]
 
 render_priority = 0
 flags_transparent = false
@@ -2614,7 +2614,7 @@ params_point_size = 1.0
 params_billboard_mode = 0
 params_grow = false
 params_use_alpha_scissor = false
-albedo_color = Color( 1, 1, 1, 1 )
+albedo_color = Color( 0, 0, 0, 1 )
 metallic = 0.0
 metallic_specular = 0.5
 metallic_texture_channel = 0
@@ -2642,16 +2642,16 @@ uv2_triplanar_sharpness = 1.0
 proximity_fade_enable = false
 distance_fade_enable = false
 
-[sub_resource type="CubeMesh" id=297]
+[sub_resource type="CubeMesh" id=88]
 
-material = SubResource( 296 )
+material = SubResource( 87 )
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector3( 1, 1, 1 )
 subdivide_width = 0
 subdivide_height = 0
 subdivide_depth = 0
 
-[sub_resource type="SpatialMaterial" id=298]
+[sub_resource type="SpatialMaterial" id=89]
 
 render_priority = 0
 flags_transparent = false
@@ -2674,7 +2674,7 @@ params_point_size = 1.0
 params_billboard_mode = 0
 params_grow = false
 params_use_alpha_scissor = false
-albedo_color = Color( 1, 1, 1, 1 )
+albedo_color = Color( 0, 0, 0, 1 )
 metallic = 0.0
 metallic_specular = 0.5
 metallic_texture_channel = 0
@@ -2702,16 +2702,16 @@ uv2_triplanar_sharpness = 1.0
 proximity_fade_enable = false
 distance_fade_enable = false
 
-[sub_resource type="CubeMesh" id=299]
+[sub_resource type="CubeMesh" id=90]
 
-material = SubResource( 298 )
+material = SubResource( 89 )
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector3( 1, 1, 1 )
 subdivide_width = 0
 subdivide_height = 0
 subdivide_depth = 0
 
-[sub_resource type="SpatialMaterial" id=300]
+[sub_resource type="SpatialMaterial" id=91]
 
 render_priority = 0
 flags_transparent = false
@@ -2734,7 +2734,7 @@ params_point_size = 1.0
 params_billboard_mode = 0
 params_grow = false
 params_use_alpha_scissor = false
-albedo_color = Color( 1, 1, 1, 1 )
+albedo_color = Color( 0, 0, 0, 1 )
 metallic = 0.0
 metallic_specular = 0.5
 metallic_texture_channel = 0
@@ -2762,16 +2762,16 @@ uv2_triplanar_sharpness = 1.0
 proximity_fade_enable = false
 distance_fade_enable = false
 
-[sub_resource type="CubeMesh" id=301]
+[sub_resource type="CubeMesh" id=92]
 
-material = SubResource( 300 )
+material = SubResource( 91 )
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector3( 1, 1, 1 )
 subdivide_width = 0
 subdivide_height = 0
 subdivide_depth = 0
 
-[sub_resource type="SpatialMaterial" id=302]
+[sub_resource type="SpatialMaterial" id=93]
 
 render_priority = 0
 flags_transparent = false
@@ -2794,7 +2794,7 @@ params_point_size = 1.0
 params_billboard_mode = 0
 params_grow = false
 params_use_alpha_scissor = false
-albedo_color = Color( 1, 1, 1, 1 )
+albedo_color = Color( 0, 0, 0, 1 )
 metallic = 0.0
 metallic_specular = 0.5
 metallic_texture_channel = 0
@@ -2822,16 +2822,16 @@ uv2_triplanar_sharpness = 1.0
 proximity_fade_enable = false
 distance_fade_enable = false
 
-[sub_resource type="CubeMesh" id=303]
+[sub_resource type="CubeMesh" id=94]
 
-material = SubResource( 302 )
+material = SubResource( 93 )
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector3( 1, 1, 1 )
 subdivide_width = 0
 subdivide_height = 0
 subdivide_depth = 0
 
-[sub_resource type="SpatialMaterial" id=304]
+[sub_resource type="SpatialMaterial" id=95]
 
 render_priority = 0
 flags_transparent = false
@@ -2854,7 +2854,7 @@ params_point_size = 1.0
 params_billboard_mode = 0
 params_grow = false
 params_use_alpha_scissor = false
-albedo_color = Color( 1, 1, 1, 1 )
+albedo_color = Color( 0, 0, 0, 1 )
 metallic = 0.0
 metallic_specular = 0.5
 metallic_texture_channel = 0
@@ -2882,16 +2882,16 @@ uv2_triplanar_sharpness = 1.0
 proximity_fade_enable = false
 distance_fade_enable = false
 
-[sub_resource type="CubeMesh" id=305]
+[sub_resource type="CubeMesh" id=96]
 
-material = SubResource( 304 )
+material = SubResource( 95 )
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector3( 1, 1, 1 )
 subdivide_width = 0
 subdivide_height = 0
 subdivide_depth = 0
 
-[sub_resource type="SpatialMaterial" id=306]
+[sub_resource type="SpatialMaterial" id=97]
 
 render_priority = 0
 flags_transparent = false
@@ -2914,7 +2914,7 @@ params_point_size = 1.0
 params_billboard_mode = 0
 params_grow = false
 params_use_alpha_scissor = false
-albedo_color = Color( 1, 1, 1, 1 )
+albedo_color = Color( 0, 0, 0, 1 )
 metallic = 0.0
 metallic_specular = 0.5
 metallic_texture_channel = 0
@@ -2942,16 +2942,16 @@ uv2_triplanar_sharpness = 1.0
 proximity_fade_enable = false
 distance_fade_enable = false
 
-[sub_resource type="CubeMesh" id=307]
+[sub_resource type="CubeMesh" id=98]
 
-material = SubResource( 306 )
+material = SubResource( 97 )
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector3( 1, 1, 1 )
 subdivide_width = 0
 subdivide_height = 0
 subdivide_depth = 0
 
-[sub_resource type="SpatialMaterial" id=308]
+[sub_resource type="SpatialMaterial" id=99]
 
 render_priority = 0
 flags_transparent = false
@@ -2974,7 +2974,7 @@ params_point_size = 1.0
 params_billboard_mode = 0
 params_grow = false
 params_use_alpha_scissor = false
-albedo_color = Color( 1, 1, 1, 1 )
+albedo_color = Color( 0, 0, 0, 1 )
 metallic = 0.0
 metallic_specular = 0.5
 metallic_texture_channel = 0
@@ -3002,16 +3002,16 @@ uv2_triplanar_sharpness = 1.0
 proximity_fade_enable = false
 distance_fade_enable = false
 
-[sub_resource type="CubeMesh" id=309]
+[sub_resource type="CubeMesh" id=100]
 
-material = SubResource( 308 )
+material = SubResource( 99 )
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector3( 1, 1, 1 )
 subdivide_width = 0
 subdivide_height = 0
 subdivide_depth = 0
 
-[sub_resource type="SpatialMaterial" id=310]
+[sub_resource type="SpatialMaterial" id=101]
 
 render_priority = 0
 flags_transparent = false
@@ -3034,7 +3034,7 @@ params_point_size = 1.0
 params_billboard_mode = 0
 params_grow = false
 params_use_alpha_scissor = false
-albedo_color = Color( 1, 1, 1, 1 )
+albedo_color = Color( 0, 0, 0, 1 )
 metallic = 0.0
 metallic_specular = 0.5
 metallic_texture_channel = 0
@@ -3062,16 +3062,16 @@ uv2_triplanar_sharpness = 1.0
 proximity_fade_enable = false
 distance_fade_enable = false
 
-[sub_resource type="CubeMesh" id=311]
+[sub_resource type="CubeMesh" id=102]
 
-material = SubResource( 310 )
+material = SubResource( 101 )
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector3( 1, 1, 1 )
 subdivide_width = 0
 subdivide_height = 0
 subdivide_depth = 0
 
-[sub_resource type="SpatialMaterial" id=312]
+[sub_resource type="SpatialMaterial" id=103]
 
 render_priority = 0
 flags_transparent = false
@@ -3094,7 +3094,7 @@ params_point_size = 1.0
 params_billboard_mode = 0
 params_grow = false
 params_use_alpha_scissor = false
-albedo_color = Color( 1, 1, 1, 1 )
+albedo_color = Color( 0, 0, 0, 1 )
 metallic = 0.0
 metallic_specular = 0.5
 metallic_texture_channel = 0
@@ -3122,16 +3122,16 @@ uv2_triplanar_sharpness = 1.0
 proximity_fade_enable = false
 distance_fade_enable = false
 
-[sub_resource type="CubeMesh" id=313]
+[sub_resource type="CubeMesh" id=104]
 
-material = SubResource( 312 )
+material = SubResource( 103 )
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector3( 1, 1, 1 )
 subdivide_width = 0
 subdivide_height = 0
 subdivide_depth = 0
 
-[sub_resource type="SpatialMaterial" id=314]
+[sub_resource type="SpatialMaterial" id=105]
 
 render_priority = 0
 flags_transparent = false
@@ -3154,7 +3154,7 @@ params_point_size = 1.0
 params_billboard_mode = 0
 params_grow = false
 params_use_alpha_scissor = false
-albedo_color = Color( 1, 1, 1, 1 )
+albedo_color = Color( 0, 0, 0, 1 )
 metallic = 0.0
 metallic_specular = 0.5
 metallic_texture_channel = 0
@@ -3182,16 +3182,16 @@ uv2_triplanar_sharpness = 1.0
 proximity_fade_enable = false
 distance_fade_enable = false
 
-[sub_resource type="CubeMesh" id=315]
+[sub_resource type="CubeMesh" id=106]
 
-material = SubResource( 314 )
+material = SubResource( 105 )
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector3( 1, 1, 1 )
 subdivide_width = 0
 subdivide_height = 0
 subdivide_depth = 0
 
-[sub_resource type="SpatialMaterial" id=316]
+[sub_resource type="SpatialMaterial" id=107]
 
 render_priority = 0
 flags_transparent = false
@@ -3214,7 +3214,7 @@ params_point_size = 1.0
 params_billboard_mode = 0
 params_grow = false
 params_use_alpha_scissor = false
-albedo_color = Color( 1, 1, 1, 1 )
+albedo_color = Color( 0, 0, 0, 1 )
 metallic = 0.0
 metallic_specular = 0.5
 metallic_texture_channel = 0
@@ -3242,16 +3242,16 @@ uv2_triplanar_sharpness = 1.0
 proximity_fade_enable = false
 distance_fade_enable = false
 
-[sub_resource type="CubeMesh" id=317]
+[sub_resource type="CubeMesh" id=108]
 
-material = SubResource( 316 )
+material = SubResource( 107 )
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector3( 1, 1, 1 )
 subdivide_width = 0
 subdivide_height = 0
 subdivide_depth = 0
 
-[sub_resource type="SpatialMaterial" id=318]
+[sub_resource type="SpatialMaterial" id=109]
 
 render_priority = 0
 flags_transparent = false
@@ -3274,7 +3274,7 @@ params_point_size = 1.0
 params_billboard_mode = 0
 params_grow = false
 params_use_alpha_scissor = false
-albedo_color = Color( 1, 1, 1, 1 )
+albedo_color = Color( 0, 0, 0, 1 )
 metallic = 0.0
 metallic_specular = 0.5
 metallic_texture_channel = 0
@@ -3302,16 +3302,16 @@ uv2_triplanar_sharpness = 1.0
 proximity_fade_enable = false
 distance_fade_enable = false
 
-[sub_resource type="CubeMesh" id=319]
+[sub_resource type="CubeMesh" id=110]
 
-material = SubResource( 318 )
+material = SubResource( 109 )
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector3( 1, 1, 1 )
 subdivide_width = 0
 subdivide_height = 0
 subdivide_depth = 0
 
-[sub_resource type="SpatialMaterial" id=320]
+[sub_resource type="SpatialMaterial" id=111]
 
 render_priority = 0
 flags_transparent = false
@@ -3334,7 +3334,7 @@ params_point_size = 1.0
 params_billboard_mode = 0
 params_grow = false
 params_use_alpha_scissor = false
-albedo_color = Color( 1, 1, 1, 1 )
+albedo_color = Color( 0, 0, 0, 1 )
 metallic = 0.0
 metallic_specular = 0.5
 metallic_texture_channel = 0
@@ -3362,16 +3362,16 @@ uv2_triplanar_sharpness = 1.0
 proximity_fade_enable = false
 distance_fade_enable = false
 
-[sub_resource type="CubeMesh" id=321]
+[sub_resource type="CubeMesh" id=112]
 
-material = SubResource( 320 )
+material = SubResource( 111 )
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector3( 1, 1, 1 )
 subdivide_width = 0
 subdivide_height = 0
 subdivide_depth = 0
 
-[sub_resource type="SpatialMaterial" id=322]
+[sub_resource type="SpatialMaterial" id=113]
 
 render_priority = 0
 flags_transparent = false
@@ -3394,7 +3394,7 @@ params_point_size = 1.0
 params_billboard_mode = 0
 params_grow = false
 params_use_alpha_scissor = false
-albedo_color = Color( 1, 1, 1, 1 )
+albedo_color = Color( 0, 0, 0, 1 )
 metallic = 0.0
 metallic_specular = 0.5
 metallic_texture_channel = 0
@@ -3422,16 +3422,16 @@ uv2_triplanar_sharpness = 1.0
 proximity_fade_enable = false
 distance_fade_enable = false
 
-[sub_resource type="CubeMesh" id=323]
+[sub_resource type="CubeMesh" id=114]
 
-material = SubResource( 322 )
+material = SubResource( 113 )
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector3( 1, 1, 1 )
 subdivide_width = 0
 subdivide_height = 0
 subdivide_depth = 0
 
-[sub_resource type="SpatialMaterial" id=324]
+[sub_resource type="SpatialMaterial" id=115]
 
 render_priority = 0
 flags_transparent = false
@@ -3454,7 +3454,7 @@ params_point_size = 1.0
 params_billboard_mode = 0
 params_grow = false
 params_use_alpha_scissor = false
-albedo_color = Color( 1, 1, 1, 1 )
+albedo_color = Color( 0, 0, 0, 1 )
 metallic = 0.0
 metallic_specular = 0.5
 metallic_texture_channel = 0
@@ -3482,16 +3482,16 @@ uv2_triplanar_sharpness = 1.0
 proximity_fade_enable = false
 distance_fade_enable = false
 
-[sub_resource type="CubeMesh" id=325]
+[sub_resource type="CubeMesh" id=116]
 
-material = SubResource( 324 )
+material = SubResource( 115 )
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector3( 1, 1, 1 )
 subdivide_width = 0
 subdivide_height = 0
 subdivide_depth = 0
 
-[sub_resource type="SpatialMaterial" id=326]
+[sub_resource type="SpatialMaterial" id=117]
 
 render_priority = 0
 flags_transparent = false
@@ -3514,7 +3514,7 @@ params_point_size = 1.0
 params_billboard_mode = 0
 params_grow = false
 params_use_alpha_scissor = false
-albedo_color = Color( 1, 1, 1, 1 )
+albedo_color = Color( 0, 0, 0, 1 )
 metallic = 0.0
 metallic_specular = 0.5
 metallic_texture_channel = 0
@@ -3542,16 +3542,16 @@ uv2_triplanar_sharpness = 1.0
 proximity_fade_enable = false
 distance_fade_enable = false
 
-[sub_resource type="CubeMesh" id=327]
+[sub_resource type="CubeMesh" id=118]
 
-material = SubResource( 326 )
+material = SubResource( 117 )
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector3( 1, 1, 1 )
 subdivide_width = 0
 subdivide_height = 0
 subdivide_depth = 0
 
-[sub_resource type="SpatialMaterial" id=328]
+[sub_resource type="SpatialMaterial" id=119]
 
 render_priority = 0
 flags_transparent = false
@@ -3574,7 +3574,7 @@ params_point_size = 1.0
 params_billboard_mode = 0
 params_grow = false
 params_use_alpha_scissor = false
-albedo_color = Color( 1, 1, 1, 1 )
+albedo_color = Color( 0, 0, 0, 1 )
 metallic = 0.0
 metallic_specular = 0.5
 metallic_texture_channel = 0
@@ -3602,16 +3602,16 @@ uv2_triplanar_sharpness = 1.0
 proximity_fade_enable = false
 distance_fade_enable = false
 
-[sub_resource type="CubeMesh" id=329]
+[sub_resource type="CubeMesh" id=120]
 
-material = SubResource( 328 )
+material = SubResource( 119 )
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector3( 1, 1, 1 )
 subdivide_width = 0
 subdivide_height = 0
 subdivide_depth = 0
 
-[sub_resource type="SpatialMaterial" id=330]
+[sub_resource type="SpatialMaterial" id=121]
 
 render_priority = 0
 flags_transparent = false
@@ -3634,7 +3634,7 @@ params_point_size = 1.0
 params_billboard_mode = 0
 params_grow = false
 params_use_alpha_scissor = false
-albedo_color = Color( 1, 1, 1, 1 )
+albedo_color = Color( 0, 0, 0, 1 )
 metallic = 0.0
 metallic_specular = 0.5
 metallic_texture_channel = 0
@@ -3662,16 +3662,16 @@ uv2_triplanar_sharpness = 1.0
 proximity_fade_enable = false
 distance_fade_enable = false
 
-[sub_resource type="CubeMesh" id=331]
+[sub_resource type="CubeMesh" id=122]
 
-material = SubResource( 330 )
+material = SubResource( 121 )
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector3( 1, 1, 1 )
 subdivide_width = 0
 subdivide_height = 0
 subdivide_depth = 0
 
-[sub_resource type="SpatialMaterial" id=332]
+[sub_resource type="SpatialMaterial" id=123]
 
 render_priority = 0
 flags_transparent = false
@@ -3694,7 +3694,7 @@ params_point_size = 1.0
 params_billboard_mode = 0
 params_grow = false
 params_use_alpha_scissor = false
-albedo_color = Color( 1, 1, 1, 1 )
+albedo_color = Color( 0, 0, 0, 1 )
 metallic = 0.0
 metallic_specular = 0.5
 metallic_texture_channel = 0
@@ -3722,16 +3722,16 @@ uv2_triplanar_sharpness = 1.0
 proximity_fade_enable = false
 distance_fade_enable = false
 
-[sub_resource type="CubeMesh" id=333]
+[sub_resource type="CubeMesh" id=124]
 
-material = SubResource( 332 )
+material = SubResource( 123 )
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector3( 1, 1, 1 )
 subdivide_width = 0
 subdivide_height = 0
 subdivide_depth = 0
 
-[sub_resource type="SpatialMaterial" id=334]
+[sub_resource type="SpatialMaterial" id=125]
 
 render_priority = 0
 flags_transparent = false
@@ -3754,7 +3754,7 @@ params_point_size = 1.0
 params_billboard_mode = 0
 params_grow = false
 params_use_alpha_scissor = false
-albedo_color = Color( 1, 1, 1, 1 )
+albedo_color = Color( 0, 0, 0, 1 )
 metallic = 0.0
 metallic_specular = 0.5
 metallic_texture_channel = 0
@@ -3782,16 +3782,16 @@ uv2_triplanar_sharpness = 1.0
 proximity_fade_enable = false
 distance_fade_enable = false
 
-[sub_resource type="CubeMesh" id=335]
+[sub_resource type="CubeMesh" id=126]
 
-material = SubResource( 334 )
+material = SubResource( 125 )
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector3( 1, 1, 1 )
 subdivide_width = 0
 subdivide_height = 0
 subdivide_depth = 0
 
-[sub_resource type="SpatialMaterial" id=336]
+[sub_resource type="SpatialMaterial" id=127]
 
 render_priority = 0
 flags_transparent = false
@@ -3814,7 +3814,7 @@ params_point_size = 1.0
 params_billboard_mode = 0
 params_grow = false
 params_use_alpha_scissor = false
-albedo_color = Color( 1, 1, 1, 1 )
+albedo_color = Color( 0, 0, 0, 1 )
 metallic = 0.0
 metallic_specular = 0.5
 metallic_texture_channel = 0
@@ -3842,16 +3842,16 @@ uv2_triplanar_sharpness = 1.0
 proximity_fade_enable = false
 distance_fade_enable = false
 
-[sub_resource type="CubeMesh" id=337]
+[sub_resource type="CubeMesh" id=128]
 
-material = SubResource( 336 )
+material = SubResource( 127 )
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector3( 1, 1, 1 )
 subdivide_width = 0
 subdivide_height = 0
 subdivide_depth = 0
 
-[sub_resource type="SpatialMaterial" id=338]
+[sub_resource type="SpatialMaterial" id=129]
 
 render_priority = 0
 flags_transparent = false
@@ -3874,7 +3874,7 @@ params_point_size = 1.0
 params_billboard_mode = 0
 params_grow = false
 params_use_alpha_scissor = false
-albedo_color = Color( 1, 1, 1, 1 )
+albedo_color = Color( 0, 0, 0, 1 )
 metallic = 0.0
 metallic_specular = 0.5
 metallic_texture_channel = 0
@@ -3902,16 +3902,16 @@ uv2_triplanar_sharpness = 1.0
 proximity_fade_enable = false
 distance_fade_enable = false
 
-[sub_resource type="CubeMesh" id=339]
+[sub_resource type="CubeMesh" id=130]
 
-material = SubResource( 338 )
+material = SubResource( 129 )
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector3( 1, 1, 1 )
 subdivide_width = 0
 subdivide_height = 0
 subdivide_depth = 0
 
-[sub_resource type="SpatialMaterial" id=340]
+[sub_resource type="SpatialMaterial" id=131]
 
 render_priority = 0
 flags_transparent = false
@@ -3934,7 +3934,7 @@ params_point_size = 1.0
 params_billboard_mode = 0
 params_grow = false
 params_use_alpha_scissor = false
-albedo_color = Color( 1, 1, 1, 1 )
+albedo_color = Color( 0, 0, 0, 1 )
 metallic = 0.0
 metallic_specular = 0.5
 metallic_texture_channel = 0
@@ -3962,16 +3962,16 @@ uv2_triplanar_sharpness = 1.0
 proximity_fade_enable = false
 distance_fade_enable = false
 
-[sub_resource type="CubeMesh" id=341]
+[sub_resource type="CubeMesh" id=132]
 
-material = SubResource( 340 )
+material = SubResource( 131 )
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector3( 1, 1, 1 )
 subdivide_width = 0
 subdivide_height = 0
 subdivide_depth = 0
 
-[sub_resource type="SpatialMaterial" id=342]
+[sub_resource type="SpatialMaterial" id=133]
 
 render_priority = 0
 flags_transparent = false
@@ -3994,7 +3994,7 @@ params_point_size = 1.0
 params_billboard_mode = 0
 params_grow = false
 params_use_alpha_scissor = false
-albedo_color = Color( 1, 1, 1, 1 )
+albedo_color = Color( 0, 0, 0, 1 )
 metallic = 0.0
 metallic_specular = 0.5
 metallic_texture_channel = 0
@@ -4022,16 +4022,16 @@ uv2_triplanar_sharpness = 1.0
 proximity_fade_enable = false
 distance_fade_enable = false
 
-[sub_resource type="CubeMesh" id=343]
+[sub_resource type="CubeMesh" id=134]
 
-material = SubResource( 342 )
+material = SubResource( 133 )
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector3( 1, 1, 1 )
 subdivide_width = 0
 subdivide_height = 0
 subdivide_depth = 0
 
-[sub_resource type="SpatialMaterial" id=344]
+[sub_resource type="SpatialMaterial" id=135]
 
 render_priority = 0
 flags_transparent = false
@@ -4054,7 +4054,7 @@ params_point_size = 1.0
 params_billboard_mode = 0
 params_grow = false
 params_use_alpha_scissor = false
-albedo_color = Color( 1, 1, 1, 1 )
+albedo_color = Color( 0, 0, 0, 1 )
 metallic = 0.0
 metallic_specular = 0.5
 metallic_texture_channel = 0
@@ -4082,16 +4082,16 @@ uv2_triplanar_sharpness = 1.0
 proximity_fade_enable = false
 distance_fade_enable = false
 
-[sub_resource type="CubeMesh" id=345]
+[sub_resource type="CubeMesh" id=136]
 
-material = SubResource( 344 )
+material = SubResource( 135 )
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector3( 1, 1, 1 )
 subdivide_width = 0
 subdivide_height = 0
 subdivide_depth = 0
 
-[sub_resource type="SpatialMaterial" id=346]
+[sub_resource type="SpatialMaterial" id=137]
 
 render_priority = 0
 flags_transparent = false
@@ -4114,7 +4114,7 @@ params_point_size = 1.0
 params_billboard_mode = 0
 params_grow = false
 params_use_alpha_scissor = false
-albedo_color = Color( 1, 1, 1, 1 )
+albedo_color = Color( 0, 0, 0, 1 )
 metallic = 0.0
 metallic_specular = 0.5
 metallic_texture_channel = 0
@@ -4142,16 +4142,16 @@ uv2_triplanar_sharpness = 1.0
 proximity_fade_enable = false
 distance_fade_enable = false
 
-[sub_resource type="CubeMesh" id=347]
+[sub_resource type="CubeMesh" id=138]
 
-material = SubResource( 346 )
+material = SubResource( 137 )
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector3( 1, 1, 1 )
 subdivide_width = 0
 subdivide_height = 0
 subdivide_depth = 0
 
-[sub_resource type="SpatialMaterial" id=348]
+[sub_resource type="SpatialMaterial" id=139]
 
 render_priority = 0
 flags_transparent = false
@@ -4174,7 +4174,7 @@ params_point_size = 1.0
 params_billboard_mode = 0
 params_grow = false
 params_use_alpha_scissor = false
-albedo_color = Color( 1, 1, 1, 1 )
+albedo_color = Color( 0, 0, 0, 1 )
 metallic = 0.0
 metallic_specular = 0.5
 metallic_texture_channel = 0
@@ -4202,16 +4202,16 @@ uv2_triplanar_sharpness = 1.0
 proximity_fade_enable = false
 distance_fade_enable = false
 
-[sub_resource type="CubeMesh" id=349]
+[sub_resource type="CubeMesh" id=140]
 
-material = SubResource( 348 )
+material = SubResource( 139 )
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector3( 1, 1, 1 )
 subdivide_width = 0
 subdivide_height = 0
 subdivide_depth = 0
 
-[sub_resource type="SpatialMaterial" id=350]
+[sub_resource type="SpatialMaterial" id=141]
 
 render_priority = 0
 flags_transparent = false
@@ -4234,7 +4234,7 @@ params_point_size = 1.0
 params_billboard_mode = 0
 params_grow = false
 params_use_alpha_scissor = false
-albedo_color = Color( 1, 1, 1, 1 )
+albedo_color = Color( 0, 0, 0, 1 )
 metallic = 0.0
 metallic_specular = 0.5
 metallic_texture_channel = 0
@@ -4262,16 +4262,16 @@ uv2_triplanar_sharpness = 1.0
 proximity_fade_enable = false
 distance_fade_enable = false
 
-[sub_resource type="CubeMesh" id=351]
+[sub_resource type="CubeMesh" id=142]
 
-material = SubResource( 350 )
+material = SubResource( 141 )
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector3( 1, 1, 1 )
 subdivide_width = 0
 subdivide_height = 0
 subdivide_depth = 0
 
-[sub_resource type="SpatialMaterial" id=352]
+[sub_resource type="SpatialMaterial" id=143]
 
 render_priority = 0
 flags_transparent = false
@@ -4294,7 +4294,7 @@ params_point_size = 1.0
 params_billboard_mode = 0
 params_grow = false
 params_use_alpha_scissor = false
-albedo_color = Color( 1, 1, 1, 1 )
+albedo_color = Color( 0, 0, 0, 1 )
 metallic = 0.0
 metallic_specular = 0.5
 metallic_texture_channel = 0
@@ -4322,16 +4322,16 @@ uv2_triplanar_sharpness = 1.0
 proximity_fade_enable = false
 distance_fade_enable = false
 
-[sub_resource type="CubeMesh" id=353]
+[sub_resource type="CubeMesh" id=144]
 
-material = SubResource( 352 )
+material = SubResource( 143 )
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector3( 1, 1, 1 )
 subdivide_width = 0
 subdivide_height = 0
 subdivide_depth = 0
 
-[sub_resource type="SpatialMaterial" id=354]
+[sub_resource type="SpatialMaterial" id=145]
 
 render_priority = 0
 flags_transparent = false
@@ -4354,7 +4354,7 @@ params_point_size = 1.0
 params_billboard_mode = 0
 params_grow = false
 params_use_alpha_scissor = false
-albedo_color = Color( 1, 1, 1, 1 )
+albedo_color = Color( 0, 0, 0, 1 )
 metallic = 0.0
 metallic_specular = 0.5
 metallic_texture_channel = 0
@@ -4382,16 +4382,16 @@ uv2_triplanar_sharpness = 1.0
 proximity_fade_enable = false
 distance_fade_enable = false
 
-[sub_resource type="CubeMesh" id=355]
+[sub_resource type="CubeMesh" id=146]
 
-material = SubResource( 354 )
+material = SubResource( 145 )
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector3( 1, 1, 1 )
 subdivide_width = 0
 subdivide_height = 0
 subdivide_depth = 0
 
-[sub_resource type="SpatialMaterial" id=356]
+[sub_resource type="SpatialMaterial" id=147]
 
 render_priority = 0
 flags_transparent = false
@@ -4414,7 +4414,7 @@ params_point_size = 1.0
 params_billboard_mode = 0
 params_grow = false
 params_use_alpha_scissor = false
-albedo_color = Color( 1, 1, 1, 1 )
+albedo_color = Color( 0, 0, 0, 1 )
 metallic = 0.0
 metallic_specular = 0.5
 metallic_texture_channel = 0
@@ -4442,16 +4442,16 @@ uv2_triplanar_sharpness = 1.0
 proximity_fade_enable = false
 distance_fade_enable = false
 
-[sub_resource type="CubeMesh" id=357]
+[sub_resource type="CubeMesh" id=148]
 
-material = SubResource( 356 )
+material = SubResource( 147 )
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector3( 1, 1, 1 )
 subdivide_width = 0
 subdivide_height = 0
 subdivide_depth = 0
 
-[sub_resource type="SpatialMaterial" id=358]
+[sub_resource type="SpatialMaterial" id=149]
 
 render_priority = 0
 flags_transparent = false
@@ -4474,7 +4474,7 @@ params_point_size = 1.0
 params_billboard_mode = 0
 params_grow = false
 params_use_alpha_scissor = false
-albedo_color = Color( 1, 1, 1, 1 )
+albedo_color = Color( 0, 0, 0, 1 )
 metallic = 0.0
 metallic_specular = 0.5
 metallic_texture_channel = 0
@@ -4502,16 +4502,16 @@ uv2_triplanar_sharpness = 1.0
 proximity_fade_enable = false
 distance_fade_enable = false
 
-[sub_resource type="CubeMesh" id=359]
+[sub_resource type="CubeMesh" id=150]
 
-material = SubResource( 358 )
+material = SubResource( 149 )
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector3( 1, 1, 1 )
 subdivide_width = 0
 subdivide_height = 0
 subdivide_depth = 0
 
-[sub_resource type="SpatialMaterial" id=360]
+[sub_resource type="SpatialMaterial" id=151]
 
 render_priority = 0
 flags_transparent = false
@@ -4534,7 +4534,7 @@ params_point_size = 1.0
 params_billboard_mode = 0
 params_grow = false
 params_use_alpha_scissor = false
-albedo_color = Color( 1, 1, 1, 1 )
+albedo_color = Color( 0, 0, 0, 1 )
 metallic = 0.0
 metallic_specular = 0.5
 metallic_texture_channel = 0
@@ -4562,16 +4562,16 @@ uv2_triplanar_sharpness = 1.0
 proximity_fade_enable = false
 distance_fade_enable = false
 
-[sub_resource type="CubeMesh" id=361]
+[sub_resource type="CubeMesh" id=152]
 
-material = SubResource( 360 )
+material = SubResource( 151 )
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector3( 1, 1, 1 )
 subdivide_width = 0
 subdivide_height = 0
 subdivide_depth = 0
 
-[sub_resource type="SpatialMaterial" id=362]
+[sub_resource type="SpatialMaterial" id=153]
 
 render_priority = 0
 flags_transparent = false
@@ -4594,7 +4594,7 @@ params_point_size = 1.0
 params_billboard_mode = 0
 params_grow = false
 params_use_alpha_scissor = false
-albedo_color = Color( 1, 1, 1, 1 )
+albedo_color = Color( 0, 0, 0, 1 )
 metallic = 0.0
 metallic_specular = 0.5
 metallic_texture_channel = 0
@@ -4622,16 +4622,16 @@ uv2_triplanar_sharpness = 1.0
 proximity_fade_enable = false
 distance_fade_enable = false
 
-[sub_resource type="CubeMesh" id=363]
+[sub_resource type="CubeMesh" id=154]
 
-material = SubResource( 362 )
+material = SubResource( 153 )
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector3( 1, 1, 1 )
 subdivide_width = 0
 subdivide_height = 0
 subdivide_depth = 0
 
-[sub_resource type="SpatialMaterial" id=364]
+[sub_resource type="SpatialMaterial" id=155]
 
 render_priority = 0
 flags_transparent = false
@@ -4654,7 +4654,7 @@ params_point_size = 1.0
 params_billboard_mode = 0
 params_grow = false
 params_use_alpha_scissor = false
-albedo_color = Color( 1, 1, 1, 1 )
+albedo_color = Color( 0, 0, 0, 1 )
 metallic = 0.0
 metallic_specular = 0.5
 metallic_texture_channel = 0
@@ -4682,16 +4682,16 @@ uv2_triplanar_sharpness = 1.0
 proximity_fade_enable = false
 distance_fade_enable = false
 
-[sub_resource type="CubeMesh" id=365]
+[sub_resource type="CubeMesh" id=156]
 
-material = SubResource( 364 )
+material = SubResource( 155 )
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector3( 1, 1, 1 )
 subdivide_width = 0
 subdivide_height = 0
 subdivide_depth = 0
 
-[sub_resource type="SpatialMaterial" id=366]
+[sub_resource type="SpatialMaterial" id=157]
 
 render_priority = 0
 flags_transparent = false
@@ -4714,7 +4714,7 @@ params_point_size = 1.0
 params_billboard_mode = 0
 params_grow = false
 params_use_alpha_scissor = false
-albedo_color = Color( 1, 1, 1, 1 )
+albedo_color = Color( 0, 0, 0, 1 )
 metallic = 0.0
 metallic_specular = 0.5
 metallic_texture_channel = 0
@@ -4742,16 +4742,16 @@ uv2_triplanar_sharpness = 1.0
 proximity_fade_enable = false
 distance_fade_enable = false
 
-[sub_resource type="CubeMesh" id=367]
+[sub_resource type="CubeMesh" id=158]
 
-material = SubResource( 366 )
+material = SubResource( 157 )
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector3( 1, 1, 1 )
 subdivide_width = 0
 subdivide_height = 0
 subdivide_depth = 0
 
-[sub_resource type="SpatialMaterial" id=368]
+[sub_resource type="SpatialMaterial" id=159]
 
 render_priority = 0
 flags_transparent = false
@@ -4774,7 +4774,7 @@ params_point_size = 1.0
 params_billboard_mode = 0
 params_grow = false
 params_use_alpha_scissor = false
-albedo_color = Color( 1, 1, 1, 1 )
+albedo_color = Color( 0, 0, 0, 1 )
 metallic = 0.0
 metallic_specular = 0.5
 metallic_texture_channel = 0
@@ -4802,16 +4802,16 @@ uv2_triplanar_sharpness = 1.0
 proximity_fade_enable = false
 distance_fade_enable = false
 
-[sub_resource type="CubeMesh" id=369]
+[sub_resource type="CubeMesh" id=160]
 
-material = SubResource( 368 )
+material = SubResource( 159 )
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector3( 1, 1, 1 )
 subdivide_width = 0
 subdivide_height = 0
 subdivide_depth = 0
 
-[sub_resource type="SpatialMaterial" id=370]
+[sub_resource type="SpatialMaterial" id=161]
 
 render_priority = 0
 flags_transparent = false
@@ -4834,7 +4834,7 @@ params_point_size = 1.0
 params_billboard_mode = 0
 params_grow = false
 params_use_alpha_scissor = false
-albedo_color = Color( 1, 1, 1, 1 )
+albedo_color = Color( 0, 0, 0, 1 )
 metallic = 0.0
 metallic_specular = 0.5
 metallic_texture_channel = 0
@@ -4862,16 +4862,16 @@ uv2_triplanar_sharpness = 1.0
 proximity_fade_enable = false
 distance_fade_enable = false
 
-[sub_resource type="CubeMesh" id=371]
+[sub_resource type="CubeMesh" id=162]
 
-material = SubResource( 370 )
+material = SubResource( 161 )
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector3( 1, 1, 1 )
 subdivide_width = 0
 subdivide_height = 0
 subdivide_depth = 0
 
-[sub_resource type="SpatialMaterial" id=372]
+[sub_resource type="SpatialMaterial" id=163]
 
 render_priority = 0
 flags_transparent = false
@@ -4894,7 +4894,7 @@ params_point_size = 1.0
 params_billboard_mode = 0
 params_grow = false
 params_use_alpha_scissor = false
-albedo_color = Color( 1, 1, 1, 1 )
+albedo_color = Color( 0, 0, 0, 1 )
 metallic = 0.0
 metallic_specular = 0.5
 metallic_texture_channel = 0
@@ -4922,16 +4922,16 @@ uv2_triplanar_sharpness = 1.0
 proximity_fade_enable = false
 distance_fade_enable = false
 
-[sub_resource type="CubeMesh" id=373]
+[sub_resource type="CubeMesh" id=164]
 
-material = SubResource( 372 )
+material = SubResource( 163 )
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector3( 1, 1, 1 )
 subdivide_width = 0
 subdivide_height = 0
 subdivide_depth = 0
 
-[sub_resource type="SpatialMaterial" id=374]
+[sub_resource type="SpatialMaterial" id=165]
 
 render_priority = 0
 flags_transparent = false
@@ -4954,7 +4954,7 @@ params_point_size = 1.0
 params_billboard_mode = 0
 params_grow = false
 params_use_alpha_scissor = false
-albedo_color = Color( 1, 1, 1, 1 )
+albedo_color = Color( 0, 0, 0, 1 )
 metallic = 0.0
 metallic_specular = 0.5
 metallic_texture_channel = 0
@@ -4982,16 +4982,16 @@ uv2_triplanar_sharpness = 1.0
 proximity_fade_enable = false
 distance_fade_enable = false
 
-[sub_resource type="CubeMesh" id=375]
+[sub_resource type="CubeMesh" id=166]
 
-material = SubResource( 374 )
+material = SubResource( 165 )
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector3( 1, 1, 1 )
 subdivide_width = 0
 subdivide_height = 0
 subdivide_depth = 0
 
-[sub_resource type="SpatialMaterial" id=376]
+[sub_resource type="SpatialMaterial" id=167]
 
 render_priority = 0
 flags_transparent = false
@@ -5014,7 +5014,7 @@ params_point_size = 1.0
 params_billboard_mode = 0
 params_grow = false
 params_use_alpha_scissor = false
-albedo_color = Color( 1, 1, 1, 1 )
+albedo_color = Color( 0, 0, 0, 1 )
 metallic = 0.0
 metallic_specular = 0.5
 metallic_texture_channel = 0
@@ -5042,16 +5042,16 @@ uv2_triplanar_sharpness = 1.0
 proximity_fade_enable = false
 distance_fade_enable = false
 
-[sub_resource type="CubeMesh" id=377]
+[sub_resource type="CubeMesh" id=168]
 
-material = SubResource( 376 )
+material = SubResource( 167 )
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector3( 1, 1, 1 )
 subdivide_width = 0
 subdivide_height = 0
 subdivide_depth = 0
 
-[sub_resource type="SpatialMaterial" id=378]
+[sub_resource type="SpatialMaterial" id=169]
 
 render_priority = 0
 flags_transparent = false
@@ -5074,7 +5074,7 @@ params_point_size = 1.0
 params_billboard_mode = 0
 params_grow = false
 params_use_alpha_scissor = false
-albedo_color = Color( 1, 1, 1, 1 )
+albedo_color = Color( 0, 0, 0, 1 )
 metallic = 0.0
 metallic_specular = 0.5
 metallic_texture_channel = 0
@@ -5102,16 +5102,16 @@ uv2_triplanar_sharpness = 1.0
 proximity_fade_enable = false
 distance_fade_enable = false
 
-[sub_resource type="CubeMesh" id=379]
+[sub_resource type="CubeMesh" id=170]
 
-material = SubResource( 378 )
+material = SubResource( 169 )
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector3( 1, 1, 1 )
 subdivide_width = 0
 subdivide_height = 0
 subdivide_depth = 0
 
-[sub_resource type="SpatialMaterial" id=380]
+[sub_resource type="SpatialMaterial" id=171]
 
 render_priority = 0
 flags_transparent = false
@@ -5134,7 +5134,7 @@ params_point_size = 1.0
 params_billboard_mode = 0
 params_grow = false
 params_use_alpha_scissor = false
-albedo_color = Color( 1, 1, 1, 1 )
+albedo_color = Color( 0, 0, 0, 1 )
 metallic = 0.0
 metallic_specular = 0.5
 metallic_texture_channel = 0
@@ -5162,16 +5162,16 @@ uv2_triplanar_sharpness = 1.0
 proximity_fade_enable = false
 distance_fade_enable = false
 
-[sub_resource type="CubeMesh" id=381]
+[sub_resource type="CubeMesh" id=172]
 
-material = SubResource( 380 )
+material = SubResource( 171 )
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector3( 1, 1, 1 )
 subdivide_width = 0
 subdivide_height = 0
 subdivide_depth = 0
 
-[sub_resource type="SpatialMaterial" id=382]
+[sub_resource type="SpatialMaterial" id=173]
 
 render_priority = 0
 flags_transparent = false
@@ -5194,7 +5194,7 @@ params_point_size = 1.0
 params_billboard_mode = 0
 params_grow = false
 params_use_alpha_scissor = false
-albedo_color = Color( 1, 1, 1, 1 )
+albedo_color = Color( 0, 0, 0, 1 )
 metallic = 0.0
 metallic_specular = 0.5
 metallic_texture_channel = 0
@@ -5222,16 +5222,16 @@ uv2_triplanar_sharpness = 1.0
 proximity_fade_enable = false
 distance_fade_enable = false
 
-[sub_resource type="CubeMesh" id=383]
+[sub_resource type="CubeMesh" id=174]
 
-material = SubResource( 382 )
+material = SubResource( 173 )
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector3( 1, 1, 1 )
 subdivide_width = 0
 subdivide_height = 0
 subdivide_depth = 0
 
-[sub_resource type="SpatialMaterial" id=384]
+[sub_resource type="SpatialMaterial" id=175]
 
 render_priority = 0
 flags_transparent = false
@@ -5254,7 +5254,7 @@ params_point_size = 1.0
 params_billboard_mode = 0
 params_grow = false
 params_use_alpha_scissor = false
-albedo_color = Color( 1, 1, 1, 1 )
+albedo_color = Color( 0, 0, 0, 1 )
 metallic = 0.0
 metallic_specular = 0.5
 metallic_texture_channel = 0
@@ -5282,16 +5282,16 @@ uv2_triplanar_sharpness = 1.0
 proximity_fade_enable = false
 distance_fade_enable = false
 
-[sub_resource type="CubeMesh" id=385]
+[sub_resource type="CubeMesh" id=176]
 
-material = SubResource( 384 )
+material = SubResource( 175 )
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector3( 1, 1, 1 )
 subdivide_width = 0
 subdivide_height = 0
 subdivide_depth = 0
 
-[sub_resource type="SpatialMaterial" id=386]
+[sub_resource type="SpatialMaterial" id=177]
 
 render_priority = 0
 flags_transparent = false
@@ -5314,7 +5314,7 @@ params_point_size = 1.0
 params_billboard_mode = 0
 params_grow = false
 params_use_alpha_scissor = false
-albedo_color = Color( 1, 1, 1, 1 )
+albedo_color = Color( 0, 0, 0, 1 )
 metallic = 0.0
 metallic_specular = 0.5
 metallic_texture_channel = 0
@@ -5342,16 +5342,16 @@ uv2_triplanar_sharpness = 1.0
 proximity_fade_enable = false
 distance_fade_enable = false
 
-[sub_resource type="CubeMesh" id=387]
+[sub_resource type="CubeMesh" id=178]
 
-material = SubResource( 386 )
+material = SubResource( 177 )
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector3( 1, 1, 1 )
 subdivide_width = 0
 subdivide_height = 0
 subdivide_depth = 0
 
-[sub_resource type="SpatialMaterial" id=388]
+[sub_resource type="SpatialMaterial" id=179]
 
 render_priority = 0
 flags_transparent = false
@@ -5374,7 +5374,7 @@ params_point_size = 1.0
 params_billboard_mode = 0
 params_grow = false
 params_use_alpha_scissor = false
-albedo_color = Color( 1, 1, 1, 1 )
+albedo_color = Color( 0, 0, 0, 1 )
 metallic = 0.0
 metallic_specular = 0.5
 metallic_texture_channel = 0
@@ -5402,16 +5402,16 @@ uv2_triplanar_sharpness = 1.0
 proximity_fade_enable = false
 distance_fade_enable = false
 
-[sub_resource type="CubeMesh" id=389]
+[sub_resource type="CubeMesh" id=180]
 
-material = SubResource( 388 )
+material = SubResource( 179 )
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector3( 1, 1, 1 )
 subdivide_width = 0
 subdivide_height = 0
 subdivide_depth = 0
 
-[sub_resource type="SpatialMaterial" id=390]
+[sub_resource type="SpatialMaterial" id=181]
 
 render_priority = 0
 flags_transparent = false
@@ -5434,7 +5434,7 @@ params_point_size = 1.0
 params_billboard_mode = 0
 params_grow = false
 params_use_alpha_scissor = false
-albedo_color = Color( 1, 1, 1, 1 )
+albedo_color = Color( 0, 0, 0, 1 )
 metallic = 0.0
 metallic_specular = 0.5
 metallic_texture_channel = 0
@@ -5462,16 +5462,16 @@ uv2_triplanar_sharpness = 1.0
 proximity_fade_enable = false
 distance_fade_enable = false
 
-[sub_resource type="CubeMesh" id=391]
+[sub_resource type="CubeMesh" id=182]
 
-material = SubResource( 390 )
+material = SubResource( 181 )
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector3( 1, 1, 1 )
 subdivide_width = 0
 subdivide_height = 0
 subdivide_depth = 0
 
-[sub_resource type="SpatialMaterial" id=392]
+[sub_resource type="SpatialMaterial" id=183]
 
 render_priority = 0
 flags_transparent = false
@@ -5494,7 +5494,7 @@ params_point_size = 1.0
 params_billboard_mode = 0
 params_grow = false
 params_use_alpha_scissor = false
-albedo_color = Color( 1, 1, 1, 1 )
+albedo_color = Color( 0, 0, 0, 1 )
 metallic = 0.0
 metallic_specular = 0.5
 metallic_texture_channel = 0
@@ -5522,16 +5522,16 @@ uv2_triplanar_sharpness = 1.0
 proximity_fade_enable = false
 distance_fade_enable = false
 
-[sub_resource type="CubeMesh" id=393]
+[sub_resource type="CubeMesh" id=184]
 
-material = SubResource( 392 )
+material = SubResource( 183 )
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector3( 1, 1, 1 )
 subdivide_width = 0
 subdivide_height = 0
 subdivide_depth = 0
 
-[sub_resource type="SpatialMaterial" id=394]
+[sub_resource type="SpatialMaterial" id=185]
 
 render_priority = 0
 flags_transparent = false
@@ -5554,7 +5554,7 @@ params_point_size = 1.0
 params_billboard_mode = 0
 params_grow = false
 params_use_alpha_scissor = false
-albedo_color = Color( 1, 1, 1, 1 )
+albedo_color = Color( 0, 0, 0, 1 )
 metallic = 0.0
 metallic_specular = 0.5
 metallic_texture_channel = 0
@@ -5582,16 +5582,16 @@ uv2_triplanar_sharpness = 1.0
 proximity_fade_enable = false
 distance_fade_enable = false
 
-[sub_resource type="CubeMesh" id=395]
+[sub_resource type="CubeMesh" id=186]
 
-material = SubResource( 394 )
+material = SubResource( 185 )
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector3( 1, 1, 1 )
 subdivide_width = 0
 subdivide_height = 0
 subdivide_depth = 0
 
-[sub_resource type="SpatialMaterial" id=396]
+[sub_resource type="SpatialMaterial" id=187]
 
 render_priority = 0
 flags_transparent = false
@@ -5614,7 +5614,7 @@ params_point_size = 1.0
 params_billboard_mode = 0
 params_grow = false
 params_use_alpha_scissor = false
-albedo_color = Color( 1, 1, 1, 1 )
+albedo_color = Color( 0, 0, 0, 1 )
 metallic = 0.0
 metallic_specular = 0.5
 metallic_texture_channel = 0
@@ -5642,16 +5642,16 @@ uv2_triplanar_sharpness = 1.0
 proximity_fade_enable = false
 distance_fade_enable = false
 
-[sub_resource type="CubeMesh" id=397]
+[sub_resource type="CubeMesh" id=188]
 
-material = SubResource( 396 )
+material = SubResource( 187 )
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector3( 1, 1, 1 )
 subdivide_width = 0
 subdivide_height = 0
 subdivide_depth = 0
 
-[sub_resource type="SpatialMaterial" id=398]
+[sub_resource type="SpatialMaterial" id=189]
 
 render_priority = 0
 flags_transparent = false
@@ -5674,7 +5674,7 @@ params_point_size = 1.0
 params_billboard_mode = 0
 params_grow = false
 params_use_alpha_scissor = false
-albedo_color = Color( 1, 1, 1, 1 )
+albedo_color = Color( 0, 0, 0, 1 )
 metallic = 0.0
 metallic_specular = 0.5
 metallic_texture_channel = 0
@@ -5702,16 +5702,16 @@ uv2_triplanar_sharpness = 1.0
 proximity_fade_enable = false
 distance_fade_enable = false
 
-[sub_resource type="CubeMesh" id=399]
+[sub_resource type="CubeMesh" id=190]
 
-material = SubResource( 398 )
+material = SubResource( 189 )
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector3( 1, 1, 1 )
 subdivide_width = 0
 subdivide_height = 0
 subdivide_depth = 0
 
-[sub_resource type="SpatialMaterial" id=400]
+[sub_resource type="SpatialMaterial" id=191]
 
 render_priority = 0
 flags_transparent = false
@@ -5734,7 +5734,7 @@ params_point_size = 1.0
 params_billboard_mode = 0
 params_grow = false
 params_use_alpha_scissor = false
-albedo_color = Color( 1, 1, 1, 1 )
+albedo_color = Color( 0, 0, 0, 1 )
 metallic = 0.0
 metallic_specular = 0.5
 metallic_texture_channel = 0
@@ -5762,16 +5762,16 @@ uv2_triplanar_sharpness = 1.0
 proximity_fade_enable = false
 distance_fade_enable = false
 
-[sub_resource type="CubeMesh" id=401]
+[sub_resource type="CubeMesh" id=192]
 
-material = SubResource( 400 )
+material = SubResource( 191 )
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector3( 1, 1, 1 )
 subdivide_width = 0
 subdivide_height = 0
 subdivide_depth = 0
 
-[sub_resource type="SpatialMaterial" id=402]
+[sub_resource type="SpatialMaterial" id=193]
 
 render_priority = 0
 flags_transparent = false
@@ -5794,7 +5794,7 @@ params_point_size = 1.0
 params_billboard_mode = 0
 params_grow = false
 params_use_alpha_scissor = false
-albedo_color = Color( 1, 1, 1, 1 )
+albedo_color = Color( 0, 0, 0, 1 )
 metallic = 0.0
 metallic_specular = 0.5
 metallic_texture_channel = 0
@@ -5822,16 +5822,16 @@ uv2_triplanar_sharpness = 1.0
 proximity_fade_enable = false
 distance_fade_enable = false
 
-[sub_resource type="CubeMesh" id=403]
+[sub_resource type="CubeMesh" id=194]
 
-material = SubResource( 402 )
+material = SubResource( 193 )
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector3( 1, 1, 1 )
 subdivide_width = 0
 subdivide_height = 0
 subdivide_depth = 0
 
-[sub_resource type="SpatialMaterial" id=404]
+[sub_resource type="SpatialMaterial" id=195]
 
 render_priority = 0
 flags_transparent = false
@@ -5854,7 +5854,7 @@ params_point_size = 1.0
 params_billboard_mode = 0
 params_grow = false
 params_use_alpha_scissor = false
-albedo_color = Color( 1, 1, 1, 1 )
+albedo_color = Color( 0, 0, 0, 1 )
 metallic = 0.0
 metallic_specular = 0.5
 metallic_texture_channel = 0
@@ -5882,16 +5882,16 @@ uv2_triplanar_sharpness = 1.0
 proximity_fade_enable = false
 distance_fade_enable = false
 
-[sub_resource type="CubeMesh" id=405]
+[sub_resource type="CubeMesh" id=196]
 
-material = SubResource( 404 )
+material = SubResource( 195 )
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector3( 1, 1, 1 )
 subdivide_width = 0
 subdivide_height = 0
 subdivide_depth = 0
 
-[sub_resource type="SpatialMaterial" id=406]
+[sub_resource type="SpatialMaterial" id=197]
 
 render_priority = 0
 flags_transparent = false
@@ -5914,7 +5914,7 @@ params_point_size = 1.0
 params_billboard_mode = 0
 params_grow = false
 params_use_alpha_scissor = false
-albedo_color = Color( 1, 1, 1, 1 )
+albedo_color = Color( 0, 0, 0, 1 )
 metallic = 0.0
 metallic_specular = 0.5
 metallic_texture_channel = 0
@@ -5942,16 +5942,16 @@ uv2_triplanar_sharpness = 1.0
 proximity_fade_enable = false
 distance_fade_enable = false
 
-[sub_resource type="CubeMesh" id=407]
+[sub_resource type="CubeMesh" id=198]
 
-material = SubResource( 406 )
+material = SubResource( 197 )
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector3( 1, 1, 1 )
 subdivide_width = 0
 subdivide_height = 0
 subdivide_depth = 0
 
-[sub_resource type="SpatialMaterial" id=408]
+[sub_resource type="SpatialMaterial" id=199]
 
 render_priority = 0
 flags_transparent = false
@@ -5974,7 +5974,7 @@ params_point_size = 1.0
 params_billboard_mode = 0
 params_grow = false
 params_use_alpha_scissor = false
-albedo_color = Color( 1, 1, 1, 1 )
+albedo_color = Color( 0, 0, 0, 1 )
 metallic = 0.0
 metallic_specular = 0.5
 metallic_texture_channel = 0
@@ -6002,319 +6002,319 @@ uv2_triplanar_sharpness = 1.0
 proximity_fade_enable = false
 distance_fade_enable = false
 
-[sub_resource type="CubeMesh" id=409]
+[sub_resource type="CubeMesh" id=200]
 
-material = SubResource( 408 )
+material = SubResource( 199 )
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector3( 1, 1, 1 )
 subdivide_width = 0
 subdivide_height = 0
 subdivide_depth = 0
 
-[sub_resource type="MeshLibrary" id=410]
+[sub_resource type="MeshLibrary" id=201]
 
 item/0/name = ""
-item/0/mesh = SubResource( 211 )
+item/0/mesh = SubResource( 2 )
 item/0/shapes = [  ]
 item/1/name = ""
-item/1/mesh = SubResource( 213 )
+item/1/mesh = SubResource( 4 )
 item/1/shapes = [  ]
 item/2/name = ""
-item/2/mesh = SubResource( 235 )
+item/2/mesh = SubResource( 26 )
 item/2/shapes = [  ]
 item/3/name = ""
-item/3/mesh = SubResource( 257 )
+item/3/mesh = SubResource( 48 )
 item/3/shapes = [  ]
 item/4/name = ""
-item/4/mesh = SubResource( 279 )
+item/4/mesh = SubResource( 70 )
 item/4/shapes = [  ]
 item/5/name = ""
-item/5/mesh = SubResource( 301 )
+item/5/mesh = SubResource( 92 )
 item/5/shapes = [  ]
 item/6/name = ""
-item/6/mesh = SubResource( 323 )
+item/6/mesh = SubResource( 114 )
 item/6/shapes = [  ]
 item/7/name = ""
-item/7/mesh = SubResource( 345 )
+item/7/mesh = SubResource( 136 )
 item/7/shapes = [  ]
 item/8/name = ""
-item/8/mesh = SubResource( 367 )
+item/8/mesh = SubResource( 158 )
 item/8/shapes = [  ]
 item/9/name = ""
-item/9/mesh = SubResource( 389 )
+item/9/mesh = SubResource( 180 )
 item/9/shapes = [  ]
 item/10/name = ""
-item/10/mesh = SubResource( 215 )
+item/10/mesh = SubResource( 6 )
 item/10/shapes = [  ]
 item/11/name = ""
-item/11/mesh = SubResource( 217 )
+item/11/mesh = SubResource( 8 )
 item/11/shapes = [  ]
 item/12/name = ""
-item/12/mesh = SubResource( 219 )
+item/12/mesh = SubResource( 10 )
 item/12/shapes = [  ]
 item/13/name = ""
-item/13/mesh = SubResource( 221 )
+item/13/mesh = SubResource( 12 )
 item/13/shapes = [  ]
 item/14/name = ""
-item/14/mesh = SubResource( 223 )
+item/14/mesh = SubResource( 14 )
 item/14/shapes = [  ]
 item/15/name = ""
-item/15/mesh = SubResource( 225 )
+item/15/mesh = SubResource( 16 )
 item/15/shapes = [  ]
 item/16/name = ""
-item/16/mesh = SubResource( 227 )
+item/16/mesh = SubResource( 18 )
 item/16/shapes = [  ]
 item/17/name = ""
-item/17/mesh = SubResource( 229 )
+item/17/mesh = SubResource( 20 )
 item/17/shapes = [  ]
 item/18/name = ""
-item/18/mesh = SubResource( 231 )
+item/18/mesh = SubResource( 22 )
 item/18/shapes = [  ]
 item/19/name = ""
-item/19/mesh = SubResource( 233 )
+item/19/mesh = SubResource( 24 )
 item/19/shapes = [  ]
 item/20/name = ""
-item/20/mesh = SubResource( 237 )
+item/20/mesh = SubResource( 28 )
 item/20/shapes = [  ]
 item/21/name = ""
-item/21/mesh = SubResource( 239 )
+item/21/mesh = SubResource( 30 )
 item/21/shapes = [  ]
 item/22/name = ""
-item/22/mesh = SubResource( 241 )
+item/22/mesh = SubResource( 32 )
 item/22/shapes = [  ]
 item/23/name = ""
-item/23/mesh = SubResource( 243 )
+item/23/mesh = SubResource( 34 )
 item/23/shapes = [  ]
 item/24/name = ""
-item/24/mesh = SubResource( 245 )
+item/24/mesh = SubResource( 36 )
 item/24/shapes = [  ]
 item/25/name = ""
-item/25/mesh = SubResource( 247 )
+item/25/mesh = SubResource( 38 )
 item/25/shapes = [  ]
 item/26/name = ""
-item/26/mesh = SubResource( 249 )
+item/26/mesh = SubResource( 40 )
 item/26/shapes = [  ]
 item/27/name = ""
-item/27/mesh = SubResource( 251 )
+item/27/mesh = SubResource( 42 )
 item/27/shapes = [  ]
 item/28/name = ""
-item/28/mesh = SubResource( 253 )
+item/28/mesh = SubResource( 44 )
 item/28/shapes = [  ]
 item/29/name = ""
-item/29/mesh = SubResource( 255 )
+item/29/mesh = SubResource( 46 )
 item/29/shapes = [  ]
 item/30/name = ""
-item/30/mesh = SubResource( 259 )
+item/30/mesh = SubResource( 50 )
 item/30/shapes = [  ]
 item/31/name = ""
-item/31/mesh = SubResource( 261 )
+item/31/mesh = SubResource( 52 )
 item/31/shapes = [  ]
 item/32/name = ""
-item/32/mesh = SubResource( 263 )
+item/32/mesh = SubResource( 54 )
 item/32/shapes = [  ]
 item/33/name = ""
-item/33/mesh = SubResource( 265 )
+item/33/mesh = SubResource( 56 )
 item/33/shapes = [  ]
 item/34/name = ""
-item/34/mesh = SubResource( 267 )
+item/34/mesh = SubResource( 58 )
 item/34/shapes = [  ]
 item/35/name = ""
-item/35/mesh = SubResource( 269 )
+item/35/mesh = SubResource( 60 )
 item/35/shapes = [  ]
 item/36/name = ""
-item/36/mesh = SubResource( 271 )
+item/36/mesh = SubResource( 62 )
 item/36/shapes = [  ]
 item/37/name = ""
-item/37/mesh = SubResource( 273 )
+item/37/mesh = SubResource( 64 )
 item/37/shapes = [  ]
 item/38/name = ""
-item/38/mesh = SubResource( 275 )
+item/38/mesh = SubResource( 66 )
 item/38/shapes = [  ]
 item/39/name = ""
-item/39/mesh = SubResource( 277 )
+item/39/mesh = SubResource( 68 )
 item/39/shapes = [  ]
 item/40/name = ""
-item/40/mesh = SubResource( 281 )
+item/40/mesh = SubResource( 72 )
 item/40/shapes = [  ]
 item/41/name = ""
-item/41/mesh = SubResource( 283 )
+item/41/mesh = SubResource( 74 )
 item/41/shapes = [  ]
 item/42/name = ""
-item/42/mesh = SubResource( 285 )
+item/42/mesh = SubResource( 76 )
 item/42/shapes = [  ]
 item/43/name = ""
-item/43/mesh = SubResource( 287 )
+item/43/mesh = SubResource( 78 )
 item/43/shapes = [  ]
 item/44/name = ""
-item/44/mesh = SubResource( 289 )
+item/44/mesh = SubResource( 80 )
 item/44/shapes = [  ]
 item/45/name = ""
-item/45/mesh = SubResource( 291 )
+item/45/mesh = SubResource( 82 )
 item/45/shapes = [  ]
 item/46/name = ""
-item/46/mesh = SubResource( 293 )
+item/46/mesh = SubResource( 84 )
 item/46/shapes = [  ]
 item/47/name = ""
-item/47/mesh = SubResource( 295 )
+item/47/mesh = SubResource( 86 )
 item/47/shapes = [  ]
 item/48/name = ""
-item/48/mesh = SubResource( 297 )
+item/48/mesh = SubResource( 88 )
 item/48/shapes = [  ]
 item/49/name = ""
-item/49/mesh = SubResource( 299 )
+item/49/mesh = SubResource( 90 )
 item/49/shapes = [  ]
 item/50/name = ""
-item/50/mesh = SubResource( 303 )
+item/50/mesh = SubResource( 94 )
 item/50/shapes = [  ]
 item/51/name = ""
-item/51/mesh = SubResource( 305 )
+item/51/mesh = SubResource( 96 )
 item/51/shapes = [  ]
 item/52/name = ""
-item/52/mesh = SubResource( 307 )
+item/52/mesh = SubResource( 98 )
 item/52/shapes = [  ]
 item/53/name = ""
-item/53/mesh = SubResource( 309 )
+item/53/mesh = SubResource( 100 )
 item/53/shapes = [  ]
 item/54/name = ""
-item/54/mesh = SubResource( 311 )
+item/54/mesh = SubResource( 102 )
 item/54/shapes = [  ]
 item/55/name = ""
-item/55/mesh = SubResource( 313 )
+item/55/mesh = SubResource( 104 )
 item/55/shapes = [  ]
 item/56/name = ""
-item/56/mesh = SubResource( 315 )
+item/56/mesh = SubResource( 106 )
 item/56/shapes = [  ]
 item/57/name = ""
-item/57/mesh = SubResource( 317 )
+item/57/mesh = SubResource( 108 )
 item/57/shapes = [  ]
 item/58/name = ""
-item/58/mesh = SubResource( 319 )
+item/58/mesh = SubResource( 110 )
 item/58/shapes = [  ]
 item/59/name = ""
-item/59/mesh = SubResource( 321 )
+item/59/mesh = SubResource( 112 )
 item/59/shapes = [  ]
 item/60/name = ""
-item/60/mesh = SubResource( 325 )
+item/60/mesh = SubResource( 116 )
 item/60/shapes = [  ]
 item/61/name = ""
-item/61/mesh = SubResource( 327 )
+item/61/mesh = SubResource( 118 )
 item/61/shapes = [  ]
 item/62/name = ""
-item/62/mesh = SubResource( 329 )
+item/62/mesh = SubResource( 120 )
 item/62/shapes = [  ]
 item/63/name = ""
-item/63/mesh = SubResource( 331 )
+item/63/mesh = SubResource( 122 )
 item/63/shapes = [  ]
 item/64/name = ""
-item/64/mesh = SubResource( 333 )
+item/64/mesh = SubResource( 124 )
 item/64/shapes = [  ]
 item/65/name = ""
-item/65/mesh = SubResource( 335 )
+item/65/mesh = SubResource( 126 )
 item/65/shapes = [  ]
 item/66/name = ""
-item/66/mesh = SubResource( 337 )
+item/66/mesh = SubResource( 128 )
 item/66/shapes = [  ]
 item/67/name = ""
-item/67/mesh = SubResource( 339 )
+item/67/mesh = SubResource( 130 )
 item/67/shapes = [  ]
 item/68/name = ""
-item/68/mesh = SubResource( 341 )
+item/68/mesh = SubResource( 132 )
 item/68/shapes = [  ]
 item/69/name = ""
-item/69/mesh = SubResource( 343 )
+item/69/mesh = SubResource( 134 )
 item/69/shapes = [  ]
 item/70/name = ""
-item/70/mesh = SubResource( 347 )
+item/70/mesh = SubResource( 138 )
 item/70/shapes = [  ]
 item/71/name = ""
-item/71/mesh = SubResource( 349 )
+item/71/mesh = SubResource( 140 )
 item/71/shapes = [  ]
 item/72/name = ""
-item/72/mesh = SubResource( 351 )
+item/72/mesh = SubResource( 142 )
 item/72/shapes = [  ]
 item/73/name = ""
-item/73/mesh = SubResource( 353 )
+item/73/mesh = SubResource( 144 )
 item/73/shapes = [  ]
 item/74/name = ""
-item/74/mesh = SubResource( 355 )
+item/74/mesh = SubResource( 146 )
 item/74/shapes = [  ]
 item/75/name = ""
-item/75/mesh = SubResource( 357 )
+item/75/mesh = SubResource( 148 )
 item/75/shapes = [  ]
 item/76/name = ""
-item/76/mesh = SubResource( 359 )
+item/76/mesh = SubResource( 150 )
 item/76/shapes = [  ]
 item/77/name = ""
-item/77/mesh = SubResource( 361 )
+item/77/mesh = SubResource( 152 )
 item/77/shapes = [  ]
 item/78/name = ""
-item/78/mesh = SubResource( 363 )
+item/78/mesh = SubResource( 154 )
 item/78/shapes = [  ]
 item/79/name = ""
-item/79/mesh = SubResource( 365 )
+item/79/mesh = SubResource( 156 )
 item/79/shapes = [  ]
 item/80/name = ""
-item/80/mesh = SubResource( 369 )
+item/80/mesh = SubResource( 160 )
 item/80/shapes = [  ]
 item/81/name = ""
-item/81/mesh = SubResource( 371 )
+item/81/mesh = SubResource( 162 )
 item/81/shapes = [  ]
 item/82/name = ""
-item/82/mesh = SubResource( 373 )
+item/82/mesh = SubResource( 164 )
 item/82/shapes = [  ]
 item/83/name = ""
-item/83/mesh = SubResource( 375 )
+item/83/mesh = SubResource( 166 )
 item/83/shapes = [  ]
 item/84/name = ""
-item/84/mesh = SubResource( 377 )
+item/84/mesh = SubResource( 168 )
 item/84/shapes = [  ]
 item/85/name = ""
-item/85/mesh = SubResource( 379 )
+item/85/mesh = SubResource( 170 )
 item/85/shapes = [  ]
 item/86/name = ""
-item/86/mesh = SubResource( 381 )
+item/86/mesh = SubResource( 172 )
 item/86/shapes = [  ]
 item/87/name = ""
-item/87/mesh = SubResource( 383 )
+item/87/mesh = SubResource( 174 )
 item/87/shapes = [  ]
 item/88/name = ""
-item/88/mesh = SubResource( 385 )
+item/88/mesh = SubResource( 176 )
 item/88/shapes = [  ]
 item/89/name = ""
-item/89/mesh = SubResource( 387 )
+item/89/mesh = SubResource( 178 )
 item/89/shapes = [  ]
 item/90/name = ""
-item/90/mesh = SubResource( 391 )
+item/90/mesh = SubResource( 182 )
 item/90/shapes = [  ]
 item/91/name = ""
-item/91/mesh = SubResource( 393 )
+item/91/mesh = SubResource( 184 )
 item/91/shapes = [  ]
 item/92/name = ""
-item/92/mesh = SubResource( 395 )
+item/92/mesh = SubResource( 186 )
 item/92/shapes = [  ]
 item/93/name = ""
-item/93/mesh = SubResource( 397 )
+item/93/mesh = SubResource( 188 )
 item/93/shapes = [  ]
 item/94/name = ""
-item/94/mesh = SubResource( 399 )
+item/94/mesh = SubResource( 190 )
 item/94/shapes = [  ]
 item/95/name = ""
-item/95/mesh = SubResource( 401 )
+item/95/mesh = SubResource( 192 )
 item/95/shapes = [  ]
 item/96/name = ""
-item/96/mesh = SubResource( 403 )
+item/96/mesh = SubResource( 194 )
 item/96/shapes = [  ]
 item/97/name = ""
-item/97/mesh = SubResource( 405 )
+item/97/mesh = SubResource( 196 )
 item/97/shapes = [  ]
 item/98/name = ""
-item/98/mesh = SubResource( 407 )
+item/98/mesh = SubResource( 198 )
 item/98/shapes = [  ]
 item/99/name = ""
-item/99/mesh = SubResource( 409 )
+item/99/mesh = SubResource( 200 )
 item/99/shapes = [  ]
 
-[sub_resource type="SpatialMaterial" id=411]
+[sub_resource type="SpatialMaterial" id=202]
 
 render_priority = 0
 flags_transparent = true
@@ -6365,7 +6365,7 @@ uv2_triplanar_sharpness = 1.0
 proximity_fade_enable = false
 distance_fade_enable = false
 
-[sub_resource type="ArrayMesh" id=412]
+[sub_resource type="ArrayMesh" id=203]
 
 blend_shape_mode = 1
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
@@ -6376,21 +6376,21 @@ surfaces/0 = {
 "blend_shape_data": [  ],
 "format": 97801,
 "index_count": 0,
-"material": SubResource( 411 ),
+"material": SubResource( 202 ),
 "primitive": 1,
 "skeleton_aabb": [  ],
 "vertex_count": 138
 }
 
-[sub_resource type="BoxShape" id=413]
+[sub_resource type="BoxShape" id=204]
 
 extents = Vector3( 5, 0.1, 5 )
 
-[sub_resource type="BoxShape" id=414]
+[sub_resource type="BoxShape" id=205]
 
 extents = Vector3( 5, 5, 0.1 )
 
-[sub_resource type="BoxShape" id=415]
+[sub_resource type="BoxShape" id=206]
 
 extents = Vector3( 0.1, 5, 5 )
 
@@ -6545,7 +6545,7 @@ directional_shadow_max_distance = 200.0
 
 [node name="GridMap" type="GridMap" parent="ViewportContainer/Viewport" index="1"]
 
-theme = SubResource( 410 )
+theme = SubResource( 201 )
 cell_size = Vector3( 1, 1, 1 )
 cell_octant_size = 16
 cell_center_x = true
@@ -6574,7 +6574,7 @@ lod_min_distance = 0.0
 lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
-mesh = SubResource( 412 )
+mesh = SubResource( 203 )
 skeleton = NodePath("..")
 material/0 = null
 script = ExtResource( 4 )
@@ -6596,21 +6596,21 @@ _sections_unfolded = [ "Transform" ]
 [node name="bottom" type="CollisionShape" parent="ViewportContainer/Viewport/GridMap/Matrix/Area" index="0"]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 5 )
-shape = SubResource( 413 )
+shape = SubResource( 204 )
 disabled = false
 _sections_unfolded = [ "Transform" ]
 
 [node name="side1" type="CollisionShape" parent="ViewportContainer/Viewport/GridMap/Matrix/Area" index="1"]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 5, 0 )
-shape = SubResource( 414 )
+shape = SubResource( 205 )
 disabled = false
 _sections_unfolded = [ "Transform" ]
 
 [node name="side2" type="CollisionShape" parent="ViewportContainer/Viewport/GridMap/Matrix/Area" index="2"]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 5, 5 )
-shape = SubResource( 415 )
+shape = SubResource( 206 )
 disabled = false
 _sections_unfolded = [ "Transform" ]
 
@@ -6627,7 +6627,7 @@ constant_angular_velocity = Vector3( 0, 0, 0 )
 
 [node name="Cursor" parent="ViewportContainer/Viewport" index="2" instance=ExtResource( 5 )]
 
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.5, 1.5 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.5, 5.5 )
 
 [node name="RightSideBar" type="Panel" parent="ViewportContainer" index="1"]
 
@@ -6742,7 +6742,7 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="ViewportContainer/RightSideBar/VBoxContainer" index="2"]
+[node name="ModelList" type="VBoxContainer" parent="ViewportContainer/RightSideBar/VBoxContainer" index="2"]
 
 anchor_left = 0.0
 anchor_top = 0.0

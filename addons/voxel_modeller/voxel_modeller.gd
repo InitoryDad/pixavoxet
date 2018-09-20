@@ -22,7 +22,6 @@ func _enter_tree():
 	get_editor_interface().get_editor_viewport().add_child(voxel_modeller)
 	voxel_modeller.hide()
 	voxel_modeller.get_node("ViewportContainer").undoredo = get_undo_redo()
-	#get_editor_interface().get_resource_filesystem().connect("filesystem_changed",self,"hello")
 
 func undoredo_print(string):
 	return
