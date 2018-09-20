@@ -70,7 +70,7 @@ func _process(delta):
 				add_child(pf2)
 				var s = Spatial.new()
 				pf1.add_child(s)
-				s.translation = Vector3(position.z+.5,-position.x-.5,0)
+				s.translation = Vector3(position.z+.5+(position.y*.01),-position.x-.5+(position.y*.01),0)
 				var offset = range_lerp(position.y+current_model.pivot.y,current_model.pivot.y,current_model.size.y,0,length)
 				var offset2 = range_lerp(position.y+current_model.pivot.y+1,current_model.pivot.y,current_model.size.y,0,length)
 				var idx = get_look_at_point_idx(offset,length_dictionary)
@@ -89,9 +89,6 @@ func _process(delta):
 				if(is_nan(scale_factor.x)):
 					scale_factor = Vector3(1,1,1)
 				voxel.scale = Vector3(scale_factor.x,scale_factor.y,distance + scale_factor.z)
-#				voxel.scale.z = max(1,(distance + scale_factor.z))
-#				voxel.scale.x = max(1,(scale_factor.x))
-#				voxel.scale.y = max(1,(scale_factor.y))
 				s.free()
 				pf1.free()
 				pf2.free()

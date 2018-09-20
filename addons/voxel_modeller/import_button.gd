@@ -10,4 +10,5 @@ func _ready():
 	add_child(file_dialog)
 
 func on_pressed():
+	file_dialog.invalidate()
 	file_dialog.popup_centered(Vector2(800,600))

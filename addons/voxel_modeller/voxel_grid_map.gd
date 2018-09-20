@@ -29,7 +29,10 @@ func create_model():
 	models.append(VOXEL_MODEL_SCENE.instance())
 
 func get_current_model():
-	return models[model_index]
+	if(models.size() > 0):
+		return models[model_index]
+	else:
+		return null
 
 func refresh_materials():
 	var material = SpatialMaterial.new()
@@ -51,19 +54,13 @@ func delete_model():
 	show_current_model()
 
 func set_model_index(index):
-	models[model_index].size.x = get_node("../../TopBar/VBoxContainer/size/x").value
-	models[model_index].size.y = get_node("../../TopBar/VBoxContainer/size/y").value
-	models[model_index].size.z = get_node("../../TopBar/VBoxContainer/size/z").value
-	models[model_index].pivot.x = get_node("../../TopBar/VBoxContainer/pivot/x").value
-	models[model_index].pivot.y = get_node("../../TopBar/VBoxContainer/pivot/y").value
-	models[model_index].pivot.z = get_node("../../TopBar/VBoxContainer/pivot/z").value
+	print(index)
 	model_index = index
 	show_current_model()
 
 func show_current_model():
 	clear()
 	var model = models[model_index]
-	set_size_pivot(model)
 	for p in model.voxels.keys():
 		var i = model.voxels[p]
 		set_cell_item(p.x,p.y,p.z,i)
@@ -82,9 +79,12 @@ func show_current_model():
 	set_octant_size(8)
 	for swatch in get_node("../../LeftSideBar/VBoxContainer/colors").get_children():
 		swatch.reload()
-	get_node("Matrix").reload()
+	set_size_pivot()
+	#get_node("Matrix").reload()
 
-func set_size_pivot(model):
+
+func set_size_pivot():
+	var model = get_current_model()
 	get_node("../../TopBar/VBoxContainer/size/x").value = model.size.x
 	get_node("../../TopBar/VBoxContainer/size/y").value = model.size.y
 	get_node("../../TopBar/VBoxContainer/size/z").value = model.size.z
@@ -93,53 +93,63 @@ func set_size_pivot(model):
 	get_node("../../TopBar/VBoxContainer/pivot/z").value = model.pivot.z
 	get_node("Matrix").reload()
 
-
-func on_load(file_path):
-	models = []
-	model_index = 0
-	clear()
-	refresh_materials()
-	get_node("../../LeftSideBar/VBoxContainer/ColorPicker").refresh()
-	get_node("../../TopBar/VBoxContainer/name/TextEdit").text = file_path.get_file().get_basename()
-	var scene = load(file_path).instance()
-	for model in scene.get_children():
-		models.append(model)
-		for voxel in model.get_children():
-			var p = voxel.translation + model.pivot
-			var i = voxel.color_index
-			var c = voxel.color
-			get_node("../../LeftSideBar/VBoxContainer/ColorPicker").get_material(i).albedo_color = c
-			theme.get_item_mesh(i).material = get_node("../../LeftSideBar/VBoxContainer/ColorPicker").get_material(i)
-			model.voxels[p] = i
-	show_current_model()
-
-func on_save():
+func store_size_pivot():
 	models[model_index].size.x = get_node("../../TopBar/VBoxContainer/size/x").value
 	models[model_index].size.y = get_node("../../TopBar/VBoxContainer/size/y").value
 	models[model_index].size.z = get_node("../../TopBar/VBoxContainer/size/z").value
 	models[model_index].pivot.x = get_node("../../TopBar/VBoxContainer/pivot/x").value
 	models[model_index].pivot.y = get_node("../../TopBar/VBoxContainer/pivot/y").value
 	models[model_index].pivot.z = get_node("../../TopBar/VBoxContainer/pivot/z").value
+	printt("storing", models[model_index].pivot)
+
+func on_load(file_path):
+	for model in models:
+		models.erase(model)
+		model.free()
+	models.clear()
+	model_index = 0
+	clear()
+	refresh_materials()
+	get_node("../../LeftSideBar/VBoxContainer/ColorPicker").refresh()
+	get_node("../../TopBar/VBoxContainer/name/TextEdit").text = file_path.get_file().get_basename()
+	var scene = ResourceLoader.load(file_path).duplicate().instance()
+	for model in scene.get_children():
+		if(model.get_parent()):
+			model.get_parent().remove_child(model)
+		model = model.duplicate()
+		models.append(model)
+		for voxel in model.get_children():
+			voxel.translation += model.pivot
+			var i = voxel.color_index
+			var c = voxel.color
+			get_node("../../LeftSideBar/VBoxContainer/ColorPicker").get_material(i).albedo_color = c
+			theme.get_item_mesh(i).material = get_node("../../LeftSideBar/VBoxContainer/ColorPicker").get_material(i)
+			model.voxels[voxel.translation] = i
+	scene.free()
+	show_current_model()
+
+func on_save():
+	models = models.duplicate()
 	var scene = PackedScene.new()
 	var voxel_root = Path.new()
 	voxel_root.set_script(VOXEL_ROOT_SCRIPT)
 	for model in models:
-		print(model.get_child_count())
-		print(model.get_parent())
+		model = model.duplicate()
 		if(model.get_parent()):
 			model.get_parent().remove_child(model)
-		if(!model.get_parent()):
-			voxel_root.add_child(model)
-			model.owner = voxel_root
-			for voxel in model.get_children():
-				var color = get_material_color(voxel.color_index)
-				voxel.color = color
-				voxel.translation -= model.pivot
-				voxel.owner = voxel_root
+		voxel_root.add_child(model)
+		model.owner = voxel_root
+		for voxel in model.get_children():
+			var color = get_material_color(voxel.color_index)
+			voxel.color = color
+			voxel.translation -= model.pivot - Vector3(.5,.5,.5)
+			voxel.owner = voxel_root
 	var result = scene.pack(voxel_root)
 	if result == OK:
 		var name = get_node("../../TopBar/VBoxContainer/name/TextEdit").text + ".scn"
 		ResourceSaver.save("res://voxel_models/"+name, scene)
+		printt("save",voxel_root.get_child_count(),name)
+		get_node("../../..").plugin.rescan("res://voxel_models/"+name)
 
 func add_voxel(x,y,z,color_index,model = null):
 	if(!model):
@@ -303,23 +313,6 @@ func _mvload(_path):
 		var voxels = models[i]
 		var model = MVModel.new()
 		model.id = i
-#		var culled_voxels = {}
-#		for p in voxels.keys():
-#			var bordered = 0
-#			if(voxels.keys().has(p + Vector3(1,0,0))):
-#				bordered += 1
-#			if(voxels.keys().has(p + Vector3(-1,0,0))):
-#				bordered += 1
-#			if(voxels.keys().has(p + Vector3(0,1,0))):
-#				bordered += 1
-#			if(voxels.keys().has(p + Vector3(0,-1,0))):
-#				bordered += 1
-#			if(voxels.keys().has(p + Vector3(0,0,1))):
-#				bordered += 1
-#			if(voxels.keys().has(p + Vector3(0,0,-1))):
-#				bordered += 1
-#			if(bordered != 6):
-#				culled_voxels[p] = voxels[p]
 		model.voxels = voxels
 		model.size = sizes[i]
 		MODELS.append(model)

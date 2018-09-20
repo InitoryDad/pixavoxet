@@ -36,11 +36,13 @@ func setup_boundaries():
 	get_node("Area/side2").shape = create_side_plane_x()
 
 func _process(delta):
+	var model = get_parent().get_current_model()
+	if(!model):
+		return
 	matrix_update()
 	setup_boundaries()
-	pivot.x = get_node("../../../TopBar/VBoxContainer/pivot/x").value
-	pivot.y = get_node("../../../TopBar/VBoxContainer/pivot/y").value
-	pivot.z = get_node("../../../TopBar/VBoxContainer/pivot/z").value
+	pivot = model.pivot
+	box.size = model.size
 	var size = box.size
 	var material = SpatialMaterial.new()
 	material.vertex_color_use_as_albedo = true
@@ -157,20 +159,44 @@ func reload():
 	update()
 
 func size_x_changed(value):
-	box.size.x = max(0,value)
-	remove_voxels_out_of_bounds()
-	update()
+	if($"../../../TopBar/VBoxContainer/size/x".has_focus()):
+		get_parent().store_size_pivot()
+		box.size.x = max(0,value)
+		remove_voxels_out_of_bounds()
+		update()
 
 
 func size_y_changed(value):
-	box.size.y = max(0,value)
-	remove_voxels_out_of_bounds()
-	update()
+	if($"../../../TopBar/VBoxContainer/size/y".has_focus()):
+		get_parent().store_size_pivot()
+		box.size.y = max(0,value)
+		remove_voxels_out_of_bounds()
+		update()
 
 func size_z_changed(value):
-	box.size.z = max(0,value)
-	remove_voxels_out_of_bounds()
-	update()
+	if($"../../../TopBar/VBoxContainer/size/z".has_focus()):
+		get_parent().store_size_pivot()
+		box.size.z = max(0,value)
+		remove_voxels_out_of_bounds()
+		update()
+
+func pivot_x_changed(value):
+	if($"../../../TopBar/VBoxContainer/pivot/x".has_focus()):
+		pivot.x = value
+		get_parent().store_size_pivot()
+		update()
+
+func pivot_y_changed(value):
+	if($"../../../TopBar/VBoxContainer/pivot/y".has_focus()):
+		pivot.y = value
+		get_parent().store_size_pivot()
+		update()
+
+func pivot_z_changed(value):
+	if($"../../../TopBar/VBoxContainer/pivot/z".has_focus()):
+		pivot.z = value
+		get_parent().store_size_pivot()
+		update()
 
 func remove_voxels_out_of_bounds():
 	var gridmap = get_parent()
