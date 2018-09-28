@@ -1,31 +1,32 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://voxel_models/bodies.scn" type="PackedScene" id=1]
 [ext_resource path="res://voxel_models/Hair.scn" type="PackedScene" id=2]
 [ext_resource path="res://voxel_models/faces.scn" type="PackedScene" id=3]
 [ext_resource path="res://voxel_models/hats.scn" type="PackedScene" id=4]
-[ext_resource path="res://voxel_models/arms.scn" type="PackedScene" id=5]
-[ext_resource path="res://examples/character_animations.anim" type="Animation" id=6]
-[ext_resource path="res://src/FrameByFrameHelper.gd" type="Script" id=7]
-[ext_resource path="res://src/PostProcessPreview.gd" type="Script" id=8]
-[ext_resource path="res://src/ViewportHandler.gd" type="Script" id=9]
-[ext_resource path="res://addons/voxel_modeller/voxel_light_system.gd" type="Script" id=10]
-[ext_resource path="res://voxel_models/back.scn" type="PackedScene" id=11]
+[ext_resource path="res://voxel_models/back.scn" type="PackedScene" id=5]
+[ext_resource path="res://voxel_models/armsR.scn" type="PackedScene" id=6]
+[ext_resource path="res://voxel_models/arms.scn" type="PackedScene" id=7]
+[ext_resource path="res://examples/character_animations.anim" type="Animation" id=8]
+[ext_resource path="res://src/FrameByFrameHelper.gd" type="Script" id=9]
+[ext_resource path="res://src/PostProcessPreview.gd" type="Script" id=10]
+[ext_resource path="res://src/ViewportHandler.gd" type="Script" id=11]
+[ext_resource path="res://addons/voxel_modeller/voxel_light_system.gd" type="Script" id=12]
 
 [sub_resource type="Curve3D" id=1]
 
 bake_interval = 0.2
 _data = {
-"points": PoolVector3Array( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -0.138462, 14.6563, 0.453647, 0, 0, 0, 0, 0, 0, 0.223464, 30.9236, -0.056854, 0, 0, 0, 0, 0, 0, 3.8066, 30.8805, -0.968408 ),
-"tilts": PoolRealArray( 0, 0, 0, 0 )
+"points": PoolVector3Array(  ),
+"tilts": PoolRealArray(  )
 }
 
 [sub_resource type="Curve3D" id=2]
 
 bake_interval = 0.2
 _data = {
-"points": PoolVector3Array( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -302.463, -47.8035, 90.1589, 0, 0, 0, 0, 0, 0, 76.8715, 77.3966, 34.0834 ),
-"tilts": PoolRealArray( 0, 0, 0 )
+"points": PoolVector3Array(  ),
+"tilts": PoolRealArray(  )
 }
 
 [sub_resource type="Curve3D" id=3]
@@ -36,82 +37,12 @@ _data = {
 "tilts": PoolRealArray(  )
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Curve3D" id=4]
 
-length = 0.08
-loop = true
-step = 0.01
-tracks/0/type = "value"
-tracks/0/path = NodePath("Spatial/Body/Head:transform")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.02, 0.04, 0.06 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Transform( 0.920002, 0.317081, 0.230336, -0.331702, 0.943005, 0.0267285, -0.208733, -0.100993, 0.972743, 0.176811, 4.16519, -0.0620735 ), Transform( 0.935323, 0.33808, 0.104263, -0.343352, 0.938473, 0.0370674, -0.0853167, -0.0704689, 0.993858, 0.331248, 4.28905, -0.371076 ), Transform( 0.935164, 0.347946, -0.0663315, -0.350972, 0.935487, -0.0409512, 0.0478036, 0.0615766, 0.996956, 0.132976, 3.81109, 0.148657 ), Transform( 0.935323, 0.33808, 0.104263, -0.343352, 0.938473, 0.0370674, -0.0853167, -0.0704689, 0.993857, 0.518967, 4.67217, -0.422199 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Spatial/Body/Back:transform")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.04 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Transform( 0.926845, 0.322152, -0.192813, -0.315399, 0.946688, 0.0656128, 0.203671, 7.45058e-008, 0.979039, 3.04293, 2.42015, -0.426674 ), Transform( 0.926845, 0.322152, -0.192813, -0.315399, 0.946688, 0.0656129, 0.203671, 5.96046e-008, 0.979039, 2.47692, 3.18749, -1.08216 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("Spatial/Body/LegL:transform")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0, 0.02, 0.03, 0.04, 0.06 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Transform( 0.700873, -0.662534, 0.264241, 0.661493, 0.742322, 0.106688, -0.266836, 0.100019, 0.958538, -0.976661, -0.619761, -2.39039 ), Transform( -0.0578505, -0.979415, 0.193383, 0.990544, -0.0804487, -0.111122, 0.124392, 0.185125, 0.974811, -2.04407, -2.04146, -2.3407 ), Transform( 0.653495, 0.749942, 0.102606, -0.716147, 0.656473, -0.237011, -0.245103, 0.0814044, 0.966073, -0.436651, 0.420387, -2.05026 ), Transform( 0.20406, 0.976605, 0.0678081, -0.957734, 0.213501, -0.192769, -0.202736, -0.0256052, 0.978898, -1.79856, -0.263434, -1.65848 ), Transform( 0.871315, 0.446729, 0.203076, -0.440415, 0.894408, -0.0778921, -0.21643, -0.0215691, 0.97606, -0.97666, -0.619761, -2.39039 ) ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("Spatial/Body/LegR:transform")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0, 0.02, 0.04, 0.06, 0.07 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Transform( 0.565593, 0.817429, 0.10914, -0.821387, 0.570198, -0.0139993, -0.0736749, -0.0817279, 0.993927, -1.29241, -0.463899, 2.06218 ), Transform( 0.916697, 0.379922, -0.123789, -0.373474, 0.924793, 0.0726043, 0.142064, -0.0203241, 0.989648, -0.908074, -0.609903, 1.84449 ), Transform( 0.641432, -0.691477, -0.3323, 0.719038, 0.692878, -0.0538562, 0.267484, -0.204391, 0.941634, -0.523739, -0.755908, 1.6268 ), Transform( 0.431022, -0.899972, -0.0653351, 0.902088, 0.428057, 0.0548032, -0.0213542, -0.0825597, 0.996357, -1.54069, -1.35436, 2.66523 ), Transform( 0.747043, 0.648803, 0.144843, -0.662758, 0.74384, 0.0863158, -0.0517384, -0.160478, 0.985682, -0.986125, 0.809169, 2.32908 ) ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("Spatial/Body/Back:rotation_degrees")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0.04 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector3( -3.76204, -11.1413, -18.426 ) ]
-}
-tracks/5/type = "value"
-tracks/5/path = NodePath("Spatial/Body/Waist:transform")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
-"times": PoolRealArray( 0, 0.02, 0.04, 0.06 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Transform( 0.913624, 0.406558, -0.00120407, -0.405546, 0.91155, 0.0678731, 0.0286919, -0.0615221, 0.997693, -2.49718, 0.76636, -4.88103 ), Transform( 0.69765, 0.711913, 0.0803896, -0.714224, 0.682287, 0.1561, 0.0562811, -0.166319, 0.984464, -2.48458, 0.753319, -4.96019 ), Transform( 0.915756, 0.39914, -0.0455728, -0.401732, 0.910224, -0.100504, 0.00136623, 0.110345, 0.993892, -2.06031, 1.65798, -5 ), Transform( 0.743963, 0.666895, 0.0420533, -0.666591, 0.736287, 0.116342, 0.046625, -0.114587, 0.992318, -2.27875, 1.21217, -4.94051 ) ]
+bake_interval = 0.2
+_data = {
+"points": PoolVector3Array(  ),
+"tilts": PoolRealArray(  )
 }
 
 [sub_resource type="Animation" id=5]
@@ -129,51 +60,39 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.02, 0.04, 0.06 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Transform( 0.910717, 0.320104, 0.261014, -0.352792, 0.931501, 0.088561, -0.214786, -0.172738, 0.961264, -0.0635891, 3.47871, -0.782511 ), Transform( 0.935323, 0.33808, 0.104263, -0.343352, 0.938473, 0.0370674, -0.0853167, -0.0704689, 0.993858, 0.331248, 4.28905, -0.371076 ), Transform( 0.93186, 0.356947, -0.064989, -0.359627, 0.932425, -0.0352984, 0.0479978, 0.0562649, 0.99726, 0.158971, 3.75986, -0.814886 ), Transform( 0.935323, 0.33808, 0.104263, -0.343352, 0.938473, 0.0370674, -0.0853167, -0.0704689, 0.993857, 0.518967, 4.67217, -0.422199 ) ]
+"values": [ Transform( 0.920002, 0.317081, 0.230336, -0.331702, 0.943005, 0.0267285, -0.208733, -0.100993, 0.972743, 0.176811, 4.16519, -0.0620735 ), Transform( 0.935323, 0.33808, 0.104263, -0.343352, 0.938473, 0.0370674, -0.0853167, -0.0704689, 0.993858, 0.331248, 4.28905, -0.371076 ), Transform( 0.935164, 0.347946, -0.0663315, -0.350972, 0.935487, -0.0409512, 0.0478036, 0.0615766, 0.996956, 0.132976, 3.81109, 0.148657 ), Transform( 0.935323, 0.33808, 0.104263, -0.343352, 0.938473, 0.0370674, -0.0853167, -0.0704689, 0.993857, 0.518967, 4.67217, -0.422199 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Spatial/Body/Back:transform")
+tracks/1/path = NodePath("Spatial/Body/LegL:transform")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.04 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Transform( 0.914612, 0.308796, -0.261021, -0.33905, 0.937446, -0.0789974, 0.220299, 0.160751, 0.962095, 2.92018, 2.16534, -0.410493 ), Transform( 0.955903, 0.289174, -0.0512823, -0.253212, 0.899964, 0.354894, 0.148778, -0.326259, 0.933499, 3.04293, 2.42015, -0.426674 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("Spatial/Body/LegL:transform")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
 "times": PoolRealArray( 0, 0.02, 0.03, 0.04, 0.06 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Transform( 0.700873, -0.662534, 0.264241, 0.661493, 0.742322, 0.106688, -0.266836, 0.100019, 0.958538, -0.976661, -0.619761, -2.39039 ), Transform( -0.0578505, -0.979415, 0.193383, 0.990544, -0.0804487, -0.111122, 0.124392, 0.185125, 0.974811, -2.04407, -2.04146, -2.3407 ), Transform( 0.653495, 0.749942, 0.102606, -0.716147, 0.656473, -0.237011, -0.245103, 0.0814044, 0.966073, -0.436651, 0.420387, -2.05026 ), Transform( 0.20406, 0.976605, 0.0678081, -0.957734, 0.213501, -0.192769, -0.202736, -0.0256052, 0.978898, -1.79856, -0.263434, -1.65848 ), Transform( 0.871315, 0.446729, 0.203076, -0.440415, 0.894408, -0.0778921, -0.21643, -0.0215691, 0.97606, -0.97666, -0.619761, -2.39039 ) ]
 }
-tracks/3/type = "value"
-tracks/3/path = NodePath("Spatial/Body/LegR:transform")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
+tracks/2/type = "value"
+tracks/2/path = NodePath("Spatial/Body/LegR:transform")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
 "times": PoolRealArray( 0, 0.02, 0.04, 0.06, 0.07 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Transform( 0.565593, 0.817429, 0.10914, -0.821387, 0.570198, -0.0139993, -0.0736749, -0.0817279, 0.993927, -1.29241, -0.463899, 2.06218 ), Transform( 0.916697, 0.379922, -0.123789, -0.373474, 0.924793, 0.0726043, 0.142064, -0.0203241, 0.989648, -0.908074, -0.609903, 1.84449 ), Transform( 0.641432, -0.691477, -0.3323, 0.719038, 0.692878, -0.0538562, 0.267484, -0.204391, 0.941634, -0.523739, -0.755908, 1.6268 ), Transform( 0.431022, -0.899972, -0.0653351, 0.902088, 0.428057, 0.0548032, -0.0213542, -0.0825597, 0.996357, -1.54069, -1.35436, 2.66523 ), Transform( 0.747043, 0.648803, 0.144843, -0.662758, 0.74384, 0.0863158, -0.0517384, -0.160478, 0.985682, -0.986125, 0.809169, 2.32908 ) ]
 }
-tracks/4/type = "value"
-tracks/4/path = NodePath("Spatial/Body/Waist:transform")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
+tracks/3/type = "value"
+tracks/3/path = NodePath("Spatial/Body/Waist:transform")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
 "times": PoolRealArray( 0, 0.02, 0.04, 0.06 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
@@ -181,6 +100,60 @@ tracks/4/keys = {
 }
 
 [sub_resource type="Animation" id=6]
+
+length = 0.08
+loop = true
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("Spatial/Body/Head:transform")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.02, 0.04, 0.06 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Transform( 0.910717, 0.320104, 0.261014, -0.352792, 0.931501, 0.088561, -0.214786, -0.172738, 0.961264, -0.0635891, 3.47871, -0.782511 ), Transform( 0.935323, 0.33808, 0.104263, -0.343352, 0.938473, 0.0370674, -0.0853167, -0.0704689, 0.993858, 0.331248, 4.28905, -0.371076 ), Transform( 0.93186, 0.356947, -0.064989, -0.359627, 0.932425, -0.0352984, 0.0479978, 0.0562649, 0.99726, 0.158971, 3.75986, -0.814886 ), Transform( 0.935323, 0.33808, 0.104263, -0.343352, 0.938473, 0.0370674, -0.0853167, -0.0704689, 0.993857, 0.518967, 4.67217, -0.422199 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Spatial/Body/LegL:transform")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.02, 0.03, 0.04, 0.06 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Transform( 0.700873, -0.662534, 0.264241, 0.661493, 0.742322, 0.106688, -0.266836, 0.100019, 0.958538, -0.976661, -0.619761, -2.39039 ), Transform( -0.0578505, -0.979415, 0.193383, 0.990544, -0.0804487, -0.111122, 0.124392, 0.185125, 0.974811, -2.04407, -2.04146, -2.3407 ), Transform( 0.653495, 0.749942, 0.102606, -0.716147, 0.656473, -0.237011, -0.245103, 0.0814044, 0.966073, -0.436651, 0.420387, -2.05026 ), Transform( 0.20406, 0.976605, 0.0678081, -0.957734, 0.213501, -0.192769, -0.202736, -0.0256052, 0.978898, -1.79856, -0.263434, -1.65848 ), Transform( 0.871315, 0.446729, 0.203076, -0.440415, 0.894408, -0.0778921, -0.21643, -0.0215691, 0.97606, -0.97666, -0.619761, -2.39039 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Spatial/Body/LegR:transform")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.02, 0.04, 0.06, 0.07 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Transform( 0.565593, 0.817429, 0.10914, -0.821387, 0.570198, -0.0139993, -0.0736749, -0.0817279, 0.993927, -1.29241, -0.463899, 2.06218 ), Transform( 0.916697, 0.379922, -0.123789, -0.373474, 0.924793, 0.0726043, 0.142064, -0.0203241, 0.989648, -0.908074, -0.609903, 1.84449 ), Transform( 0.641432, -0.691477, -0.3323, 0.719038, 0.692878, -0.0538562, 0.267484, -0.204391, 0.941634, -0.523739, -0.755908, 1.6268 ), Transform( 0.431022, -0.899972, -0.0653351, 0.902088, 0.428057, 0.0548032, -0.0213542, -0.0825597, 0.996357, -1.54069, -1.35436, 2.66523 ), Transform( 0.747043, 0.648803, 0.144843, -0.662758, 0.74384, 0.0863158, -0.0517384, -0.160478, 0.985682, -0.986125, 0.809169, 2.32908 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Spatial/Body/Waist:transform")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.02, 0.04, 0.06 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Transform( 0.913624, 0.406558, -0.00120407, -0.405546, 0.91155, 0.0678731, 0.0286919, -0.0615221, 0.997693, -2.49718, 0.76636, -4.88103 ), Transform( 0.69765, 0.711913, 0.0803896, -0.714224, 0.682287, 0.1561, 0.0562811, -0.166319, 0.984464, -2.48458, 0.753319, -4.96019 ), Transform( 0.915756, 0.39914, -0.0455728, -0.401732, 0.910224, -0.100504, 0.00136623, 0.110345, 0.993892, -2.06031, 1.65798, -5 ), Transform( 0.743963, 0.666895, 0.0420533, -0.666591, 0.736287, 0.116342, 0.046625, -0.114587, 0.992318, -2.27875, 1.21217, -4.94051 ) ]
+}
+
+[sub_resource type="Animation" id=7]
 
 length = 0.04
 loop = true
@@ -198,55 +171,43 @@ tracks/0/keys = {
 "values": [ Transform( 0.811255, 0.0849333, 0.578487, -0.064536, 0.996352, -0.0557812, -0.581117, 0.00791956, 0.813779, 0.552538, 4.02609, -0.137141 ), Transform( 0.925122, -0.0141808, 0.379402, 0.0386595, 0.997624, -0.056978, -0.377693, 0.067379, 0.923474, 0.305248, 5.16817, -0.0345884 ), Transform( 0.994431, -0.0496093, 0.0929779, 0.0543579, 0.997303, -0.0492523, -0.0902847, 0.0540322, 0.994448, 0.344552, 4.80206, -0.230697 ), Transform( 0.942029, -0.0906734, 0.323043, 0.147293, 0.976814, -0.155344, -0.301469, 0.19392, 0.933545, -0.535081, 4.87998, 0.0332825 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Spatial/Body/Back:transform")
+tracks/1/path = NodePath("Spatial/Body/LegL:transform")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.03 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Transform( 0.991757, 0.128134, 0.000472754, -0.128087, 0.99128, 0.0309592, 0.00349823, -0.0307645, 0.999521, 1.36749, 3.04002, 0.887384 ), Transform( 0.991757, 0.128134, 0.000472665, -0.128087, 0.99128, 0.0309592, 0.00349838, -0.0307645, 0.999521, 2.75252, 5.45865, -0.269515 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("Spatial/Body/LegL:transform")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
 "times": PoolRealArray( 0, 0.01, 0.02, 0.03 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Transform( 0.70449, -0.203052, 0.680049, 0.34352, 0.936032, -0.0763815, -0.621038, 0.287419, 0.72918, -0.427196, -1.24393, -1.60547 ), Transform( 0.832235, -0.0509944, 0.552078, 0.207272, 0.952175, -0.224504, -0.514225, 0.301269, 0.803004, -0.250126, -1.16248, -1.95939 ), Transform( 0.989395, 0.0719272, -0.126223, -0.0645842, 0.996025, 0.0613408, 0.130134, -0.0525379, 0.990106, -1.27409, 0.938344, -1.56036 ), Transform( 0.700165, 0.636297, 0.323879, -0.693515, 0.713932, 0.0966468, -0.169731, -0.292282, 0.94115, -1.86454, -0.929689, -1.40046 ) ]
 }
-tracks/3/type = "value"
-tracks/3/path = NodePath("Spatial/Body/LegR:transform")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
+tracks/2/type = "value"
+tracks/2/path = NodePath("Spatial/Body/LegR:transform")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
 "times": PoolRealArray( 0, 0.01, 0.03 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Transform( 0.887794, -0.0122501, 0.460076, 0.010289, 0.999922, 0.00676966, -0.460123, -0.00127615, 0.887854, -2.34295, 0.410701, 2.53241 ), Transform( 0.843001, -0.324873, 0.428726, 0.291662, 0.945747, 0.143161, -0.451975, 0.00435773, 0.892021, -1.58612, -0.182632, 2.75918 ), Transform( 0.875709, -0.46183, 0.140872, 0.436154, 0.881779, 0.179528, -0.207129, -0.0957731, 0.973614, 0.436135, 0.827153, 2.66618 ) ]
 }
-tracks/4/type = "value"
-tracks/4/path = NodePath("Spatial/Body/Waist:transform")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
+tracks/3/type = "value"
+tracks/3/path = NodePath("Spatial/Body/Waist:transform")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
 "times": PoolRealArray( 0, 0.03 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Transform( 0.675352, 0.255532, 0.691812, -0.499002, 0.84905, 0.173518, -0.543043, -0.462399, 0.700921, -1.41986, -0.419938, -5.6496 ), Transform( 0.963002, -0.170097, 0.20903, 0.226224, 0.931752, -0.284004, -0.146456, 0.320784, 0.93576, -0.207648, 0.00741959, -5.84055 ) ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=8]
 
 length = 0.06
 loop = true
@@ -311,20 +272,8 @@ tracks/4/keys = {
 "update": 0,
 "values": [ Transform( 0.780859, 0.588425, 0.209792, -0.605885, 0.795163, 0.0248621, -0.15219, -0.146523, 0.977431, -1.72476, -0.701432, -6.52336 ), Transform( 0.866025, 0.5, 2.98023e-008, -0.5, 0.866025, -5.96046e-008, -1.19209e-007, 5.58794e-008, 1, 0.78749, -0.762765, -5.17343 ) ]
 }
-tracks/5/type = "value"
-tracks/5/path = NodePath("Spatial/Body/Back:transform")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
-"times": PoolRealArray( 0, 0.01, 0.02, 0.03 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Transform( 0.698142, 0.371345, 0.612128, -0.0884626, 0.893166, -0.440942, -0.710472, 0.25369, 0.656407, 3.92526, 1.92203, -1.56037 ), Transform( 0.913584, 0.277316, 0.297421, -0.188227, 0.936709, -0.29521, -0.360462, 0.213717, 0.907961, 3.50505, 1.0146, -1.56037 ), Transform( 0.974614, 0.207425, -0.084271, -0.216488, 0.969073, -0.11846, 0.0570929, 0.133697, 0.989377, 3.92526, 1.92203, -1.56037 ), Transform( 0.964847, 0.238394, 0.11062, -0.211966, 0.954732, -0.208709, -0.155367, 0.177924, 0.971702, 2.61368, 1.42736, -1.7477 ) ]
-}
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=9]
 
 length = 0.08
 loop = true
@@ -342,7 +291,7 @@ tracks/0/keys = {
 "values": [ Transform( 0.999886, -3.00227e-008, 0.0150198, 2.98023e-008, 0.999997, 1.49012e-008, -0.0150195, -1.44519e-008, 0.999885, 0.430798, 4.98673, -1.3411e-007 ), Transform( 0.998357, -0.0408888, -0.0401312, 0.0401907, 0.999026, -0.0180534, 0.0408306, 0.0164108, 0.99903, -0.0278525, 4.96205, 0.202189 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Spatial/Body/Back:transform")
+tracks/1/path = NodePath("Spatial/Body/LegL:transform")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -351,10 +300,10 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.04 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Transform( 0.998827, -0.0484195, 0.000511259, 0.0484194, 0.998604, -0.0211088, 0.000511467, 0.0211087, 0.999778, 1.19903, 1.86933, 0.454854 ), Transform( 0.999756, -0.0220678, 0.000916332, 0.0220791, 0.999642, -0.0151059, -0.000582606, 0.0151224, 0.999886, 1.16992, 3.03175, 0.46815 ) ]
+"values": [ Transform( 0.447724, 0.00432282, -0.894163, 0.00218207, 0.999978, 0.00592702, 0.89417, -0.00460478, 0.447707, -0.320637, -0.323899, -2.21573 ), Transform( 0.418387, -0.0306773, -0.907751, -0.0179109, 0.998955, -0.042015, 0.908091, 0.0338371, 0.417402, -0.569355, 0.161088, -2.64957 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Spatial/Body/LegL:transform")
+tracks/2/path = NodePath("Spatial/Body/LegR:transform")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -363,34 +312,22 @@ tracks/2/keys = {
 "times": PoolRealArray( 0, 0.04 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Transform( 0.447724, 0.00432282, -0.894163, 0.00218207, 0.999978, 0.00592702, 0.89417, -0.00460478, 0.447707, -0.320637, -0.323899, -2.21573 ), Transform( 0.418387, -0.0306773, -0.907751, -0.0179109, 0.998955, -0.042015, 0.908091, 0.0338371, 0.417402, -0.569355, 0.161088, -2.64957 ) ]
+"values": [ Transform( 0.912016, 1.86265e-009, 0.410152, 1.86265e-009, 0.999998, -2.89583e-009, -0.410152, 2.79397e-009, 0.912017, -0.913383, -0.0662174, 3.39851 ), Transform( 0.912016, 2.98023e-008, 0.410152, -7.45058e-009, 0.999998, -1.80735e-008, -0.410152, 1.30385e-008, 0.912017, -0.902526, -0.264817, 3.39509 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("Spatial/Body/LegR:transform")
+tracks/3/path = NodePath("Spatial/Body/Waist:transform")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 0.04 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Transform( 0.912016, 1.86265e-009, 0.410152, 1.86265e-009, 0.999998, -2.89583e-009, -0.410152, 2.79397e-009, 0.912017, -0.913383, -0.0662174, 3.39851 ), Transform( 0.912016, 2.98023e-008, 0.410152, -7.45058e-009, 0.999998, -1.80735e-008, -0.410152, 1.30385e-008, 0.912017, -0.902526, -0.264817, 3.39509 ) ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("Spatial/Body/Waist:transform")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
 "times": PoolRealArray( 0, 0.02, 0.04, 0.06 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Transform( 0.82331, 0.567589, 0.00139418, -0.567286, 0.822783, 0.0348295, 0.0186219, -0.0294663, 0.999392, -1.23238, 0.186666, -5.36094 ), Transform( 0.87784, 0.478951, 0.00148374, -0.478911, 0.877797, -0.0106838, -0.00641951, 0.00866802, 0.999942, -1.23238, 0.186666, -5.36094 ), Transform( 0.849789, 0.52712, 0.00123808, -0.527087, 0.849701, 0.0136329, 0.00613427, -0.0122375, 0.999906, -1.23238, 0.186666, -5.36094 ), Transform( 0.87784, 0.478951, 0.00148371, -0.478911, 0.877797, -0.0106838, -0.00641939, 0.00866802, 0.999942, -1.23238, 0.186666, -5.36094 ) ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=10]
 
 length = 0.04
 loop = true
@@ -408,7 +345,7 @@ tracks/0/keys = {
 "values": [ Transform( 0.998754, 0.0463467, -0.0184603, -0.047793, 0.994999, -0.0876757, 0.0143049, 0.0884485, 0.995976, 0.430798, 4.98673, -3.57628e-007 ), Transform( 0.999094, 0.0374479, -0.0201972, -0.0392774, 0.994265, -0.0994477, 0.0163576, 0.100151, 0.994836, 0.277915, 4.9785, 0.0673962 ), Transform( 0.98101, -0.191327, 0.0317993, 0.193418, 0.977228, -0.0872263, -0.0143861, 0.0917202, 0.995679, -0.0278523, 4.96205, 0.202189 ), Transform( 0.925412, -0.37896, 0.000323623, 0.374693, 0.91486, -0.150433, 0.0567138, 0.139333, 0.988619, -0.543105, 4.7867, 0.432432 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Spatial/Body/Back:transform")
+tracks/1/path = NodePath("Spatial/Body/LegL:transform")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -417,10 +354,10 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.03 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Transform( 0.993786, 0.111273, 0.00270909, -0.111273, 0.992605, 0.0485103, 0.00270897, -0.0485103, 0.998819, 2.11571, 2.86933, 0.0552223 ), Transform( 0.999756, -0.0220678, 0.000916332, 0.0220791, 0.999642, -0.0151059, -0.000582606, 0.0151224, 0.999886, 1.16992, 3.03175, 0.46815 ) ]
+"values": [ Transform( 0.729773, 0.521582, 0.442026, -0.57098, 0.820565, -0.0255834, -0.376054, -0.233716, 0.89664, -0.320637, -0.3239, -2.21573 ), Transform( 0.906947, -0.329786, 0.262083, 0.350667, 0.93581, -0.0359395, -0.233408, 0.124499, 0.964377, -0.569355, 0.161089, -2.64957 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Spatial/Body/LegL:transform")
+tracks/2/path = NodePath("Spatial/Body/LegR:transform")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -429,34 +366,22 @@ tracks/2/keys = {
 "times": PoolRealArray( 0, 0.03 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Transform( 0.729773, 0.521582, 0.442026, -0.57098, 0.820565, -0.0255834, -0.376054, -0.233716, 0.89664, -0.320637, -0.3239, -2.21573 ), Transform( 0.906947, -0.329786, 0.262083, 0.350667, 0.93581, -0.0359395, -0.233408, 0.124499, 0.964377, -0.569355, 0.161089, -2.64957 ) ]
+"values": [ Transform( -0.272458, 0.525783, 0.805804, -0.0930937, 0.819151, -0.565971, -0.957652, -0.229217, -0.174237, 0.489454, 0.998516, 1.69603 ), Transform( 0.907845, -0.0797395, 0.411652, 0.0871361, 0.996194, 0.000801952, -0.410149, 0.0351417, 0.911342, -1.75971, -0.250463, 3.7717 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("Spatial/Body/LegR:transform")
+tracks/3/path = NodePath("Spatial/Body/Waist:transform")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 0.03 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Transform( -0.272458, 0.525783, 0.805804, -0.0930937, 0.819151, -0.565971, -0.957652, -0.229217, -0.174237, 0.489454, 0.998516, 1.69603 ), Transform( 0.907845, -0.0797395, 0.411652, 0.0871361, 0.996194, 0.000801952, -0.410149, 0.0351417, 0.911342, -1.75971, -0.250463, 3.7717 ) ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("Spatial/Body/Waist:transform")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
 "times": PoolRealArray( 0, 0.01, 0.03 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Transform( 0.328789, 0.938287, 0.107296, -0.914901, 0.28828, 0.282582, 0.234212, -0.191075, 0.953223, -1.23238, 0.186666, -5.36094 ), Transform( 0.533334, 0.65831, 0.531208, -0.821742, 0.552224, 0.140673, -0.20074, -0.511541, 0.835481, -1.11166, -0.120521, -5.40757 ), Transform( 0.745078, 0.137011, 0.652753, -0.37482, 0.895529, 0.239866, -0.551696, -0.423383, 0.718594, -0.669523, -0.703536, -5.02205 ) ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=11]
 
 length = 0.03
 loop = true
@@ -474,31 +399,31 @@ tracks/0/keys = {
 "values": [ Transform( 0.925412, -0.37896, 0.000323623, 0.374693, 0.91486, -0.150433, 0.0567138, 0.139333, 0.988619, -0.543105, 4.7867, 0.432432 ), Transform( 0.800531, 0.580124, 0.150346, -0.594132, 0.801105, 0.0723684, -0.0784593, -0.147258, 0.98598, -0.0949876, 4.16758, 0.229218 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Spatial/Body/Back:transform")
+tracks/1/path = NodePath("Spatial/Body/LegL:transform")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.01 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Transform( 0.999756, -0.0220678, 0.000916332, 0.0220791, 0.999642, -0.0151059, -0.000582606, 0.0151224, 0.999886, 1.16992, 3.03175, 0.46815 ), Transform( 0.763146, 0.518162, 0.386157, -0.539283, 0.839896, -0.0612426, -0.356064, -0.161511, 0.920398, 3.61751, 1.72218, -0.599496 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("Spatial/Body/LegL:transform")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
 "times": PoolRealArray( 0, 0.01, 0.02 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Transform( 0.906947, -0.329786, 0.262083, 0.350667, 0.93581, -0.0359395, -0.233408, 0.124499, 0.964377, -0.569355, 0.161089, -2.64957 ), Transform( 0.502022, -0.805688, 0.314389, 0.862982, 0.490572, -0.120832, -0.0568778, 0.331971, 0.941574, -3.64851, -1.14922, -1.30719 ), Transform( 0.961174, -0.126354, 0.245308, 0.129117, 0.991616, 0.00485269, -0.243864, 0.0270093, 0.969434, -2.38212, 0.249889, -1.88236 ) ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("Spatial/Body/LegR:transform")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.01 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Transform( 0.907845, -0.0797395, 0.411652, 0.0871361, 0.996194, 0.000801952, -0.410149, 0.0351417, 0.911342, -1.75971, -0.250463, 3.7717 ), Transform( 0.85605, 0.313674, 0.410833, -0.342001, 0.939686, -0.00483115, -0.387569, -0.13637, 0.911699, -2.20993, 2.535, 3.96798 ) ]
+}
 tracks/3/type = "value"
-tracks/3/path = NodePath("Spatial/Body/LegR:transform")
+tracks/3/path = NodePath("Spatial/Body/Waist:transform")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -507,22 +432,10 @@ tracks/3/keys = {
 "times": PoolRealArray( 0, 0.01 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Transform( 0.907845, -0.0797395, 0.411652, 0.0871361, 0.996194, 0.000801952, -0.410149, 0.0351417, 0.911342, -1.75971, -0.250463, 3.7717 ), Transform( 0.85605, 0.313674, 0.410833, -0.342001, 0.939686, -0.00483115, -0.387569, -0.13637, 0.911699, -2.20993, 2.535, 3.96798 ) ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("Spatial/Body/Waist:transform")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0, 0.01 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
 "values": [ Transform( 0.745078, 0.137011, 0.652753, -0.37482, 0.895529, 0.239866, -0.551696, -0.423383, 0.718594, -0.669523, -0.703536, -5.02205 ), Transform( 0.71784, 0.661209, 0.217965, -0.663443, 0.744582, -0.0737679, -0.211068, -0.0916541, 0.973165, -2.50906, -0.0589097, -4.80436 ) ]
 }
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=12]
 
 length = 0.08
 loop = true
@@ -540,55 +453,43 @@ tracks/0/keys = {
 "values": [ Transform( 0.902023, 0.425754, -0.071332, -0.407732, 0.894535, 0.183195, 0.141805, -0.136162, 0.980485, 0.176811, 4.16519, -0.0620734 ), Transform( 0.897474, 0.412578, 0.155935, -0.419377, 0.907732, 0.0119946, -0.136598, -0.0761604, 0.987694, -0.143108, 4.04632, -0.0819641 ), Transform( 0.830319, 0.413602, 0.373498, -0.38319, 0.910358, -0.156241, -0.404638, -0.0133913, 0.914378, 0.195823, 3.60397, -0.431108 ), Transform( 0.897475, 0.412578, 0.155935, -0.419377, 0.907732, 0.0119946, -0.136599, -0.0761605, 0.987694, -0.240086, 4.09393, -0.0335002 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Spatial/Body/Back:transform")
+tracks/1/path = NodePath("Spatial/Body/LegL:transform")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.02, 0.04, 0.06 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Transform( 0.860979, 0.446854, 0.242975, -0.440601, 0.893888, -0.0826827, -0.254139, -0.0358668, 0.966502, 3.12115, 2.41804, -0.155226 ), Transform( 0.946689, 0.322151, 2.08616e-007, -0.322151, 0.946688, -1.19209e-007, -3.57628e-007, 7.07805e-008, 1, 2.47157, 2.19041, -0.0171581 ), Transform( 0.926845, 0.322151, -0.192813, -0.315399, 0.946688, 0.0656129, 0.203671, 3.72529e-009, 0.979039, 2.67053, 3.77209, 0.0412857 ), Transform( 0.946688, 0.322151, 1.78814e-007, -0.322151, 0.946688, -8.9407e-008, -2.08616e-007, 2.98023e-008, 1, 2.47157, 2.19041, -0.0171577 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("Spatial/Body/LegL:transform")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
 "times": PoolRealArray( 0, 0.01, 0.02, 0.03, 0.04, 0.06 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Transform( 0.700873, -0.662534, 0.264241, 0.661493, 0.742322, 0.106688, -0.266836, 0.100019, 0.958538, -0.976661, -0.619761, -2.39039 ), Transform( 0.360801, -0.909776, 0.205248, 0.929057, 0.369879, 0.00634654, -0.0816908, 0.188397, 0.97869, -2.78095, -1.88979, -2.09546 ), Transform( 0.769108, -0.609158, 0.193382, 0.634051, 0.765263, -0.111122, -0.0802972, 0.208079, 0.974811, -4.81818, -0.157977, -1.57567 ), Transform( 0.653495, 0.749942, 0.102606, -0.716147, 0.656473, -0.237011, -0.245103, 0.0814044, 0.966073, -1.97749, 1.14102, -0.998344 ), Transform( 0.163886, 0.807458, 0.566701, -0.809547, 0.438359, -0.390476, -0.563712, -0.394777, 0.725518, -1.98875, -0.22794, -2.134 ), Transform( 0.871315, 0.446729, 0.203076, -0.440415, 0.894408, -0.0778921, -0.21643, -0.0215691, 0.97606, -0.97666, -0.619761, -2.39039 ) ]
 }
-tracks/3/type = "value"
-tracks/3/path = NodePath("Spatial/Body/LegR:transform")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
+tracks/2/type = "value"
+tracks/2/path = NodePath("Spatial/Body/LegR:transform")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
 "times": PoolRealArray( 0, 0.02, 0.04, 0.06, 0.07 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Transform( 0.338577, 0.935721, 0.0989306, -0.940613, 0.339347, 0.00943754, -0.024741, -0.0962506, 0.995049, -2.5836, -0.0340321, 2.39833 ), Transform( 0.916697, 0.379922, -0.123789, -0.373474, 0.924793, 0.0726043, 0.142064, -0.0203241, 0.989648, -0.908074, -0.609903, 1.84449 ), Transform( 0.641432, -0.691477, -0.3323, 0.719038, 0.692878, -0.0538562, 0.267484, -0.204391, 0.941634, -0.523739, -0.755908, 1.6268 ), Transform( 0.431022, -0.899972, -0.0653351, 0.902088, 0.428057, 0.0548032, -0.0213542, -0.0825597, 0.996357, -1.54069, -1.35436, 2.66523 ), Transform( 0.747043, 0.648802, 0.144843, -0.662758, 0.743841, 0.0863161, -0.0517383, -0.160478, 0.985682, -2.69685, 1.67443, 2.89894 ) ]
 }
-tracks/4/type = "value"
-tracks/4/path = NodePath("Spatial/Body/Waist:transform")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
+tracks/3/type = "value"
+tracks/3/path = NodePath("Spatial/Body/Waist:transform")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
 "times": PoolRealArray( 0, 0.02, 0.04, 0.06 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Transform( 0.784472, 0.554896, 0.276935, -0.577071, 0.816691, -0.00174469, -0.227139, -0.158443, 0.960887, -2.21504, 0.708984, -4.01531 ), Transform( 0.69765, 0.711913, 0.0803896, -0.714224, 0.682287, 0.1561, 0.0562811, -0.166319, 0.984464, -2.48458, 0.753319, -4.96019 ), Transform( 0.915756, 0.39914, -0.0455728, -0.401732, 0.910224, -0.100504, 0.00136623, 0.110345, 0.993892, -2.06031, 1.65798, -5 ), Transform( 0.743963, 0.666895, 0.0420533, -0.666591, 0.736287, 0.116343, 0.046625, -0.114587, 0.992318, -2.19343, 1.18102, -4.73917 ) ]
 }
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=13]
 
 length = 0.08
 loop = true
@@ -606,19 +507,19 @@ tracks/0/keys = {
 "values": [ Transform( 0.894646, 0.380724, 0.233786, -0.374906, 0.924363, -0.0706644, -0.243007, -0.024428, 0.969716, -0.533206, 3.12078, 0.669379 ), Transform( 0.923962, 0.380616, 0.0377472, -0.38043, 0.924725, -0.0122986, -0.0395869, -0.00299674, 0.999211, -0.567054, 3.11113, 0.83661 ), Transform( 0.914697, 0.37929, -0.139527, -0.368715, 0.924555, 0.0961402, 0.165466, -0.0364937, 0.985539, -0.600902, 3.10148, 1.00384 ), Transform( 0.92936, 0.369102, 0.00728068, -0.36845, 0.928588, -0.0443299, -0.0231231, 0.0385158, 0.99899, 0.111942, 2.76836, 1.27109 ), Transform( 0.914697, 0.37929, -0.139527, -0.368715, 0.924555, 0.0961402, 0.165466, -0.0364936, 0.985539, -0.600902, 3.10148, 1.00384 ), Transform( 0.923962, 0.380829, 0.0355317, -0.38043, 0.924638, -0.0176796, -0.0395871, 0.00281793, 0.999211, -0.567054, 3.11113, 0.83661 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Spatial/Body/Back:transform")
+tracks/1/path = NodePath("Spatial/Body/LegL:transform")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.04, 0.06 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Transform( 0.994634, 2.98023e-008, -0.103462, -7.45058e-008, 1, 0, 0.103462, -1.3411e-007, 0.994633, 2.13892, 1.50792, 0.994633 ) ]
+"values": [ Transform( 0.476835, -0.199363, -0.856087, 0.0330637, 0.977316, -0.20918, 0.878372, 0.0714386, 0.472612, -0.427968, -0.555679, -2.21573 ), Transform( 0.683778, 0.396958, 0.612272, -0.346317, 0.9151, -0.206535, -0.642275, -0.0708153, 0.7632, -2.88646, 0.701527, -2.70353 ), Transform( 0.956038, 0.221152, -0.192576, -0.246289, 0.961992, -0.117947, 0.159173, 0.16019, 0.974171, -2.07742, -0.834506, -2.45963 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Spatial/Body/LegL:transform")
+tracks/2/path = NodePath("Spatial/Body/LegR:transform")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -627,34 +528,22 @@ tracks/2/keys = {
 "times": PoolRealArray( 0, 0.04, 0.06 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Transform( 0.476835, -0.199363, -0.856087, 0.0330637, 0.977316, -0.20918, 0.878372, 0.0714386, 0.472612, -0.427968, -0.555679, -2.21573 ), Transform( 0.683778, 0.396958, 0.612272, -0.346317, 0.9151, -0.206535, -0.642275, -0.0708153, 0.7632, -2.88646, 0.701527, -2.70353 ), Transform( 0.956038, 0.221152, -0.192576, -0.246289, 0.961992, -0.117947, 0.159173, 0.16019, 0.974171, -2.07742, -0.834506, -2.45963 ) ]
+"values": [ Transform( 0.689136, 0.665712, 0.28621, -0.655012, 0.741204, -0.146877, -0.309918, -0.0862533, 0.946842, -1.66175, 0.378125, 2.94072 ), Transform( 0.850005, -0.442235, 0.286211, 0.495009, 0.856382, -0.146877, -0.180152, 0.266523, 0.946843, -1.35206, -1.45073, 2.59916 ), Transform( 0.948223, 0.137677, 0.286211, -0.0985726, 0.984229, -0.146877, -0.301919, 0.111059, 0.946843, -1.0867, 0.37113, 2.76994 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("Spatial/Body/LegR:transform")
+tracks/3/path = NodePath("Spatial/Body/Waist:transform")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 0.04, 0.06 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Transform( 0.689136, 0.665712, 0.28621, -0.655012, 0.741204, -0.146877, -0.309918, -0.0862533, 0.946842, -1.66175, 0.378125, 2.94072 ), Transform( 0.850005, -0.442235, 0.286211, 0.495009, 0.856382, -0.146877, -0.180152, 0.266523, 0.946843, -1.35206, -1.45073, 2.59916 ), Transform( 0.948223, 0.137677, 0.286211, -0.0985726, 0.984229, -0.146877, -0.301919, 0.111059, 0.946843, -1.0867, 0.37113, 2.76994 ) ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("Spatial/Body/Waist:transform")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
 "times": PoolRealArray( 0, 0.04 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Transform( 0.806002, 0.588042, -0.0675774, -0.589237, 0.786269, -0.185954, -0.0562149, 0.189698, 0.980232, -3.06849, 1.02282, -4.23832 ), Transform( 0.786788, 0.616945, -0.0185247, -0.616998, 0.785332, -0.0506435, -0.0166963, 0.0512752, 0.998545, -2.48051, 0.750548, -5 ) ]
 }
 
-[sub_resource type="Image" id=13]
+[sub_resource type="Image" id=14]
 
 data = {
 "data": PoolByteArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 88, 110, 88, 255, 22, 28, 13, 255, 117, 143, 115, 255, 117, 143, 115, 255, 0, 0, 0, 255, 0, 0, 0, 0, 0, 0, 0, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 0, 0, 0, 255, 38, 0, 0, 255, 13, 0, 0, 255, 56, 0, 0, 255, 56, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255, 117, 143, 115, 255, 0, 0, 0, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 88, 109, 88, 255, 88, 110, 88, 255, 117, 143, 115, 255, 117, 144, 115, 255, 255, 96, 42, 255, 255, 96, 42, 255, 0, 0, 0, 255, 190, 106, 0, 255, 190, 106, 0, 255, 117, 143, 115, 255, 0, 0, 0, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 88, 110, 88, 255, 38, 0, 0, 255, 77, 83, 56, 255, 77, 83, 56, 255, 255, 96, 42, 255, 255, 96, 42, 255, 191, 108, 13, 255, 190, 106, 0, 255, 190, 106, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 90, 28, 0, 255, 114, 38, 0, 255, 117, 42, 0, 255, 118, 42, 0, 255, 56, 85, 38, 255, 56, 85, 38, 255, 192, 109, 13, 255, 191, 108, 13, 255, 154, 0, 0, 255, 153, 0, 0, 255, 141, 75, 38, 255, 0, 0, 0, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 79, 96, 88, 255, 114, 141, 113, 255, 154, 186, 126, 255, 77, 83, 56, 255, 56, 85, 38, 255, 56, 85, 38, 255, 56, 85, 38, 255, 154, 0, 0, 255, 154, 0, 0, 255, 154, 0, 0, 255, 142, 75, 42, 255, 0, 0, 0, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 79, 96, 88, 255, 114, 141, 113, 255, 154, 186, 126, 255, 119, 46, 13, 255, 56, 85, 38, 255, 56, 85, 38, 255, 77, 83, 56, 255, 154, 0, 0, 255, 154, 0, 0, 255, 154, 0, 0, 255, 88, 28, 0, 255, 0, 0, 0, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 152, 184, 122, 255, 154, 185, 125, 255, 77, 83, 56, 255, 122, 147, 120, 255, 120, 146, 119, 255, 77, 83, 56, 255, 154, 0, 0, 255, 154, 0, 0, 255, 154, 0, 0, 255, 142, 75, 42, 255, 0, 0, 0, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 198, 69, 22, 255, 38, 0, 0, 255, 255, 90, 34, 255, 158, 188, 129, 255, 120, 146, 119, 255, 117, 42, 0, 255, 117, 42, 0, 255, 117, 42, 0, 255, 114, 38, 0, 255, 142, 75, 42, 255, 0, 0, 0, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 198, 159, 119, 255, 255, 205, 154, 255, 255, 155, 105, 255, 255, 155, 105, 255, 220, 90, 0, 255, 220, 90, 0, 255, 141, 75, 38, 255, 183, 99, 56, 255, 183, 99, 56, 255, 182, 98, 53, 255, 106, 77, 38, 255, 0, 0, 0, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 198, 119, 79, 255, 22, 22, 22, 255, 255, 205, 154, 255, 255, 205, 154, 255, 220, 90, 0, 255, 220, 90, 0, 255, 172, 69, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 199, 199, 79, 255, 198, 159, 119, 255, 168, 168, 88, 255, 255, 255, 105, 255, 255, 255, 105, 255, 255, 90, 34, 255, 255, 90, 34, 255, 171, 69, 0, 255, 0, 0, 0, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 200, 200, 79, 255, 255, 255, 105, 255, 255, 255, 105, 255, 255, 255, 105, 255, 169, 169, 88, 255, 255, 90, 34, 255, 255, 90, 34, 255, 200, 69, 22, 255, 0, 0, 0, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 198, 198, 79, 255, 255, 255, 105, 255, 255, 255, 102, 255, 255, 255, 102, 255, 255, 90, 34, 255, 255, 88, 34, 255, 255, 86, 28, 255, 198, 69, 22, 255, 0, 0, 0, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 0, 0, 0, 255, 200, 69, 22, 255, 255, 86, 28, 255, 198, 69, 22, 255, 197, 66, 22, 255, 200, 69, 22, 255, 0, 0, 0, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ),
@@ -664,16 +553,16 @@ data = {
 "width": 32
 }
 
-[sub_resource type="ImageTexture" id=14]
+[sub_resource type="ImageTexture" id=15]
 
 flags = 2
 storage = 0
 lossy_quality = 0.7
 flags = 2
-image = SubResource( 13 )
+image = SubResource( 14 )
 size = Vector2( 32, 32 )
 
-[sub_resource type="SpatialMaterial" id=15]
+[sub_resource type="SpatialMaterial" id=16]
 
 render_priority = 0
 flags_transparent = true
@@ -697,7 +586,7 @@ params_billboard_mode = 1
 params_grow = false
 params_use_alpha_scissor = false
 albedo_color = Color( 1, 1, 1, 1 )
-albedo_texture = SubResource( 14 )
+albedo_texture = SubResource( 15 )
 metallic = 0.0
 metallic_specular = 0.5
 metallic_texture_channel = 0
@@ -726,26 +615,26 @@ proximity_fade_enable = false
 distance_fade_enable = false
 _sections_unfolded = [ "Flags", "Parameters" ]
 
-[sub_resource type="Image" id=22]
+[sub_resource type="Image" id=17]
 
 data = {
-"data": PoolByteArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 73, 28, 13, 255, 73, 28, 13, 255, 0, 38, 22, 255, 73, 28, 13, 255, 108, 79, 56, 255, 95, 56, 34, 255, 0, 0, 0, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 0, 38, 22, 255, 0, 38, 22, 255, 73, 28, 13, 255, 0, 38, 22, 255, 108, 79, 56, 255, 95, 56, 34, 255, 0, 0, 0, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 0, 38, 22, 255, 0, 38, 22, 255, 0, 38, 22, 255, 73, 28, 13, 255, 108, 79, 56, 255, 95, 56, 34, 255, 0, 0, 0, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 73, 28, 13, 255, 0, 38, 22, 255, 0, 38, 22, 255, 73, 28, 13, 255, 108, 79, 56, 255, 95, 56, 34, 255, 0, 0, 0, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 95, 56, 34, 255, 73, 28, 13, 255, 73, 28, 13, 255, 108, 79, 56, 255, 108, 79, 56, 255, 95, 56, 34, 255, 0, 0, 0, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 88, 64, 28, 255, 106, 90, 53, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 95, 56, 34, 255, 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255, 95, 56, 34, 255, 95, 56, 34, 255, 0, 0, 0, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 0, 0, 0, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255, 95, 56, 34, 255, 95, 56, 34, 255, 0, 0, 0, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 0, 0, 0, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255, 95, 56, 34, 255, 95, 56, 34, 255, 0, 0, 0, 255, 0, 0, 0, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 0, 0, 0, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255, 95, 56, 34, 255, 95, 56, 34, 255, 0, 0, 0, 255, 0, 0, 0, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 0, 0, 0, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255, 95, 56, 34, 255, 95, 56, 34, 255, 0, 0, 0, 255, 0, 0, 0, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 0, 0, 0, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255, 95, 56, 34, 255, 0, 0, 0, 255, 0, 0, 0, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 0, 0, 0, 255, 0, 0, 0, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 0, 0, 0, 255, 0, 0, 0, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 0, 0, 0, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 0, 0, 0, 255, 0, 0, 0, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 0, 0, 0, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 0, 0, 0, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 0, 0, 0, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 0, 0, 0, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 0, 0, 0, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 0, 0, 0, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 0, 0, 0, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 0, 0, 0, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 108, 79, 56, 255, 0, 0, 0, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 73, 28, 13, 255, 53, 22, 0, 255, 81, 34, 0, 255, 147, 56, 13, 255, 147, 56, 13, 255, 0, 0, 0, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 73, 28, 13, 255, 112, 42, 13, 255, 147, 56, 13, 255, 147, 56, 13, 255, 174, 77, 0, 255, 147, 56, 13, 255, 174, 77, 0, 255, 0, 0, 0, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 73, 28, 13, 255, 112, 42, 13, 255, 112, 42, 13, 255, 147, 56, 13, 255, 174, 77, 0, 255, 106, 42, 0, 255, 174, 77, 0, 255, 0, 0, 0, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 86, 38, 0, 255, 73, 28, 13, 255, 112, 42, 13, 255, 174, 77, 0, 255, 174, 77, 0, 255, 106, 42, 0, 255, 106, 42, 0, 255, 0, 0, 0, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 73, 28, 13, 255, 112, 42, 13, 255, 174, 77, 0, 255, 174, 77, 0, 255, 174, 77, 0, 255, 106, 42, 0, 255, 174, 77, 0, 255, 0, 0, 0, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 73, 28, 13, 255, 112, 42, 13, 255, 147, 56, 13, 255, 174, 77, 0, 255, 147, 56, 13, 255, 106, 42, 0, 255, 174, 77, 0, 255, 0, 0, 0, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 86, 38, 0, 255, 73, 28, 13, 255, 147, 56, 13, 255, 174, 77, 0, 255, 106, 42, 0, 255, 106, 42, 0, 255, 106, 42, 0, 255, 147, 56, 13, 255, 0, 0, 0, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 53, 22, 0, 255, 106, 42, 0, 255, 106, 42, 0, 255, 106, 42, 0, 255, 174, 77, 0, 255, 174, 77, 0, 255, 147, 56, 13, 255, 0, 0, 0, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 73, 28, 13, 255, 147, 56, 13, 255, 147, 56, 13, 255, 147, 56, 13, 255, 147, 56, 13, 255, 174, 77, 0, 255, 174, 77, 0, 255, 0, 0, 0, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 73, 28, 13, 255, 147, 56, 13, 255, 147, 56, 13, 255, 147, 56, 13, 255, 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ),
+"data": PoolByteArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 71, 90, 83, 255, 71, 90, 83, 255, 0, 0, 0, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 71, 90, 83, 255, 71, 90, 83, 255, 0, 0, 0, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 71, 90, 83, 255, 71, 90, 83, 255, 0, 0, 0, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255, 71, 90, 83, 255, 71, 90, 83, 255, 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 112, 42, 13, 255, 112, 42, 13, 255, 130, 59, 0, 255, 112, 42, 13, 255, 122, 77, 0, 255, 122, 77, 0, 255, 42, 95, 99, 255, 42, 95, 99, 255, 42, 95, 99, 255, 0, 0, 0, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 130, 59, 0, 255, 81, 34, 0, 255, 130, 59, 0, 255, 42, 95, 99, 255, 122, 77, 0, 255, 122, 77, 0, 255, 122, 77, 0, 255, 122, 77, 0, 255, 122, 77, 0, 255, 122, 77, 0, 255, 0, 0, 0, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 81, 34, 0, 255, 81, 34, 0, 255, 130, 59, 0, 255, 42, 95, 99, 255, 42, 95, 99, 255, 42, 95, 99, 255, 122, 77, 0, 255, 122, 77, 0, 255, 122, 77, 0, 255, 122, 77, 0, 255, 0, 0, 0, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 130, 59, 0, 255, 81, 34, 0, 255, 147, 56, 13, 255, 174, 77, 0, 255, 42, 95, 99, 255, 0, 73, 46, 255, 0, 73, 46, 255, 147, 56, 13, 255, 173, 180, 126, 255, 0, 0, 0, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 130, 59, 0, 255, 81, 34, 0, 255, 106, 42, 0, 255, 106, 42, 0, 255, 153, 64, 42, 255, 147, 56, 13, 255, 147, 56, 13, 255, 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 112, 42, 13, 255, 174, 77, 0, 255, 174, 77, 0, 255, 147, 56, 13, 255, 153, 64, 42, 255, 153, 64, 42, 255, 189, 112, 69, 255, 216, 157, 109, 255, 108, 79, 56, 255, 0, 0, 0, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 0, 0, 0, 255, 77, 34, 22, 255, 114, 50, 28, 255, 153, 64, 42, 255, 153, 64, 42, 255, 216, 157, 109, 255, 0, 0, 0, 255, 142, 85, 50, 255, 0, 0, 0, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 93, 46, 22, 255, 93, 46, 22, 255, 187, 90, 42, 255, 187, 90, 42, 255, 187, 90, 42, 255, 212, 180, 106, 255, 212, 180, 106, 255, 216, 157, 109, 255, 0, 0, 0, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 93, 46, 22, 255, 140, 69, 34, 255, 187, 90, 42, 255, 187, 90, 42, 255, 187, 90, 42, 255, 177, 129, 56, 255, 212, 180, 106, 255, 212, 180, 106, 255, 212, 180, 106, 255, 0, 0, 0, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 140, 69, 34, 255, 187, 90, 42, 255, 187, 90, 42, 255, 187, 90, 42, 255, 187, 90, 42, 255, 212, 180, 106, 255, 212, 180, 106, 255, 212, 180, 106, 255, 0, 0, 0, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 187, 90, 42, 255, 187, 90, 42, 255, 187, 90, 42, 255, 187, 90, 42, 255, 187, 90, 42, 255, 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 34, 71, 73, 255, 34, 71, 73, 255, 34, 71, 73, 255, 34, 71, 73, 255, 34, 71, 73, 255, 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 34, 71, 73, 255, 34, 71, 73, 255, 34, 71, 73, 255, 34, 71, 73, 255, 34, 71, 73, 255, 34, 71, 73, 255, 92, 59, 0, 255, 92, 59, 0, 255, 92, 59, 0, 255, 92, 59, 0, 255, 92, 59, 0, 255, 92, 59, 0, 255, 92, 59, 0, 255, 92, 59, 0, 255, 92, 59, 0, 255, 92, 59, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 34, 71, 73, 255, 34, 71, 73, 255, 34, 71, 73, 255, 34, 71, 73, 255, 34, 71, 73, 255, 92, 59, 0, 255, 92, 59, 0, 255, 92, 59, 0, 255, 92, 59, 0, 255, 92, 59, 0, 255, 92, 59, 0, 255, 92, 59, 0, 255, 92, 59, 0, 255, 92, 59, 0, 255, 92, 59, 0, 255, 92, 59, 0, 255, 92, 59, 0, 255, 92, 59, 0, 255, 0, 0, 0, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255, 92, 59, 0, 255, 92, 59, 0, 255, 92, 59, 0, 255, 0, 0, 0, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ),
 "format": "RGBA8",
 "height": 48,
 "mipmaps": false,
 "width": 48
 }
 
-[sub_resource type="ImageTexture" id=23]
+[sub_resource type="ImageTexture" id=18]
 
 flags = 2
 storage = 0
 lossy_quality = 0.7
 flags = 2
-image = SubResource( 22 )
+image = SubResource( 17 )
 size = Vector2( 48, 48 )
 
-[sub_resource type="Environment" id=18]
+[sub_resource type="Environment" id=19]
 
 background_mode = 0
 background_sky_custom_fov = 0.0
@@ -824,29 +713,6 @@ adjustment_contrast = 1.0
 adjustment_saturation = 1.0
 _sections_unfolded = [ "Ambient Light", "Background", "Resource" ]
 
-[sub_resource type="Curve3D" id=19]
-
-bake_interval = 0.2
-_data = {
-"points": PoolVector3Array( 0, 0, 0, 0, 0, 0, 1.19238, 12.1201, -7.72412, 0, 0, 0, 0, 0, 0, -3.19238, 38.0814, -9.14368, 0, 0, 0, 0, 0, 0, -7.43604, 33.7672, 1.9314, 0, 0, 0, 0, 0, 0, -15.5432, 38.7626, 17.4915 ),
-"tilts": PoolRealArray( 0, 0, 0, 0 )
-}
-
-[sub_resource type="PlaneMesh" id=20]
-
-custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
-size = Vector2( 2, 2 )
-subdivide_width = 0
-subdivide_depth = 0
-
-[sub_resource type="Curve3D" id=21]
-
-bake_interval = 0.2
-_data = {
-"points": PoolVector3Array( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1.51415, 7.75953, 3.33001 ),
-"tilts": PoolRealArray( 0, 0 )
-}
-
 [node name="root" type="Spatial" index="0"]
 
 [node name="Spatial" type="Spatial" parent="." index="0"]
@@ -856,8 +722,10 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="Body" parent="Spatial" index="0" instance=ExtResource( 1 )]
 
-transform = Transform( -4.37114e-008, 0, 1, 0, 1, 0, -1, 0, -4.37114e-008, 0, 0, 0 )
+transform = Transform( -4.37114e-008, 0, 1, 0, 1, 0, -1, 0, -4.37114e-008, 0, 3.74738, -1 )
+curve = SubResource( 1 )
 _sections_unfolded = [ "Transform" ]
+use_curve_scaling = false
 
 [node name="Head" type="Spatial" parent="Spatial/Body" index="1"]
 
@@ -872,64 +740,30 @@ _sections_unfolded = [ "Geometry", "LOD", "Transform", "Visibility" ]
 [node name="Hair" parent="Spatial/Body/Head" index="1" instance=ExtResource( 2 )]
 
 transform = Transform( 1, 0, -5.96046e-008, 0, 1, -1.49012e-008, 0, 0, 1, 0, 0, 0 )
+curve = SubResource( 2 )
+_sections_unfolded = [ "Transform" ]
 model_index = 2
-voxel_interpolation = 1
+use_curve_scaling = false
 
 [node name="Face" parent="Spatial/Body/Head" index="2" instance=ExtResource( 3 )]
 
-transform = Transform( 1, -9.31323e-009, -2.5332e-007, -9.31323e-010, 1, 1.55997e-008, -2.98023e-008, 3.72529e-009, 1, -2.58863, -1.73927, 7.22706e-007 )
-curve = SubResource( 1 )
+curve = SubResource( 3 )
 _sections_unfolded = [ "Transform" ]
 model_index = 1
-voxel_interpolation = 1
-
-[node name="Position3D2" type="Position3D" parent="Spatial/Body/Head/Face" index="3"]
-
-transform = Transform( 1.00324, -0.169537, -0.000466302, 0.172524, 0.985243, -0.0248065, 0.00458534, 0.0235291, 1.03537, 0, 0, 0 )
-_sections_unfolded = [ "Transform" ]
-
-[node name="Position3D4" type="Position3D" parent="Spatial/Body/Head/Face" index="4"]
-
-transform = Transform( 6.20644, -0.198, 0.823056, 0.101933, 20.9586, -0.105014, -1.39891, 0.648723, 3.64395, -0.138462, 14.6563, 0.453647 )
-_sections_unfolded = [ "Transform" ]
-
-[node name="Position3D3" type="Position3D" parent="Spatial/Body/Head/Face" index="5"]
-
-transform = Transform( 0.99903, -0.0516782, -0.00137372, -0.0516784, -1.75075, -0.073105, -0.00137328, -0.0731055, 0.998056, 0.223464, 30.9236, -0.056854 )
-_sections_unfolded = [ "Transform" ]
-
-[node name="Position3D5" type="Position3D" parent="Spatial/Body/Head/Face" index="6"]
-
-transform = Transform( 0.99903, -0.0516782, -0.00137372, -0.0516784, -1.75075, -0.073105, -0.00137331, -0.0731056, 0.998056, 3.8066, 30.8805, -0.968408 )
-_sections_unfolded = [ "Transform" ]
+use_curve_scaling = false
 
 [node name="Hat" parent="Spatial/Body/Head" index="3" instance=ExtResource( 4 )]
 
-transform = Transform( 1, -2.79397e-009, -4.47035e-008, -1.86265e-009, 1, 0, 0, -4.65661e-010, 1, -0.0092454, -0.0830359, 0.0151182 )
-curve = SubResource( 2 )
+transform = Transform( 1, -7.45058e-009, -1.3411e-007, -5.58794e-009, 1, -6.28643e-009, 0, 6.98492e-009, 1, 0, 0, 0 )
+curve = SubResource( 4 )
 _sections_unfolded = [ "Transform" ]
-model_index = 1
-voxel_interpolation = 1
+model_index = 2
+use_curve_scaling = false
 
-[node name="Position3D" type="Position3D" parent="Spatial/Body/Head/Hat" index="17"]
+[node name="Back" parent="Spatial/Body" index="2" instance=ExtResource( 5 )]
 
-transform = Transform( -89.3596, 0.338398, 0.294913, 36.0531, 0.932478, 0.0224482, -26.7403, 0.126385, -0.955261, 0, 0, 0 )
-_sections_unfolded = [ "Transform", "Visibility" ]
-
-[node name="Position3D2" type="Position3D" parent="Spatial/Body/Head/Hat" index="18"]
-
-transform = Transform( -0.429955, 0.662561, 12.2663, 0.843082, 0.537693, 0.20323, -0.323041, 0.521441, -15.7955, -302.463, -47.8035, 90.1589 )
-_sections_unfolded = [ "Transform" ]
-
-[node name="Position3D3" type="Position3D" parent="Spatial/Body/Head/Hat" index="19"]
-
-transform = Transform( -0.429955, 0.662561, 0.613312, 0.843081, 0.537692, 0.0101619, -0.32304, 0.52144, -0.789776, 76.8715, 77.3966, 34.0834 )
-_sections_unfolded = [ "Transform" ]
-
-[node name="Back" type="Spatial" parent="Spatial/Body" index="2"]
-
-transform = Transform( 0.998827, -0.0484195, 0.000511259, 0.0484194, 0.998604, -0.0211088, 0.000511467, 0.0211087, 0.999778, 1.19903, 1.86933, 0.454854 )
-_sections_unfolded = [ "Geometry", "LOD", "Transform" ]
+transform = Transform( 0.999999, 0, -5.68434e-014, 0, 1, 0, 5.68434e-014, 0, 0.999999, 4, 0.75263, -6.50088e-006 )
+use_curve_scaling = false
 
 [node name="Cape" type="Spatial" parent="Spatial/Body" index="3"]
 
@@ -951,11 +785,44 @@ _sections_unfolded = [ "Geometry", "LOD", "Transform", "Visibility" ]
 transform = Transform( 0.82331, 0.567589, 0.00139404, -0.567286, 0.822783, 0.0348295, 0.0186219, -0.0294663, 0.999392, -1.23238, 0.186666, -5.36094 )
 _sections_unfolded = [ "Geometry", "LOD", "Transform", "Visibility" ]
 
-[node name="ArmL" parent="Spatial/Body" index="7" instance=ExtResource( 5 )]
+[node name="ArmR" parent="Spatial/Body" index="7" instance=ExtResource( 6 )]
 
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -37.8943, 33.7321, -0.962641 )
-curve = SubResource( 3 )
-_sections_unfolded = [ "Transform", "Visibility" ]
+transform = Transform( -4.37114e-008, 0, -1, 0, 1, 0, 1, 0, -4.37114e-008, -1, -4.24738, 10 )
+use_curve_scaling = false
+
+[node name="Position3D" type="Position3D" parent="Spatial/Body/ArmR" index="1"]
+
+_sections_unfolded = [ "Transform" ]
+
+[node name="Position3D2" type="Position3D" parent="Spatial/Body/ArmR" index="2"]
+
+transform = Transform( 1, 0, 2.11758e-022, 0, 1, 0, -2.11758e-022, 0, 1, 0, 22, -2 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Position3D3" type="Position3D" parent="Spatial/Body/ArmR" index="3"]
+
+transform = Transform( 1, 0, 2.11758e-022, 0, 1, 0, -2.11758e-022, 0, 1, 0, 23, 14 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="ArmL" parent="Spatial/Body" index="8" instance=ExtResource( 7 )]
+
+transform = Transform( 0.999999, 0, -8.72664e-008, 0, 1, 0, 8.72664e-008, 0, 0.999999, 1, 3, -4 )
+_sections_unfolded = [ "Transform" ]
+use_curve_scaling = false
+
+[node name="Position3D" type="Position3D" parent="Spatial/Body/ArmL" index="1"]
+
+_sections_unfolded = [ "Transform" ]
+
+[node name="Position3D2" type="Position3D" parent="Spatial/Body/ArmL" index="2"]
+
+transform = Transform( 1, 1.11759e-008, -8.88178e-014, 2.23517e-008, 1, -5.55113e-015, 1.1724e-013, 1.77636e-015, 1, -1.62801, -1.41723, -2.02199 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Position3D3" type="Position3D" parent="Spatial/Body/ArmL" index="3"]
+
+transform = Transform( 1, 6.33299e-008, -2.4869e-014, 1.49012e-008, 1, -3.10862e-015, 8.88178e-014, 2.88658e-015, 0.999998, -2.25911, -1.22449, -2.78218 )
+_sections_unfolded = [ "Transform" ]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1"]
 
@@ -964,17 +831,17 @@ autoplay = ""
 playback_process_mode = 0
 playback_default_blend_time = 0.0
 playback_speed = 0.0
-anims/aim = ExtResource( 6 )
-anims/character_animations = ExtResource( 6 )
-anims/entering = SubResource( 4 )
-anims/exiting = SubResource( 5 )
-anims/jump = SubResource( 6 )
-anims/stab = SubResource( 7 )
-anims/stand = SubResource( 8 )
-anims/throw_charge = SubResource( 9 )
-anims/throw_launch = SubResource( 10 )
-anims/walk = SubResource( 11 )
-anims/walk_2 = SubResource( 12 )
+anims/aim = ExtResource( 8 )
+anims/character_animations = ExtResource( 8 )
+anims/entering = SubResource( 5 )
+anims/exiting = SubResource( 6 )
+anims/jump = SubResource( 7 )
+anims/stab = SubResource( 8 )
+anims/stand = SubResource( 9 )
+anims/throw_charge = SubResource( 10 )
+anims/throw_launch = SubResource( 11 )
+anims/walk = SubResource( 12 )
+anims/walk_2 = SubResource( 13 )
 next/aim = "walk"
 next/exiting = "stand"
 next/jump = "walk"
@@ -985,7 +852,7 @@ next/throw_launch = "walk"
 next/walk = "stand"
 next/walk_2 = "walk"
 blend_times = [  ]
-script = ExtResource( 7 )
+script = ExtResource( 9 )
 _sections_unfolded = [ "Playback Options" ]
 play = true
 speed = 1.0
@@ -995,7 +862,6 @@ light_node = NodePath("../OmniLight")
 
 [node name="ViewportContainer" type="ViewportContainer" parent="." index="2"]
 
-editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -1016,7 +882,7 @@ _sections_unfolded = [ "Rect" ]
 
 transform = Transform( -0.141487, 0, -0.98994, 0, 1, 0, 0.98994, 0, -0.141487, 0, 24.4702, -55 )
 layers = 1
-material_override = SubResource( 15 )
+material_override = SubResource( 16 )
 cast_shadow = 0
 extra_cull_margin = 0.0
 use_in_baked_light = false
@@ -1036,13 +902,13 @@ transparent = true
 shaded = false
 double_sided = true
 alpha_cut = 0
-texture = SubResource( 23 )
+texture = SubResource( 18 )
 vframes = 1
 hframes = 1
 frame = 0
 region_enabled = false
 region_rect = Rect2( 0, 0, 0, 0 )
-script = ExtResource( 8 )
+script = ExtResource( 10 )
 _sections_unfolded = [ "Animation", "Flags", "Geometry", "LOD", "Transform", "Visibility", "material" ]
 outline_color = Color( 0, 0, 0, 1 )
 remove_jags = true
@@ -1072,7 +938,7 @@ shadow_atlas_quad_0 = 1
 shadow_atlas_quad_1 = 1
 shadow_atlas_quad_2 = 1
 shadow_atlas_quad_3 = 1
-script = ExtResource( 9 )
+script = ExtResource( 11 )
 _sections_unfolded = [ "Audio Listener", "GUI", "Physics", "Render Target", "Rendering", "Shadow Atlas" ]
 export_directory = "res://renders"
 frames_to_render = 1
@@ -1118,12 +984,12 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." index="3"]
 
-environment = SubResource( 18 )
+environment = SubResource( 19 )
 _sections_unfolded = [ "environment" ]
 
 [node name="OmniLight" type="OmniLight" parent="." index="4"]
 
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -17.9423, 46.142, 11.4328 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -20.802, 17.31, 7.21552 )
 layers = 1
 light_color = Color( 1, 1, 1, 1 )
 light_energy = 1.0
@@ -1142,51 +1008,9 @@ omni_range = 5.0
 omni_attenuation = 1.0
 omni_shadow_mode = 1
 omni_shadow_detail = 1
-script = ExtResource( 10 )
+script = ExtResource( 12 )
 energy = 0.9
 banding_amount = 0.25
 shadow_clamp = 0.5
-
-[node name="Path" type="Path" parent="." index="5"]
-
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, 0 )
-curve = SubResource( 19 )
-
-[node name="PathFollow" type="PathFollow" parent="Path" index="0"]
-
-transform = Transform( 0.836428, 0.531926, 0.132042, -0.276055, 0.200758, 0.939941, 0.473475, -0.822645, 0.314759, -3.59782, 37.6692, -8.08557 )
-offset = 27.4042
-h_offset = 0.0
-v_offset = 0.0
-rotation_mode = 3
-cubic_interp = false
-loop = true
-_sections_unfolded = [ "Transform" ]
-
-[node name="MeshInstance" type="MeshInstance" parent="Path/PathFollow" index="0"]
-
-layers = 1
-material_override = null
-cast_shadow = 1
-extra_cull_margin = 0.0
-use_in_baked_light = false
-lod_min_distance = 0.0
-lod_min_hysteresis = 0.0
-lod_max_distance = 0.0
-lod_max_hysteresis = 0.0
-mesh = SubResource( 20 )
-skeleton = NodePath("..")
-material/0 = null
-
-[node name="Path2" parent="." index="6" instance=ExtResource( 11 )]
-
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 33.7124, 0 )
-curve = SubResource( 21 )
-
-[node name="Position3D" type="Position3D" parent="Path2" index="1"]
-
-[node name="Position3D2" type="Position3D" parent="Path2" index="2"]
-
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.51415, 7.75953, 3.33001 )
 
 
