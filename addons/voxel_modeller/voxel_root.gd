@@ -3,7 +3,7 @@ extends Path
 
 export var model_index = 0
 export var voxel_interpolation = 1
-export var use_curve_scaling = false
+export var use_threading = false
 var THREAD_COUNT = 10
 var threads = []
 var voxel_index = 0
@@ -75,7 +75,7 @@ func _process(delta):
 				length_dictionary[curve.get_point_count()-1] = curve.get_baked_length()
 				index += 1
 	if(curve.get_point_count() > 1):
-		if(use_curve_scaling):
+		if(use_threading):
 			if(threads.empty()):
 				for i in THREAD_COUNT:
 					threads.append(Thread.new())
@@ -122,21 +122,17 @@ func calculate_transform(data):
 		pf2.offset = offset3
 		var distance = pf1.translation.distance_to(pf2.translation)
 		voxel.global_transform = s.global_transform
-		if(use_curve_scaling):
-			var idx = get_look_at_point_idx(offset,length_dictionary)
-			var p1 = points[idx]
-			var p2 = points[idx-1]
-			var point_distance = p2.translation.distance_to(p1.translation)
-			var self_distance = pf1.translation.distance_to(p2.translation)
-			var lerp_amount = range_lerp(self_distance, 0, point_distance, 0, 1)
-			var scale_factor = p2.scale.linear_interpolate(p1.scale,lerp_amount)
-			if(is_nan(scale_factor.x)):
-				scale_factor = Vector3(1,1,1)
-			if(voxel.scale != Vector3(scale_factor.x,scale_factor.y,distance + scale_factor.z)):
-				voxel.scale = Vector3(scale_factor.x,scale_factor.y,distance + scale_factor.z)
-		else:
-			if(voxel.scale.z != distance):
-				voxel.scale.z = distance
+		var idx = get_look_at_point_idx(offset,length_dictionary)
+		var p1 = points[idx]
+		var p2 = points[idx-1]
+		var point_distance = p2.translation.distance_to(p1.translation)
+		var self_distance = pf1.translation.distance_to(p2.translation)
+		var lerp_amount = range_lerp(self_distance, 0, point_distance, 0, 1)
+		var scale_factor = p2.scale.linear_interpolate(p1.scale,lerp_amount)
+		if(is_nan(scale_factor.x)):
+			scale_factor = Vector3(1,1,1)
+		if(voxel.scale != Vector3(scale_factor.x,scale_factor.y,distance + scale_factor.z)):
+			voxel.scale = Vector3(scale_factor.x,scale_factor.y,distance + scale_factor.z)
 
 func get_look_at_point_idx(offset,dic):
 	for key in dic.keys():
