@@ -1,12 +1,15 @@
 tool
 extends Sprite3D
 
+export var frame_size = 32
 export var outline_color = Color(0,0,0,1)
 export var remove_jags = false
 export var render_inner_outline = true
 export(NodePath) var camera_path
 
 func _process(delta):
+	$Viewport.size = Vector2(frame_size,frame_size)
+	$Viewport/Sideview.size = frame_size
 	if(visible):
 		var camera = get_node(camera_path)
 		if(camera):

@@ -107,7 +107,7 @@ func calculate_transform(data):
 	var length_dictionary = data[1]
 	if(voxel.is_in_group("voxel")):
 		voxel.rotation_degrees = Vector3(0,0,0)
-		voxel.scale = Vector3(1,1,1)
+		#voxel.scale = Vector3(1,1,1)
 		voxel.translation = voxel.initial_position
 		var length = curve.get_baked_length()
 		var position = voxel.initial_position
