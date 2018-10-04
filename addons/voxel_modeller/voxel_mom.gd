@@ -8,7 +8,8 @@ var voxels = {}
 var voxel_children = {}
 
 func _enter_tree():
-	add_to_group("voxel_model")
+	if(!is_in_group("voxel_model")):
+		add_to_group("voxel_model",true)
 
 #func _process(delta):
 #	var index = 0

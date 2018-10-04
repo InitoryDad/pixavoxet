@@ -6,8 +6,11 @@ export var remove_jags = false
 export var render_inner_outline = true
 
 func _process(delta):
-	var image = get_parent().get_node("Viewport").get_texture().get_data()
-	outline_pass(image)
+	if(visible):
+		var image = get_parent().get_node("Viewport").get_texture().get_data()
+		var image2 = Image.new()
+		image2.create(image.get_height(),image.get_width(),false,5)
+		outline_pass(image2)
 
 func outline_pass(image):
 	var h = image.get_height()
@@ -21,10 +24,10 @@ func outline_pass(image):
 			var ray_origin = camera.project_ray_origin(pos)
 			var ray_direction = camera.project_ray_normal(pos)
 			#ray_origin = ray_origin.round()
-			var from = ray_origin
+			var from = ray_origin - Vector3(.5,.5,0)
 			var to = ray_origin + ray_direction * 1000000.0
 			var state = camera.get_world().direct_space_state
-			var hit = state.intersect_ray(from,to)
+			var hit = state.intersect_ray(from,to,[],1)
 			if(!hit.empty()):
 				if(hit.collider.get_parent().is_visible_in_tree()):
 					image.set_pixel(pos.x,h-pos.y,hit.collider.get_parent().material_override.albedo_color)
@@ -36,10 +39,10 @@ func outline_pass(image):
 							ray_direction = camera.project_ray_normal(p)
 							from = ray_origin
 							to = ray_origin + ray_direction * 1000000.0
-							var hit2 = state.intersect_ray(from,to)
+							var hit2 = state.intersect_ray(from,to,[],1)
 							if(!hit2.empty()):
 								if(hit2.collider.get_parent().is_visible_in_tree()):
-									if(hit.collider.get_parent() != hit2.collider.get_parent() && hit.position.x - hit2.position.x > 2):
+									if(hit.collider.get_parent() != hit2.collider.get_parent() && hit.position.x - hit2.position.x > 2.4):
 										var c = image.get_pixel(pos.x,h-pos.y)
 										if(c.a != 0):
 											image.set_pixel(pos.x,h-pos.y,c.darkened(.5))

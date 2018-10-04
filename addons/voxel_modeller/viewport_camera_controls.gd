@@ -5,6 +5,8 @@ var zooming_in = false
 var zooming_out = false
 var rotating = false
 var panning = false
+var THREAD_COUNT = 50
+var threads = []
 onready var camera = $Viewport/Camera
 onready var cursor = $Viewport/Cursor
 onready var gridmap = $Viewport/GridMap
@@ -21,6 +23,7 @@ var drag_end = false
 var thread = Thread.new()
 var wait = 0
 var undoredo = null
+signal updated_model
 
 func _ready():
 	$Viewport.render_target_update_mode = Viewport.UPDATE_ONCE
@@ -64,6 +67,9 @@ func _input(ev):
 
 
 func _process(delta):
+	if(threads.empty()):
+		for i in THREAD_COUNT:
+			threads.append(Thread.new())
 	camera = $Viewport/Camera
 	cursor = $Viewport/Cursor
 	gridmap = $Viewport/GridMap
@@ -353,6 +359,7 @@ func update_model():
 			var i = gridmap.get_cell_item(cp.x,cp.y,cp.z)
 			gridmap.get_current_model().voxels[cp] = i
 			gridmap.add_voxel(cp.x,cp.y,cp.z,i)
+
 
 func size_changed():
 	$Viewport.render_target_update_mode = Viewport.UPDATE_ONCE

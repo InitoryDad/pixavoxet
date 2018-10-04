@@ -4,12 +4,12 @@ extends Spatial
 export var energy = 1.0
 export var banding_amount = .25
 export var shadow_clamp = .5
+export var use_threads = true
 var THREAD_COUNT = 200
 var threads = []
 var last_translation = Vector3(-9999,-9999,-9999)
 var voxels = []
 var voxel_index = 0
-var use_threads = true
 signal light_pass_complete
 
 func _process(delta):
@@ -35,8 +35,9 @@ func light_pass():
 				voxel_index += 1
 			active += 1
 	else:
-		calculate_color(voxels[voxel_index])
-		voxel_index += 1
+		for voxel in voxels:
+			calculate_color(voxel)
+		#voxel_index += 1
 
 func calculate_color(voxel):
 	var color = voxel.color
@@ -45,7 +46,7 @@ func calculate_color(voxel):
 		var from = global_transform.origin
 		var to = voxel.global_transform.origin
 		var direction = from - to
-		var hit = state.intersect_ray(from,to + (direction.normalized() * 5),[voxel.get_child(0)])
+		var hit = state.intersect_ray(from,to + (direction.normalized() * 5),[voxel.get_child(0)],1)
 		if(!hit.empty()): #cast_shadow
 			var darkened = color.darkened(shadow_clamp)
 			voxel.material_override.albedo_color = darkened

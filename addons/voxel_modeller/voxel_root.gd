@@ -15,6 +15,22 @@ var s
 
 signal transform_pass_complete
 
+func _enter_tree():
+	if(!is_in_group("voxel_root")):
+		add_to_group("voxel_root",true)
+	for model in get_children():
+		if(model.is_in_group("voxel_model")):
+			if(model.get_position_in_parent() != model_index):
+				model.visible = false
+				for voxel in model.get_children():
+					voxel.get_child(0).collision_layer = 2
+			elif(model.get_position_in_parent() == model_index):
+				model.visible = true
+				for voxel in model.get_children():
+					voxel.get_child(0).collision_layer = 1
+			if(model.get_position_in_parent() == model_index):
+				current_model = model
+
 func _process(delta):
 	if(pf1 == null):
 		pf1 = PathFollow.new()
@@ -32,10 +48,14 @@ func _process(delta):
 	var index = 0
 	for model in get_children():
 		if(model.is_in_group("voxel_model")):
-			if(model.get_position_in_parent() != model_index):
+			if(model.get_position_in_parent() != model_index && model.visible):
 				model.visible = false
-			elif(!model.visible):
+				for voxel in model.get_children():
+					voxel.get_child(0).collision_layer = 2
+			elif(model.get_position_in_parent() == model_index && !model.visible):
 				model.visible = true
+				for voxel in model.get_children():
+					voxel.get_child(0).collision_layer = 1
 			if(model.get_position_in_parent() == model_index):
 				current_model = model
 		elif(model.get_class() == "Position3D"):
@@ -115,7 +135,8 @@ func calculate_transform(data):
 			if(voxel.scale != Vector3(scale_factor.x,scale_factor.y,distance + scale_factor.z)):
 				voxel.scale = Vector3(scale_factor.x,scale_factor.y,distance + scale_factor.z)
 		else:
-			voxel.scale.z = distance
+			if(voxel.scale.z != distance):
+				voxel.scale.z = distance
 
 func get_look_at_point_idx(offset,dic):
 	for key in dic.keys():

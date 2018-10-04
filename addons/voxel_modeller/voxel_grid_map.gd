@@ -175,6 +175,51 @@ func add_voxel(x,y,z,color_index,model = null):
 		model.voxel_children[Vector3(x,y,z)].color = get_material_color(color_index)
 
 func on_import(file_path):
+	if(file_path.get_extension() == "vox"):
+		import_magica_voxel(file_path)
+	if(file_path.get_extension() == "png"):
+		import_image(file_path)
+
+func import_image(file_path):
+	models = []
+	model_index = 0
+	clear()
+	refresh_materials()
+	get_node("../../LeftSideBar/VBoxContainer/ColorPicker").refresh()
+	var image = load(file_path).get_data()
+	var w = image.get_size().x
+	var h = image.get_size().y
+	var index = 0
+	var used_colors = []
+	get_node("../../TopBar/VBoxContainer/name/TextEdit").text = file_path.get_file().get_basename()
+	var _model = VOXEL_MODEL_SCENE.instance()
+	_model.size = Vector3(w,h,1)
+	_model.pivot = Vector3(floor(w/2),0,0)
+	get_node("../../TopBar/VBoxContainer/size/x").value = _model.size.x
+	get_node("../../TopBar/VBoxContainer/size/y").value = _model.size.y
+	get_node("../../TopBar/VBoxContainer/size/z").value = _model.size.z
+	get_node("../../TopBar/VBoxContainer/pivot/x").value = _model.pivot.x
+	get_node("../../TopBar/VBoxContainer/pivot/y").value = _model.pivot.y
+	get_node("../../TopBar/VBoxContainer/pivot/z").value = _model.pivot.z
+	image.lock()
+	image.flip_y()
+	for x in range(0,w):
+		for y in range(0,h):
+			var p = Vector3(x,y,0)
+			var color = image.get_pixel(p.x,p.y)
+			if(color.a != 0):
+				if(used_colors.find(color) == -1):
+					used_colors.append(color)
+				var i = used_colors.find(color)
+				get_node("../../LeftSideBar/VBoxContainer/ColorPicker").get_material(i).albedo_color = color
+				theme.get_item_mesh(i).material = get_node("../../LeftSideBar/VBoxContainer/ColorPicker").get_material(i)
+				_model.voxels[p] = i
+				add_voxel(p.x,p.y,p.z,i,_model)
+	image.unlock()
+	models.append(_model)
+	show_current_model()
+
+func import_magica_voxel(file_path):
 	models = []
 	model_index = 0
 	clear()
@@ -210,7 +255,9 @@ func on_import(file_path):
 	show_current_model()
 
 func get_material_color(index):
-	return theme.get_item_mesh(index).material.albedo_color
+	if(index < theme.get_last_unused_item_id() && theme.get_item_mesh(index)):
+		return theme.get_item_mesh(index).material.albedo_color
+	return Color(1,1,0,1)
 
 
 class Voxel:
@@ -324,3 +371,16 @@ func _mvload(_path):
 	MVFILE.models = MODELS
 	MVFILE.palette = colors
 	return MVFILE
+
+
+func flip_vertically_pressed():
+	var model = get_current_model()
+	var voxels = {}
+	var size = model.size
+	for voxel in model.get_children():
+		var i = model.voxels[voxel.translation]
+		voxel.translation.y = size.y - voxel.translation.y - 1
+		voxels[voxel.translation] = i
+	model.voxels = voxels
+	show_current_model()
+	print("hi")
