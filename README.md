@@ -23,9 +23,9 @@ Add the scene "voxel_light_source.tscn"
 
 Save and reload the scene for the voxel lighting engine to work.
 
-Add the scene "frame_preview.tscn"
+Add the scene "PixaVoxetSystem.tscn"
 
-Right-Click and select "Discard Instancing"
+Right-Click PixaVoxet node and select "Discard Instancing" to access it's child nodes
 
 **Curve Deformation**
 
