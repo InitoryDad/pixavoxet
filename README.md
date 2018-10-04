@@ -28,9 +28,11 @@ Add the scene "frame_preview.tscn"
 Right-Click and select "Discard Instancing"
 
 **Curve Deformation**
+
 You can add Position3D nodes to any Voxel Model, a chain of 2 or more will deform the voxel model along the curve created between the Position3D nodes.  Additionally, the first two nodes added to any Position3D, will set in and out points.
 
 **Curve Scaling**
+
 Changing the scaling on a Position3D node, will scale the voxels between points.
 
 
