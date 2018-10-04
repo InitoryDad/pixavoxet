@@ -18,10 +18,13 @@ Import the project folder to Godot.
 To use the PixaVoxet system, first create or import a voxel model using the Voxel Modeller tab, save the model and it will be exported as a scene in the voxel_models folder.
 
 Add the scene to your currently open scene.
+
 Add the scene "voxel_light_source.tscn"
+
 Save and reload the scene for the voxel lighting engine to work.
 
 Add the scene "frame_preview.tscn"
+
 Right-Click and select "Discard Instancing"
 
 **Curve Deformation**
