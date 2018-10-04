@@ -2,8 +2,8 @@ tool
 extends Path
 
 export var model_index = 0
-export var voxel_interpolation = 1
 export var use_threading = false
+export var path_length_limit_multiplier = 1.5
 var THREAD_COUNT = 10
 var threads = []
 var voxel_index = 0
@@ -110,6 +110,7 @@ func calculate_transform(data):
 		#voxel.scale = Vector3(1,1,1)
 		voxel.translation = voxel.initial_position
 		var length = curve.get_baked_length()
+		length = min(length, current_model.size.y * path_length_limit_multiplier)
 		var position = voxel.initial_position
 		s.translation = Vector3(position.z+.5+(position.y*.01),-position.x-.5+(position.y*.01),0)
 		var offset = range_lerp(position.y+current_model.pivot.y,current_model.pivot.y-1,current_model.size.y,0,length)

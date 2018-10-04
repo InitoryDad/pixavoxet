@@ -21,10 +21,10 @@ func _process(delta):
 	#bottom-xz-red-blue
 	if(render_bottom):
 		st.add_color(Color(0, 0, 1, .5))
-		for x in range(0,size.x + 1,size.x):
+		for x in range(0,size.x + 1,size.x/5):
 			st.add_vertex(Vector3(x, 0, 0))
 			st.add_vertex(Vector3(x, 0, size.z))
-		for z in range(0,size.z + 1,size.z):
+		for z in range(0,size.z + 1,size.z/5):
 			st.add_vertex(Vector3(0, 0, z))
 			st.add_vertex(Vector3(size.x, 0, z))
 	if(render_top):
