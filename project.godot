@@ -13,6 +13,11 @@ config_version=3
 config/name="PixaVoxet"
 config/icon="res://icon.png"
 
+[display]
+
+window/size/width=32
+window/size/height=32
+
 [editor_plugins]
 
 enabled=PoolStringArray( "voxel_modeller" )

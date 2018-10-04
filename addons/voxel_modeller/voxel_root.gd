@@ -20,11 +20,11 @@ func _enter_tree():
 		add_to_group("voxel_root",true)
 	for model in get_children():
 		if(model.is_in_group("voxel_model")):
-			if(model.get_position_in_parent() != model_index):
+			if(model.get_position_in_parent() != model_index || !visible):
 				model.visible = false
 				for voxel in model.get_children():
 					voxel.get_child(0).collision_layer = 2
-			elif(model.get_position_in_parent() == model_index):
+			elif(model.get_position_in_parent() == model_index && visible):
 				model.visible = true
 				for voxel in model.get_children():
 					voxel.get_child(0).collision_layer = 1
@@ -48,11 +48,11 @@ func _process(delta):
 	var index = 0
 	for model in get_children():
 		if(model.is_in_group("voxel_model")):
-			if(model.get_position_in_parent() != model_index && model.visible):
+			if(model.get_position_in_parent() != model_index && model.visible || !visible):
 				model.visible = false
 				for voxel in model.get_children():
 					voxel.get_child(0).collision_layer = 2
-			elif(model.get_position_in_parent() == model_index && !model.visible):
+			elif(model.get_position_in_parent() == model_index && !model.visible && visible):
 				model.visible = true
 				for voxel in model.get_children():
 					voxel.get_child(0).collision_layer = 1

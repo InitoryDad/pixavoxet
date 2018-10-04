@@ -4,20 +4,22 @@ extends Sprite3D
 export var outline_color = Color(0,0,0,1)
 export var remove_jags = false
 export var render_inner_outline = true
+export(NodePath) var camera_path
 
 func _process(delta):
 	if(visible):
-		var image = get_parent().get_node("Viewport").get_texture().get_data()
-		var image2 = Image.new()
-		image2.create(image.get_height(),image.get_width(),false,5)
-		outline_pass(image2)
+		var camera = get_node(camera_path)
+		if(camera):
+			var image = Image.new()
+			image.create(camera.size,camera.size,false,5)
+			outline_pass(image)
 
 func outline_pass(image):
 	var h = image.get_height()
 	var w = image.get_width()
 	image.lock()
 	var outline = []
-	var camera = $"../Viewport/Sideview"
+	var camera = get_node(camera_path)
 	for x in range(0,w):
 		for y in range(0,h):
 			var pos = Vector2(x,y)
@@ -72,12 +74,6 @@ func outline_pass(image):
 						bordering += 1
 				if(bordering < 2):
 					remove.append(Vector2(x,y))
-				elif(get_parent().get_node("Viewport").noise):
-					var noise_strength = get_parent().get_node("Viewport").noise_strength
-					c.r += rand_range(-noise_strength,noise_strength)
-					c.g += rand_range(-noise_strength,noise_strength)
-					c.b += rand_range(-noise_strength,noise_strength)
-					image.set_pixel(x,y,c)
 		for xy in remove:
 			image.set_pixel(xy.x,xy.y,Color(0,0,0,0))
 	for x in range(0,w):
