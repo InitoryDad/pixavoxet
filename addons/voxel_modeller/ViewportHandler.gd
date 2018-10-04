@@ -2,10 +2,7 @@ tool
 extends Viewport
 
 export var export_directory = ""
-export var frames_to_render = 1
 export var outline_color = Color(0,0,0,1)
-export var noise = false
-export var noise_strength = .02
 var frame_count = 0
 var last_position = 0
 var last_image = null
@@ -86,11 +83,6 @@ func get_outlined_image():
 					bordering += 1
 			if(bordering == 1):
 				image.set_pixel(x,y,Color(0,0,0,0))
-			elif(noise):
-				c.r += rand_range(-noise_strength,noise_strength)
-				c.g += rand_range(-noise_strength,noise_strength)
-				c.b += rand_range(-noise_strength,noise_strength)
-				image.set_pixel(x,y,c)
 	for x in range(0,w):
 		for y in range(0,h):
 			var c = image.get_pixel(x,y)

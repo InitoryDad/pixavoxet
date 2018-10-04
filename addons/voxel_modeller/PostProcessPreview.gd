@@ -1,34 +1,38 @@
 tool
 extends Sprite3D
 
+export var export_directory = "res://renders"
 export var frame_size = 32
 export var outline_color = Color(0,0,0,1)
 export var remove_jags = false
 export var render_inner_outline = true
 export(NodePath) var camera_path
 
+var frame_count = 0
+var last_position = 0
+var last_image = null
+var rendered_frames = []
+
+
 func _process(delta):
 	$Viewport.size = Vector2(frame_size,frame_size)
 	$Viewport/Sideview.size = frame_size
 	if(visible):
-		var camera = get_node(camera_path)
-		if(camera):
-			var image = Image.new()
-			image.create(camera.size,camera.size,false,5)
-			outline_pass(image)
+		outline_pass()
 
-func outline_pass(image):
-	var h = image.get_height()
-	var w = image.get_width()
+func outline_pass():
+	var camera = get_node(camera_path)
+	var image = Image.new()
+	image.create(frame_size,frame_size,false,5)
+	var h = frame_size
+	var w = frame_size
 	image.lock()
 	var outline = []
-	var camera = get_node(camera_path)
 	for x in range(0,w):
 		for y in range(0,h):
 			var pos = Vector2(x,y)
 			var ray_origin = camera.project_ray_origin(pos)
 			var ray_direction = camera.project_ray_normal(pos)
-			#ray_origin = ray_origin.round()
 			var from = ray_origin - Vector3(.5,.5,0)
 			var to = ray_origin + ray_direction * 1000000.0
 			var state = camera.get_world().direct_space_state
@@ -40,7 +44,6 @@ func outline_pass(image):
 						var checks = [Vector2(x+1,y), Vector2(x-1,y), Vector2(x,y+1), Vector2(x,y-1)]
 						for p in checks:
 							ray_origin = camera.project_ray_origin(p)
-							#ray_origin = ray_origin.round()
 							ray_direction = camera.project_ray_normal(p)
 							from = ray_origin
 							to = ray_origin + ray_direction * 1000000.0
@@ -105,7 +108,60 @@ func outline_pass(image):
 					outline.append(Vector2(x,y))
 	for xy in outline:
 		image.set_pixel(xy.x,xy.y,outline_color)
+	image.flip_y()
 	image.unlock()
 	var tex = ImageTexture.new()
 	tex.create_from_image(image,2)
 	texture = tex
+	return image
+
+func save_start():
+	var animation_player = get_tree().get_nodes_in_group("frame_by_frame_helper")[0]
+	animation_player.rendering = true
+	yield(get_tree(),"idle_frame")
+	var animation_list = animation_player.get_animation_list()
+	for anim in animation_list:
+		rendered_frames = []
+		animation_player.animation_name = anim
+		animation_player.play(anim)
+		animation_player.playback_speed = 0
+		animation_player.frame = animation_player.current_animation_length - .01
+		animation_player.next_frame()
+		animation_player.update()
+		for i in range(0,1):
+			yield(get_tree(),"idle_frame")
+		for i in range(0, animation_player.current_animation_length / .01):
+			save(anim, animation_player)
+			animation_player.next_frame()
+			for i in range(0,1):
+				yield(get_tree(),"idle_frame")
+		save_spritesheet(animation_player, anim)
+		frame_count = 0
+	animation_player.rendering = false
+	yield(get_tree(),"idle_frame")
+
+func save_spritesheet(player,animation_name):
+	var dir = Directory.new()
+	var directories = export_directory
+	dir.make_dir_recursive(directories)
+	var colrow = ceil(sqrt(player.current_animation_length / .01))
+	var xinc = rendered_frames[0].get_width()
+	var yinc = rendered_frames[0].get_height()
+	var w = rendered_frames[0].get_width() * colrow
+	var h = rendered_frames[0].get_height() * colrow
+	var image = Image.new()
+	image.create(w,h,false,Image.FORMAT_RGBA8)
+	var i = 0
+	for y in range(0,colrow):
+		for x in range(0,colrow):
+			if(i < rendered_frames.size()):
+				image.blit_rect(rendered_frames[i],Rect2(0,0, xinc, yinc),Vector2(x * xinc, y * yinc))
+			i += 1
+	print("saving: ", directories + "/" + animation_name +".png")
+	image.save_png(directories + "/" + animation_name +".png")
+
+func save(name, player):
+	var image = outline_pass()
+	#image.save_png(directories + "/" +name + "_" + str(frame_count)+".png")
+	frame_count += 1
+	rendered_frames.append(image)

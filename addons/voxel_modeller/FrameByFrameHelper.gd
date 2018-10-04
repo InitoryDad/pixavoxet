@@ -4,8 +4,6 @@ extends AnimationPlayer
 export var play = false
 export var speed = 0.1
 export var frame = 0.0
-export var wait_for_light_pass = true
-export(NodePath) var light_node = null
 var animation_name = ""
 var wait = 0.0
 var next_frame = false
@@ -17,8 +15,6 @@ func _ready():
 func _process(delta):
 	if(play && elapsed > speed):
 		elapsed = 0
-		if(wait_for_light_pass):
-			yield(get_node(light_node),"light_pass_complete")
 		next_frame()
 	elif(!play && is_playing() && !rendering):
 		yield(get_tree(),"idle_frame")

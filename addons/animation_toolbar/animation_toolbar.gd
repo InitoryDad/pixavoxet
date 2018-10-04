@@ -35,9 +35,9 @@ func _enter_tree():
 
 func scene_changed(scene):
 	var scene_root = get_tree().get_edited_scene_root()
-	animation_player = scene_root.get_node("AnimationPlayer")
-	if(!animation_player):
+	if(get_tree().get_nodes_in_group("frame_by_frame_helper").size() == 0):
 		return
+	animation_player = get_tree().get_nodes_in_group("frame_by_frame_helper")[0]
 	animation_button.clear()
 	animations = animation_player.get_animation_list()
 	if(animation_player.animation_name == ""):
@@ -64,7 +64,7 @@ func animation_selected(idx):
 		var scene_root = get_tree().get_edited_scene_root()
 		animation_player.animation_name = animation_button.get_item_text(idx)
 		animation_player.current_animation = animation_button.get_item_text(idx)
-		get_editor_interface().inspect_object(scene_root.get_node("AnimationPlayer"))
+		get_editor_interface().inspect_object(get_tree().get_nodes_in_group("frame_by_frame_helper")[0])
 		timeline.max_value = animation_player.current_animation_length -.01
 		timeline.value = animation_player.frame
 		timeline.step = .01
@@ -74,10 +74,10 @@ func animation_selected(idx):
 func _process(delta):
 	var scene_root = get_tree().get_edited_scene_root()
 
-	if(!scene_root || !scene_root.get_node("AnimationPlayer")):
+	if(!scene_root || get_tree().get_nodes_in_group("frame_by_frame_helper").size() == 0):
 		return
-	if(scene_root && !animation_player && scene_root.get_node("AnimationPlayer") || animation_player && animation_player.get_animation_list() != animations):
-		animation_player = scene_root.get_node("AnimationPlayer")
+	if(scene_root && !animation_player && get_tree().get_nodes_in_group("frame_by_frame_helper").size() > 0 || animation_player && animation_player.get_animation_list() != animations):
+		animation_player = get_tree().get_nodes_in_group("frame_by_frame_helper")[0]
 		if(!animation_player):
 			return
 		animation_button.clear()
@@ -90,17 +90,17 @@ func _process(delta):
 			id += 1
 		animation_player.frame = 0
 		animation_player.update()
-	if(scene_root && scene_root.get_node("AnimationPlayer") && animation_player && !animation_player.rendering):
+	if(scene_root && get_tree().get_nodes_in_group("frame_by_frame_helper").size() > 0 && animation_player && !animation_player.rendering):
 		if(animation_player.current_animation != ""):
 			timeline.max_value = animation_player.current_animation_length - .01
 			timeline.value = animation_player.frame
 			timeline.step = .01
-	if(!scene_root || !scene_root.get_node("AnimationPlayer")):
+	if(!scene_root || get_tree().get_nodes_in_group("frame_by_frame_helper").size() == 0):
 		animation_player = null
 
 func render():
 	if(animation_player):
-		var vp = get_tree().get_edited_scene_root().get_node("ViewportContainer/Viewport")
+		var vp = get_tree().get_nodes_in_group("spritesheet_renderer")[0]
 		vp.save_start()
 
 
@@ -118,6 +118,6 @@ func play():
 			play_button.modulate = Color(1,0,0,1)
 
 func _exit_tree():
-	#remove_control_from_container(CONTAINER_CANVAS_EDITOR_BOTTOM,panel)
+	remove_control_from_container(CONTAINER_CANVAS_EDITOR_BOTTOM,panel)
 	panel.visible = false
 	panel.free()
