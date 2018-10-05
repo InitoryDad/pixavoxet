@@ -45,6 +45,8 @@ An imported scene created from the Voxel Modeller are to be considered Voxel Mod
 
 You can add Position3D nodes to any Voxel Model, a chain of 2 or more will deform the voxel model along the curve created between the Position3D nodes.  Additionally, the first two nodes added to any Position3D, will set in and out points.
 
+_Voxel Models deform vertically only at this moment, starting from the base and moving up_
+
 Voxel Model Roots have a property "Path Length Limit Multiplier" which limits the stretch of a voxel model.  It's calculation is based on the y height of the voxel model * path_length_limit_multiplier.
 
 **Curve Scaling**
