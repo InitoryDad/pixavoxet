@@ -20,6 +20,25 @@ func _process(delta):
 	if(visible):
 		outline_pass()
 
+func get_visible_voxels():
+	var camera = get_node(camera_path)
+	var h = frame_size
+	var w = frame_size
+	var _voxels = []
+	for x in range(0,w):
+		for y in range(0,h):
+			var pos = Vector2(x,y)
+			var ray_origin = camera.project_ray_origin(pos)
+			var ray_direction = camera.project_ray_normal(pos)
+			var from = ray_origin - Vector3(.5,.5,0)
+			var to = ray_origin + ray_direction * 1000000.0
+			var state = camera.get_world().direct_space_state
+			var hit = state.intersect_ray(from,to,[],1)
+			if(!hit.empty()):
+				if(hit.collider.get_parent().is_visible_in_tree()):
+					_voxels.append(hit.collider.get_parent())
+	return _voxels
+
 func outline_pass():
 	var camera = get_node(camera_path)
 	var image = Image.new()

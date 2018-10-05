@@ -15,19 +15,22 @@ var s
 
 signal transform_pass_complete
 
-func _enter_tree():
+func _ready():
 	if(!is_in_group("voxel_root")):
 		add_to_group("voxel_root",true)
 	for model in get_children():
 		if(model.is_in_group("voxel_model")):
-			if(model.get_position_in_parent() != model_index || !visible):
+			if(!visible):
 				model.visible = false
 				for voxel in model.get_children():
 					voxel.get_child(0).collision_layer = 2
-			elif(model.get_position_in_parent() == model_index && visible):
+					if(voxel.is_in_group("voxel_visible")):
+						voxel.remove_from_group("voxel_visible")
+			elif(visible):
 				model.visible = true
 				for voxel in model.get_children():
 					voxel.get_child(0).collision_layer = 1
+					voxel.add_to_group("voxel_visible")
 			if(model.get_position_in_parent() == model_index):
 				current_model = model
 
@@ -52,10 +55,13 @@ func _process(delta):
 				model.visible = false
 				for voxel in model.get_children():
 					voxel.get_child(0).collision_layer = 2
+					if(voxel.is_in_group("voxel_visible")):
+						voxel.remove_from_group("voxel_visible")
 			elif(model.get_position_in_parent() == model_index && !model.visible && visible):
 				model.visible = true
 				for voxel in model.get_children():
 					voxel.get_child(0).collision_layer = 1
+					voxel.add_to_group("voxel_visible")
 			if(model.get_position_in_parent() == model_index):
 				current_model = model
 		elif(model.get_class() == "Position3D"):
