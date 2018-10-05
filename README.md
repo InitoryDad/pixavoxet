@@ -5,6 +5,11 @@
 # Voxel Modeller
 Voxel modeller allows users to create, edit, and import images and MagicaVoxel models (https://ephtracy.github.io/) for use with the PixaVoxet system.
 
+**Examples**
+
+![alt text](https://66.media.tumblr.com/aa00f2a047dd3913280be21f1bc630ac/tumblr_inline_pdsk89rwtV1r2bnzm_500.gif)
+![alt text](https://66.media.tumblr.com/ee55b0232c25bf003c982731ab73bcc6/tumblr_inline_pdq9z4mBFl1r2bnzm_400.gif)
+
 **Requirements**
 
 Godot (https://godotengine.org/)
