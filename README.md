@@ -1,3 +1,5 @@
+![alt text](https://66.media.tumblr.com/fa2d09a4528f6542eeea47e308287c06/tumblr_inline_pdhktv1Odx1r2bnzm_400.gif)
+
 # PixaVoxet
 
 ​This is a little tool inside the Godot game engine, made for rendering pixel art spritesheets from voxels models.  It features a custom lighting engine, outlining support/
