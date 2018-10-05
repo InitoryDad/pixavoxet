@@ -12,7 +12,7 @@ export(NodePath) var camera_path
 var frame_count = 0
 var last_position = 0
 var last_image = null
-var rendered_frames = []
+var rendered_frames = {}
 
 
 func _process(delta):
@@ -133,6 +133,9 @@ func outline_pass():
 	var tex = ImageTexture.new()
 	tex.create_from_image(image,2)
 	texture = tex
+	var frame = float($"../AnimationPlayer".current_animation_position)
+	#yield(get_tree(),"idle_frame")
+	rendered_frames[frame] = image
 	return image
 
 func save_start():
@@ -141,7 +144,7 @@ func save_start():
 	yield(get_tree(),"idle_frame")
 	var animation_list = animation_player.get_animation_list()
 	for anim in animation_list:
-		rendered_frames = []
+		rendered_frames = {}
 		animation_player.animation_name = anim
 		animation_player.play(anim)
 		animation_player.playback_speed = 0
@@ -174,7 +177,7 @@ func save_spritesheet(player,animation_name):
 	var i = 0
 	for y in range(0,colrow):
 		for x in range(0,colrow):
-			if(i < rendered_frames.size()):
+			if(i < rendered_frames.keys().size()):
 				image.blit_rect(rendered_frames[i],Rect2(0,0, xinc, yinc),Vector2(x * xinc, y * yinc))
 			i += 1
 	print("saving: ", directories + "/" + animation_name +".png")
@@ -183,5 +186,5 @@ func save_spritesheet(player,animation_name):
 func save(name, player):
 	var image = outline_pass()
 	#image.save_png(directories + "/" +name + "_" + str(frame_count)+".png")
+	rendered_frames[frame_count] = image
 	frame_count += 1
-	rendered_frames.append(image)

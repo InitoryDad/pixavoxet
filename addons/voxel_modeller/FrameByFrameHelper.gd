@@ -3,12 +3,12 @@ extends AnimationPlayer
 
 export var play = false
 export var speed = 0.1
-export var frame = 0.0
+export var frame = 0
 var animation_name = ""
 var wait = 0.0
 var next_frame = false
 var rendering = false
-var elapsed = 0
+var elapsed = 0.0
 func _ready():
 	stop(false)
 
