@@ -1,8 +1,8 @@
 # PixaVoxet
 
-​This is a little tool inside the Godot game engine, made for rendering pixel art spritesheets from voxels models.  It features a custom lighting engine, outlining support, and indexed colors.  
+​This is a little tool inside the Godot game engine, made for rendering pixel art spritesheets from voxels models.  It features a custom lighting engine, outlining support/
 
-# Voxel Modeller:
+# Voxel Modeller
 Voxel modeller allows users to create, edit, and import images and MagicaVoxel models (https://ephtracy.github.io/) for use with the PixaVoxet system.
 
 **Requirements**
