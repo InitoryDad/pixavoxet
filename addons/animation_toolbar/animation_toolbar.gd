@@ -14,8 +14,8 @@ func _enter_tree():
 	panel = HBoxContainer.new()
 	timeline = HSlider.new()
 	timeline.rect_min_size = Vector2(1000,32)
-	timeline.max_value = .16
-	timeline.step = .01
+	timeline.max_value = 16
+	timeline.step = 1
 	timeline.connect("value_changed",self,"change_frame")
 	play_button = Button.new()
 	play_button.text = "Play"
@@ -67,7 +67,7 @@ func animation_selected(idx):
 		get_editor_interface().inspect_object(get_tree().get_nodes_in_group("frame_by_frame_helper")[0])
 		timeline.max_value = animation_player.current_animation_length -.01
 		timeline.value = animation_player.frame
-		timeline.step = .01
+		timeline.step = 1
 		animation_player.frame = 0
 		animation_player.update()
 

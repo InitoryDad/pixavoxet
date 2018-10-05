@@ -2,10 +2,7 @@ tool
 extends Path
 
 export var model_index = 0
-export var use_threading = false
 export var path_length_limit_multiplier = 1.5
-var THREAD_COUNT = 10
-var threads = []
 var voxel_index = 0
 var current_model = null
 var points = []
@@ -35,6 +32,13 @@ func _ready():
 				current_model = model
 
 func _process(delta):
+	if(!visible && current_model.visible):
+		current_model.visible = false
+		for voxel in current_model.get_children():
+			voxel.get_child(0).collision_layer = 2
+			if(voxel.is_in_group("voxel_visible")):
+				voxel.remove_from_group("voxel_visible")
+		return
 	if(pf1 == null):
 		pf1 = PathFollow.new()
 		pf2 = PathFollow.new()
@@ -81,25 +85,8 @@ func _process(delta):
 				length_dictionary[curve.get_point_count()-1] = curve.get_baked_length()
 				index += 1
 	if(curve.get_point_count() > 1):
-		if(use_threading):
-			if(threads.empty()):
-				for i in THREAD_COUNT:
-					threads.append(Thread.new())
-			if(voxel_index > current_model.get_child_count()-1):
-				voxel_index = 0
-				emit_signal("transform_pass_complete")
-			var active = 0
-			while(active < THREAD_COUNT && voxel_index < current_model.get_child_count()):
-				if(!threads[active].is_active()):
-					threads[active].start(self, "calculate_transform", [current_model.get_child(voxel_index),length_dictionary])
-					threads[active].call_deferred("wait_to_finish")
-					voxel_index += 1
-				else:
-					threads[active].wait_to_finish()
-				active += 1
-		else:
-			for voxel in current_model.get_children():
-				calculate_transform([voxel,length_dictionary])
+		for voxel in current_model.get_children():
+			calculate_transform([voxel,length_dictionary])
 	else:
 		if(current_model && curve.get_point_count() <= 1):
 			for voxel in current_model.get_children():

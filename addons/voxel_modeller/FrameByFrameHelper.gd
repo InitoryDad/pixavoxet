@@ -25,7 +25,7 @@ func _process(delta):
 
 func next_frame():
 	if(animation_name != ""):
-		frame += .01
+		frame += 1
 		if(frame >= current_animation_length):
 			frame = 0
 		update()
