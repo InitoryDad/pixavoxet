@@ -6,6 +6,7 @@ export var frame_size = 32
 export var outline_color = Color(0,0,0,1)
 export var remove_jags = false
 export var render_inner_outline = true
+export var inner_outline_depth_check = 2.0
 export(NodePath) var camera_path
 
 var frame_count = 0
@@ -69,7 +70,7 @@ func outline_pass():
 							var hit2 = state.intersect_ray(from,to,[],1)
 							if(!hit2.empty()):
 								if(hit2.collider.get_parent().is_visible_in_tree()):
-									if(hit.collider.get_parent() != hit2.collider.get_parent() && hit.position.x - hit2.position.x > 2.4):
+									if(hit.collider.get_parent() != hit2.collider.get_parent() && hit.position.x - hit2.position.x > inner_outline_depth_check):
 										var c = image.get_pixel(pos.x,h-pos.y)
 										if(c.a != 0):
 											image.set_pixel(pos.x,h-pos.y,c.darkened(.5))
