@@ -25,12 +25,12 @@ func get_visible_voxels():
 	var h = frame_size
 	var w = frame_size
 	var _voxels = []
-	for x in range(0,w):
-		for y in range(0,h):
+	for x in range(0,w+1):
+		for y in range(0,h+1):
 			var pos = Vector2(x,y)
 			var ray_origin = camera.project_ray_origin(pos)
 			var ray_direction = camera.project_ray_normal(pos)
-			var from = ray_origin - Vector3(.5,.5,0)
+			var from = ray_origin - Vector3(.5,.25,.5)
 			var to = ray_origin + ray_direction * 1000000.0
 			var state = camera.get_world().direct_space_state
 			var hit = state.intersect_ray(from,to,[],1)
@@ -47,12 +47,12 @@ func outline_pass():
 	var w = frame_size
 	image.lock()
 	var outline = []
-	for x in range(0,w):
-		for y in range(0,h):
+	for x in range(0,w+1):
+		for y in range(0,h+1):
 			var pos = Vector2(x,y)
 			var ray_origin = camera.project_ray_origin(pos)
 			var ray_direction = camera.project_ray_normal(pos)
-			var from = ray_origin - Vector3(.5,.5,0)
+			var from = ray_origin - Vector3(.5,.25,.5)
 			var to = ray_origin + ray_direction * 1000000.0
 			var state = camera.get_world().direct_space_state
 			var hit = state.intersect_ray(from,to,[],1)
@@ -144,12 +144,12 @@ func save_start():
 		animation_player.animation_name = anim
 		animation_player.play(anim)
 		animation_player.playback_speed = 0
-		animation_player.frame = animation_player.current_animation_length - .01
+		animation_player.frame = animation_player.current_animation_length - 1
 		animation_player.next_frame()
 		animation_player.update()
 		for i in range(0,1):
 			yield(get_tree(),"idle_frame")
-		for i in range(0, animation_player.current_animation_length / .01):
+		for i in range(0, animation_player.current_animation_length / 1):
 			save(anim, animation_player)
 			animation_player.next_frame()
 			for i in range(0,1):
@@ -163,7 +163,7 @@ func save_spritesheet(player,animation_name):
 	var dir = Directory.new()
 	var directories = export_directory
 	dir.make_dir_recursive(directories)
-	var colrow = ceil(sqrt(player.current_animation_length / .01))
+	var colrow = ceil(sqrt(player.current_animation_length / 1))
 	var xinc = rendered_frames[0].get_width()
 	var yinc = rendered_frames[0].get_height()
 	var w = rendered_frames[0].get_width() * colrow

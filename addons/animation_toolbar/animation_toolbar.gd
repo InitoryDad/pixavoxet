@@ -94,7 +94,7 @@ func _process(delta):
 		if(animation_player.current_animation != ""):
 			timeline.max_value = animation_player.current_animation_length - .01
 			timeline.value = animation_player.frame
-			timeline.step = .01
+			timeline.step = 1
 	if(!scene_root || get_tree().get_nodes_in_group("frame_by_frame_helper").size() == 0):
 		animation_player = null
 
