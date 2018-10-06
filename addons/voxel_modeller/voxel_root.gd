@@ -39,6 +39,8 @@ func _process(delta):
 			if(voxel.is_in_group("voxel_visible")):
 				voxel.remove_from_group("voxel_visible")
 		return
+	elif(!visible):
+		return
 	if(pf1 == null):
 		pf1 = PathFollow.new()
 		pf2 = PathFollow.new()

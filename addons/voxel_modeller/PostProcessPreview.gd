@@ -134,7 +134,6 @@ func outline_pass():
 	tex.create_from_image(image,2)
 	texture = tex
 	var frame = float($"../AnimationPlayer".current_animation_position)
-	#yield(get_tree(),"idle_frame")
 	rendered_frames[frame] = image
 	return image
 

@@ -6,6 +6,7 @@ var VOXEL_SCENE = preload("voxel.tscn")
 var VOXEL_SCRIPT = preload("voxel.gd")
 var VOXEL_ROOT_SCRIPT = preload("voxel_root.gd")
 var VOXEL_MOM_SCRIPT = preload("voxel_mom.gd")
+var VOXEL_MESH = preload("res://addons/voxel_modeller/voxel.tres")
 var cull_hidden = true
 var model_index = 0
 var models = []
@@ -122,6 +123,7 @@ func on_load(file_path):
 		model = model.duplicate()
 		models.append(model)
 		for voxel in model.get_children():
+			voxel.mesh = VOXEL_MESH
 			voxel.translation += model.pivot
 			voxel.translation = voxel.translation.floor()
 			var i = voxel.color_index
