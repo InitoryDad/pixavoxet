@@ -37,11 +37,11 @@ func get_current_model():
 		return null
 
 func refresh_materials():
-	var material = SpatialMaterial.new()
-	material.flags_albedo_tex_force_srgb = true
-	material.albedo_color = Color(.5,.5,.5,1)
 	for index in theme.get_item_list():
-		theme.get_item_mesh(index).material = material.duplicate()
+		var material = SpatialMaterial.new()
+		material.flags_albedo_tex_force_srgb = true
+		material.albedo_color = Color(.5,.5,.5,1)
+		theme.get_item_mesh(index).material = material
 
 func add_model():
 	models.insert(model_index+1, VOXEL_MODEL_SCENE.instance())
@@ -126,6 +126,8 @@ func on_load(file_path):
 			voxel.mesh = VOXEL_MESH
 			voxel.translation += model.pivot
 			voxel.translation = voxel.translation.floor()
+			model.voxels[voxel.translation] = voxel
+			model.voxel_children[voxel.translation] = voxel
 			var i = voxel.color_index
 			var c = voxel.color
 			get_node("../../LeftSideBar/VBoxContainer/ColorPicker").get_material(i).albedo_color = c

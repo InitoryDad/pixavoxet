@@ -150,13 +150,12 @@ func save_start():
 		animation_player.frame = animation_player.current_animation_length - 1
 		animation_player.next_frame()
 		animation_player.update()
-		for i in range(0,1):
+		for i in range(0,2):
 			yield(get_tree(),"idle_frame")
 		for i in range(0, animation_player.current_animation_length / 1):
 			save(anim, animation_player)
 			animation_player.next_frame()
-			for i in range(0,1):
-				yield(get_tree(),"idle_frame")
+			yield(get_tree(),"idle_frame")
 		save_spritesheet(animation_player, anim)
 		frame_count = 0
 	animation_player.rendering = false

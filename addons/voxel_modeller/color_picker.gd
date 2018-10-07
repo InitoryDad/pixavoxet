@@ -16,7 +16,7 @@ func refresh():
 		if(!selected):
 			selected = node
 		var mat = get_node("../../../Viewport/GridMap").theme.get_item_mesh(node.get_position_in_parent()).material
-		mat.albedo_color = node.color
+		node.color = mat.albedo_color
 		material_lookup[node.get_position_in_parent()] = mat
 
 func get_material(index):

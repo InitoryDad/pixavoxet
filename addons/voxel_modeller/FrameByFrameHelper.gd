@@ -32,7 +32,6 @@ func next_frame():
 
 func update():
 	seek(frame,true)
-	#yield(get_tree(),"idle_frame")
 
 func get_node_path(path):
 	var s = ""

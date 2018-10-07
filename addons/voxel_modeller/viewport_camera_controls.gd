@@ -341,6 +341,7 @@ func generate_collision():
 func update_model():
 	var voxel_positions = gridmap.get_current_model().voxels.keys()
 	var cell_positions = gridmap.get_used_cells()
+	printt(voxel_positions.size(), cell_positions.size())
 	for vp in voxel_positions:
 		if(!cell_positions.has(vp)):
 			var voxel = gridmap.get_current_model().voxel_children[vp]
@@ -348,6 +349,7 @@ func update_model():
 			voxel.free()
 			gridmap.get_current_model().voxel_children.erase(vp)
 			gridmap.get_current_model().voxels.erase(vp)
+			print("erase")
 		else:
 			var i = gridmap.get_cell_item(vp.x,vp.y,vp.z)
 			if(i !=  gridmap.get_current_model().voxels[vp]):
@@ -356,6 +358,7 @@ func update_model():
 				gridmap.get_current_model().voxel_children[vp].color = gridmap.get_material_color(i)
 	for cp in cell_positions:
 		if(!voxel_positions.has(cp)):
+			print("hi")
 			var i = gridmap.get_cell_item(cp.x,cp.y,cp.z)
 			gridmap.get_current_model().voxels[cp] = i
 			gridmap.add_voxel(cp.x,cp.y,cp.z,i)
