@@ -126,25 +126,25 @@ func on_load(file_path):
 			voxel.mesh = VOXEL_MESH
 			voxel.translation += model.pivot
 			voxel.translation = voxel.translation.floor()
-			model.voxels[voxel.translation] = voxel
-			model.voxel_children[voxel.translation] = voxel
 			var i = voxel.color_index
 			var c = voxel.color
 			get_node("../../LeftSideBar/VBoxContainer/ColorPicker").get_material(i).albedo_color = c
 			theme.get_item_mesh(i).material = get_node("../../LeftSideBar/VBoxContainer/ColorPicker").get_material(i)
 			model.voxels[voxel.translation] = i
+			model.voxel_children[voxel.translation] = voxel
 	scene.free()
 	show_current_model()
 
 func on_save():
-	models = models.duplicate()
+#	models = models.duplicate()
 	var scene = PackedScene.new()
 	var voxel_root = Path.new()
 	voxel_root.set_script(VOXEL_ROOT_SCRIPT)
 	for model in models:
-		model = model.duplicate()
+#		model = model.duplicate()
 		if(model.get_parent()):
 			model.get_parent().remove_child(model)
+		printt(model.voxel_children.keys().size(),model.get_child_count())
 		voxel_root.add_child(model)
 		model.owner = voxel_root
 		for voxel in model.get_children():
@@ -155,8 +155,9 @@ func on_save():
 	var result = scene.pack(voxel_root)
 	if result == OK:
 		var name = get_node("../../TopBar/VBoxContainer/name/TextEdit").text + ".scn"
-		ResourceSaver.save("res://voxel_models/"+name, scene)
-		printt("save",voxel_root.get_child_count(),name)
+		var err = ResourceSaver.save("res://voxel_models/"+name, scene)
+		print(err)
+		printt("save",voxel_root.get_child(0).get_child_count(),name)
 		get_node("../../..").plugin.rescan("res://voxel_models/"+name)
 
 func add_voxel(x,y,z,color_index,model = null):

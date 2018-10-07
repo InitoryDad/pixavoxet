@@ -341,7 +341,7 @@ func generate_collision():
 func update_model():
 	var voxel_positions = gridmap.get_current_model().voxels.keys()
 	var cell_positions = gridmap.get_used_cells()
-	printt(voxel_positions.size(), cell_positions.size())
+	printt(voxel_positions.size(), cell_positions.size(), gridmap.get_current_model().voxel_children.keys().size())
 	for vp in voxel_positions:
 		if(!cell_positions.has(vp)):
 			var voxel = gridmap.get_current_model().voxel_children[vp]
