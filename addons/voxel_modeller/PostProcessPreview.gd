@@ -65,7 +65,7 @@ func outline_pass():
 						for p in checks:
 							ray_origin = camera.project_ray_origin(p)
 							ray_direction = camera.project_ray_normal(p)
-							from = ray_origin
+							from = ray_origin - Vector3(.5,.25,.5)
 							to = ray_origin + ray_direction * 1000000.0
 							var hit2 = state.intersect_ray(from,to,[],1)
 							if(!hit2.empty()):
@@ -133,8 +133,8 @@ func outline_pass():
 	var tex = ImageTexture.new()
 	tex.create_from_image(image,2)
 	texture = tex
-	var frame = float($"../AnimationPlayer".current_animation_position)
-	rendered_frames[frame] = image
+#	var frame = float($"../AnimationPlayer".current_animation_position)
+#	rendered_frames[frame] = image
 	return image
 
 func save_start():
