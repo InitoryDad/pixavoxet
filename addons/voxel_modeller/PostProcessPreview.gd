@@ -56,9 +56,9 @@ func outline_pass():
 			var from = ray_origin - Vector3(.5,.25,.5)
 			var to = ray_origin + ray_direction * 1000000.0
 			var state = camera.get_world().direct_space_state
-			var hit = state.intersect_ray(from,to,[],1)
+			var hit = state.intersect_ray(from,to,[],12)
 			if(!hit.empty()):
-				if(hit.collider.get_parent().is_visible_in_tree()):
+				if(hit.collider.get_parent().is_visible_in_tree() && !hit.collider.get_parent().get_parent().get_parent().is_mask):
 					image.set_pixel(pos.x,h-pos.y,hit.collider.get_parent().material_override.albedo_color)
 					if(render_inner_outline):
 						var checks = [Vector2(x+1,y), Vector2(x-1,y), Vector2(x,y+1), Vector2(x,y-1)]
@@ -67,10 +67,11 @@ func outline_pass():
 							ray_direction = camera.project_ray_normal(p)
 							from = ray_origin - Vector3(.5,.25,.5)
 							to = ray_origin + ray_direction * 1000000.0
-							var hit2 = state.intersect_ray(from,to,[],1)
+							var hit2 = state.intersect_ray(from,to,[],4)
 							if(!hit2.empty()):
 								if(hit2.collider.get_parent().is_visible_in_tree()):
-									if(hit.collider.get_parent() != hit2.collider.get_parent() && hit.position.x - hit2.position.x > inner_outline_depth_check):
+									if(hit.collider.get_parent().get_parent() != hit2.collider.get_parent().get_parent() && hit.position.x - hit2.position.x > inner_outline_depth_check ||
+										hit.collider.get_parent() != hit2.collider.get_parent() && hit.position.x - hit2.position.x > inner_outline_depth_check + 1):
 										var c = image.get_pixel(pos.x,h-pos.y)
 										if(c.a != 0):
 											image.set_pixel(pos.x,h-pos.y,c.darkened(.5))
@@ -137,15 +138,31 @@ func outline_pass():
 #	rendered_frames[frame] = image
 	return image
 
-func save_start():
+func save_start(save_all):
 	var animation_player = get_tree().get_nodes_in_group("frame_by_frame_helper")[0]
 	animation_player.rendering = true
 	yield(get_tree(),"idle_frame")
 	var animation_list = animation_player.get_animation_list()
-	for anim in animation_list:
+	if(save_all):
+		for anim in animation_list:
+			rendered_frames = {}
+			animation_player.animation_name = anim
+			animation_player.play(anim)
+			animation_player.playback_speed = 0
+			animation_player.frame = animation_player.current_animation_length - 1
+			animation_player.next_frame()
+			animation_player.update()
+			for i in range(0,2):
+				yield(get_tree(),"idle_frame")
+			for i in range(0, animation_player.current_animation_length / 1):
+				save(anim, animation_player)
+				animation_player.next_frame()
+				yield(get_tree(),"idle_frame")
+			save_spritesheet(animation_player, anim)
+			frame_count = 0
+	else:
 		rendered_frames = {}
-		animation_player.animation_name = anim
-		animation_player.play(anim)
+		animation_player.play(animation_player.animation_name)
 		animation_player.playback_speed = 0
 		animation_player.frame = animation_player.current_animation_length - 1
 		animation_player.next_frame()
@@ -153,11 +170,12 @@ func save_start():
 		for i in range(0,2):
 			yield(get_tree(),"idle_frame")
 		for i in range(0, animation_player.current_animation_length / 1):
-			save(anim, animation_player)
+			save(animation_player.animation_name, animation_player)
 			animation_player.next_frame()
 			yield(get_tree(),"idle_frame")
-		save_spritesheet(animation_player, anim)
+		save_spritesheet(animation_player, animation_player.animation_name)
 		frame_count = 0
+	animation_player.stop(false)
 	animation_player.rendering = false
 	yield(get_tree(),"idle_frame")
 

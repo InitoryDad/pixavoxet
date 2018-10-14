@@ -9,3 +9,6 @@ export_presets.cfg
 renders/
 main2.tscn
 *.vox
+examples/character_animations.tscn
+examples/
+voxel_models/

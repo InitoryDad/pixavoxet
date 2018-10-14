@@ -3,6 +3,7 @@ extends Path
 
 export var model_index = 0
 export var path_length_limit_multiplier = 1.5
+export var is_mask = false
 var voxel_index = 0
 var current_model = null
 var points = []
@@ -26,20 +27,27 @@ func _ready():
 			elif(visible):
 				model.visible = true
 				for voxel in model.get_children():
-					voxel.get_child(0).collision_layer = 1
+					voxel.get_child(0).collision_layer = 4
 					voxel.add_to_group("voxel_visible")
 			if(model.get_position_in_parent() == model_index):
 				current_model = model
 
 func _process(delta):
-	if(!visible && current_model.visible):
+	if(is_mask):
+		for model in get_children():
+			if(model.is_in_group("voxel_model")):
+				for voxel in model.get_children():
+					voxel.get_child(0).collision_layer = 8
+#					if(voxel.is_in_group("voxel_visible")):
+#						voxel.remove_from_group("voxel_visible")
+	if(!visible && current_model && current_model.visible):
 		current_model.visible = false
 		for voxel in current_model.get_children():
 			voxel.get_child(0).collision_layer = 2
 			if(voxel.is_in_group("voxel_visible")):
 				voxel.remove_from_group("voxel_visible")
 		return
-	elif(!visible):
+	elif(!visible || is_mask):
 		return
 	if(pf1 == null):
 		pf1 = PathFollow.new()
@@ -66,7 +74,7 @@ func _process(delta):
 			elif(model.get_position_in_parent() == model_index && !model.visible && visible):
 				model.visible = true
 				for voxel in model.get_children():
-					voxel.get_child(0).collision_layer = 1
+					voxel.get_child(0).collision_layer = 4
 					voxel.add_to_group("voxel_visible")
 			if(model.get_position_in_parent() == model_index):
 				current_model = model

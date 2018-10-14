@@ -27,7 +27,7 @@ func calculate_color(voxel):
 	var from = global_transform.origin
 	var to = voxel.global_transform.origin
 	var direction = from - to
-	var hit = state.intersect_ray(from,to + (direction.normalized() * 5),[voxel.get_child(0)],1)
+	var hit = state.intersect_ray(from,to + (direction.normalized() * 5),[voxel.get_child(0)],4)
 	if(!hit.empty()): #cast_shadow
 		var darkened = color.darkened(shadow_clamp)
 		voxel.material_override.albedo_color = darkened

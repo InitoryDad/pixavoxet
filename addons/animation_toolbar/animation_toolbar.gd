@@ -13,7 +13,7 @@ func _enter_tree():
 	connect("scene_changed",self,"scene_changed")
 	panel = HBoxContainer.new()
 	timeline = HSlider.new()
-	timeline.rect_min_size = Vector2(1000,32)
+	timeline.rect_min_size = Vector2(900,32)
 	timeline.max_value = 16
 	timeline.step = 1
 	timeline.connect("value_changed",self,"change_frame")
@@ -21,15 +21,20 @@ func _enter_tree():
 	play_button.text = "Play"
 	play_button.connect("pressed",self,"play")
 	play_button.modulate = Color(0,1,0,1)
-	var save_button = Button.new()
-	save_button.text = "Render"
-	save_button.connect("pressed",self,"render")
-	save_button.modulate = Color(0,1,1,1)
+	var render_all_button = Button.new()
+	render_all_button.text = "Render All"
+	render_all_button.connect("pressed",self,"render_all")
+	render_all_button.modulate = Color(0,1,1,1)
+	var render_button = Button.new()
+	render_button.text = "Render"
+	render_button.connect("pressed",self,"render")
+	render_button.modulate = Color(0,1,1,1)
 	animation_button = OptionButton.new()
 	animation_button.connect("item_selected",self,"animation_selected")
 	panel.add_child(animation_button)
 	panel.add_child(play_button)
-	panel.add_child(save_button)
+	panel.add_child(render_button)
+	panel.add_child(render_all_button)
 	panel.add_child(timeline)
 	add_control_to_container(CONTAINER_SPATIAL_EDITOR_BOTTOM,panel)
 
@@ -98,10 +103,15 @@ func _process(delta):
 	if(!scene_root || get_tree().get_nodes_in_group("frame_by_frame_helper").size() == 0):
 		animation_player = null
 
+func render_all():
+	if(animation_player):
+		var vp = get_tree().get_nodes_in_group("spritesheet_renderer")[0]
+		vp.save_start(true)
+
 func render():
 	if(animation_player):
 		var vp = get_tree().get_nodes_in_group("spritesheet_renderer")[0]
-		vp.save_start()
+		vp.save_start(false)
 
 
 func play():
@@ -120,4 +130,6 @@ func play():
 func _exit_tree():
 	remove_control_from_container(CONTAINER_CANVAS_EDITOR_BOTTOM,panel)
 	panel.visible = false
+	for child in panel.get_children():
+		child.free()
 	panel.free()
