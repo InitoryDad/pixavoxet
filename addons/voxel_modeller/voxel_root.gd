@@ -4,6 +4,7 @@ extends Path
 export var model_index = 0
 export var path_length_limit_multiplier = 1.5
 export var is_mask = false
+export var always_render = false
 var voxel_index = 0
 var current_model = null
 var points = []
@@ -18,13 +19,13 @@ func _ready():
 		add_to_group("voxel_root",true)
 	for model in get_children():
 		if(model.is_in_group("voxel_model")):
-			if(!visible):
+			if(!visible && !always_render):
 				model.visible = false
 				for voxel in model.get_children():
 					voxel.get_child(0).collision_layer = 2
 					if(voxel.is_in_group("voxel_visible")):
 						voxel.remove_from_group("voxel_visible")
-			elif(visible):
+			elif(visible || always_render):
 				model.visible = true
 				for voxel in model.get_children():
 					voxel.get_child(0).collision_layer = 4
@@ -40,14 +41,14 @@ func _process(delta):
 					voxel.get_child(0).collision_layer = 8
 #					if(voxel.is_in_group("voxel_visible")):
 #						voxel.remove_from_group("voxel_visible")
-	if(!visible && current_model && current_model.visible):
+	if(!visible && current_model && current_model.visible && !always_render):
 		current_model.visible = false
 		for voxel in current_model.get_children():
 			voxel.get_child(0).collision_layer = 2
 			if(voxel.is_in_group("voxel_visible")):
 				voxel.remove_from_group("voxel_visible")
 		return
-	elif(!visible || is_mask):
+	elif(!visible && !always_render || is_mask):
 		return
 	if(pf1 == null):
 		pf1 = PathFollow.new()
@@ -65,13 +66,13 @@ func _process(delta):
 	var index = 0
 	for model in get_children():
 		if(model.is_in_group("voxel_model")):
-			if(model.get_position_in_parent() != model_index && model.visible || !visible):
+			if(model.get_position_in_parent() != model_index && model.visible || !visible && !always_render):
 				model.visible = false
 				for voxel in model.get_children():
 					voxel.get_child(0).collision_layer = 2
 					if(voxel.is_in_group("voxel_visible")):
 						voxel.remove_from_group("voxel_visible")
-			elif(model.get_position_in_parent() == model_index && !model.visible && visible):
+			elif(model.get_position_in_parent() == model_index && !model.visible && visible || always_render):
 				model.visible = true
 				for voxel in model.get_children():
 					voxel.get_child(0).collision_layer = 4

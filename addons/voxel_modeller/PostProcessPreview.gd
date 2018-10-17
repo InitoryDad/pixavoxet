@@ -34,9 +34,9 @@ func get_visible_voxels():
 			var from = ray_origin - Vector3(.5,.25,.5)
 			var to = ray_origin + ray_direction * 1000000.0
 			var state = camera.get_world().direct_space_state
-			var hit = state.intersect_ray(from,to,[],1)
+			var hit = state.intersect_ray(from,to,[],4)
 			if(!hit.empty()):
-				if(hit.collider.get_parent().is_visible_in_tree()):
+				if(hit.collider.get_parent().is_visible_in_tree() || hit.collider.get_parent().get_parent().get_parent().always_render):
 					_voxels.append(hit.collider.get_parent())
 	return _voxels
 
@@ -58,7 +58,7 @@ func outline_pass():
 			var state = camera.get_world().direct_space_state
 			var hit = state.intersect_ray(from,to,[],12)
 			if(!hit.empty()):
-				if(hit.collider.get_parent().is_visible_in_tree() && !hit.collider.get_parent().get_parent().get_parent().is_mask):
+				if(hit.collider.get_parent().is_visible_in_tree() && !hit.collider.get_parent().get_parent().get_parent().is_mask || hit.collider.get_parent().get_parent().get_parent().always_render):
 					image.set_pixel(pos.x,h-pos.y,hit.collider.get_parent().material_override.albedo_color)
 					if(render_inner_outline):
 						var checks = [Vector2(x+1,y), Vector2(x-1,y), Vector2(x,y+1), Vector2(x,y-1)]
@@ -69,7 +69,7 @@ func outline_pass():
 							to = ray_origin + ray_direction * 1000000.0
 							var hit2 = state.intersect_ray(from,to,[],4)
 							if(!hit2.empty()):
-								if(hit2.collider.get_parent().is_visible_in_tree()):
+								if(hit2.collider.get_parent().is_visible_in_tree() || hit.collider.get_parent().get_parent().get_parent().always_render):
 									if(hit.collider.get_parent().get_parent() != hit2.collider.get_parent().get_parent() && hit.position.x - hit2.position.x > inner_outline_depth_check ||
 										hit.collider.get_parent() != hit2.collider.get_parent() && hit.position.x - hit2.position.x > inner_outline_depth_check + 1):
 										var c = image.get_pixel(pos.x,h-pos.y)
