@@ -14,6 +14,7 @@ func _ready():
 
 func _process(delta):
 	if(play && elapsed > speed):
+		stop(false)
 		elapsed = 0
 		next_frame()
 	elif(!play && is_playing() && !rendering):

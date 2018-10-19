@@ -6,7 +6,10 @@ export var frame_size = 32
 export var outline_color = Color(0,0,0,1)
 export var remove_jags = false
 export var render_inner_outline = true
+export var inner_outline_intensity = .5
 export var inner_outline_depth_check = 2.0
+export var inner_outline_depth_intensity = false
+export var normal_map_preview = false
 export(NodePath) var camera_path
 
 var frame_count = 0
@@ -59,8 +62,19 @@ func outline_pass():
 			var hit = state.intersect_ray(from,to,[],12)
 			if(!hit.empty()):
 				if(hit.collider.get_parent().is_visible_in_tree() && !hit.collider.get_parent().get_parent().get_parent().is_mask || hit.collider.get_parent().get_parent().get_parent().always_render):
-					image.set_pixel(pos.x,h-pos.y,hit.collider.get_parent().material_override.albedo_color)
-					if(render_inner_outline):
+					var color = hit.collider.get_parent().material_override.albedo_color
+					if(normal_map_preview):
+						var xyz = hit.collider.get_parent().translation + hit.collider.get_parent().get_parent().translation + hit.collider.get_parent().get_parent().get_parent().translation
+						xyz = hit.position
+						xyz.x = xyz.x*xyz.x
+						#xyz.y = stepify(xyz.y,1)
+						#xyz.z = stepify(xyz.z,1)
+						#print(hit.position)
+						color.r = range_lerp(xyz.z,-14,14,0.0,1.0)
+						color.g = range_lerp(xyz.y,0,32,0.0,1.0)
+						color.b = range_lerp(xyz.x,-5,5,0.0,1.0)
+					image.set_pixel(pos.x,h-pos.y,color)
+					if(render_inner_outline && !normal_map_preview):
 						var checks = [Vector2(x+1,y), Vector2(x-1,y), Vector2(x,y+1), Vector2(x,y-1)]
 						for p in checks:
 							ray_origin = camera.project_ray_origin(p)
@@ -74,7 +88,11 @@ func outline_pass():
 										hit.collider.get_parent() != hit2.collider.get_parent() && hit.position.x - hit2.position.x > inner_outline_depth_check + 1):
 										var c = image.get_pixel(pos.x,h-pos.y)
 										if(c.a != 0):
-											image.set_pixel(pos.x,h-pos.y,c.darkened(.5))
+											var intensity = inner_outline_intensity
+											if(inner_outline_depth_intensity):
+												var delta = hit.position.x - hit2.position.x
+												intensity = intensity * delta
+											image.set_pixel(pos.x,h-pos.y,c.darkened(intensity))
 											break
 	if(remove_jags):
 		var remove = []
@@ -103,30 +121,31 @@ func outline_pass():
 					remove.append(Vector2(x,y))
 		for xy in remove:
 			image.set_pixel(xy.x,xy.y,Color(0,0,0,0))
-	for x in range(0,w):
-		for y in range(0,h):
-			var c = image.get_pixel(x,y)
-			var bordering = 0
-			var u; var d; var l; var r;
-			if(y-1 >= 0):
-				u = image.get_pixel(x,y-1)
-				if(u.a != 0):
-					bordering += 1
-			if(y+1 < h):
-				d = image.get_pixel(x,y+1)
-				if(d.a != 0):
-					bordering += 1
-			if(x-1 >= 0):
-				l = image.get_pixel(x-1,y)
-				if(l.a != 0):
-					bordering += 1
-			if(x+1 < w):
-				r = image.get_pixel(x+1,y)
-				if(r.a != 0):
-					bordering += 1
-			if(c.a == 0):
-				if(u && u.a != 0 || d && d.a != 0 || l && l.a != 0 || r && r.a != 0 || bordering > 0):
-					outline.append(Vector2(x,y))
+	if(!normal_map_preview):
+		for x in range(0,w):
+			for y in range(0,h):
+				var c = image.get_pixel(x,y)
+				var bordering = 0
+				var u; var d; var l; var r;
+				if(y-1 >= 0):
+					u = image.get_pixel(x,y-1)
+					if(u.a != 0):
+						bordering += 1
+				if(y+1 < h):
+					d = image.get_pixel(x,y+1)
+					if(d.a != 0):
+						bordering += 1
+				if(x-1 >= 0):
+					l = image.get_pixel(x-1,y)
+					if(l.a != 0):
+						bordering += 1
+				if(x+1 < w):
+					r = image.get_pixel(x+1,y)
+					if(r.a != 0):
+						bordering += 1
+				if(c.a == 0):
+					if(u && u.a != 0 || d && d.a != 0 || l && l.a != 0 || r && r.a != 0 || bordering > 0):
+						outline.append(Vector2(x,y))
 	for xy in outline:
 		image.set_pixel(xy.x,xy.y,outline_color)
 	image.flip_y()
@@ -196,6 +215,8 @@ func save_spritesheet(player,animation_name):
 			if(i < rendered_frames.keys().size()):
 				image.blit_rect(rendered_frames[i],Rect2(0,0, xinc, yinc),Vector2(x * xinc, y * yinc))
 			i += 1
+	if(normal_map_preview):
+		animation_name += "_normal"
 	print("saving: ", directories + "/" + animation_name +".png")
 	image.save_png(directories + "/" + animation_name +".png")
 

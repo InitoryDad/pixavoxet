@@ -16,6 +16,16 @@ func _process(delta):
 		else:
 			voxels = get_tree().get_nodes_in_group("voxel_visible")
 		light_pass()
+	else:
+		if(visible_voxels_only):
+			voxels = $"../FramePreview".get_visible_voxels()
+		else:
+			voxels = get_tree().get_nodes_in_group("voxel_visible")
+		reset_pass()
+
+func reset_pass():
+	for voxel in voxels:
+		voxel.material_override.albedo_color = voxel.color
 
 func light_pass():
 	for voxel in voxels:
