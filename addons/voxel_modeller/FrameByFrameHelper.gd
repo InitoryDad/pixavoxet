@@ -3,6 +3,7 @@ extends AnimationPlayer
 
 export var play = false
 export var speed = 0.1
+export var frame_step = 1.0
 export var frame = 0
 var animation_name = ""
 var wait = 0.0
@@ -26,7 +27,7 @@ func _process(delta):
 
 func next_frame():
 	if(animation_name != ""):
-		frame += 1
+		frame += frame_step
 		if(frame >= current_animation_length):
 			frame = 0
 		update()

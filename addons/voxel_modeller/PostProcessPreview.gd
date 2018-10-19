@@ -168,12 +168,12 @@ func save_start(save_all):
 			animation_player.animation_name = anim
 			animation_player.play(anim)
 			animation_player.playback_speed = 0
-			animation_player.frame = animation_player.current_animation_length - 1
+			animation_player.frame = animation_player.current_animation_length - animation_player.frame_step
 			animation_player.next_frame()
 			animation_player.update()
 			for i in range(0,2):
 				yield(get_tree(),"idle_frame")
-			for i in range(0, animation_player.current_animation_length / 1):
+			for i in range(0, animation_player.current_animation_length / animation_player.frame_step):
 				save(anim, animation_player)
 				animation_player.next_frame()
 				yield(get_tree(),"idle_frame")
@@ -183,12 +183,12 @@ func save_start(save_all):
 		rendered_frames = {}
 		animation_player.play(animation_player.animation_name)
 		animation_player.playback_speed = 0
-		animation_player.frame = animation_player.current_animation_length - 1
+		animation_player.frame = animation_player.current_animation_length - animation_player.frame_step
 		animation_player.next_frame()
 		animation_player.update()
 		for i in range(0,2):
 			yield(get_tree(),"idle_frame")
-		for i in range(0, animation_player.current_animation_length / 1):
+		for i in range(0, animation_player.current_animation_length / animation_player.frame_step):
 			save(animation_player.animation_name, animation_player)
 			animation_player.next_frame()
 			yield(get_tree(),"idle_frame")
@@ -202,7 +202,7 @@ func save_spritesheet(player,animation_name):
 	var dir = Directory.new()
 	var directories = export_directory
 	dir.make_dir_recursive(directories)
-	var colrow = ceil(sqrt(player.current_animation_length / 1))
+	var colrow = ceil(sqrt(player.current_animation_length / player.frame_step))
 	var xinc = rendered_frames[0].get_width()
 	var yinc = rendered_frames[0].get_height()
 	var w = rendered_frames[0].get_width() * colrow
@@ -214,7 +214,7 @@ func save_spritesheet(player,animation_name):
 		for x in range(0,colrow):
 			if(i < rendered_frames.keys().size()):
 				image.blit_rect(rendered_frames[i],Rect2(0,0, xinc, yinc),Vector2(x * xinc, y * yinc))
-			i += 1
+			i += player.frame_step
 	if(normal_map_preview):
 		animation_name += "_normal"
 	print("saving: ", directories + "/" + animation_name +".png")
@@ -224,4 +224,4 @@ func save(name, player):
 	var image = outline_pass()
 	#image.save_png(directories + "/" +name + "_" + str(frame_count)+".png")
 	rendered_frames[frame_count] = image
-	frame_count += 1
+	frame_count += player.frame_step

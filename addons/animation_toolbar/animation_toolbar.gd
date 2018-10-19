@@ -70,9 +70,9 @@ func animation_selected(idx):
 		animation_player.animation_name = animation_button.get_item_text(idx)
 		animation_player.current_animation = animation_button.get_item_text(idx)
 		get_editor_interface().inspect_object(get_tree().get_nodes_in_group("frame_by_frame_helper")[0])
-		timeline.max_value = animation_player.current_animation_length -.01
+		timeline.max_value = animation_player.current_animation_length - animation_player.frame_step
 		timeline.value = animation_player.frame
-		timeline.step = 1
+		timeline.step = animation_player.frame_step
 		animation_player.frame = 0
 		animation_player.update()
 
@@ -97,9 +97,9 @@ func _process(delta):
 		animation_player.update()
 	if(scene_root && get_tree().get_nodes_in_group("frame_by_frame_helper").size() > 0 && animation_player && !animation_player.rendering):
 		if(animation_player.current_animation != ""):
-			timeline.max_value = animation_player.current_animation_length - .01
+			timeline.max_value = animation_player.current_animation_length - animation_player.frame_step
 			timeline.value = animation_player.frame
-			timeline.step = 1
+			timeline.step = animation_player.frame_step
 	if(!scene_root || get_tree().get_nodes_in_group("frame_by_frame_helper").size() == 0):
 		animation_player = null
 
