@@ -7,6 +7,7 @@ var VOXEL_SCRIPT = preload("voxel.gd")
 var VOXEL_ROOT_SCRIPT = preload("voxel_root.gd")
 var VOXEL_MOM_SCRIPT = preload("voxel_mom.gd")
 var VOXEL_MESH = preload("res://addons/voxel_modeller/voxel.tres")
+var last_loaded_path = ""
 var cull_hidden = true
 var model_index = 0
 var models = []
@@ -107,6 +108,7 @@ func store_size_pivot():
 	printt("storing", models[model_index].pivot)
 
 func on_load(file_path):
+	last_loaded_path = file_path
 	for model in models:
 		models.erase(model)
 		model.free()
@@ -124,8 +126,8 @@ func on_load(file_path):
 		models.append(model)
 		for voxel in model.get_children():
 			voxel.mesh = VOXEL_MESH
-			voxel.translation += model.pivot
 			voxel.translation = voxel.translation.floor()
+			voxel.translation += model.pivot
 			var i = voxel.color_index
 			var c = voxel.color
 			get_node("../../LeftSideBar/VBoxContainer/ColorPicker").get_material(i).albedo_color = c
@@ -141,24 +143,36 @@ func on_save():
 	var voxel_root = Path.new()
 	voxel_root.set_script(VOXEL_ROOT_SCRIPT)
 	for model in models:
-#		model = model.duplicate()
 		if(model.get_parent()):
 			model.get_parent().remove_child(model)
-		printt(model.voxel_children.keys().size(),model.get_child_count())
 		voxel_root.add_child(model)
 		model.owner = voxel_root
-		for voxel in model.get_children():
+		for pos in model.voxel_children.keys():
+			var voxel = model.voxel_children[pos]
 			var color = get_material_color(voxel.color_index)
+			if(!voxel.material_override):
+				var material = SpatialMaterial.new()
+				material.flags_unshaded = true
+				material.flags_albedo_tex_force_srgb = true
+				voxel.material_override = material
 			voxel.color = color
-			voxel.translation -= model.pivot - Vector3(.5,.5,.5)
+			voxel.translation = pos - model.pivot + Vector3(.5,.5,.5)
 			voxel.owner = voxel_root
 	var result = scene.pack(voxel_root)
 	if result == OK:
 		var name = get_node("../../TopBar/VBoxContainer/name/TextEdit").text + ".scn"
-		var err = ResourceSaver.save("res://voxel_models/"+name, scene)
-		print(err)
-		printt("save",voxel_root.get_child(0).get_child_count(),name)
-		get_node("../../..").plugin.rescan("res://voxel_models/"+name)
+		if(last_loaded_path == ""):
+			var err = ResourceSaver.save("res://voxel_models/"+name, scene)
+			print(err)
+			printt("save",voxel_root.get_child(0).get_child_count(),name)
+			get_node("../../..").plugin.rescan("res://voxel_models/"+name)
+		else:
+
+			var err = ResourceSaver.save(last_loaded_path.get_base_dir() + "/" + name, scene)
+			print(err)
+			printt("save",last_loaded_path.get_base_dir(),name)
+			get_node("../../..").plugin.rescan(last_loaded_path)
+		on_load(last_loaded_path.get_base_dir() + "/" + name)
 
 func add_voxel(x,y,z,color_index,model = null):
 	if(!model):
@@ -382,10 +396,70 @@ func flip_vertically_pressed():
 	var model = get_current_model()
 	var voxels = {}
 	var size = model.size
-	for voxel in model.get_children():
+	for pos in model.voxel_children.keys():
+#	for voxel in model.get_children():
+		var voxel = model.voxel_children[pos]
 		var i = model.voxels[voxel.translation]
 		voxel.translation.y = size.y - voxel.translation.y - 1
 		voxels[voxel.translation] = i
 	model.voxels = voxels
 	show_current_model()
-	print("hi")
+
+func flip_horizontally_pressed():
+	var model = get_current_model()
+	var voxels = {}
+	var size = model.size
+	for pos in model.voxel_children.keys():
+#	for voxel in model.get_children():
+		var voxel = model.voxel_children[pos]
+		var i = model.voxels[voxel.translation]
+		voxel.translation.x = size.x - voxel.translation.x - 1
+		voxels[voxel.translation] = i
+	model.voxels = voxels
+	show_current_model()
+
+func rotate_90_y_pressed():
+	var model = get_current_model()
+	var voxels = {}
+	var voxel_children = {}
+	var size = model.size
+	model.size.x = size.z
+	model.size.z = size.x
+	for pos in model.voxel_children.keys():
+#	for voxel in model.get_children():
+		var voxel = model.voxel_children[pos]
+		var i = model.voxels[pos]
+		voxel.translation = voxel.translation.rotated(Vector3(0,1,0),deg2rad(-90)).round()
+		if(voxel.translation.x <= 0):
+			voxel.translation.x += model.size.x - 1
+		voxels[voxel.translation] = i
+		voxel_children[voxel.translation] = voxel
+	model.voxel_children = voxel_children
+	model.voxels = voxels
+	show_current_model()
+
+func shift_pressed(direction):
+	var model = get_current_model()
+	var voxels = {}
+	var voxel_children = {}
+	for pos in model.voxel_children.keys():
+		var voxel = model.voxel_children[pos]
+		var i = model.voxels[pos]
+		voxel.translation += direction
+		if(voxel.translation.x >= model.size.x):
+			voxel.translation.x = 0
+		if(voxel.translation.y >= model.size.y):
+			voxel.translation.y = 0
+		if(voxel.translation.z >= model.size.z):
+			voxel.translation.z = 0
+		if(voxel.translation.x < 0):
+			voxel.translation.x = model.size.x-1
+		if(voxel.translation.y < 0):
+			voxel.translation.y = model.size.y-1
+		if(voxel.translation.z < 0):
+			voxel.translation.z = model.size.z-1
+		voxels[voxel.translation] = i
+		voxel_children[voxel.translation] = voxel
+	model.voxel_children = voxel_children
+	model.voxels = voxels
+	show_current_model()

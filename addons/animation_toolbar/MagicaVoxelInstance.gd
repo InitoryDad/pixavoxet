@@ -112,7 +112,7 @@ func _process(delta):
 
 
 func render_voxels():
-	print("Rendering Voxels for " + get_name())
+#	print("Rendering Voxels for " + get_name())
 	multi_mesh_color_lookup = {}
 	multi_mesh_color_index = {}
 	var palette = magica_voxel_file.palette

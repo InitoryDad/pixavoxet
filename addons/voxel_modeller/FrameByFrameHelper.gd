@@ -10,8 +10,15 @@ var wait = 0.0
 var next_frame = false
 var rendering = false
 var elapsed = 0.0
+
 func _ready():
-	stop(false)
+	play = false
+	animation_name = ""
+	wait = 0.0
+	next_frame = false
+	rendering = false
+	elapsed = 0.0
+	stop(true)
 
 func _process(delta):
 	if(play && elapsed > speed):
@@ -34,6 +41,7 @@ func next_frame():
 
 func update():
 	seek(frame,true)
+	#advance(frame_step)
 
 func get_node_path(path):
 	var s = ""

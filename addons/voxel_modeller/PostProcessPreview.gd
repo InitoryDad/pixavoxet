@@ -50,6 +50,7 @@ func outline_pass():
 	var h = frame_size
 	var w = frame_size
 	image.lock()
+	var image_dic = {}
 	var outline = []
 	for x in range(0,w+1):
 		for y in range(0,h+1):
@@ -74,7 +75,8 @@ func outline_pass():
 						color.g = range_lerp(xyz.y,0,32,0.0,1.0)
 						color.b = range_lerp(xyz.x,-5,5,0.0,1.0)
 					image.set_pixel(pos.x,h-pos.y,color)
-					if(render_inner_outline && !normal_map_preview):
+					image_dic[Vector2(pos.x,h-pos.y)] = hit.collider.get_parent().get_parent().get_parent()
+					if(hit.collider.get_parent().get_parent().get_parent().render_inner_outline && render_inner_outline && !normal_map_preview):
 						var checks = [Vector2(x+1,y), Vector2(x-1,y), Vector2(x,y+1), Vector2(x,y-1)]
 						for p in checks:
 							ray_origin = camera.project_ray_origin(p)
@@ -117,7 +119,7 @@ func outline_pass():
 					r = image.get_pixel(x+1,y)
 					if(r.a != 0):
 						bordering += 1
-				if(bordering < 2):
+				if(bordering < 2 && image_dic.has(Vector2(x,y)) && image_dic[Vector2(x,y)].remove_jags || bordering < 2 && !image_dic.has(Vector2(x,y))):
 					remove.append(Vector2(x,y))
 		for xy in remove:
 			image.set_pixel(xy.x,xy.y,Color(0,0,0,0))
@@ -125,26 +127,29 @@ func outline_pass():
 		for x in range(0,w):
 			for y in range(0,h):
 				var c = image.get_pixel(x,y)
-				var bordering = 0
-				var u; var d; var l; var r;
-				if(y-1 >= 0):
-					u = image.get_pixel(x,y-1)
-					if(u.a != 0):
-						bordering += 1
-				if(y+1 < h):
-					d = image.get_pixel(x,y+1)
-					if(d.a != 0):
-						bordering += 1
-				if(x-1 >= 0):
-					l = image.get_pixel(x-1,y)
-					if(l.a != 0):
-						bordering += 1
-				if(x+1 < w):
-					r = image.get_pixel(x+1,y)
-					if(r.a != 0):
-						bordering += 1
 				if(c.a == 0):
+					var bordering = 0
+					var u; var d; var l; var r;
+					if(y-1 >= 0):
+						u = image.get_pixel(x,y-1)
+						if(u.a != 0):
+							bordering += 1
+					if(y+1 < h):
+						d = image.get_pixel(x,y+1)
+						if(d.a != 0):
+							bordering += 1
+					if(x-1 >= 0):
+						l = image.get_pixel(x-1,y)
+						if(l.a != 0):
+							bordering += 1
+					if(x+1 < w):
+						r = image.get_pixel(x+1,y)
+						if(r.a != 0):
+							bordering += 1
 					if(u && u.a != 0 || d && d.a != 0 || l && l.a != 0 || r && r.a != 0 || bordering > 0):
+						outline.append(Vector2(x,y))
+				else:
+					if(x == 0 || x == w-1 || y == h-1):
 						outline.append(Vector2(x,y))
 	for xy in outline:
 		image.set_pixel(xy.x,xy.y,outline_color)
@@ -159,12 +164,18 @@ func outline_pass():
 
 func save_start(save_all):
 	var animation_player = get_tree().get_nodes_in_group("frame_by_frame_helper")[0]
+	animation_player.stop(false)
 	animation_player.rendering = true
 	yield(get_tree(),"idle_frame")
 	var animation_list = animation_player.get_animation_list()
 	if(save_all):
 		for anim in animation_list:
 			rendered_frames = {}
+			animation_player.play = false
+			animation_player.wait = 0.0
+			animation_player.next_frame = false
+			animation_player.rendering = false
+			animation_player.elapsed = 0.0
 			animation_player.animation_name = anim
 			animation_player.play(anim)
 			animation_player.playback_speed = 0
